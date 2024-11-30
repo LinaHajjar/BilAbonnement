@@ -7,14 +7,14 @@ public class Bil {
     String maerke;
     String model;
     enum braendstoftype {ELEKTIK, BENZIN, DIESEL, HYBRID};
-    String odometer;
+    int odometer;
     LocalDate foersteregistrering;
     Boolean tilgaengelighed;
     int co2udledning;
 
     public Bil(){} //tømme konstruktør
 
-    public Bil(String maerke, String nummerplade, String model, String odometer, LocalDate foersteregistrering, Boolean tilgaengelighed, int co2udledning) {
+    public Bil(String maerke, String nummerplade, String model, int odometer, LocalDate foersteregistrering, Boolean tilgaengelighed, int co2udledning) {
         this.maerke = maerke;
         this.nummerplade = nummerplade;
         this.model = model;
@@ -48,11 +48,11 @@ public class Bil {
         this.model = model;
     }
 
-    public String getOdometer() {
+    public int getOdometer() {
         return odometer;
     }
 
-    public void setOdometer(String odometer) {
+    public void setOdometer(int odometer) {
         this.odometer = odometer;
     }
 

@@ -16,14 +16,14 @@ public class BilabonnementRepo {
 
         String sql = "INSERT INTO dummyTable(telefonnummer, email, fornavn, efternavn, adresse, postnummer, by, koerekortnummer, udstedelsdato)\n" +
                 "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?);";
-        template.update(sql); // mangler getters og setters
+        template.update(sql); // mangler getters og setters:DONE
     }
 
 
     public void addLejekontrakt(){
         String sql = "INSERT INTO lejekontrakt(lejekontrakt_id, telefonnummer, nummerplade, startDato, slutDato, maxKm, pris)\n" +
                 "VALUES(?, ?, ?, ?, ?, ?, ?)";
-        template.update(sql); // mangler getters og setters
+        template.update(sql); // mangler getters og setters:DONE
     }
 
 }
