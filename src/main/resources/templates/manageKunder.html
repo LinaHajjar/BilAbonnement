@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kunder</title>
+</head>
+<body>
+<h1 class="kunde-h1">Alle kunder</h1>
+<a th:href="@{/nyKunde}" class="tilføj-kunde">Tilføj ny kynde</a>
+<table class="kunde-table">
+    <thead>
+    <tr>
+        <th>Telefonnummer</th>
+        <th>Email</th>
+        <th>Fornavn</th>
+        <th>Efternavn</th>
+        <th>Adresse</th>
+        <th>Postnummer</th>
+        <th>By</th>
+        <th>Kørekortnummer</th>
+        <th>Udstedelsesdato</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="kunde: ${kunder}">
+        <td th:text="${kunde.telefonnummer}"></td>
+        <td th:text="${kunde.email}"></td>
+        <td th:text="${kunde.fornavn}"></td>
+        <td th:text="${kunde.efternavn}"></td>
+        <td th:text="${kunde.adresse}"></td>
+        <td th:text="${kunde.postnummer}"></td>
+        <td th:text="${kunde.byen}"></td>
+        <td th:text="${kunde.koerekortnummer}"></td>
+        <td th:text="${kunde.udstedelsdato}"></td>
+
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

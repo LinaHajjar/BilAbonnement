@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lejekontrakter</title>
+</head>
+<body>
+<h1 class="lejekontrakt-h1">Alle lejekontrakter</h1>
+
+<a th:href="@{/nyKontrakt}" class="ny-lejekontrakt-knap">Tilføj ny lejekontrakt</a>
+
+<table class="lejekontrakt-table">
+    <thead>
+    <tr>
+        <th>Lejekontrakt_id</th>
+        <th>Telefonnummer</th>
+        <th>Nummerplade</th>
+        <th>Start dato</th>
+        <th>Slut dato</th>
+        <th>Max km</th>
+        <th>Pris</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="lejekontrakt: ${lejekontraker}">
+        <td th:text="${lejekontrakt.lejekontrakt_id}"></td>
+        <td th:text="${lejekontrakt.telefonnummer}"></td>
+        <td th:text="${lejekontrakt.nummerplade}"></td>
+        <td th:text="${lejekontrakt.startdato}"></td>
+        <td th:text="${lejekontrakt.slutdato}"></td>
+        <td th:text="${lejekontrakt.maxKm}"></td>
+        <td th:text="${lejekontrakt.pris}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

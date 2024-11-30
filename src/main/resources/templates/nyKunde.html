@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tilføj kunde</title>
+</head>
+<body>
+<h1 class="ny-kunde-h1">Indtast informationer</h1>
+
+
+<form th:action="@{/tilføjKunde}" method="post">
+    <input type="number" name="telefonnummer" placeholder="Telefonnummer" required min="10000000" max="99999999">
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="text" name="fornavn" placeholder="Fornavn" required>
+    <input type="text" name="efternavn" placeholder="Efternavn" required>
+    <input type="text" name="adresse" placeholder="Adresse" required>
+    <input type="number" name="postnummer" placeholder="Postnummer" required>
+    <input type="text" name="byen" placeholder="By" required>
+    <input type="date" name="koerekortnummer" placeholder="Kørekortnummer" required>
+    <input type="date" name="udstedelsdato" placeholder="Udstedelsesdato" required>
+    <button type="subtmit" class="tilføj-kunde-knap">Tilføj Kunde</button>
+</form>
+
+
+</body>
+</html>
