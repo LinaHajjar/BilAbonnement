@@ -15,9 +15,8 @@ public class BilabonnementRepo {
 
 
     public void addKunde(Kunde kunde){
-
         String sql = "INSERT INTO dummyTable(telefonnummer, email, fornavn, efternavn, adresse, postnummer, byen, koerekortnummer, udstedelsdato)\n" +
-                "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?);";
+                "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?);";  // ? ? ? : prepare statement
         template.update(sql, kunde.getTelefonnummer(), kunde.getEmail(), kunde.getFornavn(), kunde.getEfternavn(), kunde.getAdresse(), kunde.getPostnummer(), kunde.getByen(), kunde.getKoerekortnummer(), kunde.getUdstedelsdato()); // mangler getters og setters:DONE
     }
 
