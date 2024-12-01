@@ -57,9 +57,9 @@ public class HomeController {
                                       @RequestParam("slutdato") LocalDate slutdato,
                                       @RequestParam("maxKm") int maxKm,
                                       @RequestParam("pris") int pris,
-                                      Model model) {
+                                      Model model) throws SQLException {
 
-        LejeKontrakt lejeKontrakt = lejeKontraktService.findLejeKontraktByTelefonOgNummerPlade(telefonnummer, nummerplade);
+        LejeKontrakt lejeKontrakt = lejeKontraktService.getKontraktByTelefon(telefonnummer);
 
         if (lejeKontrakt != null) {
             model.addAttribute("lejeKontrakt", lejeKontrakt);
