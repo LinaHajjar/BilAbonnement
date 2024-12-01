@@ -1,6 +1,7 @@
 package com.example.bilabonnement.Controller;
 
 
+import com.example.bilabonnement.Model.Kunde;
 import com.example.bilabonnement.Model.LejeKontrakt;
 import com.example.bilabonnement.Service.BilService;
 import com.example.bilabonnement.Service.BilabonnementService;
@@ -95,7 +96,49 @@ public class HomeController {
 
     //oprettelse af postmaping metode for at sende input fra bruger omkring kunde info
 
+    @PostMapping("/nyKunde")
+    public String visKundeForm(@RequestParam("telefonnummer") String telefonnummer,
+    @RequestParam("email") String email,
+    @RequestParam("fornavn") String fornavn,
+    @RequestParam("efternavn") String efternavn,
+    @RequestParam("adresse") String adresse,
+    @RequestParam("postnummer") int postnummer,
+    @RequestParam("byen") String byen,
+    @RequestParam("Koerekortnummer") String koerkortnummer,
+    @RequestParam("udstedelsdato") LocalDate udstedelsdato,
+    Model model) throws SQLException {
 
+        Kunde kunde = KundeService.findKundeTelefonnummer(telefonnummer);
+
+        if (kunde != null) {
+            model.addAttribute("kunde", kunde);
+            kunde.setEmail(email);
+            kunde.setFornavn(fornavn);
+            kunde.setEfternavn(efternavn);
+            kunde.setAdresse(adresse);
+            kunde.setPostnummer(postnummer);
+            kunde.setByen(byen);
+            kunde.setKoerekortnummer(koerkortnummer);
+            kunde.setUdstedelsdato(udstedelsdato);
+
+            boolean isUpdated= kundeService.opdaterKundeInfo(kunde);
+
+            if(isUpdated == true){
+                model.addAttribute("besked", "Kundens oplysninger er opdateret.");
+                model.addAttribute("kunde", kunde);
+                return "manageKunder";
+            } else {
+                model.addAttribute("besked", "opdatering af kundens oplysninger mislykkes.");
+                return "nyKunde";
+            }
+        }
+        else {
+            model.addAttribute("besked", "Kunde var ikke fundet.");
+            return "nyKunde";
+        }
+
+
+    }
 
 
 }

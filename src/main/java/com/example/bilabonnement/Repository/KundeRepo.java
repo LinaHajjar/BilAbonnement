@@ -22,4 +22,26 @@ public class KundeRepo {
         return template.query(sql, rowMapper);
     }
 
+
+    public boolean opdaterKundeInfo(Kunde kunde)throws SQLException{
+
+        String sql = "UPDATE Kunde " +
+                "SET email = ?, fornavn = ?, efternavn = ?, adresse= ?, postnummer= ?, byen= ?, koerekortnummer= ?, udstedelsdato= ?, " +
+                "WHERE telefonnummer = ?";
+
+
+        int rowsUpdated = template.update(sql,
+                kunde.getEmail(),
+                kunde.getFornavn(),
+                kunde.getEfternavn(),
+                kunde.getPostnummer(),
+                kunde.getByen(),
+                kunde.getKoerekortnummer(),
+                kunde.getUdstedelsdato());
+
+        // Return true if at least one row was updated, otherwise false
+        return rowsUpdated > 0;
+    }
+
+
 }

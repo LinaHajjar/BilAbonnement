@@ -25,8 +25,8 @@ public class LejeKontraktRepo {
     public boolean opdaterLejeKontrakt(LejeKontrakt lejeKontrakt) {
 
         String sql = "UPDATE lejekontrakt " +
-                "SET slutDato = ?, maksKm = ?, pris = ? " +
-                "WHERE kundeTelefon = ? AND nummerPlade = ?";
+                "SET slutdato = ?, maxKm = ?, pris = ? " +
+                "WHERE telefonnummer = ? AND nummerplade = ?";
 
 
         int rowsUpdated = template.update(sql,
