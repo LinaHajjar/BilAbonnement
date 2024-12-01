@@ -22,4 +22,11 @@ public class KundeRepo {
         return template.query(sql, rowMapper);
     }
 
+    public Kunde getKundeByTelefon(String telefonnummer) throws SQLException {
+        String sql = "select * from kunde where telefonnummer = ?";
+        RowMapper<Kunde> rowMapper=new BeanPropertyRowMapper<>(Kunde.class);
+        Kunde kunde=template.queryForObject(sql, rowMapper, telefonnummer);
+        return kunde;
+    }
+
 }
