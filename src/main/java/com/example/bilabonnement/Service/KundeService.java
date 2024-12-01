@@ -20,13 +20,11 @@ public class KundeService {
     }
 
     //skal lave den her metode færdig
-    public static Kunde findKundeTelefonnummer(String telefonnummer) {
-
-        return KundeRepo.findKundeTlfnummer(telefonnummer);
-
+    public Kunde getKundeByTelefon(String telefonnummer) throws SQLException {
+        return kundeRepo.getKundeByTelefon(telefonnummer);
     }
 
-    //skal lave den
+    //skal lave den her metode færdig
     public boolean opdaterKundeInfo(Kunde kunde) throws SQLException {
         return kundeRepo.opdaterKundeInfo(kunde);
     }

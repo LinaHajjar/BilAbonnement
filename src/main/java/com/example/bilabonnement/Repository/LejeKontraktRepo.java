@@ -35,13 +35,11 @@ public class LejeKontraktRepo {
         LejeKontrakt lejeKontrakt = template.queryForObject(sql, rowMapper, telefonnumer);
         return lejeKontrakt;
     }
-    public boolean opdaterLejeKontrakt(LejeKontrakt lejeKontrakt) {
 
+    public boolean opdaterLejeKontrakt(LejeKontrakt lejeKontrakt) {
         String sql = "UPDATE lejekontrakt " +
                 "SET slutdato = ?, maxKm = ?, pris = ? " +
                 "WHERE telefonnummer = ? AND nummerplade = ?";
-
-
         int rowsUpdated = template.update(sql,
                 lejeKontrakt.getSlutDato(),
                 lejeKontrakt.getMaxKm(),

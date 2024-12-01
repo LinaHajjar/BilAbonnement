@@ -108,7 +108,7 @@ public class HomeController {
     @RequestParam("udstedelsdato") LocalDate udstedelsdato,
     Model model) throws SQLException {
 
-        Kunde kunde = KundeService.findKundeTelefonnummer(telefonnummer);
+        Kunde kunde = kundeService.getKundeByTelefon(telefonnummer);
 
         if (kunde != null) {
             model.addAttribute("kunde", kunde);

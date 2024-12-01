@@ -29,26 +29,10 @@ public class KundeRepo {
         return kunde;
     }
 
-
-    public boolean opdaterKundeInfo(Kunde kunde)throws SQLException{
-
-        String sql = "UPDATE Kunde " +
-                "SET email = ?, fornavn = ?, efternavn = ?, adresse= ?, postnummer= ?, byen= ?, koerekortnummer= ?, udstedelsdato= ?, " +
-                "WHERE telefonnummer = ?";
-
-
-        int rowsUpdated = template.update(sql,
-                kunde.getEmail(),
-                kunde.getFornavn(),
-                kunde.getEfternavn(),
-                kunde.getPostnummer(),
-                kunde.getByen(),
-                kunde.getKoerekortnummer(),
-                kunde.getUdstedelsdato());
-
-        // Return true if at least one row was updated, otherwise false
-        return rowsUpdated > 0;
+    public boolean opdaterKundeInfo(Kunde kunde){
+        String sql = "UPDATE kunde SET email=?, adresse=?, postnummer=?, byen=?, where telefonnummer = ?";
+        template.update(sql, kunde.getEmail(), kunde.getAdresse(), kunde.getPostnummer(), kunde.getByen(), kunde.getTelefonnummer());
+        return true;
     }
-
 
 }
