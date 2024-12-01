@@ -55,11 +55,11 @@ public class LejeKontrakt {
         this.startdato = startdato;
     }
 
-    public LocalDate getSlutdato() {
+    public LocalDate getSlutDato() {
         return slutdato;
     }
 
-    public void setSlutdato(LocalDate slutdato) {
+    public void setSlutDato(LocalDate slutdato) {
         this.slutdato = slutdato;
     }
 

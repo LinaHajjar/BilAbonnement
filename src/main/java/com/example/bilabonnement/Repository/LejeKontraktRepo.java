@@ -22,4 +22,22 @@ public class LejeKontraktRepo {
         return template.query(sql, rowMapper);
     }
 
+    public boolean opdaterLejeKontrakt(LejeKontrakt lejeKontrakt) {
+
+        String sql = "UPDATE lejekontrakt " +
+                "SET slutDato = ?, maksKm = ?, pris = ? " +
+                "WHERE kundeTelefon = ? AND nummerPlade = ?";
+
+
+        int rowsUpdated = template.update(sql,
+                lejeKontrakt.getSlutDato(),
+                lejeKontrakt.getMaxKm(),
+                lejeKontrakt.getPris(),
+                lejeKontrakt.getTelefonnummer(),
+                lejeKontrakt.getNummerplade());
+
+        // Return true if at least one row was updated, otherwise false
+        return rowsUpdated > 0;
+    }
+
 }

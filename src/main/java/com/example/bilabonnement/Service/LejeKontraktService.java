@@ -17,4 +17,13 @@ public class LejeKontraktService {
     public List<LejeKontrakt> getAllLejeKontrakt() throws SQLException {
         return lejeKontraktRepo.getAllLejeKontrakt();
     }
+
+    // Find lejekontrakt baseret på telefonnummer og nummerplade
+    public LejeKontrakt findLejeKontraktByTelefonOgNummerPlade(String telefonnummer, String nummerplade) {
+        return lejeKontraktRepo.findLejeKontraktByTelefonOgNummerPlade(telefonummer, nummerplade);
+    }
+
+    public boolean opdaterLejeKontrakt(LejeKontrakt lejeKontrakt) {
+       return lejeKontraktRepo.opdaterLejeKontrakt(lejeKontrakt);
+    }
 }

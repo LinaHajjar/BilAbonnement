@@ -20,4 +20,6 @@ public class BilRepo {
         RowMapper<Bil> rowMapper = new BeanPropertyRowMapper<>(Bil.class); //opretter objekter et af gang og gemme dem i en list
         return template.query(sql, rowMapper);
     }
+
+
 }
