@@ -1,6 +1,5 @@
 package com.example.bilabonnement.Repository;
 
-import com.example.bilabonnement.Model.Bil;
 import com.example.bilabonnement.Model.LejeKontrakt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -19,7 +18,7 @@ public class LejeKontraktRepo {
 
     public List<LejeKontrakt> getAllLejeKontrakt() throws SQLException {
         String sql = "select * from lejekontrakt";
-        RowMapper<LejeKontrakt> rowMapper = new BeanPropertyRowMapper<>(LejeKontrakt.class);
+        RowMapper<LejeKontrakt> rowMapper=new BeanPropertyRowMapper<>(LejeKontrakt.class);
         return template.query(sql, rowMapper);
     }
 
@@ -36,4 +35,22 @@ public class LejeKontraktRepo {
         LejeKontrakt lejeKontrakt = template.queryForObject(sql, rowMapper, telefonnumer);
         return lejeKontrakt;
     }
+    public boolean opdaterLejeKontrakt(LejeKontrakt lejeKontrakt) {
+
+        String sql = "UPDATE lejekontrakt " +
+                "SET slutdato = ?, maxKm = ?, pris = ? " +
+                "WHERE telefonnummer = ? AND nummerplade = ?";
+
+
+        int rowsUpdated = template.update(sql,
+                lejeKontrakt.getSlutDato(),
+                lejeKontrakt.getMaxKm(),
+                lejeKontrakt.getPris(),
+                lejeKontrakt.getTelefonnummer(),
+                lejeKontrakt.getNummerplade());
+
+        // Return true if at least one row was updated, otherwise false
+        return rowsUpdated > 0;
+    }
+
 }

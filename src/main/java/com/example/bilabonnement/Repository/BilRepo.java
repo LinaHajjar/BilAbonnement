@@ -1,7 +1,6 @@
 package com.example.bilabonnement.Repository;
 
 import com.example.bilabonnement.Model.Bil;
-import com.example.bilabonnement.Model.Kunde;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -21,6 +20,8 @@ public class BilRepo {
         RowMapper<Bil> rowMapper = new BeanPropertyRowMapper<>(Bil.class); //opretter objekter et af gang og gemme dem i en list
         return template.query(sql, rowMapper);
     }
+
+
 
     public Bil getBilByNummerplade(String nummerplade) throws SQLException {
         String sql = "select * from bil where nummerplade = ?";
