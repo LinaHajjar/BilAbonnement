@@ -34,7 +34,7 @@ public class HomeController {
     //opretellse af getmapping metode for at vise alle biller
  @GetMapping("/manageBiler")
     public String allBiller(Model model) throws SQLException {
-     model.addAttribute("manageBiler", bilService.getAllBil()); // displayer alle biler ud fra metoden i bilservice
+     model.addAttribute("biler", bilService.getAllBil()); // displayer alle biler ud fra metoden i bilservice
      return "homeBil/manageBiler";
  }
 

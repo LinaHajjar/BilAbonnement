@@ -6,7 +6,8 @@ public class Bil {
     String nummerplade;
     String maerke;
     String model;
-    enum braendstoftype {ELEKTIK, BENZIN, DIESEL, HYBRID};
+    enum Braendstoftype {ELEKTIK, BENZIN, DIESEL, HYBRID};
+    Braendstoftype braendstoftype;
     int odometer;
     LocalDate foersteregistrering;
     Boolean tilgaengelighed;
@@ -14,15 +15,6 @@ public class Bil {
 
     public Bil(){} //tømme konstruktør
 
-    public Bil(String maerke, String nummerplade, String model, int odometer, LocalDate foersteregistrering, Boolean tilgaengelighed, int co2udledning) {
-        this.maerke = maerke;
-        this.nummerplade = nummerplade;
-        this.model = model;
-        this.odometer = odometer;
-        this.foersteregistrering = foersteregistrering;
-        this.tilgaengelighed = tilgaengelighed;
-        this.co2udledning = co2udledning;
-    }
 
     public String getNummerplade() {
         return nummerplade;
@@ -78,5 +70,13 @@ public class Bil {
 
     public void setCo2udledning(int co2udledning) {
         this.co2udledning = co2udledning;
+    }
+
+    public Braendstoftype getBraendstoftype() {
+        return braendstoftype;
+    }
+
+    public void setBraendstoftype(Braendstoftype braendstoftype) {
+        this.braendstoftype = braendstoftype;
     }
 }
