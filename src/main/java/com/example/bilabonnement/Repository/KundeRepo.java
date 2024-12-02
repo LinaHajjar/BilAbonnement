@@ -35,4 +35,16 @@ public class KundeRepo {
         return true;
     }
 
+    public boolean phoneNumberExists(String phoneNumber) {
+        String sql = "SELECT COUNT(*) FROM customer WHERE telefonnummer = ?";
+        int count = template.queryForObject(sql, int.class, phoneNumber);
+        return count > 0;
+    }
+
+    public void addKunde(Kunde kunde){
+        String sql = "INSERT INTO dummyTable(telefonnummer, email, fornavn, efternavn, adresse, postnummer, byen, koerekortnummer, udstedelsdato)\n" +
+                "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?);";  // ? ? ? : prepare statement
+        template.update(sql, kunde.getTelefonnummer(), kunde.getEmail(), kunde.getFornavn(), kunde.getEfternavn(), kunde.getAdresse(), kunde.getPostnummer(), kunde.getByen(), kunde.getKoerekortnummer(), kunde.getUdstedelsdato()); // mangler getters og setters:DONE
+    }
+
 }
