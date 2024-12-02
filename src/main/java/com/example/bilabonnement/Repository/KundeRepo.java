@@ -42,7 +42,7 @@ public class KundeRepo {
     }
 
     public void addKunde(Kunde kunde){
-        String sql = "INSERT INTO dummyTable(telefonnummer, email, fornavn, efternavn, adresse, postnummer, byen, koerekortnummer, udstedelsdato)\n" +
+        String sql = "INSERT INTO kunde(telefonnummer, email, fornavn, efternavn, adresse, postnummer, byen, koerekortnummer, udstedelsdato)\n" +
                 "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?);";  // ? ? ? : prepare statement
         template.update(sql, kunde.getTelefonnummer(), kunde.getEmail(), kunde.getFornavn(), kunde.getEfternavn(), kunde.getAdresse(), kunde.getPostnummer(), kunde.getByen(), kunde.getKoerekortnummer(), kunde.getUdstedelsdato()); // mangler getters og setters:DONE
     }
