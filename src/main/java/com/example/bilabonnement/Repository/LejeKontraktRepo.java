@@ -47,7 +47,7 @@ public class LejeKontraktRepo {
                 lejeKontrakt.getTelefonnummer(),
                 lejeKontrakt.getNummerplade());
 
-        // Return true if at least one row was updated, otherwise false
+        // Return true if at least one row was updated, otherwise return false
         return rowsUpdated > 0;
     }
 
