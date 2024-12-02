@@ -10,7 +10,9 @@
 <form th:action="@{/tilføjKontrakt}" method="post">
     <input type="number" name="telefonnummer" placeholder="Telefonnummer" required min="10000000" max="99999999">
     <input type="text" name="nummerplade" placeholder="Nummerplade" required>
+    <label>Indtast start datoen for kontrakten</label>
     <input type="date" name="startdato" placeholder="Start dato" required>
+    <label>Indtast slut datoen</label>
     <input type="date" name="slutdato" placeholder="Slut dato" required>
     <input type="number" name="maxKm" placeholder="maxKm" required>
     <input type="number" name="pris" placeholder="Pris" required>

@@ -16,6 +16,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Controller
 public class HomeController {
@@ -124,8 +125,21 @@ public class HomeController {
     }
 
     @PostMapping("/tilføjKontrakt")
-    public String sletKontrakt(@RequestParam("lejekontrakt_id") int lejekontrakt_id) throws SQLException {
-        lejeKontraktService.sletLejeKontract(lejekontrakt_id);
+    public String tilføjKontrakt(@RequestParam("telefonnummer") String telefonnummer,
+                               @RequestParam("nummerplade") String nummerplade,
+                               @RequestParam("startdato") LocalDate startdato,
+                               @RequestParam("slutdato") LocalDate slutdato,
+                               @RequestParam("maxKm") int maxKm,
+                               @RequestParam("pris") int pris) throws SQLException {
+
+        LejeKontrakt kontrakt = new LejeKontrakt();
+        kontrakt.setTelefonnummer(telefonnummer);
+        kontrakt.setNummerplade(nummerplade);
+        kontrakt.setStartdato(startdato);
+        kontrakt.setSlutdato(slutdato);
+        kontrakt.setMaxKm(maxKm);
+        kontrakt.setPris(pris);
+        lejeKontraktService.addLejekontrakt(kontrakt);
         return "redirect:/manageKontrakter";
 
     }
@@ -137,6 +151,13 @@ public class HomeController {
         return "redirect:/manageKunder";
     }
 
+    @PostMapping("/sletKontrakt")
+    public String sletKontrakt(@RequestParam("lejekontrakt_id") int id) throws SQLException {
+
+        lejeKontraktService.sletLejeKontract(id);
+        return "redirect:/manageKontrakter";
+
+    }
 
 }
 
