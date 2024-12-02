@@ -29,5 +29,13 @@ public class KundeService {
         return kundeRepo.opdaterKundeInfo(kunde);
     }
 
+    public boolean phoneNumberExists(String phoneNumber) {
+       return kundeRepo.phoneNumberExists(phoneNumber);
+    }
+
+    public void addKunde(Kunde kunde){
+        kundeRepo.addKunde(kunde);
+    }
+
 
 }

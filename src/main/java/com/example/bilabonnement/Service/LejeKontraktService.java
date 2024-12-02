@@ -26,4 +26,10 @@ public class LejeKontraktService {
     public boolean opdaterLejeKontrakt(LejeKontrakt lejeKontrakt) {
        return lejeKontraktRepo.opdaterLejeKontrakt(lejeKontrakt);
     }
+
+
+    public void addLejekontrakt(LejeKontrakt lejeKontrakt){
+        lejeKontraktRepo.addLejekontrakt(lejeKontrakt);
+    }
 }
+
