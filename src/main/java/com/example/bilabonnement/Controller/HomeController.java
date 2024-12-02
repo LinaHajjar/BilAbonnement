@@ -115,7 +115,7 @@ public class HomeController {
     @PostMapping("/sletKontrakt")
     public String sletKontrakt(@RequestParam("lejekontrakt_id") int lejekontrakt_id) throws SQLException {
         lejeKontraktService.sletLejeKontract(lejekontrakt_id);
-        return "redirect:/homeKontrakt/manageKontrakter";
+        return "redirect:/manageKontrakter";
 
     }
 
@@ -123,8 +123,7 @@ public class HomeController {
     @PostMapping("/sletKunde")
     public String sletKunde(@RequestParam("telefonnummer") String telefonnummer) throws SQLException {
         kundeService.sletKunde(telefonnummer);
-        return "redirect:/homeKunde/manageKunde";
-
+        return "redirect:/manageKunder";
     }
 
 
