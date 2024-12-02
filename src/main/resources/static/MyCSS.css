@@ -1,0 +1,28 @@
+html, body{
+
+    font-size: 18px;
+    padding: inherit;
+    color: black;
+    font-family: "Informal Roman", cursive, sans-serif;
+    box-sizing: border-box;
+}
+
+table{
+    border-collapse:collapse;
+    margin-top: 40%;
+    width: auto;
+}
+
+h1 {
+    font-size: 32px;
+    color: #333;
+}
+h2 {
+    font-size: 28px;
+    color: #555;
+}
+
+h3{
+    font-size: 22px;
+    color: #333333;
+}
