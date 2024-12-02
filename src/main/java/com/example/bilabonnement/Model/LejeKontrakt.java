@@ -13,16 +13,6 @@ public class LejeKontrakt {
 
     public LejeKontrakt(){}
 
-    public LejeKontrakt(int lejekontrakt_id, double pris, int maxKm, LocalDate slutdato, LocalDate startdato, String nummerplade, String telefonnummer) {
-        this.lejekontrakt_id = lejekontrakt_id;
-        this.pris = pris;
-        this.maxKm = maxKm;
-        this.slutdato = slutdato;
-        this.startdato = startdato;
-        this.nummerplade = nummerplade;
-        this.telefonnummer = telefonnummer;
-    }
-
     public int getLejekontrakt_id() {
         return lejekontrakt_id;
     }

@@ -14,18 +14,7 @@ public class Kunde {
     LocalDate udstedelsdato;
 
     public Kunde(){}
-    public Kunde(String email, String telefonnummer, String efternavn, String fornavn, String adresse, int postnummer, String byen, String koerekortnummer, LocalDate udstedelsdato) {
-        this.email = email;
-        this.telefonnummer = telefonnummer;
-        this.efternavn = efternavn;
-        this.fornavn = fornavn;
-        this.adresse = adresse;
-        this.postnummer = postnummer;
-        this.byen = byen;
-        this.koerekortnummer = koerekortnummer;
-        this.udstedelsdato = udstedelsdato;
-    }
-
+    
     public String getTelefonnummer() {
         return telefonnummer;
     }
