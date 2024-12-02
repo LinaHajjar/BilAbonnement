@@ -48,6 +48,9 @@ public class KundeRepo {
     }
 
     public void sletKunde(String telefonnummer) throws SQLException {
+        String deleteLejekontraktSql = "DELETE FROM lejekontrakt WHERE telefonnummer = ?";
+        template.update(deleteLejekontraktSql, telefonnummer);
+
         String sql = "DELETE FROM kunde WHERE telefonnummer = ?";
         template.update(sql, telefonnummer);
     }
