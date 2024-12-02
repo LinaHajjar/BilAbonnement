@@ -41,15 +41,14 @@ public class HomeController {
  // oprettelse af getmapping metode for at vise alle lejekontrakter
  @GetMapping("/manageKontrakter")
     public String allLejeKontrakter(Model model) throws SQLException{
-     model.addAttribute("manageLejeKontrakter",lejeKontraktService.getAllLejeKontrakt());
+     model.addAttribute("lejekontrakter", lejeKontraktService.getAllLejeKontrakt());
      return "homeKontrakt/manageKontrakter";
-
  }
 
     //oprettelse af postmaping metode for at sende input fra bruger omkring lejekontrakt info
 
     @PostMapping("/nyKontrakter")
-    public RedirectView visLejeKontraktForm(@RequestParam("telefonnummer") String telefonnummer,
+    public String visLejeKontraktForm(@RequestParam("telefonnummer") String telefonnummer,
                                             @RequestParam("nummerplade") String nummerplade,
                                             @RequestParam("startdato") LocalDate startdato,
                                             @RequestParam("slutdato") LocalDate slutdato,
@@ -61,17 +60,17 @@ public class HomeController {
         kontrakt.setTelefonnummer(telefonnummer);
         kontrakt.setNummerplade(nummerplade);
         kontrakt.setStartdato(startdato);
-        kontrakt.setSlutDato(slutdato);
+        kontrakt.setSlutdato(slutdato);
         kontrakt.setMaxKm(maxKm);
         kontrakt.setPris(pris);
         lejeKontraktService.addLejekontrakt(kontrakt); // her sendes den videre til addlejekontrakt metoden
-        return new RedirectView("/homeKontrakt/manageKontrakter");
+        return "redirect:/homeKontrakt/manageKontrakter";
     }
 
     // oprettelse af getmapping metode for at vise alle lejekontrakter
     @GetMapping("/manageKunder")
     public String allKunder(Model model) throws SQLException{
-        model.addAttribute("manageKunder", kundeService.getAllKunde());
+        model.addAttribute("kunder", kundeService.getAllKunde());
         return "homeKunde/manageKunder";
     }
 
@@ -79,7 +78,7 @@ public class HomeController {
     //oprettelse af postmaping metode for at sende input fra bruger omkring kunde info
 
     @PostMapping("/nyKunde")
-    public RedirectView visKundeForm(@RequestParam("telefonnummer") String telefonnummer,
+    public String visKundeForm(@RequestParam("telefonnummer") String telefonnummer,
     @RequestParam("email") String email,
     @RequestParam("fornavn") String fornavn,
     @RequestParam("efternavn") String efternavn,
@@ -105,10 +104,26 @@ public class HomeController {
 
         if (kundeService.phoneNumberExists(telefonnummer) == false) { // der tjekkes først om kunden eksisterer ved at bruge telefonnummeret
             kundeService.addKunde(kunde); // hvis kunden ikke eksisterer, oprettes kunden i tabellen
-            return new RedirectView("/homeKunde/manageKunder");
+            return "redirect:/homeKunde/manageKunde";
         } else {
-            return new RedirectView("/homeKunde/manageKunde");
+            return "redirect:/homeKunde/manageKunde";
         }
+
+    }
+
+
+    @PostMapping("/sletKontrakt")
+    public String sletKontrakt(@RequestParam("lejekontrakt_id") int lejekontrakt_id) throws SQLException {
+        lejeKontraktService.sletLejeKontract(lejekontrakt_id);
+        return "redirect:/homeKontrakt/manageKontrakter";
+
+    }
+
+
+    @PostMapping("/sletKunde")
+    public String sletKunde(@RequestParam("telefonnummer") String telefonnummer) throws SQLException {
+        kundeService.sletKunde(telefonnummer);
+        return "redirect:/homeKunde/manageKunde";
 
     }
 

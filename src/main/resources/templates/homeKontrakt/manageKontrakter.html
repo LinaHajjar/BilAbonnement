@@ -22,7 +22,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="lejekontrakt: ${lejekontraker}">
+    <tr th:each="lejekontrakt: ${lejekontrakter}">
         <td th:text="${lejekontrakt.lejekontrakt_id}"></td>
         <td th:text="${lejekontrakt.telefonnummer}"></td>
         <td th:text="${lejekontrakt.nummerplade}"></td>
@@ -30,6 +30,12 @@
         <td th:text="${lejekontrakt.slutdato}"></td>
         <td th:text="${lejekontrakt.maxKm}"></td>
         <td th:text="${lejekontrakt.pris}"></td>
+        <td class="slet-kontrakt">
+            <form th:action="@{/sletKontrakt}" method="post">
+                <input type="hidden" name="lejekontrakt_id" th:value="${lejekontrakt.lejekontrakt_id}">
+                <button type="submit" class="slet-kontrakt-knap">Slet lejekontrakt</button>
+            </form>
+        </td>
     </tr>
     </tbody>
 </table>
