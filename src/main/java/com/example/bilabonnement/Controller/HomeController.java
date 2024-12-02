@@ -110,7 +110,7 @@ public class HomeController {
 
         if (kundeService.phoneNumberExists(telefonnummer) == false) { // der tjekkes først om kunden eksisterer ved at bruge telefonnummeret
             kundeService.addKunde(kunde); // hvis kunden ikke eksisterer, oprettes kunden i tabellen
-            return "redirect:/manageKunde";
+            return "redirect:/manageKunder";
         } else {
             return "redirect:/manageKunder";
         }
