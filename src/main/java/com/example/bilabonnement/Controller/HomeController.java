@@ -7,12 +7,15 @@ import com.example.bilabonnement.Service.BilService;
 import com.example.bilabonnement.Service.KundeService;
 import com.example.bilabonnement.Service.LejeKontraktService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
+
 
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -130,18 +133,28 @@ public class HomeController {
                                @RequestParam("startdato") LocalDate startdato,
                                @RequestParam("slutdato") LocalDate slutdato,
                                @RequestParam("maxKm") int maxKm,
-                               @RequestParam("pris") int pris) throws SQLException {
+                               @RequestParam("pris") int pris,
+                                 RedirectAttributes redirectAttributes) throws SQLException {
 
-        LejeKontrakt kontrakt = new LejeKontrakt();
-        kontrakt.setTelefonnummer(telefonnummer);
-        kontrakt.setNummerplade(nummerplade);
-        kontrakt.setStartdato(startdato);
-        kontrakt.setSlutdato(slutdato);
-        kontrakt.setMaxKm(maxKm);
-        kontrakt.setPris(pris);
-        lejeKontraktService.addLejekontrakt(kontrakt);
-        return "redirect:/manageKontrakter";
+        try {
 
+            LejeKontrakt kontrakt = new LejeKontrakt();
+            kontrakt.setTelefonnummer(telefonnummer);
+            kontrakt.setNummerplade(nummerplade);
+            kontrakt.setStartdato(startdato);
+            kontrakt.setSlutdato(slutdato);
+            kontrakt.setMaxKm(maxKm);
+            kontrakt.setPris(pris);
+            lejeKontraktService.addLejekontrakt(kontrakt);
+            return "redirect:/manageKontrakter";
+        } catch (DataIntegrityViolationException ex) {
+            // Handle the exception and add an error message
+            redirectAttributes.addFlashAttribute("errorMessage",
+                    "Systemet kunne ikke oprette kontrakten. Tjek om telefonnummeret og nummerpladen eksisterer");
+
+            // Redirect back to the form or a page of your choice
+            return "redirect:/manageKontrakter";
+        }
     }
 
 
