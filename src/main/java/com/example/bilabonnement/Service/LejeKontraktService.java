@@ -27,6 +27,10 @@ public class LejeKontraktService {
        return lejeKontraktRepo.opdaterLejeKontrakt(lejeKontrakt);
     }
 
+    public boolean sletLejeKontract(int lejekontrakt_id) throws SQLException {
+        return lejeKontraktRepo.sletLejeKontract(lejekontrakt_id);
+    }
+
 
     public void addLejekontrakt(LejeKontrakt lejeKontrakt){
         lejeKontraktRepo.addLejekontrakt(lejeKontrakt);

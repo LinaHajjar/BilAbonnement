@@ -37,5 +37,9 @@ public class KundeService {
         kundeRepo.addKunde(kunde);
     }
 
+    public boolean sletKunde(String telefonnummer) throws SQLException {
+        return kundeRepo.sletKunde(telefonnummer);
+    }
+
 
 }
