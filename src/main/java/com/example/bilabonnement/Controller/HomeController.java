@@ -64,7 +64,7 @@ public class HomeController {
         kontrakt.setMaxKm(maxKm);
         kontrakt.setPris(pris);
         lejeKontraktService.addLejekontrakt(kontrakt); // her sendes den videre til addlejekontrakt metoden
-        return "redirect:/homeKontrakt/manageKontrakter";
+        return "redirect:/manageKontrakter";
     }
 
     // oprettelse af getmapping metode for at vise alle lejekontrakter
@@ -106,7 +106,7 @@ public class HomeController {
             kundeService.addKunde(kunde); // hvis kunden ikke eksisterer, oprettes kunden i tabellen
             return "redirect:/homeKunde/manageKunde";
         } else {
-            return "redirect:/homeKunde/manageKunde";
+            return "redirect:/manageKunder";
         }
 
     }
