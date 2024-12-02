@@ -36,9 +36,9 @@ public class LejeKontraktRepo {
         return lejeKontrakt;
     }
 
-    public Boolean sletLejeKontract(int lejekontrakt_id) throws SQLException {
-        String sql = "DELETE FROM lejekontrakt WHERE contract_number = ?";
-        return template.update(sql, lejekontrakt_id)>0;
+    public void sletLejeKontract(int lejekontrakt_id) throws SQLException {
+        String sql = "DELETE FROM lejekontrakt WHERE lejekontrakt_id = ?";
+        template.update(sql, lejekontrakt_id);
     }
 
     public boolean opdaterLejeKontrakt(LejeKontrakt lejeKontrakt) {

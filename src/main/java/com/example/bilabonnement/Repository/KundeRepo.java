@@ -47,9 +47,9 @@ public class KundeRepo {
         template.update(sql, kunde.getTelefonnummer(), kunde.getEmail(), kunde.getFornavn(), kunde.getEfternavn(), kunde.getAdresse(), kunde.getPostnummer(), kunde.getByen(), kunde.getKoerekortnummer(), kunde.getUdstedelsdato()); // mangler getters og setters:DONE
     }
 
-    public Boolean sletKunde(String telefonnummer) throws SQLException {
+    public void sletKunde(String telefonnummer) throws SQLException {
         String sql = "DELETE FROM kunde WHERE telefonnummer = ?";
-        return template.update(sql, telefonnummer)>0;
+        template.update(sql, telefonnummer);
     }
 
 }
