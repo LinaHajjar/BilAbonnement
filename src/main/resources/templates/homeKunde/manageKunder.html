@@ -32,6 +32,12 @@
         <td th:text="${kunde.byen}"></td>
         <td th:text="${kunde.koerekortnummer}"></td>
         <td th:text="${kunde.udstedelsdato}"></td>
+        <td class="slet-kunde">
+            <form th:action="@{/sletKunde}" method="post">
+                <input type="hidden" name="telefonnummer" th:value="${kunde.telefonnummer}">
+                <button type="submit" class="slet-kunde-knap">Slet kunde</button>
+            </form>
+        </td>
 
     </tr>
     </tbody>

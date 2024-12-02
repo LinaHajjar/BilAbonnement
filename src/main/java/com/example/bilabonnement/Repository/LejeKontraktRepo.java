@@ -36,9 +36,9 @@ public class LejeKontraktRepo {
         return lejeKontrakt;
     }
 
-    public Boolean sletLejeKontract(int lejekontrakt_id) throws SQLException {
-        String sql = "DELETE FROM lejekontrakt WHERE contract_number = ?";
-        return template.update(sql, lejekontrakt_id)>0;
+    public void sletLejeKontract(int lejekontrakt_id) throws SQLException {
+        String sql = "DELETE FROM lejekontrakt WHERE lejekontrakt_id = ?";
+        template.update(sql, lejekontrakt_id);
     }
 
     public boolean opdaterLejeKontrakt(LejeKontrakt lejeKontrakt) {
@@ -46,7 +46,7 @@ public class LejeKontraktRepo {
                 "SET slutdato = ?, maxKm = ?, pris = ? " +
                 "WHERE telefonnummer = ? AND nummerplade = ?";
         int rowsUpdated = template.update(sql,
-                lejeKontrakt.getSlutDato(),
+                lejeKontrakt.getSlutdato(),
                 lejeKontrakt.getMaxKm(),
                 lejeKontrakt.getPris(),
                 lejeKontrakt.getTelefonnummer(),
@@ -61,7 +61,7 @@ public class LejeKontraktRepo {
     public void addLejekontrakt(LejeKontrakt lejeKontrakt){
         String sql = "INSERT INTO lejekontrakt(telefonnummer, nummerplade, startDato, slutDato, maxKm, pris)\n" +
                 "VALUES(?, ?, ?, ?, ?, ?)";
-        template.update(sql, lejeKontrakt.getTelefonnummer(), lejeKontrakt.getNummerplade(), lejeKontrakt.getStartdato(), lejeKontrakt.getSlutDato(), lejeKontrakt.getMaxKm(), lejeKontrakt.getPris()); // denne kode adder til databasen ved hjælp af getters
+        template.update(sql, lejeKontrakt.getTelefonnummer(), lejeKontrakt.getNummerplade(), lejeKontrakt.getStartdato(), lejeKontrakt.getSlutdato(), lejeKontrakt.getMaxKm(), lejeKontrakt.getPris()); // denne kode adder til databasen ved hjælp af getters
     }
 
 }

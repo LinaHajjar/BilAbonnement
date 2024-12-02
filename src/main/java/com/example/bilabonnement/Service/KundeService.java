@@ -29,16 +29,16 @@ public class KundeService {
         return kundeRepo.opdaterKundeInfo(kunde);
     }
 
-    public boolean phoneNumberExists(String phoneNumber) {
-       return kundeRepo.phoneNumberExists(phoneNumber);
+    public boolean phoneNumberExists(String telefonnummer) {
+       return kundeRepo.phoneNumberExists(telefonnummer);
     }
 
     public void addKunde(Kunde kunde){
         kundeRepo.addKunde(kunde);
     }
 
-    public boolean sletKunde(String telefonnummer) throws SQLException {
-        return kundeRepo.sletKunde(telefonnummer);
+    public void sletKunde(String telefonnummer) throws SQLException {
+        kundeRepo.sletKunde(telefonnummer);
     }
 
 

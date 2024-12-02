@@ -35,9 +35,9 @@ public class KundeRepo {
         return true;
     }
 
-    public boolean phoneNumberExists(String telefonnumer) {
-        String sql = "SELECT COUNT(*) FROM customer WHERE telefonnummer = ?";
-        int count = template.queryForObject(sql, int.class, telefonnumer);
+    public boolean phoneNumberExists(String telefonnummer) {
+        String sql = "SELECT COUNT(*) FROM kunde WHERE telefonnummer = ?";
+        int count = template.queryForObject(sql, int.class, telefonnummer);
         return count > 0;
     }
 
