@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Skad rapporter</title>
+</head>
+<body>
+<h1 class="Skadrapport-h1">Alle skadrapporter</h1>
+
+<a th:href="@{/nySkad}" class="ny-skad-rapport-knap">Tilføj ny skad-rapport</a>
+
+<div th:if="${successMessage}" style="color: green; margin-bottom: 10px;">
+  <p th:text="${successMessage}"></p>
+</div>
+
+<div th:if="${errorMessage}" style="color: red; margin-bottom: 10px;">
+  <p th:text="${errorMessage}"></p>
+</div>
+
+<table class="Skad-rapport-table">
+  <thead>
+  <tr>
+    <th>Lejekontrakt_id</th>
+    <th>skad_type</th>
+    <th>beskrivelse</th>
+    <th>pris</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="skad : ${Skader}">
+    <td th:text="${skad.lejekontrakt_id}"></td>
+    <td th:text="${skad.skade_type.name()}"></td> <!-- Convert enum to string -->
+    <td th:text="${skad.beskrivelse}"></td>
+    <td th:text="${skad.pris}"></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

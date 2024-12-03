@@ -3,9 +3,11 @@ package com.example.bilabonnement.Controller;
 
 import com.example.bilabonnement.Model.Kunde;
 import com.example.bilabonnement.Model.LejeKontrakt;
+import com.example.bilabonnement.Model.Skader;
 import com.example.bilabonnement.Service.BilService;
 import com.example.bilabonnement.Service.KundeService;
 import com.example.bilabonnement.Service.LejeKontraktService;
+import com.example.bilabonnement.Service.SkaderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
@@ -30,9 +32,8 @@ public class HomeController {
     LejeKontraktService lejeKontraktService;
     @Autowired
     KundeService kundeService;
-
-
-
+    @Autowired
+    private SkaderService skaderService;
 
 
     //opretellse af getmapping metode for at vise alle biller
@@ -76,6 +77,38 @@ public class HomeController {
     public String allKunder(Model model) throws SQLException{
         model.addAttribute("kunder", kundeService.getAllKunde());
         return "homeKunde/manageKunder";
+    }
+
+
+    @GetMapping("/manageSkad")
+    public String allSkader(Model model) throws SQLException{
+     model.addAttribute("Skader", skaderService.getAllSkader());
+     return "homeSkad/manageSkad";
+    }
+
+    @GetMapping("/nySkad")
+    public String showSkaderForm() {
+        return "homeSkad/nySkad";
+    }
+
+
+
+    @PostMapping("/nySkad")
+    public String visSkaderForm(@RequestParam("lejekontrakt_id") int lejekontrakt_id, @RequestParam("skade_type")  Skader.skade_type skade_type,@RequestParam("beskrivelse") String beskrivelse, @RequestParam("pris") int pris, Model model) throws SQLException {
+
+        // Converted the String received from the request parameter to the corresponding skade_type enum value
+//        Skader.skade_type skade_type = Skader.skade_type.valueOf(skadeTypeStr.toUpperCase()); //@RequestParam cannot directly handle the enum conversion by default
+
+        Skader skad = new Skader();
+        skad.setLejekontrakt_id(lejekontrakt_id);
+        skad.setSkade_type(skade_type);
+        skad.setBeskrivelse(beskrivelse);
+        skad.setPris(pris);
+
+        skaderService.addSkader(skad);
+
+        return "redirect:/manageSkad";
+
     }
 
 
