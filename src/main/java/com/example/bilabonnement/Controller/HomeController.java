@@ -1,13 +1,11 @@
 package com.example.bilabonnement.Controller;
 
 
+import com.example.bilabonnement.Model.Bruger;
 import com.example.bilabonnement.Model.Kunde;
 import com.example.bilabonnement.Model.LejeKontrakt;
 import com.example.bilabonnement.Model.Skader;
-import com.example.bilabonnement.Service.BilService;
-import com.example.bilabonnement.Service.KundeService;
-import com.example.bilabonnement.Service.LejeKontraktService;
-import com.example.bilabonnement.Service.SkaderService;
+import com.example.bilabonnement.Service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
@@ -22,6 +20,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Controller
 public class HomeController {
@@ -32,6 +31,8 @@ public class HomeController {
     LejeKontraktService lejeKontraktService;
     @Autowired
     KundeService kundeService;
+    @Autowired
+    BrugerService brugerService;
     @Autowired
     private SkaderService skaderService;
 
@@ -206,6 +207,36 @@ public class HomeController {
         lejeKontraktService.sletLejeKontract(id);
         return "redirect:/manageKontrakter";
 
+    }
+
+    @GetMapping("/")
+    public String manage(){
+        return "index";
+    }
+
+    @PostMapping("/loginInfo")
+    public String loginInfo(@RequestParam("brugernavn") String brugernavn, @RequestParam("kode") String kode) throws SQLException {
+
+        List<Bruger> brugerList = brugerService.getAllUsers();
+
+        for (Bruger bruger : brugerList) {
+
+            if(bruger.getBrugernavn().equals(brugernavn) && bruger.getKode().equals(kode)) {
+
+                if (bruger.getAfdeling_id() == 1){
+                    return "manage";
+                } else if(bruger.getAfdeling_id() == 2){
+                    return "statistik";
+                } else if (bruger.getAfdeling_id() == 3){
+                    return "skader";
+                } else {
+                    return "index";
+                }
+
+
+            }
+        }
+        return "index";
     }
 
 }
