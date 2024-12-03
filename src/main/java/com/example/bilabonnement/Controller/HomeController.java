@@ -1,9 +1,11 @@
 package com.example.bilabonnement.Controller;
 
 
+import com.example.bilabonnement.Model.Bruger;
 import com.example.bilabonnement.Model.Kunde;
 import com.example.bilabonnement.Model.LejeKontrakt;
 import com.example.bilabonnement.Service.BilService;
+import com.example.bilabonnement.Service.BrugerService;
 import com.example.bilabonnement.Service.KundeService;
 import com.example.bilabonnement.Service.LejeKontraktService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Controller
 public class HomeController {
@@ -30,6 +33,8 @@ public class HomeController {
     LejeKontraktService lejeKontraktService;
     @Autowired
     KundeService kundeService;
+    @Autowired
+    BrugerService brugerService;
 
 
 
@@ -77,6 +82,8 @@ public class HomeController {
         model.addAttribute("kunder", kundeService.getAllKunde());
         return "homeKunde/manageKunder";
     }
+
+
 
 
     //oprettelse af postmaping metode for at sende input fra bruger omkring kunde info
@@ -173,6 +180,37 @@ public class HomeController {
         lejeKontraktService.sletLejeKontract(id);
         return "redirect:/manageKontrakter";
 
+    }
+
+
+    @GetMapping("/")
+    public String manage(){
+        return "index";
+    }
+
+    @PostMapping("/loginInfo")
+    public String loginInfo(@RequestParam("username") String username, @RequestParam("password") String password) throws SQLException {
+
+    List<Bruger> brugerList = brugerService.getAllUsers();
+
+    for (Bruger bruger : brugerList) {
+
+        if(bruger.getUsername().equals(username) && bruger.getPassword().equals(password)) {
+
+            if (bruger.getAfdeling_id() == 1){
+                return "manage";
+            } else if(bruger.getAfdeling_id() == 2){
+                return "statistik";
+            } else if (bruger.getAfdeling_id() == 3){
+                return "skader";
+            } else {
+                return "index";
+            }
+
+
+            }
+        }
+        return "index";
     }
 
 }

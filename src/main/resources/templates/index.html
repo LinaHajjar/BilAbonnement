@@ -2,11 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="MyCSS.css">
     <title>Title</title>
 </head>
-<body>
-<h1>Gøøøøøøøøøøøøøøøøøøøøøøøøøøør ikke brug af denne side, da den skal bruges til login</h1>
+<body class="login-page">
 
+
+
+<div class="login-container">
+    <h1 class="login-h1">Enter your username and password</h1>
+    <form th:action="@{/loginInfo}" method="post" class="login-box">
+
+        <input type="text" name="username" placeholder="username" required>
+        <input type="password" name="password" placeholder="password" required>
+        <button type="submit" class="login-submit-button"> Log in</button>
+    </form>
+
+</div>
 
 </body>
 </html>
