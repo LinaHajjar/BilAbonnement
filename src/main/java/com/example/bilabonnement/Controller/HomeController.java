@@ -89,15 +89,15 @@ public class HomeController {
 
     @PostMapping("/tilføjKunde")
     public String visKundeForm(@RequestParam("telefonnummer") String telefonnummer,
-    @RequestParam("email") String email,
-    @RequestParam("fornavn") String fornavn,
-    @RequestParam("efternavn") String efternavn,
-    @RequestParam("adresse") String adresse,
-    @RequestParam("postnummer") int postnummer,
-    @RequestParam("byen") String byen,
-    @RequestParam("koerekortnummer") String koerkortnummer,
-    @RequestParam("udstedelsdato") LocalDate udstedelsdato,
-    Model model) throws SQLException {
+                               @RequestParam("email") String email,
+                               @RequestParam("fornavn") String fornavn,
+                               @RequestParam("efternavn") String efternavn,
+                               @RequestParam("adresse") String adresse,
+                               @RequestParam("postnummer") int postnummer,
+                               @RequestParam("byen") String byen,
+                               @RequestParam("koerekortnummer") String koerkortnummer,
+                               @RequestParam("udstedelsdato") LocalDate udstedelsdato,
+                               Model model, RedirectAttributes redirectAttributes) throws SQLException {
 
 
 
@@ -114,8 +114,10 @@ public class HomeController {
 
         if (kundeService.phoneNumberExists(telefonnummer) == false) { // der tjekkes først om kunden eksisterer ved at bruge telefonnummeret
             kundeService.addKunde(kunde); // hvis kunden ikke eksisterer, oprettes kunden i tabellen
+            redirectAttributes.addFlashAttribute("successMessage", "Customer was succesfully created");
             return "redirect:/manageKunder";
         } else {
+            redirectAttributes.addFlashAttribute("errorMessage", "Customer already exists");
             return "redirect:/manageKunder";
         }
 

@@ -7,6 +7,16 @@
 <body>
 <h1 class="kunde-h1">Alle kunder</h1>
 <a th:href="@{/nyKunde}" class="tilføj-kunde">Tilføj ny kynde</a>
+
+<div th:if="${successMessage}" style="color: green; margin-bottom: 10px;">
+    <p th:text="${successMessage}"></p>
+</div>
+
+<!-- Error message -->
+<div th:if="${errorMessage}" style="color: red; margin-bottom: 10px;">
+    <p th:text="${errorMessage}"></p>
+</div>
+
 <table class="kunde-table">
     <thead>
     <tr>
