@@ -8,9 +8,17 @@
 <h1 class="ny-lejekontrakt-h1">Indtast informationer for skad</h1>
 
 <form th:action="@{/tilføjSkad}" method="post">
-    <input type="number" name="Lejekontrakt id" placeholder="lejekontrakt_id" required min="10000000" max="99999999">
-    <input type="text" name="Skade type" placeholder="skad_type" required>
-    <label>Indtast: 'SKADE','MANGEL' eller 'FEJL'</label>
+
+    <input type="number" name="Lejekontrakt id" placeholder="lejekontrakt_id" required min="10000000">
+
+
+<!--    <label> for= "skad_type"< Vælg skadetype: </label>-->
+    <select name="skade type" id="skade_type" required>
+        <option value="">-- Vælge en option--</option>
+        <option value="SKADE"> SKADE </option>
+        <option value="MANGEL">MANGEL</option>
+        <option value="FEJL">FEJL</option>
+    </select>
     <input type="text" name="Beskrivelse" placeholder="beskrivelse" required>
     <label>Indtast skad beskrivelse</label>
     <input type="number" name="Pris" placeholder="pris" required>
