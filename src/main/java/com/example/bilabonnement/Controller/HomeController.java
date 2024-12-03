@@ -114,10 +114,10 @@ public class HomeController {
 
         if (kundeService.phoneNumberExists(telefonnummer) == false) { // der tjekkes først om kunden eksisterer ved at bruge telefonnummeret
             kundeService.addKunde(kunde); // hvis kunden ikke eksisterer, oprettes kunden i tabellen
-            redirectAttributes.addFlashAttribute("successMessage", "Customer was succesfully created");
+            redirectAttributes.addFlashAttribute("successMessage", "Kunde er blevet registreret");
             return "redirect:/manageKunder";
         } else {
-            redirectAttributes.addFlashAttribute("errorMessage", "Customer already exists");
+            redirectAttributes.addFlashAttribute("errorMessage", "Kunde eksisterer i forvejen");
             return "redirect:/manageKunder";
         }
 
@@ -148,7 +148,7 @@ public class HomeController {
             kontrakt.setMaxKm(maxKm);
             kontrakt.setPris(pris);
             lejeKontraktService.addLejekontrakt(kontrakt);
-            redirectAttributes.addFlashAttribute("successMessage", "Contract was succesfully created.");
+            redirectAttributes.addFlashAttribute("successMessage", "Lejekontrakt er blevet oprettet.");
             return "redirect:/manageKontrakter";
         } catch (DataIntegrityViolationException ex) {
             // Handle the exception and add an error message
