@@ -1,0 +1,71 @@
+/* Global styling */
+html, body {
+    font-size: 18px;
+    padding: 0;
+    margin: 0;
+    color: #333;
+    font-family: 'Montserrat', sans-serif;
+    box-sizing: border-box;
+    line-height: 1.5;
+    background-color: #f4f4f9; /* Light background color for the page */
+}
+
+/* Headings */
+h1 {
+    font-size: 36px;
+    color: #222;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+h2, h3 {
+    text-align: center;
+}
+
+/* Table Styling */
+.bil-table {
+    width: 90%;
+    max-width: 1200px;
+    border-collapse: collapse;
+    margin: 30px auto;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.bil-table th, .bil-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.bil-table th {
+    background-color: #007bff; /* Primary color */
+    color: #fff;
+    font-weight: bold;
+}
+
+.bil-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.bil-table tr:hover {
+    background-color: #f1f1f1; /* Light hover effect */
+}
+
+.bil-table td {
+    color: #555;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .bil-table {
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+}
