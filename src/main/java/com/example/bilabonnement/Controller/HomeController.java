@@ -148,6 +148,7 @@ public class HomeController {
             kontrakt.setMaxKm(maxKm);
             kontrakt.setPris(pris);
             lejeKontraktService.addLejekontrakt(kontrakt);
+            redirectAttributes.addFlashAttribute("successMessage", "Contract was succesfully created.");
             return "redirect:/manageKontrakter";
         } catch (DataIntegrityViolationException ex) {
             // Handle the exception and add an error message

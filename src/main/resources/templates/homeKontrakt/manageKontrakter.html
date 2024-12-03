@@ -9,6 +9,11 @@
 
 <a th:href="@{/nyKontrakt}" class="ny-lejekontrakt-knap">Tilføj ny lejekontrakt</a>
 
+
+<div th:if="${successMessage}" style="color: green; margin-bottom: 10px;">
+    <p th:text="${successMessage}"></p>
+</div>
+
 <div th:if="${errorMessage}" style="color: red; margin-bottom: 10px;">
     <p th:text="${errorMessage}"></p>
 </div>
