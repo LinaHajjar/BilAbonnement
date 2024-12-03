@@ -189,13 +189,13 @@ public class HomeController {
     }
 
     @PostMapping("/loginInfo")
-    public String loginInfo(@RequestParam("username") String username, @RequestParam("password") String password) throws SQLException {
+    public String loginInfo(@RequestParam("brugernavn") String brugernavn, @RequestParam("kode") String kode) throws SQLException {
 
     List<Bruger> brugerList = brugerService.getAllUsers();
 
     for (Bruger bruger : brugerList) {
 
-        if(bruger.getUsername().equals(username) && bruger.getPassword().equals(password)) {
+        if(bruger.getBrugernavn().equals(brugernavn) && bruger.getKode().equals(kode)) {
 
             if (bruger.getAfdeling_id() == 1){
                 return "manage";
