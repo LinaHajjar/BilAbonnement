@@ -2,18 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/kundeCSS.css">
     <title>Kunder</title>
 </head>
 <body>
 <h1 class="kunde-h1">Alle kunder</h1>
-<a th:href="@{/nyKunde}" class="tilføj-kunde">Tilføj ny kynde</a>
+
+<div class="back-button-container">
+    <a href="/" class="back-button">← Back to Home</a>
+</div>
+
+<a th:href="@{/nyKunde}" class="tilføj-kunde">Tilføj ny kunde</a>
+
+
 
 <div th:if="${successMessage}" style="color: green; margin-bottom: 10px;">
     <p th:text="${successMessage}"></p>
 </div>
+<!-- Success message -->
+<div th:if="${successMessage}" class="success-message">
+    <p th:text="${successMessage}"></p>
+</div>
 
 <!-- Error message -->
-<div th:if="${errorMessage}" style="color: red; margin-bottom: 10px;">
+<div th:if="${errorMessage}" class="error-message">
     <p th:text="${errorMessage}"></p>
 </div>
 
