@@ -8,6 +8,11 @@
 <body>
 <h1 class="lejekontrakt-h1">Alle lejekontrakter</h1>
 
+<div class="back-button-container">
+    <a th:href="@{/backToManagePage}" class="back-button">← Tilbage til start</a>
+</div>
+
+
 <a th:href="@{/nyKontrakt}" class="ny-lejekontrakt-knap">Tilføj ny lejekontrakt</a>
 
 <form th:action="@{/kundensKontrakter}" method="post">

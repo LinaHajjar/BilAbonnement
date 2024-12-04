@@ -265,7 +265,10 @@ public class HomeController {
 
 
     @GetMapping("/backToManage")
-    public String backToManage() {return "manage";}
+    public String backToManage() {return "homeKontrakt/manageKontrakter";}
+
+    @GetMapping("/backToManagePage")
+    public String backToManagePage() {return "manage";}
 
     @PostMapping("/loginInfo")
     public String loginInfo(@RequestParam("brugernavn") String brugernavn, @RequestParam("kode") String kode) throws SQLException {
