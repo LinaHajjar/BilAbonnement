@@ -13,7 +13,13 @@
 
 <form th:action="@{/tilføjKontrakt}" method="post">
     <input type="number" name="telefonnummer" placeholder="Telefonnummer" required min="10000000" max="99999999">
-    <input type="text" name="nummerplade" placeholder="Nummerplade" required>
+    <label>Vælg nummerplade</label>
+    <select name="nummerplade" required>
+        <option disabled selected>Vælg en nummerplade</option>
+        <option th:each="nummerplade: ${nummerplader}"
+        th:value="${nummerplade}"
+        th:text="${nummerplade}"></option>
+    </select>
     <label>Indtast start datoen for kontrakten</label>
     <input type="date" name="startdato" placeholder="Start dato" required>
     <label>Indtast slut datoen</label>
