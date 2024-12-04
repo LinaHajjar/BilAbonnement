@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -25,9 +26,10 @@ public class BookingService {
     }
 
 
-    public List<LejeKontrakt> seBiler(Date startdato, Date slutdato) {
+    public List<LejeKontrakt> seBiler(LocalDate startdato, LocalDate slutdato) {
         return bookingrepo.seBiler(startdato, slutdato);
     }
+
 
 
 

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+</head>
+<body>
+
+
+<form action="/ledigeBiler" method="post">
+
+
+
+<h1>Alle ledige biler i denne periode</h1>
+
+    <div>
+        <ul>
+
+            <th:block th:if="${#lists.isEmpty(availableCars)}">
+             <p>Der er ikke nogen ledige biler i denne periode.</p>
+             </th:block>
+            <!-- Loop gennem alle biller -->
+            <th:block th:each="bil : ${availableCars}">
+                <li>
+                    <strong>Nummerplade:</strong> <span th:text="${bil.nummerplade}"></span><br>
+                    <strong>Startdato:</strong> <span th:text="${bil.startdato}"></span><br>
+                    <strong>Slutdato:</strong> <span th:text="${bil.slutdato}"></span><br>
+                </li>
+
+
+
+            </th:block>
+        </ul>
+    </div>
+
+
+
+
+</form>
+
+</body>
+</html>

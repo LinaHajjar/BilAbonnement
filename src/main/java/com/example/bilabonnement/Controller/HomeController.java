@@ -137,27 +137,19 @@ public class HomeController {
 
     @GetMapping("/booking")
     public String book(){
-     return "/booking";
+     return "booking";
     }
 
-//    @PostMapping("/booking")
-//    public String booking(@RequestParam("startdato") Date startdato, @RequestParam("slutdato") Date slutdato, Model model) throws SQLException{
-//
-//
-//     List<LejeKontrakt> availableCars = bookingService.seBiler(startdato, slutdato);
-//     model.addAttribute("availableCars", availableCars);
-//     return "booking";
-//    }
 
-    @PostMapping("/booking")
+    @PostMapping("/bilTilgaengelig")
     public String checkAvailability(
-            @RequestParam("startdato") @DateTimeFormat(pattern = "yyyy-MM-dd") Date startdato,
-            @RequestParam("slutdato") @DateTimeFormat(pattern = "yyyy-MM-dd") Date slutdato,
+            @RequestParam("startdato") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startdato,
+            @RequestParam("slutdato") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate slutdato,
             Model model
     ) throws SQLException {
         List<LejeKontrakt> availableCars = bookingService.seBiler(startdato, slutdato);
      model.addAttribute("availableCars", availableCars);
-     return "booking";
+     return "ledigeBiler";
 
     }
 

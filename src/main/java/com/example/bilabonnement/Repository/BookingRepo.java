@@ -3,17 +3,23 @@ package com.example.bilabonnement.Repository;
 
 import com.example.bilabonnement.Model.Bil;
 import com.example.bilabonnement.Model.LejeKontrakt;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cglib.core.Local;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository
 public class BookingRepo {
 
+
+
+    @Autowired
     JdbcTemplate template;
 
 
@@ -28,10 +34,14 @@ public class BookingRepo {
     }
 
 
-    public List<LejeKontrakt> seBiler(Date startdato, Date slutdato) {
-        String sql = "SELECT nummerplade, startdato, slutdato  FROM lejekontrakt lk ORDER BY nummerplade, startdato";
+    public List<LejeKontrakt> seBiler(LocalDate startdato, LocalDate slutdato) {
+        String sql = "SELECT nummerplade, startdato, slutdato  FROM lejekontrakt lk WHERE startdato <= ? AND slutdato >=? ORDER BY nummerplade, startdato";
         RowMapper<LejeKontrakt> rowMapper = new BeanPropertyRowMapper<>(LejeKontrakt.class);
-        return template.query(sql, rowMapper);
+
+        java.sql.Date sqlStartdato = java.sql.Date.valueOf(startdato);
+        java.sql.Date sqlSlutdato = java.sql.Date.valueOf(slutdato);
+
+        return template.query(sql, rowMapper, sqlStartdato, sqlSlutdato);
     }
 
 
