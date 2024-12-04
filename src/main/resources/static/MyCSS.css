@@ -127,3 +127,70 @@ h3{
 .login-submit-button:hover {
     background-color: #007bff;
 }
+/*-------------------------------------Manage siden som er et redirect til loginInfo-------------------------------------------*/
+
+/* Heading */
+.manage-h1 {
+    font-size: 36px;
+    color: #222;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Manage options container */
+.manage-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+/* Individual option buttons */
+.manage-kunde-knap,
+.manage-biler-knap,
+.manage-kontrakter-knap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 20px;
+    background-color: lightblue;
+    border: 1px solid #007bff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    height: 400px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.manage-kunde-knap:hover,
+.manage-biler-knap:hover,
+.manage-kontrakter-knap:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Images inside the buttons */
+.manage-kunde-knap img,
+.manage-biler-knap img,
+.manage-kontrakter-knap img {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 10px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Button text */
+.manage-kunde-knap span,
+.manage-biler-knap span,
+.manage-kontrakter-knap span {
+    font-size: 24px;
+    text-align: center;
+    color: #2d2a2a;
+
+}

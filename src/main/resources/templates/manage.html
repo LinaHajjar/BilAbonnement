@@ -2,19 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage</title>
+    <link rel="stylesheet" href="MyCSS.css">
 </head>
 <body>
 <h1 class="manage-h1">Vælg</h1>
 
 <div class="manage-options">
-    <a th:href="@{/manageKunder}" class="manage-kunde-knap">Kunder</a>
+    <a th:href="@{/manageKunder}" class="manage-kunde-knap">
+        <img src="/Kundebillede.webp" alt="Kunder">
+        <span>Håndter Kunder</span>
+    </a>
 
-    <a th:href="@{/manageBiler}" class="manage-biler-knap">Biler</a>
+    <a th:href="@{/manageBiler}" class="manage-biler-knap">
+        <img src="/håndterBiler.webp" alt="Biler">
+        <span>Håndter Biler</span>
+    </a>
 
-    <a th:href="@{/manageKontrakter}" class="manage-kontrakter-knap">Kontrakter</a>
+    <a th:href="@{/manageKontrakter}" class="manage-kontrakter-knap">
+        <img src="/håndterKontakter.webp" alt="Kontrakter">
+        <span>Håndter Kontrakter</span>
+    </a>
 </div>
-
-
 </body>
 </html>
