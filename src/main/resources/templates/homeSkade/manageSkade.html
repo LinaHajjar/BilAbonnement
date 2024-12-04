@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="skadeCSS.css">
   <title>Skade rapporter</title>
 </head>
 <body>
@@ -9,11 +10,13 @@
 
 <a th:href="@{/nySkade}" class="ny-skade-rapport-knap">Tilføj ny skade-rapport</a>
 
-<div th:if="${successMessage}" style="color: green; margin-bottom: 10px;">
+<!-- Success message -->
+<div th:if="${successMessage}" class="success-message">
   <p th:text="${successMessage}"></p>
 </div>
 
-<div th:if="${errorMessage}" style="color: red; margin-bottom: 10px;">
+<!-- Error message -->
+<div th:if="${errorMessage}" class="error-message">
   <p th:text="${errorMessage}"></p>
 </div>
 
