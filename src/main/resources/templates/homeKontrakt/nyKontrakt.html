@@ -2,9 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/kontrakterCSS.css">
     <title>Ny lejekontrakt</title>
 </head>
 <body>
+<div class="back-button-container">
+    <a href="/" class="back-button">← Back to Home</a>
+</div>
 <h1 class="ny-lejekontrakt-h1">Indtast informationer for lejekontrakt</h1>
 
 <form th:action="@{/tilføjKontrakt}" method="post">
