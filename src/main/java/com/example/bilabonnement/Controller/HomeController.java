@@ -228,7 +228,7 @@ public class HomeController {
                 } else if(bruger.getAfdeling_id() == 2){
                     return "statistik";
                 } else if (bruger.getAfdeling_id() == 3){
-                    return "skader";
+                    return "homeSkad/manageSkad";
                 } else {
                     return "index";
                 }
