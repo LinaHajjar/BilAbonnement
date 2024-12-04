@@ -53,6 +53,17 @@ public class HomeController {
 
     //oprettelse af postmaping metode for at sende input fra bruger omkring lejekontrakt info
 
+
+    @GetMapping("/nyKontrakt")
+    public String nyKontrakt(Model model) throws SQLException {
+        List<String> nummerpladeList = bilService.alleNummerplader();
+        model.addAttribute("nummerplader", nummerpladeList);
+
+
+        return "homeKontrakt/nyKontrakt";
+    }
+
+
     @PostMapping("/nyKontrakter")
     public String visLejeKontraktForm(@RequestParam("telefonnummer") String telefonnummer,
                                             @RequestParam("nummerplade") String nummerplade,
@@ -72,6 +83,14 @@ public class HomeController {
         lejeKontraktService.addLejekontrakt(kontrakt); // her sendes den videre til addlejekontrakt metoden
         return "redirect:/manageKontrakter";
     }
+
+
+    @GetMapping("/nummerplade")
+    public String nummerplade(Model model) throws SQLException {
+
+        return "homeKontrakt/nyKontrakt";
+    }
+
 
     // oprettelse af getmapping metode for at vise alle lejekontrakter
     @GetMapping("/manageKunder")
@@ -158,10 +177,7 @@ public class HomeController {
     }
 
 
-    @GetMapping("/nyKontrakt")
-    public String sletKontrakt(){
-     return "homeKontrakt/nyKontrakt";
-    }
+
 
     @PostMapping("/tilføjKontrakt")
     public String tilføjKontrakt(@RequestParam("telefonnummer") String telefonnummer,

@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -28,5 +29,10 @@ public class BilRepo {
         RowMapper<Bil> rowMapper=new BeanPropertyRowMapper<>(Bil.class);
         Bil bil=template.queryForObject(sql, rowMapper, nummerplade);
         return bil;
+    }
+
+    public List<String> alleNummerplader(){
+        String sql = "select nummerplade from bil";
+        return template.queryForList(sql, String.class); // tager alle nummerplader og sætter det i en liste
     }
 }

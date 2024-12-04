@@ -2,14 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/kontrakterCSS.css">
     <title>Ny lejekontrakt</title>
 </head>
 <body>
+<div class="back-button-container">
+    <a href="/" class="back-button">← Back to Home</a>
+</div>
 <h1 class="ny-lejekontrakt-h1">Indtast informationer for lejekontrakt</h1>
 
 <form th:action="@{/tilføjKontrakt}" method="post">
     <input type="number" name="telefonnummer" placeholder="Telefonnummer" required min="10000000" max="99999999">
-    <input type="text" name="nummerplade" placeholder="Nummerplade" required>
+    <label>Vælg nummerplade</label>
+    <select name="nummerplade" required>
+        <option disabled selected>Vælg en nummerplade</option>
+        <option th:each="nummerplade: ${nummerplader}"
+        th:value="${nummerplade}"
+        th:text="${nummerplade}"></option>
+    </select>
     <label>Indtast start datoen for kontrakten</label>
     <input type="date" name="startdato" placeholder="Start dato" required>
     <label>Indtast slut datoen</label>
