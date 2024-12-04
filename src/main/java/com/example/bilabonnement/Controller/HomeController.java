@@ -5,9 +5,11 @@ import com.example.bilabonnement.Model.Bruger;
 import com.example.bilabonnement.Model.Kunde;
 import com.example.bilabonnement.Model.LejeKontrakt;
 import com.example.bilabonnement.Model.Skader;
+import com.example.bilabonnement.Repository.BookingRepo;
 import com.example.bilabonnement.Service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
+import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
@@ -33,6 +36,8 @@ public class HomeController {
     BrugerService brugerService;
     @Autowired
     private SkaderService skaderService;
+    @Autowired
+    private BookingService bookingService;
 
 
     //opretellse af getmapping metode for at vise alle biller
@@ -128,6 +133,37 @@ public class HomeController {
         return "redirect:/manageSkade";
 
     }
+
+
+    @GetMapping("/booking")
+    public String book(){
+     return "/booking";
+    }
+
+//    @PostMapping("/booking")
+//    public String booking(@RequestParam("startdato") Date startdato, @RequestParam("slutdato") Date slutdato, Model model) throws SQLException{
+//
+//
+//     List<LejeKontrakt> availableCars = bookingService.seBiler(startdato, slutdato);
+//     model.addAttribute("availableCars", availableCars);
+//     return "booking";
+//    }
+
+    @PostMapping("/booking")
+    public String checkAvailability(
+            @RequestParam("startdato") @DateTimeFormat(pattern = "yyyy-MM-dd") Date startdato,
+            @RequestParam("slutdato") @DateTimeFormat(pattern = "yyyy-MM-dd") Date slutdato,
+            Model model
+    ) throws SQLException {
+        List<LejeKontrakt> availableCars = bookingService.seBiler(startdato, slutdato);
+     model.addAttribute("availableCars", availableCars);
+     return "booking";
+
+    }
+
+
+
+
 
 
     //oprettelse af postmaping metode for at sende input fra bruger omkring kunde info
@@ -259,6 +295,9 @@ public class HomeController {
         }
         return "index";
     }
+
+
+
 
 }
 

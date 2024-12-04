@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Availability</title>
+</head>
+<body>
+
+<!-- Car Availability Form -->
+<h1>Check Car Availability</h1>
+<form action="/booking" method="post">
+    <label for="startdato">Start Date:</label>
+    <input type="date" id="startdato" name="startdato" required><br><br>
+
+    <label for="slutdato">End Date:</label>
+    <input type="date" id="slutdato" name="slutdato" required><br><br>
+
+    <button type="submit">Check Availability</button>
+</form>
+
+<!-- Display Available Cars -->
+<h2>Available Cars</h2>
+<div>
+    <ul>
+        <!-- Loop through available cars and display each one -->
+        <th:block th:each="bil : ${availableCars}">
+            <li>
+                <strong>Nummerplade:</strong> <span th:text="${bil.nummerplade}"></span><br>
+                <strong>Startdato:</strong> <span th:text="${bil.startdato}"></span><br>
+                <strong>Slutdato:</strong> <span th:text="${bil.slutdato}"></span><br>
+            </li>
+        </th:block>
+    </ul>
+</div>
+
+</body>
+</html>
