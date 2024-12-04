@@ -3,6 +3,8 @@ package com.example.bilabonnement.Service;
 import com.example.bilabonnement.Model.LejeKontrakt;
 import com.example.bilabonnement.Repository.LejeKontraktRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
@@ -34,6 +36,10 @@ public class LejeKontraktService {
 
     public void addLejekontrakt(LejeKontrakt lejeKontrakt){
         lejeKontraktRepo.addLejekontrakt(lejeKontrakt);
+    }
+
+    public List<LejeKontrakt> findKontraktByTelefon(String telenonnumer) throws SQLException {
+        return lejeKontraktRepo.findKontraktByTelefon(telenonnumer);
     }
 }
 

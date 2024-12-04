@@ -209,6 +209,13 @@ public class HomeController {
 
     }
 
+    // til at søge alle kontrakter til det samme kunde (telefonnummer)
+    @GetMapping("/soegLejekontraktTelefon")
+    public String homemanageKontrakt() {
+        return ("homeKontrakt/manageKontrakter");
+    }
+
+
     @GetMapping("/")
     public String manage(){
         return "index";

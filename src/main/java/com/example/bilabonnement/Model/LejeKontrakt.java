@@ -68,4 +68,5 @@ public class LejeKontrakt {
     public void setPris(double pris) {
         this.pris = pris;
     }
+
 }

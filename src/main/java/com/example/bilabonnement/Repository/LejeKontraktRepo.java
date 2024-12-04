@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -62,6 +63,13 @@ public class LejeKontraktRepo {
         String sql = "INSERT INTO lejekontrakt(telefonnummer, nummerplade, startDato, slutDato, maxKm, pris)\n" +
                 "VALUES(?, ?, ?, ?, ?, ?)";
         template.update(sql, lejeKontrakt.getTelefonnummer(), lejeKontrakt.getNummerplade(), lejeKontrakt.getStartdato(), lejeKontrakt.getSlutdato(), lejeKontrakt.getMaxKm(), lejeKontrakt.getPris()); // denne kode adder til databasen ved hjælp af getters
+    }
+
+        //  query der tager en kundes telefonnummer og finde alle kundens lejekontrakter: søge efter kunden.
+    public List<LejeKontrakt> findKontraktByTelefon(String telefonnumer) throws SQLException {
+        String sql = "select * from lejekontrakt where telefonnummer = ?";
+        RowMapper<LejeKontrakt> rowMapper = new BeanPropertyRowMapper<>(LejeKontrakt.class);
+        return template.query(sql, rowMapper);
     }
 
 }
