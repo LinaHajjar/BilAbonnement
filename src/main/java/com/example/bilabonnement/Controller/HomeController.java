@@ -148,10 +148,10 @@ public class HomeController {
 
         if (kundeService.phoneNumberExists(telefonnummer) == false) { // der tjekkes først om kunden eksisterer ved at bruge telefonnummeret
             kundeService.addKunde(kunde); // hvis kunden ikke eksisterer, oprettes kunden i tabellen
-            redirectAttributes.addFlashAttribute("successMessage", "Kunde er blevet registreret");
+            redirectAttributes.addFlashAttribute("registreret", "Kunde er blevet registreret");
             return "redirect:/manageKunder";
         } else {
-            redirectAttributes.addFlashAttribute("errorMessage", "Kunde eksisterer i forvejen");
+            redirectAttributes.addFlashAttribute("error", "Kunde eksisterer i forvejen");
             return "redirect:/manageKunder";
         }
 
@@ -182,12 +182,12 @@ public class HomeController {
             kontrakt.setMaxKm(maxKm);
             kontrakt.setPris(pris);
             lejeKontraktService.addLejekontrakt(kontrakt);
-            redirectAttributes.addFlashAttribute("successMessage", "Lejekontrakt er blevet oprettet.");
+            redirectAttributes.addFlashAttribute("oprettet", "Lejekontrakt er blevet oprettet."); // giver en message hvis lejekontrakt bliver oprettet
             return "redirect:/manageKontrakter";
         } catch (DataIntegrityViolationException ex) {
             // Handle the exception and add an error message
-            redirectAttributes.addFlashAttribute("errorMessage",
-                    "Systemet kunne ikke oprette kontrakten. Tjek om telefonnummeret og nummerpladen eksisterer");
+            redirectAttributes.addFlashAttribute("error",
+                    "Systemet kunne ikke oprette kontrakten. Tjek om telefonnummeret og nummerpladen eksisterer"); // giver en message hvis lejekontrakt ikke bliver oprettet
 
             // Redirect back to the form or a page of your choice
             return "redirect:/manageKontrakter";
