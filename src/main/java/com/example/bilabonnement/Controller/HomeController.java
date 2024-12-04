@@ -14,12 +14,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.view.RedirectView;
 
 
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
@@ -100,34 +98,34 @@ public class HomeController {
     }
 
 
-    @GetMapping("/manageSkad")
+    @GetMapping("/manageSkade")
     public String allSkader(Model model) throws SQLException{
      model.addAttribute("Skader", skaderService.getAllSkader());
-     return "homeSkad/manageSkad";
+     return "homeSkade/manageSkade";
     }
 
-    @GetMapping("/nySkad")
+    @GetMapping("/nySkade")
     public String showSkaderForm() {
-        return "homeSkad/nySkad";
+        return "homeSkade/nySkade";
     }
 
 
 
-    @PostMapping("/nySkad")
+    @PostMapping("/nySkade")
     public String visSkaderForm(@RequestParam("lejekontrakt_id") int lejekontrakt_id, @RequestParam("skade_type")  Skader.skade_type skade_type,@RequestParam("beskrivelse") String beskrivelse, @RequestParam("pris") int pris, Model model) throws SQLException {
 
         // Converted the String received from the request parameter to the corresponding skade_type enum value
 //        Skader.skade_type skade_type = Skader.skade_type.valueOf(skadeTypeStr.toUpperCase()); //@RequestParam cannot directly handle the enum conversion by default
 
-        Skader skad = new Skader();
-        skad.setLejekontrakt_id(lejekontrakt_id);
-        skad.setSkade_type(skade_type);
-        skad.setBeskrivelse(beskrivelse);
-        skad.setPris(pris);
+        Skader skade = new Skader();
+        skade.setLejekontrakt_id(lejekontrakt_id);
+        skade.setSkade_type(skade_type);
+        skade.setBeskrivelse(beskrivelse);
+        skade.setPris(pris);
 
-        skaderService.addSkader(skad);
+        skaderService.addSkader(skade);
 
-        return "redirect:/manageSkad";
+        return "redirect:/manageSkade";
 
     }
 
@@ -244,7 +242,7 @@ public class HomeController {
                 } else if(bruger.getAfdeling_id() == 2){
                     return "statistik";
                 } else if (bruger.getAfdeling_id() == 3){
-                    return "homeSkad/manageSkad";
+                    return "homeSkade/manageSkade";
                 } else {
                     return "index";
                 }
