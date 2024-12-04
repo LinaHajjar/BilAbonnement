@@ -14,12 +14,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.view.RedirectView;
 
 
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
@@ -53,6 +51,17 @@ public class HomeController {
 
     //oprettelse af postmaping metode for at sende input fra bruger omkring lejekontrakt info
 
+
+    @GetMapping("/nyKontrakt")
+    public String nyKontrakt(Model model) throws SQLException {
+        List<String> nummerpladeList = bilService.alleNummerplader();
+        model.addAttribute("nummerplader", nummerpladeList);
+
+
+        return "homeKontrakt/nyKontrakt";
+    }
+
+
     @PostMapping("/nyKontrakter")
     public String visLejeKontraktForm(@RequestParam("telefonnummer") String telefonnummer,
                                             @RequestParam("nummerplade") String nummerplade,
@@ -73,6 +82,14 @@ public class HomeController {
         return "redirect:/manageKontrakter";
     }
 
+
+    @GetMapping("/nummerplade")
+    public String nummerplade(Model model) throws SQLException {
+
+        return "homeKontrakt/nyKontrakt";
+    }
+
+
     // oprettelse af getmapping metode for at vise alle lejekontrakter
     @GetMapping("/manageKunder")
     public String allKunder(Model model) throws SQLException{
@@ -81,34 +98,34 @@ public class HomeController {
     }
 
 
-    @GetMapping("/manageSkad")
+    @GetMapping("/manageSkade")
     public String allSkader(Model model) throws SQLException{
      model.addAttribute("Skader", skaderService.getAllSkader());
-     return "homeSkad/manageSkad";
+     return "homeSkade/manageSkade";
     }
 
-    @GetMapping("/nySkad")
+    @GetMapping("/nySkade")
     public String showSkaderForm() {
-        return "homeSkad/nySkad";
+        return "homeSkade/nySkade";
     }
 
 
 
-    @PostMapping("/nySkad")
+    @PostMapping("/nySkade")
     public String visSkaderForm(@RequestParam("lejekontrakt_id") int lejekontrakt_id, @RequestParam("skade_type")  Skader.skade_type skade_type,@RequestParam("beskrivelse") String beskrivelse, @RequestParam("pris") int pris, Model model) throws SQLException {
 
         // Converted the String received from the request parameter to the corresponding skade_type enum value
 //        Skader.skade_type skade_type = Skader.skade_type.valueOf(skadeTypeStr.toUpperCase()); //@RequestParam cannot directly handle the enum conversion by default
 
-        Skader skad = new Skader();
-        skad.setLejekontrakt_id(lejekontrakt_id);
-        skad.setSkade_type(skade_type);
-        skad.setBeskrivelse(beskrivelse);
-        skad.setPris(pris);
+        Skader skade = new Skader();
+        skade.setLejekontrakt_id(lejekontrakt_id);
+        skade.setSkade_type(skade_type);
+        skade.setBeskrivelse(beskrivelse);
+        skade.setPris(pris);
 
-        skaderService.addSkader(skad);
+        skaderService.addSkader(skade);
 
-        return "redirect:/manageSkad";
+        return "redirect:/manageSkade";
 
     }
 
@@ -148,20 +165,17 @@ public class HomeController {
 
         if (kundeService.phoneNumberExists(telefonnummer) == false) { // der tjekkes først om kunden eksisterer ved at bruge telefonnummeret
             kundeService.addKunde(kunde); // hvis kunden ikke eksisterer, oprettes kunden i tabellen
-            redirectAttributes.addFlashAttribute("successMessage", "Kunde er blevet registreret");
+            redirectAttributes.addFlashAttribute("registreret", "Kunde er blevet registreret");
             return "redirect:/manageKunder";
         } else {
-            redirectAttributes.addFlashAttribute("errorMessage", "Kunde eksisterer i forvejen");
+            redirectAttributes.addFlashAttribute("error", "Kunde eksisterer i forvejen");
             return "redirect:/manageKunder";
         }
 
     }
 
 
-    @GetMapping("/nyKontrakt")
-    public String sletKontrakt(){
-     return "homeKontrakt/nyKontrakt";
-    }
+
 
     @PostMapping("/tilføjKontrakt")
     public String tilføjKontrakt(@RequestParam("telefonnummer") String telefonnummer,
@@ -182,12 +196,12 @@ public class HomeController {
             kontrakt.setMaxKm(maxKm);
             kontrakt.setPris(pris);
             lejeKontraktService.addLejekontrakt(kontrakt);
-            redirectAttributes.addFlashAttribute("successMessage", "Lejekontrakt er blevet oprettet.");
+            redirectAttributes.addFlashAttribute("oprettet", "Lejekontrakt er blevet oprettet."); // giver en message hvis lejekontrakt bliver oprettet
             return "redirect:/manageKontrakter";
         } catch (DataIntegrityViolationException ex) {
             // Handle the exception and add an error message
-            redirectAttributes.addFlashAttribute("errorMessage",
-                    "Systemet kunne ikke oprette kontrakten. Tjek om telefonnummeret og nummerpladen eksisterer");
+            redirectAttributes.addFlashAttribute("error",
+                    "Systemet kunne ikke oprette kontrakten. Tjek om telefonnummeret og nummerpladen eksisterer"); // giver en message hvis lejekontrakt ikke bliver oprettet
 
             // Redirect back to the form or a page of your choice
             return "redirect:/manageKontrakter";
@@ -235,7 +249,7 @@ public class HomeController {
                 } else if(bruger.getAfdeling_id() == 2){
                     return "statistik";
                 } else if (bruger.getAfdeling_id() == 3){
-                    return "skader";
+                    return "homeSkade/manageSkade";
                 } else {
                     return "index";
                 }

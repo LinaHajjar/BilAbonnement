@@ -16,17 +16,17 @@
 
 
 
-<div th:if="${successMessage}" style="color: green; margin-bottom: 10px;">
-    <p th:text="${successMessage}"></p>
+<div th:if="${registreret}" style="color: green;">
+    <p th:text="${registreret}"></p>
 </div>
 <!-- Success message -->
-<div th:if="${successMessage}" class="success-message">
-    <p th:text="${successMessage}"></p>
+<div th:if="${registreret}" class="success-message">
+    <p th:text="${registreret}"></p>
 </div>
 
 <!-- Error message -->
-<div th:if="${errorMessage}" class="error-message">
-    <p th:text="${errorMessage}"></p>
+<div th:if="${error}" class="error-message">
+    <p th:text="${error}"></p>
 </div>
 
 <table class="kunde-table">
