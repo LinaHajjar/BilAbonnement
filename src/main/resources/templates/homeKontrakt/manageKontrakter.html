@@ -10,7 +10,11 @@
 
 <a th:href="@{/nyKontrakt}" class="ny-lejekontrakt-knap">Tilføj ny lejekontrakt</a>
 
-<a th:href="@{/soegLejekontraktTelefon}" class="soeg-lejekontrakt-telefon-knap">Søge lejekontrakter fra telefon</a>
+<form th:action="@{/kundensKontrakter}" method="post">
+    <label>Søg efter en kundes lejekontraker</label>
+    <input type="tel" name="telefonnummer" placeholder="Kundens telefonnummer" required min="10000000" max="99999999">
+    <button type="submit" class="søg-efter-kundens-kontraker">Søg efter kundens kontrakter</button>
+</form>
 
 
 <!-- Success message -->
@@ -21,6 +25,10 @@
 <!-- Error message -->
 <div th:if="${errorMessage}" class="error-message">
     <p th:text="${errorMessage}"></p>
+</div>
+
+<div th:if="${ikkeFundet}" class="error-message">
+    <p th:text="${ikkeFundet}"></p>
 </div>
 
 <table class="lejekontrakt-table">

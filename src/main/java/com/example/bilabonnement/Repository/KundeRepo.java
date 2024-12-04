@@ -52,4 +52,7 @@ public class KundeRepo {
         return template.update(sql, telefonnummer)>0;
     }
 
+
+
+
 }

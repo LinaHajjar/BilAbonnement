@@ -294,6 +294,16 @@ public class HomeController {
 
 
 
+    @PostMapping("/kundensKontrakter")
+    public String kundensKontrakter(@RequestParam("telefonnummer") String telefonnummer, Model model, RedirectAttributes redirectAttributes) throws SQLException {
+
+        model.addAttribute("kontrakter", lejeKontraktService.findKontraktByTelefon(telefonnummer));
+
+
+        return "homeKontrakt/kundensKontrakter";
+
+
+    }
 
 }
 

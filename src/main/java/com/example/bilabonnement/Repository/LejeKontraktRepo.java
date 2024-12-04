@@ -65,10 +65,10 @@ public class LejeKontraktRepo {
     }
 
         //  query der tager en kundes telefonnummer og finde alle kundens lejekontrakter: søge efter kunden.
-    public List<LejeKontrakt> findKontraktByTelefon(String telefonnumer) throws SQLException {
-        String sql = "select * from lejekontrakt where telefonnummer = ?";
-        RowMapper<LejeKontrakt> rowMapper = new BeanPropertyRowMapper<>(LejeKontrakt.class);
-        return template.query(sql, rowMapper);
+    public List<LejeKontrakt> findKontraktByTelefon(String telefonnummer) throws SQLException {
+        String sql = "SELECT * FROM lejekontrakt WHERE telefonnummer = ?";
+        RowMapper<LejeKontrakt> rowMapper = new BeanPropertyRowMapper<LejeKontrakt>(LejeKontrakt.class);
+        return template.query(sql, rowMapper, telefonnummer);
     }
 
 }
