@@ -1,11 +1,29 @@
-html, body{
 
+html, body{
     font-size: 18px;
     padding: 0;
     color: black;
     font-family: 'Montseratt', san-seriff;
     box-sizing: border-box;
     line-height: 1.5;
+    background: linear-gradient(135deg, #99b2cb, #edbbfb); /* Gradient background */
+}
+
+/* Logo container */
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px; /* Space between logo and heading */
+}
+
+/* Logo styling */
+.logo {
+    width: 450px; /* Adjust width as needed */
+    height: auto; /* Maintain aspect ratio */
+
+
+    object-fit: contain; /* Ensure the logo fits within its container */
 }
 
 .bil-table {
@@ -74,7 +92,7 @@ h3{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 20px; /* Space between h1 and the form */
+    gap: 10px; /* Space between h1 and the form */
 }
 
 .login-h1 {
@@ -89,10 +107,10 @@ h3{
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 3px solid #007bff;
+    border: 2px solid #1591c1;
     border-radius: 10px;
-    width: 400px;
-    height: 400px;
+    width: 250px;
+    height: 150px;
     padding: 20px;
     gap: 15px; /* Adds even spacing between input fields and button */
     background-color: white;
@@ -114,7 +132,7 @@ h3{
     padding: 10px;
     background-color: white;
     color: black;
-    border: 2px solid #007bff;
+    border: 2px solid #1591c1;
     border-radius: 10px;
     font-size: 16px;
     cursor: pointer;
@@ -125,7 +143,7 @@ h3{
 }
 
 .login-submit-button:hover {
-    background-color: #007bff;
+    background-color: #1591c1;
 }
 /*-------------------------------------Manage siden som er et redirect til loginInfo-------------------------------------------*/
 

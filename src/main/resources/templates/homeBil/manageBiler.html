@@ -20,7 +20,6 @@
         <th>Brændstofstype</th>
         <th>Odometer</th>
         <th>Første registrering</th>
-        <th>Tilgængelighed</th>
         <th>CO2-udledning</th>
     </tr>
     </thead>
@@ -32,7 +31,6 @@
         <td th:text="${bil.braendstoftype}"></td>
         <td th:text="${bil.odometer}"></td>
         <td th:date="${bil.foersteregistrering}"></td>
-        <td th:text="${bil.tilgaengelighed ? 'Tilgængelig' : 'Ikke tilgængelig'}"></td>
         <td th:text="${bil.co2udledning}"></td>
 
     </tr>
