@@ -34,6 +34,12 @@ public class SkaderRepo {
         template.update(sql, skader.getLejekontrakt_id(),skader.getSkade_type(), skader.getBeskrivelse(), skader.getPris());
     }
 
+    public List<Skader> seSkaderById(int lejekontrakt_id){
+        String sql = "select * from skader where lejekontrakt_id = ?";
+        RowMapper<Skader> rowmapper = new BeanPropertyRowMapper<>(Skader.class);
+        return template.query(sql, new Object[] {lejekontrakt_id}, rowmapper);
+    }
+
     public void deleteSkader(Skader skader){
         String sql = "DELETE FROM skader WHERE lejekontrakt_id = ?";
         template.update(sql, template);
