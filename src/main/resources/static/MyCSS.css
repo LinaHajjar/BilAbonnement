@@ -165,6 +165,9 @@ h3{
 }
 
 /* Individual option buttons */
+.antal-lejede-biler-knap,
+.samlet-Indtægt-knap,
+.top-lejede-biler-knap,
 .manage-kunde-knap,
 .manage-biler-knap,
 .manage-kontrakter-knap {
@@ -185,6 +188,9 @@ h3{
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.antal-lejede-biler-knap:hover,
+.samlet-Indtægt-knap:hover,
+.top-lejede-biler-knap:hover,
 .manage-kunde-knap:hover,
 .manage-biler-knap:hover,
 .manage-kontrakter-knap:hover {
@@ -193,6 +199,9 @@ h3{
 }
 
 /* Images inside the buttons */
+.antal-lejede-biler-knap img,
+.samlet-Indtægt-knap img,
+.top-lejede-biler-knap img,
 .manage-kunde-knap img,
 .manage-biler-knap img,
 .manage-kontrakter-knap img {
@@ -204,11 +213,13 @@ h3{
 }
 
 /* Button text */
+.antal-lejede-biler-knap span,
+.samlet-Indtægt-knap span,
+.top-lejede-biler-knap span,
 .manage-kunde-knap span,
 .manage-biler-knap span,
 .manage-kontrakter-knap span {
     font-size: 24px;
     text-align: center;
     color: #2d2a2a;
-
 }

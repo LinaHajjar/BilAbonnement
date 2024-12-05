@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="MyCSS.css">
+    <title>forretnings Udvikler</title>
+</head>
+<body>
+
+<h1 class="manage-h1">hvilke statistikker vil du gerne se</h1>
+
+<div class="manage-options">
+    <a th:href="@{/antalLejedeBiler}" class="antal-lejede-biler-knap">
+        <img src="/Billeder/lejedeBiler.jpg" alt="lejede-biler">
+        <span>antal lejede biler</span>
+    </a>
+
+    <a th:href="@{/samletIndtægt}" class="samlet-Indtægt-knap">
+        <img src="/Billeder/indtægt.jpeg" alt="indtægt">
+        <span>samlet indtægt</span>
+    </a>
+
+    <a th:href="@{/topLejedeModeller}" class="top-lejede-biler-knap">
+        <img src="/Billeder/topLejedeBiler.jpeg" alt="topLejedeBiler">
+        <span>top Modeller</span>
+    </a>
+</div>
+
+</body>
+</html>

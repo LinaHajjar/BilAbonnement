@@ -5,7 +5,6 @@ import com.example.bilabonnement.Model.Bruger;
 import com.example.bilabonnement.Model.Kunde;
 import com.example.bilabonnement.Model.LejeKontrakt;
 import com.example.bilabonnement.Model.Skader;
-import com.example.bilabonnement.Repository.BookingRepo;
 import com.example.bilabonnement.Service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
-import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
@@ -290,7 +288,7 @@ public class HomeController {
                 if (bruger.getAfdeling_id() == 1){
                     return "manage";
                 } else if(bruger.getAfdeling_id() == 2){
-                    return "forretningsUdvikler";
+                    return "homeForretningsUdvikler/forretningsUdvikler";
                 } else if (bruger.getAfdeling_id() == 3){
                     return "homeSkade/manageSkade";
                 } else {
@@ -307,12 +305,24 @@ public class HomeController {
 
     @PostMapping("/kundensKontrakter")
     public String kundensKontrakter(@RequestParam("telefonnummer") String telefonnummer, Model model, RedirectAttributes redirectAttributes) throws SQLException {
-
         model.addAttribute("kontrakter", lejeKontraktService.findKontraktByTelefon(telefonnummer)); // finder alle lejekontrakter ud fra en kundes telefon nummer
         return "homeKontrakt/kundensKontrakter"; // returnerer en ny page hvor den kundes lejekontrakter bliver displayed
-
-
     }
+
+    @GetMapping("/antalLejedeBiler")
+    public String antalLejedeBiler(Model model) {
+        return "homeForretningsUdvikler/antalLejedeBiler";
+    }
+    @GetMapping("/samletIndtægt")
+    public String samletIndtægt(Model model) {
+        return "homeForretningsUdvikler/samletIndtægt";
+    }
+    @GetMapping("/topLejedeModeller")
+    public String topLejedeModeller(Model model) {
+        return "homeForretningsUdvikler/topLejedeModeller";
+    }
+
+
 
 }
 
