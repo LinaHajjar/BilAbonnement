@@ -275,7 +275,7 @@ public class HomeController {
     @GetMapping("/backToCustomer")
     public String backToCustomer(){
 
-     return "redirectview:/manageKunder";
+     return "redirect:/manageKunder";
     }
 
     @PostMapping("/loginInfo")
@@ -290,7 +290,7 @@ public class HomeController {
                 if (bruger.getAfdeling_id() == 1){
                     return "manage";
                 } else if(bruger.getAfdeling_id() == 2){
-                    return "statistik";
+                    return "statistik"; // rette den til at return den page for forretningsudvikler
                 } else if (bruger.getAfdeling_id() == 3){
                     return "homeSkade/manageSkade";
                 } else {
