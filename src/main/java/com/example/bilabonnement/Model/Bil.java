@@ -10,7 +10,6 @@ public class Bil {
     Braendstoftype braendstoftype;
     int odometer;
     LocalDate foersteregistrering;
-    Boolean tilgaengelighed;
     int co2udledning;
 
     public Bil(){} //tømme konstruktør
@@ -54,14 +53,6 @@ public class Bil {
 
     public void setFoersteregistrering(LocalDate foersteregistrering) {
         this.foersteregistrering = foersteregistrering;
-    }
-
-    public Boolean getTilgaengelighed() {
-        return tilgaengelighed;
-    }
-
-    public void setTilgaengelighed(Boolean tilgaengelighed) {
-        this.tilgaengelighed = tilgaengelighed;
     }
 
     public int getCo2udledning() {

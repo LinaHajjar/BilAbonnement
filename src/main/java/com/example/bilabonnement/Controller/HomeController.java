@@ -265,10 +265,18 @@ public class HomeController {
 
 
     @GetMapping("/backToManage")
-    public String backToManage() {return "homeKontrakt/manageKontrakter";}
+    public String backToManage() {return "manage";}
 
-    @GetMapping("/backToManagePage")
-    public String backToManagePage() {return "manage";}
+    @GetMapping("/backToKontrakt")
+    public String backToKontrakt(Model model) {
+     return "redirect:/manageKontrakter";
+ }
+
+    @GetMapping("/backToCustomer")
+    public String backToCustomer(){
+
+     return "redirect:/manageKunder";
+    }
 
     @PostMapping("/loginInfo")
     public String loginInfo(@RequestParam("brugernavn") String brugernavn, @RequestParam("kode") String kode) throws SQLException {
@@ -300,10 +308,8 @@ public class HomeController {
     @PostMapping("/kundensKontrakter")
     public String kundensKontrakter(@RequestParam("telefonnummer") String telefonnummer, Model model, RedirectAttributes redirectAttributes) throws SQLException {
 
-        model.addAttribute("kontrakter", lejeKontraktService.findKontraktByTelefon(telefonnummer));
-
-
-        return "homeKontrakt/kundensKontrakter";
+        model.addAttribute("kontrakter", lejeKontraktService.findKontraktByTelefon(telefonnummer)); // finder alle lejekontrakter ud fra en kundes telefon nummer
+        return "homeKontrakt/kundensKontrakter"; // returnerer en ny page hvor den kundes lejekontrakter bliver displayed
 
 
     }
