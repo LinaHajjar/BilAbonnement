@@ -8,6 +8,11 @@
 <body>
 <h1 class="Skaderapport-h1">Alle skaderapporter</h1>
 
+/*DENNE BACK BUTTON SKAL REDIRECTES. TIL FORKERTE LOGIN*/
+<div class="back-button-container">
+  <a th:href="@{/backToManage}" class="back-button">← Back to Home</a>
+</div>
+
 <a th:href="@{/nySkade}" class="ny-skade-rapport-knap">Tilføj ny skade-rapport</a>
 
 <!-- Success message -->

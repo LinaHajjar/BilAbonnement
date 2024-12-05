@@ -6,7 +6,7 @@ body {
     color: #333;
     background-color: #f4f4f9;
     margin: 0;
-    padding: 0;
+    padding: 20px;
 }
 
 /* Headings */
@@ -18,26 +18,37 @@ body {
     margin-bottom: 20px;
 }
 
-/* Back button styling */
-.back-button-container {
-    margin: 20px;
-}
-
-.back-button {
+/* General button styling */
+a.ny-lejekontrakt-knap,
+a.soeg-lejekontrakt-telefon-knap,
+a.back-to-alle-leje-konktrakter-knap{
     display: inline-block;
-    padding: 10px 20px;
-    font-size: 16px;
+    margin: 10px auto;
+    padding: 12px 20px;
+    font-size: 18px;
     color: #fff;
     background-color: #007bff;
     text-decoration: none;
     border-radius: 5px;
+    text-align: center;
     transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 250px; /* Ens størrelse */
 }
 
-.back-button:hover {
+/* Hover effect */
+a.ny-lejekontrakt-knap:hover,
+a.soeg-lejekontrakt-telefon-knap:hover,
+a.back-to-alle-leje-konktrakter-knap{
     background-color: #0056b3;
     transform: scale(1.05);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
+
+/* Back button styling */
+
+
+
 
 /* Success and error messages */
 .success-message, .error-message {
