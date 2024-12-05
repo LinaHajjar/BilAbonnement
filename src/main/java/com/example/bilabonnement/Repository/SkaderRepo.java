@@ -29,6 +29,18 @@ public class SkaderRepo {
     }
 
 
+    public void updateSkader(Skader skader){
+        String sql= "UPDATE Skader SET skade_type = ?, beskrivelse = ?, pris = ? WHERE lejekontrakt_id = ?";
+        template.update(sql, skader.getLejekontrakt_id(),skader.getSkade_type(), skader.getBeskrivelse(), skader.getPris());
+    }
+
+    public void deleteSkader(Skader skader){
+        String sql = "DELETE FROM skader WHERE lejekontrakt_id = ?";
+        template.update(sql, template);
+
+    }
+
+
 
 
 
