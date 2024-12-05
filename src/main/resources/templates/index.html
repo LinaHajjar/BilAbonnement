@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="MyCSS.css">
-    <title>Title</title>
+    <title>Login</title>
 </head>
 <body class="login-page">
 
@@ -13,17 +13,14 @@
         <img src="/Billeder/BILABONNEMENT.png" alt="Application Logo" class="logo">
     </div>
 
-
-<div class="login-container">
+    <!-- Login form -->
     <h1 class="login-h1">Login</h1>
     <form th:action="@{/loginInfo}" method="post" class="login-box">
-
         <input type="text" name="brugernavn" placeholder="Brugernavn" required>
         <input type="password" name="kode" placeholder="Kodeord" required>
-        <button type="submit" class="login-submit-button"> Login</button>
+        <button type="submit" class="login-submit-button">Login</button>
     </form>
-
-</div>
+</div> <!-- Lukker den eneste login-container -->
 
 </body>
 </html>
