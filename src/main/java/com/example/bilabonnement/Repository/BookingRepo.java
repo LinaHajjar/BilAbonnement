@@ -35,7 +35,7 @@ public class BookingRepo {
 
 
     public List<LejeKontrakt> seBiler(LocalDate startdato, LocalDate slutdato) {
-        String sql = "SELECT nummerplade, startdato, slutdato  FROM lejekontrakt lk WHERE startdato <= ? AND slutdato >=? ORDER BY nummerplade, startdato";
+        String sql = "SELECT nummerplade, startdato, slutdato  FROM lejekontrakt lk WHERE startdato >= ? AND slutdato <=? ORDER BY nummerplade, startdato";
         RowMapper<LejeKontrakt> rowMapper = new BeanPropertyRowMapper<>(LejeKontrakt.class);
 
         java.sql.Date sqlStartdato = java.sql.Date.valueOf(startdato);

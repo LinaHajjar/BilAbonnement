@@ -304,7 +304,11 @@ public class HomeController {
         return "index";
     }
 
-
+    @PostMapping("/kundensSkader")
+    public String kundensKontrakter(@RequestParam("lejekontrakt_id") int lejekontrakt_id, Model model, RedirectAttributes redirectAttributes) throws SQLException {
+        model.addAttribute("Skader", skaderService.getSkaderById(lejekontrakt_id)); // finder alle skaderapporter ud fra en kundes lejekontrakt id
+        return "homeSkade/kundensSkader"; // returnerer en ny page hvor den kundes skaderapporter bliver displayed
+    }
 
     @PostMapping("/kundensKontrakter")
     public String kundensKontrakter(@RequestParam("telefonnummer") String telefonnummer, Model model, RedirectAttributes redirectAttributes) throws SQLException {

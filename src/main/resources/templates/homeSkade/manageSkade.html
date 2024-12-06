@@ -37,11 +37,22 @@
   <tbody>
   <tr th:each="skade : ${Skader}">
     <td th:text="${skade.lejekontrakt_id}"></td>
-    <td th:text="${skade.skade_type}"></td> <!-- Convert enum to string -->
+    <td th:text="${skade.skade_type}"></td>
     <td th:text="${skade.beskrivelse}"></td>
     <td th:text="${skade.pris}"></td>
   </tr>
   </tbody>
 </table>
+
+
+<form th:action="@{/kundensSkader}" method="post">
+  <label>Søg efter en kundes skadrapport</label>
+  <input type="number" name="lejekontrakt_id" placeholder="Kundens lejekontrakt_id">
+  <button type="submit" class="søg-efter-kundens-lejekontrakt id">Søg efter kundens lejekontrakt id</button>
+</form>
+
+
+
+
 </body>
 </html>

@@ -23,6 +23,11 @@ public class SkaderService {
        skaderRepo.addSkader(skader);
    }
 
+   public List<Skader> getSkaderById(int lejekontraktid) {
+       return skaderRepo.seSkaderById(lejekontraktid);
+   }
+
+
 
 
 

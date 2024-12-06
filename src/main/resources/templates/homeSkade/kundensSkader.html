@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Kundens Skader</title>
+</head>
+<body>
+
+<table>
+  <thead>
+  <tr>
+    <th>Lejekontrakt_id</th>
+    <th>Skade type</th>
+    <th>Beskrivelse</th>
+    <th>Pris</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="skade: ${Skader}">
+    <td th:text="${skade.lejekontrakt_id}"></td>
+    <td th:text="${skade.skade_type}"></td>
+    <td th:text="${skade.beskrivelse}"></td>
+    <td th:text="${skade.pris}"></td>
+  </tr>
+  </tbody>
+</table>
+
+
+</body>
+</html>
