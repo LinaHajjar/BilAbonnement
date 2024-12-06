@@ -8,6 +8,23 @@
 <body>
 <h1 class="Skaderapport-h1">Alle skaderapporter</h1>
 
+
+<div class="side-nav">
+  <!-- Logo -->
+  <div class="nav-logo">
+    <img src="/Billeder/BILABONNEMENT.png" alt="Logo">
+  </div>
+
+  <!-- Navigation buttons -->
+  <!-- <a href="javascript:history.back()" class="nav-button">Tilbage</a> hvad skal dette bruges til -->
+  <!-- <a th:href="@{/backToManage}" class="nav-button">Tilbage til menu</a> -->
+
+
+  <!-- Logout button -->
+  <a th:href="@{/logUd}" class="nav-button logout-button">Log ud</a>
+</div>
+
+
 /*DENNE BACK BUTTON SKAL REDIRECTES. TIL FORKERTE LOGIN*/
 <div class="back-button-container">
   <a th:href="@{/backToManage}" class="back-button">← Back to Home</a>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="MyCSS.css">
@@ -15,12 +15,12 @@
     </div>
 
     <!-- Navigation buttons -->
-    <a href="javascript:history.back()" class="nav-button">Tilbage</a>
-   <!-- <a th:href="@{/backToManage}" class="nav-button">Tilbage til menu</a> -->
+    <!-- <a href="javascript:history.back()" class="nav-button">Tilbage</a> hvad skal dette bruges til -->
+    <!-- <a th:href="@{/backToManage}" class="nav-button">Tilbage til menu</a> -->
 
 
     <!-- Logout button -->
-    <a href="/logout" class="nav-button logout-button">Log ud</a>
+    <a th:href="@{/logUd}" class="nav-button logout-button">Log ud</a>
 </div>
 
 <h1 class="manage-h1">hvilke statistikker vil du gerne se</h1>

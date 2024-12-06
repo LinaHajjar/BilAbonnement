@@ -275,6 +275,13 @@ public class HomeController {
         return "index";
     }
 
+
+    @GetMapping("/logUd")
+    public String logUd(){
+
+     return "index";
+    }
+
     @PostMapping("/kundensSkader")
     public String kundensKontrakter(@RequestParam("lejekontrakt_id") int lejekontrakt_id, Model model, RedirectAttributes redirectAttributes) throws SQLException {
         model.addAttribute("Skader", skaderService.getSkaderById(lejekontrakt_id)); // finder alle skaderapporter ud fra en kundes lejekontrakt id
