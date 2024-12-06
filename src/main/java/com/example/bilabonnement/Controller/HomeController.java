@@ -110,6 +110,9 @@ public class HomeController {
 
 
 
+
+
+
     @PostMapping("/nySkade")
     public String visSkaderForm(@RequestParam("lejekontrakt_id") int lejekontrakt_id, @RequestParam("skade_type")  String skade_type,@RequestParam("beskrivelse") String beskrivelse, @RequestParam("pris") int pris, Model model) throws SQLException {
      //Converted the String received from the request parameter to the corresponding skade_type enum value
