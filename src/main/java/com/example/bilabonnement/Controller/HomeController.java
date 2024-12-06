@@ -1,6 +1,5 @@
 package com.example.bilabonnement.Controller;
 
-
 import com.example.bilabonnement.Model.Bruger;
 import com.example.bilabonnement.Model.Kunde;
 import com.example.bilabonnement.Model.LejeKontrakt;
@@ -59,8 +58,6 @@ public class HomeController {
     public String nyKontrakt(Model model) throws SQLException {
         List<String> nummerpladeList = bilService.alleNummerplader();
         model.addAttribute("nummerplader", nummerpladeList);
-
-
         return "homeKontrakt/nyKontrakt";
     }
 
@@ -88,7 +85,6 @@ public class HomeController {
 
     @GetMapping("/nummerplade")
     public String nummerplade(Model model) throws SQLException {
-
         return "homeKontrakt/nyKontrakt";
     }
 
@@ -116,9 +112,8 @@ public class HomeController {
 
     @PostMapping("/nySkade")
     public String visSkaderForm(@RequestParam("lejekontrakt_id") int lejekontrakt_id, @RequestParam("skade_type")  String skade_type,@RequestParam("beskrivelse") String beskrivelse, @RequestParam("pris") int pris, Model model) throws SQLException {
-
-        // Converted the String received from the request parameter to the corresponding skade_type enum value
-//        Skader.skade_type skade_type = Skader.skade_type.valueOf(skadeTypeStr.toUpperCase()); //@RequestParam cannot directly handle the enum conversion by default
+     //Converted the String received from the request parameter to the corresponding skade_type enum value
+     //Skader.skade_type skade_type = Skader.skade_type.valueOf(skadeTypeStr.toUpperCase()); //@RequestParam cannot directly handle the enum conversion by default
 
         Skader skade = new Skader();
         skade.setLejekontrakt_id(lejekontrakt_id);
@@ -129,7 +124,6 @@ public class HomeController {
         skaderService.addSkader(skade);
 
         return "redirect:/manageSkade";
-
     }
 
 
@@ -151,11 +145,6 @@ public class HomeController {
 
     }
 
-
-
-
-
-
     //oprettelse af postmaping metode for at sende input fra bruger omkring kunde info
 
     @GetMapping("/nyKunde")
@@ -176,8 +165,6 @@ public class HomeController {
                                @RequestParam("udstedelsdato") LocalDate udstedelsdato,
                                Model model, RedirectAttributes redirectAttributes) throws SQLException {
 
-
-
        Kunde kunde = new Kunde(); // der oprettes et kunde object
        kunde.setTelefonnummer(telefonnummer);
        kunde.setEmail(email);
@@ -197,11 +184,7 @@ public class HomeController {
             redirectAttributes.addFlashAttribute("error", "Kunde eksisterer i forvejen");
             return "redirect:/manageKunder";
         }
-
     }
-
-
-
 
     @PostMapping("/tilføjKontrakt")
     public String tilføjKontrakt(@RequestParam("telefonnummer") String telefonnummer,
@@ -234,7 +217,6 @@ public class HomeController {
         }
     }
 
-
     @PostMapping("/sletKunde")
     public String sletKunde(@RequestParam("telefonnummer") String telefonnummer) throws SQLException {
         kundeService.sletKunde(telefonnummer);
@@ -243,10 +225,8 @@ public class HomeController {
 
     @PostMapping("/sletKontrakt")
     public String sletKontrakt(@RequestParam("lejekontrakt_id") int id) throws SQLException {
-
         lejeKontraktService.sletLejeKontract(id);
         return "redirect:/manageKontrakter";
-
     }
 
     // til at søge alle kontrakter til det samme kunde (telefonnummer)
@@ -321,21 +301,4 @@ public class HomeController {
     public String topLejedeModeller(Model model) {
         return "homeForretningsUdvikler/topLejedeModeller";
     }
-
-
-
 }
-
-
-
-
-
-
-
-
-
-//opretellse af postmapping metode for at sende input fra bruger omkring kunde info
-
-
-
-
