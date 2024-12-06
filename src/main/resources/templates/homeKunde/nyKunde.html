@@ -7,9 +7,7 @@
     <link rel="stylesheet" type="text/css" href="/kundeCSS.css">
 </head>
 <body>
-<div class="back-button-container">
-    <a th:href="@{/backToCustomer}" class="back-button">← Tilbage til Alle kunder oversigt</a>
-</div>
+
 <h1 class="ny-kunde-h1">Indtast informationer</h1>
 
 
@@ -28,6 +26,20 @@
     <button type="subtmit" class="tilføj-kunde-knap">Tilføj Kunde</button>
 </form>
 
+<!-- Side navigation bar -->
+<div class="side-nav">
+    <!-- Logo -->
+    <div class="nav-logo">
+        <img src="/Billeder/BILABONNEMENT.png" alt="Logo">
+    </div>
+
+    <!-- Navigation buttons -->
+    <a href="javascript:history.back()" class="nav-button">Tilbage</a>
+    <a th:href="@{/manage}" class="nav-button">Tilbage til menu</a>
+    <a th:href="@{/nyKunde}" class="nav-button1">Tilføj ny kunde</a>
+    <!-- Logout button -->
+    <a href="/logout" class="nav-button logout-button">Log ud</a>
+</div>
 
 </body>
 </html>

@@ -9,22 +9,7 @@ html, body{
     background: linear-gradient(135deg, #99b2cb, #edbbfb); /* Gradient background */
 }
 
-/* Logo container */
-.logo-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px; /* Space between logo and heading */
-}
 
-/* Logo styling */
-.logo {
-    width: 450px; /* Adjust width as needed */
-    height: auto; /* Maintain aspect ratio */
-
-
-    object-fit: contain; /* Ensure the logo fits within its container */
-}
 
 .bil-table {
     width: 100%;
@@ -77,6 +62,21 @@ h3{
 
 
 /* ----------------------- login page css ---------------------*/
+
+/* Logo container */
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px; /* Space between logo and heading */
+}
+
+/* Logo styling */
+.logo {
+    width: 450px; /* Adjust width as needed */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: contain; /* Ensure the logo fits within its container */
+}
 
 .login-page {
     margin: 0;
@@ -145,7 +145,7 @@ h3{
 .login-submit-button:hover {
     background-color: #1591c1;
 }
-/*-------------------------------------Manage siden som er et redirect til loginInfo-------------------------------------------*/
+/*-------------------------------------Manage siden som er et redirect fra loginInfo-------------------------------------------*/
 
 /* Heading */
 .manage-h1 {
@@ -222,4 +222,91 @@ h3{
     font-size: 24px;
     text-align: center;
     color: #2d2a2a;
+}
+
+/*-------------------------------------Forretnings udvikler-------------------------------------------*/
+
+/* Side navigation styling */
+.side-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px; /* Width of the navigation bar */
+    background-color: #1590bf; /* Blue background */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 10px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    gap: 20px; /* Space between elements */
+}
+
+/* Logo styling */
+.nav-logo img {
+    width: 200px; /* Adjust logo size */
+    height: auto;
+    margin-bottom: 20px; /* Space below the logo */
+}
+
+/* Navigation button styling */
+.nav-button {
+    width: 100%;
+    padding: 15px 20px;
+    text-align: center;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    text-decoration: none;
+    background-color: #0056b3; /* Darker blue for buttons */
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.nav-button:hover {
+    background-color: #003f7f; /* Even darker blue on hover */
+    transform: scale(1.05); /* Slight zoom on hover */
+}
+
+/* Logout button slightly elevated */
+.logout-button {
+    margin-top: auto; /* Push to bottom of the sidebar */
+    margin-bottom: 40px; /* Elevate 40px from the absolute bottom */
+    background-color: #dc3545; /* Red background for logout */
+    padding: 15px 20px;
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    color: white;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.logout-button:hover {
+    background-color: #a71d2a; /* Darker red on hover */
+    transform: scale(1.05); /* Slight zoom on hover */
+}
+
+/* Main content styling */
+.main-content {
+    margin-left: 270px; /* Push content to the right of the navigation bar */
+    padding: 20px;
+}
+
+/*-------------------------------------Forretnings udvikler -> Antal lejede Biler-------------------------------------------*/
+.overskrift-lejedeBiler {
+    text-align: center;
+}
+
+/*-------------------------------------Forretnings udvikler -> samlet indtægt-------------------------------------------*/
+
+.samlet-Indtægt-overskrift {
+    text-align: center;
+}
+
+/*-------------------------------------Forretnings udvikler -> top modeller-------------------------------------------*/
+
+.top-lejede-biler-overskrift {
+    text-align: center;
 }

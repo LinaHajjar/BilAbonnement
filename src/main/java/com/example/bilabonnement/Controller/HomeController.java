@@ -6,6 +6,7 @@ import com.example.bilabonnement.Model.LejeKontrakt;
 import com.example.bilabonnement.Model.Skader;
 import com.example.bilabonnement.Service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.Banner;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
@@ -251,7 +252,7 @@ public class HomeController {
     }
 
     @PostMapping("/loginInfo")
-    public String loginInfo(@RequestParam("brugernavn") String brugernavn, @RequestParam("kode") String kode) throws SQLException {
+    public String loginInfo(@RequestParam("brugernavn") String brugernavn, @RequestParam("kode") String kode, Model model) throws SQLException {
 
         List<Bruger> brugerList = brugerService.getAllUsers();
 
@@ -264,6 +265,7 @@ public class HomeController {
                 } else if(bruger.getAfdeling_id() == 2){
                     return "homeForretningsUdvikler/forretningsUdvikler";
                 } else if (bruger.getAfdeling_id() == 3){
+                    model.addAttribute("skader", skaderService.getAllSkader());
                     return "homeSkade/manageSkade";
                 } else {
                     return "index";

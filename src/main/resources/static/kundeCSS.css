@@ -8,25 +8,91 @@ body {
     margin: 0;
     padding: 20px;
 }
-
-/* buttoms up :) jk back button styles*/
-.back-button-container {
-    text-align: left;
+/* Main content styling */
+.main-content {
+    margin-left: 270px; /* Giver plads til navigationsbaren */
+    padding: 20px;
+    box-sizing: border-box; /* Sikrer korrekt padding og margin */
+    overflow: auto; /* Forhindrer indholdet i at overlappe */
 }
 
-.back-button {
-    display: inline-block;
-    padding: 10px 20px;
+.side-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px; /* Width of the navigation bar */
+    background-color: #1590bf; /* Blue background */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 10px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    gap: 20px; /* Space between elements */
+}
+
+/* Logo styling */
+.nav-logo img {
+    width: 200px; /* Adjust logo size */
+    height: auto;
+    margin-bottom: 20px; /* Space below the logo */
+}
+
+/* Navigation button styling */
+.nav-button {
+    width: 100%;
+    padding: 15px 20px;
+    text-align: center;
     font-size: 16px;
-    color: #fff;
-    background-color: grey;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
     text-decoration: none;
+    background-color: #0056b3; /* Darker blue for buttons */
     border-radius: 5px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    transition: all 0.3s ease;
 }
 
-.back-button:hover {
-    background-color: #0056b3; /* Darker hover color */
+.nav-button:hover {
+    background-color: #003f7f; /* Even darker blue on hover */
+    transform: scale(1.05); /* Slight zoom on hover */
+}
+/* TILFØJ NY KUNDE KNAP*/
+.nav-button1 {
+    width: 100%;
+    padding: 15px 20px;
+    text-align: center;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    text-decoration: none;
+    background-color: #66b124; /* Darker blue for buttons */
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+/* TILFØJ NY KUNDE KNAP HOVER*/
+.nav-button1:hover {
+    background-color: #447926; /* Even darker blue on hover */
+    transform: scale(1.05); /* Slight zoom on hover */
+}
+
+
+/* Logout button slightly elevated */
+.logout-button {
+    margin-top: auto; /* Push to bottom of the sidebar */
+    margin-bottom: 40px; /* Elevate 40px from the absolute bottom */
+    background-color: #dc3545; /* Red background for logout */
+    padding: 15px 20px;
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    color: white;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.logout-button:hover {
+    background-color: #a71d2a; /* Darker red on hover */
     transform: scale(1.05); /* Slight zoom on hover */
 }
 
@@ -40,7 +106,7 @@ body {
 
 /* Form container */
 form {
-    max-width: 600px;
+    max-width: 500px;
     margin: 20px auto;
     padding: 20px;
     background-color: #fff;
@@ -145,21 +211,27 @@ form label {
     transform: scale(1.05);
 }
 
+/* Responsive table container */
+.table-container {
+    width: 100%; /* Sikrer, at containeren fylder hele skærmens bredde */
+    overflow-x: auto; /* Aktiverer vandret rulning, hvis tabellen er for bred */
+    margin: 20px auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Tilføj en subtil skygge */
+}
+
 /* Table styling */
 .kunde-table {
-    width: 90%;
-    max-width: 1200px;
+    width: 100%; /* Tabellen fylder hele containerens bredde */
     border-collapse: collapse;
-    margin: 30px auto;
     background-color: #fff;
     border: 1px solid #ddd;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .kunde-table th, .kunde-table td {
-    padding: 12px 15px;
+    padding: 10px; /* Reduceret padding for at spare plads */
     text-align: left;
     border: 1px solid #ddd;
+    font-size: 14px; /* Reduceret fontstørrelse for bedre tilpasning */
 }
 
 .kunde-table th {
@@ -179,6 +251,7 @@ form label {
 
 .kunde-table td {
     color: #555;
+    white-space: nowrap; /* Forhindrer linjeskift i cellerne */
 }
 
 /* Delete button */

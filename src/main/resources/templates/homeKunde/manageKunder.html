@@ -6,64 +6,71 @@
     <title>Kunder</title>
 </head>
 <body>
-<h1 class="kunde-h1">Alle kunder</h1>
 
-<div class="back-button-container">
-    <a th:href="@{/backToManage}" class="back-button">← Tilbage til start</a>
+<div class="main-content">
+    <h1 class="kunde-h1">Alle kunder</h1>
+
+    <div th:if="${registreret}" class="success-message">
+        <p th:text="${registreret}"></p>
+    </div>
+
+    <div th:if="${error}" class="error-message">
+        <p th:text="${error}"></p>
+    </div>
+
+<div class="table-container">
+    <table class="kunde-table">
+        <thead>
+        <tr>
+            <th>Telefonnummer</th>
+            <th>Email</th>
+            <th>Fornavn</th>
+            <th>Efternavn</th>
+            <th>Adresse</th>
+            <th>Postnummer</th>
+            <th>By</th>
+            <th>Kørekortnummer</th>
+            <th>Udstedelsesdato</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="kunde: ${kunder}">
+            <td th:text="${kunde.telefonnummer}"></td>
+            <td th:text="${kunde.email}"></td>
+            <td th:text="${kunde.fornavn}"></td>
+            <td th:text="${kunde.efternavn}"></td>
+            <td th:text="${kunde.adresse}"></td>
+            <td th:text="${kunde.postnummer}"></td>
+            <td th:text="${kunde.byen}"></td>
+            <td th:text="${kunde.koerekortnummer}"></td>
+            <td th:text="${kunde.udstedelsdato}"></td>
+            <td class="slet-kunde">
+                <form th:action="@{/sletKunde}" method="post">
+                    <input type="hidden" name="telefonnummer" th:value="${kunde.telefonnummer}">
+                    <button type="submit" class="slet-kunde-knap">Slet kunde</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 
-<a th:href="@{/nyKunde}" class="tilføj-kunde">Tilføj ny kunde</a>
 
+<!-- Side navigation bar -->
+<div class="side-nav">
+    <!-- Logo -->
+    <div class="nav-logo">
+        <img src="/Billeder/BILABONNEMENT.png" alt="Logo">
+    </div>
 
-
-<div th:if="${registreret}" style="color: green;">
-    <p th:text="${registreret}"></p>
+    <!-- Navigation buttons -->
+    <a href="javascript:history.back()" class="nav-button">Tilbage</a>
+    <a th:href="@{/manage}" class="nav-button">Tilbage til menu</a>
+    <a th:href="@{/nyKunde}" class="nav-button1">Tilføj ny kunde</a>
+    <!-- Logout button -->
+    <a href="/logout" class="nav-button logout-button">Log ud</a>
 </div>
-<!-- Success message -->
-<div th:if="${registreret}" class="success-message">
-    <p th:text="${registreret}"></p>
 </div>
-
-<!-- Error message -->
-<div th:if="${error}" class="error-message">
-    <p th:text="${error}"></p>
-</div>
-
-<table class="kunde-table">
-    <thead>
-    <tr>
-        <th>Telefonnummer</th>
-        <th>Email</th>
-        <th>Fornavn</th>
-        <th>Efternavn</th>
-        <th>Adresse</th>
-        <th>Postnummer</th>
-        <th>By</th>
-        <th>Kørekortnummer</th>
-        <th>Udstedelsesdato</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="kunde: ${kunder}">
-        <td th:text="${kunde.telefonnummer}"></td>
-        <td th:text="${kunde.email}"></td>
-        <td th:text="${kunde.fornavn}"></td>
-        <td th:text="${kunde.efternavn}"></td>
-        <td th:text="${kunde.adresse}"></td>
-        <td th:text="${kunde.postnummer}"></td>
-        <td th:text="${kunde.byen}"></td>
-        <td th:text="${kunde.koerekortnummer}"></td>
-        <td th:text="${kunde.udstedelsdato}"></td>
-        <td class="slet-kunde">
-            <form th:action="@{/sletKunde}" method="post">
-                <input type="hidden" name="telefonnummer" th:value="${kunde.telefonnummer}">
-                <button type="submit" class="slet-kunde-knap">Slet kunde</button>
-            </form>
-        </td>
-
-    </tr>
-    </tbody>
-</table>
 
 </body>
 </html>

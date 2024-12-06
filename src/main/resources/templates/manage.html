@@ -9,6 +9,20 @@
 <body>
 <h1 class="manage-h1">Vælg</h1>
 
+<div class="side-nav">
+    <!-- Logo -->
+    <div class="nav-logo">
+        <img src="/Billeder/BILABONNEMENT.png" alt="Logo">
+    </div>
+
+    <!-- Navigation buttons -->
+    <a href="javascript:history.back()" class="nav-button">Tilbage</a>
+    <!-- <a href="/menu" class="nav-button">Tilbage til menu</a> -->
+
+    <!-- Logout button -->
+    <a href="/logout" class="nav-button logout-button">Log ud</a>
+</div>
+
 <div class="manage-options">
     <a th:href="@{/manageKunder}" class="manage-kunde-knap">
         <img src="/Billeder/Kundebillede.webp" alt="Kunder">

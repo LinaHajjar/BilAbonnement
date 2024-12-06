@@ -2,9 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="MyCSS.css">
     <title>Samlet Indtægter</title>
 </head>
 <body>
+<h1 class="samlet-Indtægt-overskrift">Dette er samlet indtægt siden</h1>
+
+<!-- Side navigation bar -->
+<div class="side-nav">
+    <!-- Logo -->
+    <div class="nav-logo">
+        <img src="/Billeder/BILABONNEMENT.png" alt="Logo">
+    </div>
+
+    <!-- Navigation buttons -->
+    <a href="javascript:history.back()" class="nav-button">Tilbage</a>
+    <a th:href="@{/forretningsUdvikler}" class="nav-button">Tilbage til menu</a>
+
+    <!-- Logout button -->
+    <a href="/logout" class="nav-button logout-button">Log ud</a>
+</div>
 
 </body>
 </html>

@@ -7,9 +7,22 @@
     <link rel="stylesheet" type="text/css" href="/manageBilerCSS.css">
 </head>
 <body>
-<div class="back-button-container">
-    <a th:href="@{/backToManage}" class="back-button">← Tilbage til start</a>
+<!-- Side navigation bar -->
+<div class="side-nav">
+    <!-- Logo -->
+    <div class="nav-logo">
+        <img src="/Billeder/BILABONNEMENT.png" alt="Logo">
+    </div>
+
+    <!-- Navigation buttons -->
+    <a href="javascript:history.back()" class="nav-button">Tilbage</a>
+    <a th:href="@{/manage}" class="nav-button">Tilbage til menu</a>
+
+    <!-- Logout button -->
+    <a href="/logout" class="nav-button logout-button">Log ud</a>
 </div>
+
+<!-- overskrift h1 -->
 <h1 class="bil-h1">Alle biler</h1>
 <table class="bil-table">
     <thead>
