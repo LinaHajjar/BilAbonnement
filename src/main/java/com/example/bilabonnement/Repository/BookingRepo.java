@@ -24,7 +24,7 @@ public class BookingRepo {
 
 
 
-
+//ikke brugt
     public List<Bil> getTilgaengeligBiler(Date startdato, Date slutdato) {
         String sql = "SELECT b.* FROM Bil b LEFT JOIN lejekontrakt lk ON b.car_id = lk.car_id WHERE(lejekontrakt.startdato IS NULL  AND lejekontrakt.enddato = ?)";
         RowMapper<Bil> rowmapper = new BeanPropertyRowMapper<>(Bil.class);
@@ -42,7 +42,7 @@ public class BookingRepo {
         return template.query(sql, rowMapper, sqlStartdato, sqlSlutdato);
     }
 
-
+// ikke brugt
     public List<Bil> carAvailabilityPeriod(Date startdato, Date slutdato) {
         String sql = "SELECT b.* FROM Bil b LEFT JOIN lejekontrakt lk ON b.car_id = lk.car_id WHERE" +
                 "lk.startdato IS NULL OR lk.enddato<? OR lk.startdato> ?";

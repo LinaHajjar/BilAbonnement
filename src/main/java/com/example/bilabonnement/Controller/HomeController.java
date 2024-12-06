@@ -61,7 +61,6 @@ public class HomeController {
         return "homeKontrakt/nyKontrakt";
     }
 
-
     @PostMapping("/nyKontrakter")
     public String visLejeKontraktForm(@RequestParam("telefonnummer") String telefonnummer,
                                             @RequestParam("nummerplade") String nummerplade,
@@ -82,12 +81,10 @@ public class HomeController {
         return "redirect:/manageKontrakter";
     }
 
-
     @GetMapping("/nummerplade")
     public String nummerplade(Model model) throws SQLException {
         return "homeKontrakt/nyKontrakt";
     }
-
 
     // oprettelse af getmapping metode for at vise alle lejekontrakter
     @GetMapping("/manageKunder")
@@ -95,7 +92,6 @@ public class HomeController {
         model.addAttribute("kunder", kundeService.getAllKunde());
         return "homeKunde/manageKunder";
     }
-
 
     @GetMapping("/manageSkade")
     public String allSkader(Model model) throws SQLException{
@@ -107,11 +103,6 @@ public class HomeController {
     public String showSkaderForm() {
         return "homeSkade/nySkade";
     }
-
-
-
-
-
 
     @PostMapping("/nySkade")
     public String visSkaderForm(@RequestParam("lejekontrakt_id") int lejekontrakt_id, @RequestParam("skade_type")  String skade_type,@RequestParam("beskrivelse") String beskrivelse, @RequestParam("pris") int pris, Model model) throws SQLException {
@@ -277,8 +268,6 @@ public class HomeController {
                 } else {
                     return "index";
                 }
-
-
             }
         }
         return "index";
