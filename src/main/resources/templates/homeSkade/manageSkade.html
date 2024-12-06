@@ -37,7 +37,7 @@
   <tbody>
   <tr th:each="skade : ${Skader}">
     <td th:text="${skade.lejekontrakt_id}"></td>
-    <td th:text="${skade.skade_type.name()}"></td> <!-- Convert enum to string -->
+    <td th:text="${skade.skade_type}"></td> <!-- Convert enum to string -->
     <td th:text="${skade.beskrivelse}"></td>
     <td th:text="${skade.pris}"></td>
   </tr>

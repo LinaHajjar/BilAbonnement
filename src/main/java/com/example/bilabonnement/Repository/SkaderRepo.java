@@ -25,7 +25,7 @@ public class SkaderRepo {
 
     public void addSkader(Skader skader){
         String sql= "INSERT INTO skader (lejekontrakt_id, skade_type, beskrivelse, pris)" + "VALUES(?,?,?,?)";
-        template.update(sql, skader.getLejekontrakt_id(), skader.getSkade_type().name(), skader.getBeskrivelse(), skader.getPris());
+        template.update(sql, skader.getLejekontrakt_id(), skader.getSkade_type(), skader.getBeskrivelse(), skader.getPris());
     }
 
 
