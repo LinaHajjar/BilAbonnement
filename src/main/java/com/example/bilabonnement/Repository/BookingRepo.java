@@ -26,16 +26,14 @@ public class BookingRepo {
 
 
     public List<Bil> getTilgaengeligBiler(Date startdato, Date slutdato) {
-
         String sql = "SELECT b.* FROM Bil b LEFT JOIN lejekontrakt lk ON b.car_id = lk.car_id WHERE(lejekontrakt.startdato IS NULL  AND lejekontrakt.enddato = ?)";
         RowMapper<Bil> rowmapper = new BeanPropertyRowMapper<>(Bil.class);
         return template.query(sql, rowmapper);
-
     }
 
 
     public List<LejeKontrakt> seBiler(LocalDate startdato, LocalDate slutdato) {
-        String sql = "SELECT nummerplade, startdato, slutdato  FROM lejekontrakt lk WHERE startdato <= ? AND slutdato >=? ORDER BY nummerplade, startdato";
+        String sql = "SELECT nummerplade, startdato, slutdato  FROM lejekontrakt lk WHERE startdato >= ? AND slutdato <=? ORDER BY nummerplade, startdato";
         RowMapper<LejeKontrakt> rowMapper = new BeanPropertyRowMapper<>(LejeKontrakt.class);
 
         java.sql.Date sqlStartdato = java.sql.Date.valueOf(startdato);
