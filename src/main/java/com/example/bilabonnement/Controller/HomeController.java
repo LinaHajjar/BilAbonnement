@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
@@ -253,7 +252,6 @@ public class HomeController {
 
     @PostMapping("/loginInfo")
     public String loginInfo(@RequestParam("brugernavn") String brugernavn, @RequestParam("kode") String kode, Model model) throws SQLException {
-
         List<Bruger> brugerList = brugerService.getAllUsers();
 
         for (Bruger bruger : brugerList) {
@@ -278,7 +276,6 @@ public class HomeController {
 
     @GetMapping("/logUd")
     public String logUd(){
-
      return "index";
     }
 
