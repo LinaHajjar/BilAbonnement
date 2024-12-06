@@ -114,6 +114,9 @@ public class HomeController {
 
 
 
+
+
+
     @PostMapping("/nySkade")
     public String visSkaderForm(@RequestParam("lejekontrakt_id") int lejekontrakt_id, @RequestParam("skade_type")  String skade_type,@RequestParam("beskrivelse") String beskrivelse, @RequestParam("pris") int pris, Model model) throws SQLException {
 

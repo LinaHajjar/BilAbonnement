@@ -6,24 +6,29 @@
     <title>Ny skade rapport</title>
 </head>
 <body>
-<h1 class="ny-skade-h1">Indtast informationer for skad</h1>
+<h1 class="ny-skade-h1">Indtast informationer for skade</h1>
 
-<form th:action="@{/tilføjSkade}" method="post">
+<form th:action="@{/nySkade}" method="post">
 
-    <input type="number" name="Lejekontrakt id" placeholder="lejekontrakt_id">
+    <input type="number" name="lejekontrakt_id" placeholder="Lejekontrakt ID" required>
 
-
-<!--    <label> for= "skad_type"< Vælg skadetype: </label>-->
-    <select name="skade type" id="skade_type" required>
-        <option value="">-- Vælge en option--</option>
-        <option value="SKADE"> SKADE </option>
+    <label for="skade_type">Vælg skadetype:</label>
+    <select name="skade_type" id="skade_type" required>
+        <option value="">-- Vælg en option --</option>
+        <option value="SKADE">SKADE</option>
         <option value="MANGEL">MANGEL</option>
         <option value="FEJL">FEJL</option>
     </select>
-    <input type="text" name="Beskrivelse" placeholder="beskrivelse" required>
+
+
+    <input type="text" name="beskrivelse" placeholder="Beskrivelse" required>
     <label>Indtast skade beskrivelse</label>
-    <input type="number" name="Pris" placeholder="pris" required>
-    <button type="submit" class="tilføj-skadRapport-knap">Tilføj ny skad</button>
+
+
+    <input type="number" name="pris" placeholder="Pris" required>
+
+    <button type="submit" class="tilføj-skadRapport-knap">Tilføj ny skade</button>
 </form>
 </body>
 </html>
+
