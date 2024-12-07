@@ -38,4 +38,12 @@ public class BilRepo {
     public int getAntalLejedeBiler (LocalDate fraDato, LocalDate tilDato) throws SQLException {
         return 3; //mysql querry skal skrives
     }
+
+    public double getSamletIndtægt(LocalDate fraDato, LocalDate tilDato) throws SQLException {
+        return 1497.32; //mysql querry skal skrives
+    }
+
+    public String getTopLejedeModeller(LocalDate fraDato, LocalDate tilDato) throws SQLException {
+        return "Toyota";//mysql querry skal skrives
+    }
 }

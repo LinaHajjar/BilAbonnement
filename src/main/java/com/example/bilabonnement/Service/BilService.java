@@ -30,4 +30,11 @@ public class BilService {
         return bilRepo.getAntalLejedeBiler(fraDato, tilDato);
     }
 
+    public double getSamletIndtægt(LocalDate fraDato, LocalDate tilDato) throws SQLException {
+        return bilRepo.getSamletIndtægt(fraDato, tilDato);
+    }
+
+    public String getTopLejedeModeller(LocalDate fraDato, LocalDate tilDato) throws SQLException {
+        return bilRepo.getTopLejedeModeller(fraDato, tilDato);
+    }
 }

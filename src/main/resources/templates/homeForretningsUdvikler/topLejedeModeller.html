@@ -23,6 +23,23 @@
     <a th:href="@{/index}" class="nav-button logout-button">Log ud</a>
 </div>
 
+<div class="manage-options">
+
+    <form action="/topLejedeModeller" method="post">
+        <label for="fraDato">Fra Dato: </label>
+        <input type="date" id="fraDato" name="fraDato">
+        <br>
+        <label for="tilDato">Til Dato: </label>
+        <input type="date" id="tilDato" name="tilDato">
+        <br>
+        <button type="submit">Vis den top model bil</button>
+        <br>
+
+        <div>
+            <strong th:text="${modelBil}"></strong>
+        </div>
+    </form>
+</div>
 
 </body>
 </html>

@@ -310,11 +310,28 @@ public class HomeController {
     public String samletIndtægt(Model model) {
         return "homeForretningsUdvikler/samletIndtægt";
     }
+
+    @PostMapping("/samletIndtægt")
+    public String samletIndtægt(@RequestParam("fraDato")LocalDate fraDato,@RequestParam("tilDato")LocalDate tilDato,  Model model)throws SQLException{
+        double samletIndtægt = bilService.getSamletIndtægt(fraDato,tilDato); //method getSamletIndtægter skal laves i repo og service
+        model.addAttribute("samletIndtægt", samletIndtægt);
+        model.addAttribute("fraDato", fraDato);
+        model.addAttribute("tilDato", tilDato);
+        return "homeForretningsUdvikler/samletIndtægt";
+    }
     @GetMapping("/topLejedeModeller")
     public String topLejedeModeller(Model model) {
         return "homeForretningsUdvikler/topLejedeModeller";
     }
 
+    @PostMapping("/topLejedeModeller")
+    public String topLejedeModeller(@RequestParam("fraDato")LocalDate fraDato,@RequestParam("tilDato")LocalDate tilDato,  Model model)throws SQLException {
+        String modelBil= bilService.getTopLejedeModeller(fraDato,tilDato); //method getTopLejedeModeller skal laves i repo og service
+        model.addAttribute("modelBil", modelBil);
+        model.addAttribute("fraDato", fraDato);
+        model.addAttribute("tilDato", tilDato);
+        return "homeForretningsUdvikler/topLejedeModeller";
+    }
 
 
 }
