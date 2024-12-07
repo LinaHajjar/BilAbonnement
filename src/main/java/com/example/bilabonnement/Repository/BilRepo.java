@@ -36,6 +36,6 @@ public class BilRepo {
     }
 
     public int getAntalLejedeBiler (LocalDate fraDato, LocalDate tilDato) throws SQLException {
-        return 0; //mysql querry skal skrives
+        return 3; //mysql querry skal skrives
     }
 }

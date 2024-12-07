@@ -303,7 +303,7 @@ public class HomeController {
         model.addAttribute("lejedeBiler", lejedeBiler);
         model.addAttribute("fraDato", fraDato);
         model.addAttribute("tilDato", tilDato);
-        return "lejedeBiler";
+        return "homeForretningsUdvikler/antalLejedeBiler";
     }
 
     @GetMapping("/samletIndtægt")

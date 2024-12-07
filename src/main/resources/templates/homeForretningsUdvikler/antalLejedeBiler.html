@@ -22,27 +22,23 @@
         <a href="/logout" class="nav-button logout-button">Log ud</a>
     </div>
 
-    <div class="manage-options">
+<div class="manage-options">
 
-        <form action="/antalLejedeBiler" method="post">
-            <label for="fraDato">Fra Dato: </label>
-            <input type="date" id="fraDato" name="fraDato">
-            <br>
-            <label for="tilDato">Til Dato: </label>
-            <input type="date" id="tilDato" name="tilDato">
-            <br>
-            <button type="submit">Vis Antallet</button>
-            <br>
+    <form action="/antalLejedeBiler" method="post">
+        <label for="fraDato">Fra Dato: </label>
+        <input type="date" id="fraDato" name="fraDato">
+        <br>
+        <label for="tilDato">Til Dato: </label>
+        <input type="date" id="tilDato" name="tilDato">
+        <br>
+        <button type="submit">Vis Antallet</button>
+        <br>
 
         <div>
-            <p>
-                Antallet af lejede biler mellem <span th:text="${fraDato}"></span> og <span th:text="${tilDato}"></span>
-                er:
-                <strong th:text="${lejedeBiler}"></strong>
-            </p>
+            <strong th:text="${lejedeBiler}"></strong>
         </div>
-        </form>
-    </div>
+    </form>
+</div>
 
 </body>
 </html>
