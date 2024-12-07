@@ -287,9 +287,26 @@ public class HomeController {
 
     @PostMapping("/kundensKontrakter")
     public String kundensKontrakter(@RequestParam("telefonnummer") String telefonnummer, Model model, RedirectAttributes redirectAttributes) throws SQLException {
-        model.addAttribute("kontrakter", lejeKontraktService.findKontraktByTelefon(telefonnummer)); // finder alle lejekontrakter ud fra en kundes telefon nummer
-        return "homeKontrakt/kundensKontrakter"; // returnerer en ny page hvor den kundes lejekontrakter bliver displayed
+
+     List<LejeKontrakt> kontrakter = lejeKontraktService.findKontraktByTelefon(telefonnummer);
+
+     if (kontrakter == null || kontrakter.isEmpty()){
+
+         redirectAttributes.addFlashAttribute("ingenKontrakt", "der ikke tilknyttet nogle kontrakter til denne kunde, eller er kunden ikke oprettet");
+         return "redirect:/manageKontrakter";
+     } else {
+         model.addAttribute("kontrakter", kontrakter);
+         return "homeKontrakt/kundensKontrakter";
+     }
+
     }
+
+    @GetMapping("/alleKontrakter")
+    public String alleKontrakter(){
+
+        return "redirect:/manageKontrakter";
+    }
+
 
     @GetMapping("/antalLejedeBiler")
     public String antalLejedeBiler(Model model) {

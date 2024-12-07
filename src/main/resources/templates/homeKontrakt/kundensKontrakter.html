@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Kundens Kontrakter</title>
 </head>
 <body>
 
-<table>
+<div class="back-button-container">
+    <a th:href="@{/alleKontrakter}" class="back-button">← Tilbage til alle kontrakter</a>
+</div>
+
+<table class="lejekontrakt-table">
     <thead>
     <tr>
         <th>Lejekontrakt_id</th>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="/kontrakterCSS.css">
@@ -12,6 +12,9 @@
     <a th:href="@{/backToManage}" class="back-button">← Tilbage til start</a>
 </div>
 
+<div th:if="${ingenKontrakt}" class="error-message">
+    <p th:text="${ingenKontrakt}"></p>
+</div>
 
 <a th:href="@{/nyKontrakt}" class="ny-lejekontrakt-knap">Tilføj ny lejekontrakt</a>
 
