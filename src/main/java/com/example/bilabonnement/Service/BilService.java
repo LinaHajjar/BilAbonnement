@@ -26,8 +26,8 @@ public class BilService {
     }
 
 
-    public int getTotalLejedeBiler (LocalDate fraDato, LocalDate tilDato) throws SQLException {
-        return bilRepo.getTotalLejedeBiler(fraDato, tilDato);
+    public int getAntalLejedeBiler (LocalDate fraDato, LocalDate tilDato) throws SQLException {
+        return bilRepo.getAntalLejedeBiler(fraDato, tilDato);
     }
 
 }

@@ -22,27 +22,28 @@
         <a href="/logout" class="nav-button logout-button">Log ud</a>
     </div>
 
-    <form action="/totalLejedeBiler" method="GET">
-        <label for="fraDato">Fra Dato: </label>
-        <input type="date" id="fraDato" name="fraDato">
-        <br>
-        <label for="tilDato">Til Dato: </label>
-        <input type="date" id="tilDato" name="tilDato">
-        <br>
-        <button type="submit">Vis Antallet</button>
-    </form>
+    <div class="manage-options">
 
+        <form action="/antalLejedeBiler" method="post">
+            <label for="fraDato">Fra Dato: </label>
+            <input type="date" id="fraDato" name="fraDato">
+            <br>
+            <label for="tilDato">Til Dato: </label>
+            <input type="date" id="tilDato" name="tilDato">
+            <br>
+            <button type="submit">Vis Antallet</button>
+            <br>
 
-    <!-- Placeholder der viser antallet af lejede biler i løbet af den indtastede periode -->
-    <div>
-        <h2>Resultat:</h2>
-        <p>
-            mellem <span th:text="${fraDato}"></span> og <span th:text="${tilDato}"></span>
-            er der lejet:
-            <strong th:text="${lejedeBiler}"></strong>
-        </p>
+        <div>
+            <p>
+                Antallet af lejede biller mellem <span th:text="${fraDato}"></span> og <span th:text="${tilDato}"></span>
+                er:
+                <strong th:text="${lejedeBiler}"></strong>
+                biler.
+            </p>
+        </div>
+        </form>
     </div>
-
 
 </body>
 </html>

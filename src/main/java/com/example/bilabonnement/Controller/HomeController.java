@@ -296,6 +296,16 @@ public class HomeController {
     public String antalLejedeBiler(Model model) {
         return "homeForretningsUdvikler/antalLejedeBiler";
     }
+
+    @PostMapping("/antalLejedeBiler")
+    public String antalLejedeBiler(@RequestParam("fraDato")LocalDate fraDato,@RequestParam("tilDato")LocalDate tilDato,  Model model) throws SQLException{
+        int lejedeBiler = bilService.getAntalLejedeBiler(fraDato,tilDato); //method getTotalLejedeBiler skal laves i repo og service
+        model.addAttribute("lejedeBiler", lejedeBiler);
+        model.addAttribute("fraDato", fraDato);
+        model.addAttribute("tilDato", tilDato);
+        return "lejedeBiler";
+    }
+
     @GetMapping("/samletIndtægt")
     public String samletIndtægt(Model model) {
         return "homeForretningsUdvikler/samletIndtægt";
@@ -305,14 +315,6 @@ public class HomeController {
         return "homeForretningsUdvikler/topLejedeModeller";
     }
 
-    @GetMapping("/totalLejedeBiler")
-    public String totalLejedeBiler(@RequestParam("fraDato")LocalDate fraDato,@RequestParam("tilDato")LocalDate tilDato,  Model model) throws SQLException{
-     int lejedeBiler = bilService.getTotalLejedeBiler(fraDato,tilDato); //method getTotalLejedeBiler skal laves i repo og service
-        model.addAttribute("totalLejedeBiler", lejedeBiler);
-        model.addAttribute("fraDato", fraDato);
-        model.addAttribute("tilDato", tilDato);
-        return "lejedeBiler";
 
-    }
 
 }

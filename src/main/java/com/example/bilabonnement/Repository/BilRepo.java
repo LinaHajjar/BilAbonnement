@@ -35,7 +35,7 @@ public class BilRepo {
         return template.queryForList(sql, String.class); // tager alle nummerplader og sætter det i en liste
     }
 
-    public int getTotalLejedeBiler (LocalDate fraDato, LocalDate tilDato) throws SQLException {
+    public int getAntalLejedeBiler (LocalDate fraDato, LocalDate tilDato) throws SQLException {
         return 0; //mysql querry skal skrives
     }
 }
