@@ -99,6 +99,12 @@ public class HomeController {
      return "homeSkade/manageSkade";
     }
 
+    @GetMapping("/manage")
+    public String manage(){
+
+     return "manage";
+    }
+
     @GetMapping("/nySkade")
     public String showSkaderForm() {
         return "homeSkade/nySkade";
@@ -230,10 +236,7 @@ public class HomeController {
     }
 
 
-    @GetMapping("/")
-    public String manage(){
-        return "index";
-    }
+
 
 
     @GetMapping("/backToManage")
@@ -293,6 +296,7 @@ public class HomeController {
      if (kontrakter == null || kontrakter.isEmpty()){
 
          redirectAttributes.addFlashAttribute("ingenKontrakt", "der ikke tilknyttet nogle kontrakter til denne kunde, eller er kunden ikke oprettet");
+         redirectAttributes.addFlashAttribute("nyKunde", true);
          return "redirect:/manageKontrakter";
      } else {
          model.addAttribute("kontrakter", kontrakter);

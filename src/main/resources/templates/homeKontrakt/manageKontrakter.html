@@ -14,6 +14,11 @@
 
 <div th:if="${ingenKontrakt}" class="error-message">
     <p th:text="${ingenKontrakt}"></p>
+
+    <div th:if="${nyKunde}">
+        <p>Vil du oprette en ny kunde?</p>
+        <a th:href="@{/nyKunde}">Tryk her</a>
+    </div>
 </div>
 
 <a th:href="@{/nyKontrakt}" class="ny-lejekontrakt-knap">Tilføj ny lejekontrakt</a>
