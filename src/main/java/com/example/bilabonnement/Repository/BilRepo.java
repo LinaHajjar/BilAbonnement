@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,8 +23,6 @@ public class BilRepo {
         return template.query(sql, rowMapper);
     }
 
-
-
     public Bil getBilByNummerplade(String nummerplade) throws SQLException {
         String sql = "select * from bil where nummerplade = ?";
         RowMapper<Bil> rowMapper=new BeanPropertyRowMapper<>(Bil.class);
@@ -34,5 +33,9 @@ public class BilRepo {
     public List<String> alleNummerplader(){
         String sql = "select nummerplade from bil";
         return template.queryForList(sql, String.class); // tager alle nummerplader og sætter det i en liste
+    }
+
+    public int getTotalLejedeBiler (LocalDate fraDato, LocalDate tilDato) throws SQLException {
+        return 0; //mysql querry skal skrives
     }
 }

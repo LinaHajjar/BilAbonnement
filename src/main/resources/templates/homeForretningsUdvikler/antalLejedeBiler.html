@@ -6,23 +6,42 @@
     <title>Antal lejede biler</title>
 </head>
 <body>
-<h1 class="overskrift-lejedeBiler">Dette er antal lejede biler siden</h1>
-<!-- Side navigation bar -->
-<div class="side-nav">
-    <!-- Logo -->
-    <div class="nav-logo">
-        <img src="/Billeder/BILABONNEMENT.png" alt="Logo">
+    <h1 class="overskrift-lejedeBiler">Antal lejede biler i en periode</h1>
+    <!-- Side navigation bar -->
+    <div class="side-nav">
+        <!-- Logo -->
+        <div class="nav-logo">
+            <img src="/Billeder/BILABONNEMENT.png" alt="Logo">
+        </div>
+
+        <!-- Navigation buttons -->
+        <a href="javascript:history.back()" class="nav-button">Tilbage</a>
+        <a th:href="@{/forretningsUdvikler}" class="nav-button">Tilbage til menu</a>
+
+        <!-- Logout button -->
+        <a href="/logout" class="nav-button logout-button">Log ud</a>
     </div>
 
-    <!-- Navigation buttons -->
-    <a href="javascript:history.back()" class="nav-button">Tilbage</a>
-    <a th:href="@{/forretningsUdvikler}" class="nav-button">Tilbage til menu</a>
+    <form action="/totalLejedeBiler" method="GET">
+        <label for="fraDato">Fra Dato: </label>
+        <input type="date" id="fraDato" name="fraDato">
+        <br>
+        <label for="tilDato">Til Dato: </label>
+        <input type="date" id="tilDato" name="tilDato">
+        <br>
+        <button type="submit">Vis Antallet</button>
+    </form>
 
 
-
-    <!-- Logout button -->
-    <a href="/logout" class="nav-button logout-button">Log ud</a>
-</div>
+    <!-- Placeholder der viser antallet af lejede biler i løbet af den indtastede periode -->
+    <div>
+        <h2>Resultat:</h2>
+        <p>
+            mellem <span th:text="${fraDato}"></span> og <span th:text="${tilDato}"></span>
+            er der lejet:
+            <strong th:text="${lejedeBiler}"></strong>
+        </p>
+    </div>
 
 
 </body>
