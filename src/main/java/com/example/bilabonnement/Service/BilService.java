@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,5 +26,15 @@ public class BilService {
     }
 
 
+    public int getAntalLejedeBiler (LocalDate fraDato, LocalDate tilDato) throws SQLException {
+        return bilRepo.getAntalLejedeBiler(fraDato, tilDato);
+    }
 
+    public double getSamletIndtægt(LocalDate fraDato, LocalDate tilDato) throws SQLException {
+        return bilRepo.getSamletIndtægt(fraDato, tilDato);
+    }
+
+    public String getTopLejedeModeller(LocalDate fraDato, LocalDate tilDato) throws SQLException {
+        return bilRepo.getTopLejedeModeller(fraDato, tilDato);
+    }
 }

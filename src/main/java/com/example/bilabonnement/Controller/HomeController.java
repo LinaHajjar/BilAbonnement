@@ -18,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -316,12 +317,42 @@ public class HomeController {
     public String antalLejedeBiler(Model model) {
         return "homeForretningsUdvikler/antalLejedeBiler";
     }
+
+    @PostMapping("/antalLejedeBiler")
+    public String antalLejedeBiler(@RequestParam("fraDato")LocalDate fraDato,@RequestParam("tilDato")LocalDate tilDato,  Model model) throws SQLException{
+        int lejedeBiler = bilService.getAntalLejedeBiler(fraDato,tilDato); //method getTotalLejedeBiler skal laves i repo og service
+        model.addAttribute("lejedeBiler", lejedeBiler);
+        model.addAttribute("fraDato", fraDato);
+        model.addAttribute("tilDato", tilDato);
+        return "homeForretningsUdvikler/antalLejedeBiler";
+    }
+
     @GetMapping("/samletIndtægt")
     public String samletIndtægt(Model model) {
+        return "homeForretningsUdvikler/samletIndtægt";
+    }
+
+    @PostMapping("/samletIndtægt")
+    public String samletIndtægt(@RequestParam("fraDato")LocalDate fraDato,@RequestParam("tilDato")LocalDate tilDato,  Model model)throws SQLException{
+        double samletIndtægt = bilService.getSamletIndtægt(fraDato,tilDato); //method getSamletIndtægter skal laves i repo og service
+        model.addAttribute("samletIndtægt", samletIndtægt);
+        model.addAttribute("fraDato", fraDato);
+        model.addAttribute("tilDato", tilDato);
         return "homeForretningsUdvikler/samletIndtægt";
     }
     @GetMapping("/topLejedeModeller")
     public String topLejedeModeller(Model model) {
         return "homeForretningsUdvikler/topLejedeModeller";
     }
+
+    @PostMapping("/topLejedeModeller")
+    public String topLejedeModeller(@RequestParam("fraDato")LocalDate fraDato,@RequestParam("tilDato")LocalDate tilDato,  Model model)throws SQLException {
+        String modelBil= bilService.getTopLejedeModeller(fraDato,tilDato); //method getTopLejedeModeller skal laves i repo og service
+        model.addAttribute("modelBil", modelBil);
+        model.addAttribute("fraDato", fraDato);
+        model.addAttribute("tilDato", tilDato);
+        return "homeForretningsUdvikler/topLejedeModeller";
+    }
+
+
 }
