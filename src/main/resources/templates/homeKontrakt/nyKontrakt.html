@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/kundeCSS.css">
     <link rel="stylesheet" type="text/css" href="/kontrakterCSS.css">
     <title>Ny lejekontrakt</title>
 </head>
 <body>
 <div class="back-button-container">
-    <a th:href="@{/backToKontrakt}" class="back-button">← Tilbage til lejekontrakter</a>
+
 </div>
 
-<a th:href="@{/manageKontrakter}" class="back-to-alle-leje-konktrakter-knap">Tilbage til alle leje kontrakter</a>
 
 <h1 class="ny-lejekontrakt-h1">Indtast informationer for lejekontrakt</h1>
 
@@ -31,5 +31,21 @@
     <input type="number" name="pris" placeholder="Pris" required>
     <button type="submit" class="tilføj-lejekontrakt-knap">Tilføj lejekontrakt</button>
 </form>
+
+<div class="side-nav">
+    <!-- Logo -->
+    <div class="nav-logo">
+        <img src="/Billeder/BILABONNEMENT.png" alt="Logo">
+    </div>
+
+    <!-- Navigation buttons -->
+
+    <a th:href="@{/backToKontrakt}" class="nav-button">← Tilbage til lejekontrakter</a>
+    <!-- Logout button -->
+    <a th:href="@{/logUd}" class="nav-button logout-button">Log ud</a>
+</div>
+
+
+
 </body>
 </html>

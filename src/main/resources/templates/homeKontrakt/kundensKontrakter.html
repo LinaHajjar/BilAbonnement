@@ -2,14 +2,11 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/kundeCSS.css">
     <link rel="stylesheet" type="text/css" href="/kontrakterCSS.css">
     <title>Kundens Kontrakter</title>
 </head>
 <body>
-
-<div class="back-button-container">
-    <a th:href="@{/alleKontrakter}" class="back-button">← Tilbage til alle kontrakter</a>
-</div>
 
 <table class="lejekontrakt-table">
     <thead>
@@ -35,6 +32,19 @@
     </tr>
     </tbody>
 </table>
+
+<div class="side-nav">
+    <!-- Logo -->
+    <div class="nav-logo">
+        <img src="/Billeder/BILABONNEMENT.png" alt="Logo">
+    </div>
+
+    <!-- Navigation buttons -->
+
+    <a th:href="@{/alleKontrakter}" class="nav-button">← Tilbage til alle kontrakter</a>
+    <!-- Logout button -->
+    <a th:href="@{/logUd}" class="nav-button logout-button">Log ud</a>
+</div>
 
 
 </body>
