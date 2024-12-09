@@ -342,13 +342,17 @@ public class HomeController {
         return "homeForretningsUdvikler/samletIndtægt";
     }
 
-
+    @GetMapping("/topLejedeModeller")
+    public String topLejedeModeller(){
+        return "homeForretningsUdvikler/topLejedeModeller";
+    }
 
     @PostMapping("/topLejedeModeller")
     public String topLejedeModeller(@RequestParam("fraDato") LocalDate fraDato,
                                     @RequestParam("tilDato")LocalDate tilDato,  Model model)throws SQLException {
 
         List<TopBil> topBil = bilService.getTopLejedeModeller(fraDato, tilDato);
+        System.out.println(topBil);
         model.addAttribute("topBil", topBil);
 
         return "homeForretningsUdvikler/topLejedeModeller";
