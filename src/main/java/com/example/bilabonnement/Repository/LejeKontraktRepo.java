@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository
@@ -70,5 +71,37 @@ public class LejeKontraktRepo {
         RowMapper<LejeKontrakt> rowMapper = new BeanPropertyRowMapper<LejeKontrakt>(LejeKontrakt.class);
         return template.query(sql, rowMapper, telefonnummer);
     }
+
+//
+//    public int getAntalBiler (LocalDate startdato, LocalDate slutdato) throws SQLException {
+//        String sql = "SELECT lk.nummerplade, bi.maerke, bi.model" +
+//                "FROM lejekontrak.lk JOIN bil bi ON bi.nummerplade = lk.nummerplade\n" +
+//                "WHERE lk.startdato >= ? AND lk.slutdato <= ?" +
+//                "ORDER BY lk.startdato DESC";
+//
+//        java.sql.Date sqlStartdato = java.sql.Date.valueOf(startdato);
+//        java.sql.Date sqlSlutdato = java.sql.Date.valueOf(slutdato);
+//
+//
+//
+//
+////        RowMapper<LejeKontrakt> rowMapper = new BeanPropertyRowMapper<>(LejeKontrakt.class);
+//        return template.queryForObject(sql,Integer.class, sqlStartdato, sqlSlutdato);
+//    }
+
+public int getAntalBiler(LocalDate startdato, LocalDate slutdato) throws SQLException {
+    String sql = "SELECT COUNT(*) FROM lejekontrakt WHERE startdato >= ? AND slutdato <= ?";
+
+    // Convert LocalDate to java.sql.Date
+    java.sql.Date sqlStartdato = java.sql.Date.valueOf(startdato);
+    java.sql.Date sqlSlutdato = java.sql.Date.valueOf(slutdato);
+
+    // Execute the query and return the count
+    return template.queryForObject(sql, Integer.class, sqlStartdato, sqlSlutdato);
+}
+
+
+
+
 
 }
