@@ -45,6 +45,14 @@ public class BilRepo {
     }
 
     public String getTopLejedeModeller(LocalDate fraDato, LocalDate tilDato) throws SQLException {
-        return "Toyota";//mysql querry skal skrives
+        String sql ="SELECT b.maerke, b.model, COUNT(l.nummerplade) AS antal\n" +
+                "        FROM bil b\n" +
+                "        JOIN lejekontrakt l ON b.nummerplade = l.nummerplade\n" +
+                "        WHERE l.startdato >= ? AND l.slutdato <= ?\n" +
+                "        GROUP BY b.maerke, b.model\n" +
+                "        ORDER BY antal DESC\n" +
+                "        LIMIT 1";
+
+        return template.queryForObject(sql, String.class, fraDato, tilDato);
     }
 }
