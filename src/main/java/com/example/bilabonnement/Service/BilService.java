@@ -18,7 +18,9 @@ public class BilService {
     BilRepo bilRepo; //objekt til rådighed
 
     public List<Bil> getAllBil() throws SQLException {
-        return bilRepo.getAllBil();
+        List<Bil> biler = bilRepo.getAllBil();
+        System.out.println(biler.get(0));
+        return biler;
     }
 
     public List<String> alleNummerplader(){
