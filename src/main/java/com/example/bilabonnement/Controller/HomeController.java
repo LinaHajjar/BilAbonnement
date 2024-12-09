@@ -355,4 +355,11 @@ public class HomeController {
     }
 
 
+    @GetMapping("/homeForretningsUdvikler")
+    public String homeForretningsUdvikler(){
+     return "homeForretningsUdvikler/forretningsUdvikler";
+    }
+
+
+
 }
