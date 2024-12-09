@@ -351,10 +351,11 @@ public class HomeController {
     public String topLejedeModeller(@RequestParam("fraDato") LocalDate fraDato,
                                     @RequestParam("tilDato")LocalDate tilDato,  Model model)throws SQLException {
 
-        List<TopBil> topBil = bilService.getTopLejedeModeller(fraDato, tilDato);
-        System.out.println(topBil);
-        model.addAttribute("topBil", topBil);
-
+        TopBil topLejedeModel = bilService.getTopLejedeModeller(fraDato, tilDato);
+        //System.out.println(topBil);
+        model.addAttribute("topLejedeModel", topLejedeModel);
+        model.addAttribute("fraDato", fraDato);
+        model.addAttribute("tilDato", tilDato);
         return "homeForretningsUdvikler/topLejedeModeller";
     }
 
@@ -403,18 +404,9 @@ public class HomeController {
         return "redirect:/manageSkade";
     }
 
-
-
     @PostMapping("/kundensSkader")
     public String kundensKontrakter(@RequestParam("lejekontrakt_id") int lejekontrakt_id, Model model, RedirectAttributes redirectAttributes) throws SQLException {
         model.addAttribute("Skader", skaderService.getSkaderById(lejekontrakt_id)); // finder alle skaderapporter ud fra en kundes lejekontrakt id
         return "homeSkade/kundensSkader"; // returnerer en ny page hvor den kundes skaderapporter bliver displayed
     }
-
-
-
-
-
-
-
 }

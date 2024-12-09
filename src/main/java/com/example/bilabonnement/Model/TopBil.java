@@ -2,9 +2,9 @@ package com.example.bilabonnement.Model;
 
 public class TopBil {
 
+    String maerke;
     String model;
-    String brand;
-    int antalLejetUd;
+    int antal;
 
     public TopBil(){
 
@@ -18,19 +18,27 @@ public class TopBil {
         this.model = model;
     }
 
-    public String getBrand() {
-        return brand;
+    public String getMaerke() {
+        return maerke;
     }
 
-    public void setBrand(String brand) {
-        this.brand = brand;
+    public void setMaerke(String brand) {
+        this.maerke = brand;
     }
 
-    public int getAntalLejetUd() {
-        return antalLejetUd;
+    public int getAntal() {
+        return antal;
     }
 
-    public void setAntalLejetUd(int antalLejetUd) {
-        this.antalLejetUd = antalLejetUd;
+    public void setAntal(int antalLejetUd) {
+        this.antal= antalLejetUd;
+    }
+
+    @Override
+    public String toString() {
+        return ("TopBil: " +
+                "brand=" + maerke +
+                ", model=" + model +
+                ", antalLejetUd=" + antal);
     }
 }

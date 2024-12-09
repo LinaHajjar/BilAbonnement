@@ -39,9 +39,8 @@ public class BilService {
         return bilRepo.getSamletIndtægt(fraDato, tilDato);
     }
 
-    public List<TopBil> getTopLejedeModeller(LocalDate fraDato, LocalDate tilDato) throws SQLException {
+    public TopBil getTopLejedeModeller(LocalDate fraDato, LocalDate tilDato) throws SQLException {
         return bilRepo.getTopLejedeModeller(fraDato, tilDato);
-
     }
 
 }

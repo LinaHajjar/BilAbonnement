@@ -45,7 +45,7 @@ public class BilRepo {
         return template.queryForObject(sql, Double.class, fraDato, tilDato);
     }
 
-    public List<TopBil> getTopLejedeModeller(LocalDate fraDato, LocalDate tilDato) throws SQLException {
+    public TopBil getTopLejedeModeller(LocalDate fraDato, LocalDate tilDato) throws SQLException {
         String sql ="SELECT b.maerke, b.model, COUNT(l.nummerplade) AS antal\n" +
                 "        FROM bil b\n" +
                 "        JOIN lejekontrakt l ON b.nummerplade = l.nummerplade\n" +
@@ -53,12 +53,10 @@ public class BilRepo {
                 "        GROUP BY b.maerke, b.model\n" +
                 "        ORDER BY antal DESC\n" +
                 "        LIMIT 1";
-
-        RowMapper<TopBil> rowMapper = new BeanPropertyRowMapper<TopBil>(TopBil.class);
-
-        return template.query(sql, rowMapper);
+        RowMapper <TopBil> rowMapper = new BeanPropertyRowMapper<>(TopBil.class);
+        TopBil topBil=template.queryForObject(sql, rowMapper, fraDato, tilDato);
+        return topBil;
 
     }
-
 
 }
