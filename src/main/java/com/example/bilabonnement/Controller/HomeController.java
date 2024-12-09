@@ -369,25 +369,15 @@ public class HomeController {
     /* ---------------------------- Skader ---------------------------------*/
 
 
-    @PostMapping("/kundensSkader")
-    public String kundensKontrakter(@RequestParam("lejekontrakt_id") int lejekontrakt_id, Model model, RedirectAttributes redirectAttributes) throws SQLException {
-        model.addAttribute("Skader", skaderService.getSkaderById(lejekontrakt_id)); // finder alle skaderapporter ud fra en kundes lejekontrakt id
-        return "homeSkade/kundensSkader"; // returnerer en ny page hvor den kundes skaderapporter bliver displayed
-    }
-
-
-
     @GetMapping("/backToSkader")
     public String backToSkader(){
         return "redirect:/manageSkade";
     }
 
 
-
-
     @GetMapping("/manageSkade")
     public String allSkader(Model model) throws SQLException{
-        model.addAttribute("Skader", skaderService.getAllSkader());
+        model.addAttribute("skader", skaderService.getAllSkader());
         return "homeSkade/manageSkade";
     }
 
@@ -414,6 +404,12 @@ public class HomeController {
     }
 
 
+
+    @PostMapping("/kundensSkader")
+    public String kundensKontrakter(@RequestParam("lejekontrakt_id") int lejekontrakt_id, Model model, RedirectAttributes redirectAttributes) throws SQLException {
+        model.addAttribute("Skader", skaderService.getSkaderById(lejekontrakt_id)); // finder alle skaderapporter ud fra en kundes lejekontrakt id
+        return "homeSkade/kundensSkader"; // returnerer en ny page hvor den kundes skaderapporter bliver displayed
+    }
 
 
 
