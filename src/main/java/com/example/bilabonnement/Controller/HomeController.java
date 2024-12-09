@@ -38,12 +38,147 @@ public class HomeController {
     private BookingService bookingService;
 
 
+    /* ---------------------------- Log in ---------------------------------*/
+
+    @GetMapping("/manage")
+    public String manage(){
+
+        return "manage";
+    }
+
+
+
+    @GetMapping("/backToManage")
+    public String backToManage() {return "manage";}
+
+
+
+
+
+    @PostMapping("/loginInfo")
+    public String loginInfo(@RequestParam("brugernavn") String brugernavn, @RequestParam("kode") String kode, Model model) throws SQLException {
+        List<Bruger> brugerList = brugerService.getAllUsers();
+
+        for (Bruger bruger : brugerList) {
+
+            if(bruger.getBrugernavn().equals(brugernavn) && bruger.getKode().equals(kode)) {
+
+                if (bruger.getAfdeling_id() == 1){
+                    return "manage";
+                } else if(bruger.getAfdeling_id() == 2){
+                    return "homeForretningsUdvikler/forretningsUdvikler";
+                } else if (bruger.getAfdeling_id() == 3){
+                    model.addAttribute("skader", skaderService.getAllSkader());
+                    return "homeSkade/manageSkade";
+                } else {
+                    return "index";
+                }
+            }
+        }
+        return "index";
+    }
+
+
+    @GetMapping("/logUd")
+    public String logUd(){
+        return "index";
+    }
+
+
+
+
+
+    /* ---------------------------- Kunder ---------------------------------*/
+
+
+    @GetMapping("/manageKunder")
+    public String allKunder(Model model) throws SQLException{
+        model.addAttribute("kunder", kundeService.getAllKunde());
+        return "homeKunde/manageKunder";
+    }
+
+    @PostMapping("/tilføjKunde")
+    public String visKundeForm(@RequestParam("telefonnummer") String telefonnummer,
+                               @RequestParam("email") String email,
+                               @RequestParam("fornavn") String fornavn,
+                               @RequestParam("efternavn") String efternavn,
+                               @RequestParam("adresse") String adresse,
+                               @RequestParam("postnummer") int postnummer,
+                               @RequestParam("byen") String byen,
+                               @RequestParam("koerekortnummer") String koerkortnummer,
+                               @RequestParam("udstedelsdato") LocalDate udstedelsdato,
+                               Model model, RedirectAttributes redirectAttributes) throws SQLException {
+
+        Kunde kunde = new Kunde(); // der oprettes et kunde object
+        kunde.setTelefonnummer(telefonnummer);
+        kunde.setEmail(email);
+        kunde.setFornavn(fornavn);
+        kunde.setEfternavn(efternavn);
+        kunde.setAdresse(adresse);
+        kunde.setPostnummer(postnummer);
+        kunde.setByen(byen);
+        kunde.setKoerekortnummer(koerkortnummer);
+        kunde.setUdstedelsdato(udstedelsdato);
+
+        if (kundeService.phoneNumberExists(telefonnummer) == false) { // der tjekkes først om kunden eksisterer ved at bruge telefonnummeret
+            kundeService.addKunde(kunde); // hvis kunden ikke eksisterer, oprettes kunden i tabellen
+            redirectAttributes.addFlashAttribute("registreret", "Kunde er blevet registreret");
+            return "redirect:/manageKunder";
+        } else {
+            redirectAttributes.addFlashAttribute("error", "Kunde eksisterer i forvejen");
+            return "redirect:/manageKunder";
+        }
+    }
+
+
+    @PostMapping("/sletKunde")
+    public String sletKunde(@RequestParam("telefonnummer") String telefonnummer) throws SQLException {
+        kundeService.sletKunde(telefonnummer);
+        return "redirect:/manageKunder";
+    }
+
+
+    @GetMapping("/backToCustomer")
+    public String backToCustomer(){
+
+        return "redirect:/manageKunder";
+    }
+
+
+    @GetMapping("/nyKunde")
+    public String nyKunde(){
+        return "homeKunde/nyKunde";
+    }
+
+
+    /* ---------------------------- Bil ---------------------------------*/
+
+
+
+
     //opretellse af getmapping metode for at vise alle biller
  @GetMapping("/manageBiler")
     public String allBiller(Model model) throws SQLException {
      model.addAttribute("biler", bilService.getAllBil()); // displayer alle biler ud fra metoden i bilservice
      return "homeBil/manageBiler";
  }
+
+    @PostMapping("/bilTilgaengelig")
+    public String checkAvailability(
+            @RequestParam("startdato") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startdato,
+            @RequestParam("slutdato") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate slutdato,
+            Model model
+    ) throws SQLException {
+        List<LejeKontrakt> availableCars = bookingService.seBiler(startdato, slutdato);
+        model.addAttribute("availableCars", availableCars);
+        return "ledigeBiler";
+
+    }
+
+
+    /* ---------------------------- Lejekontrakt ---------------------------------*/
+
+
 
  // oprettelse af getmapping metode for at vise alle lejekontrakter
  @GetMapping("/manageKontrakter")
@@ -87,113 +222,16 @@ public class HomeController {
         return "homeKontrakt/nyKontrakt";
     }
 
-    // oprettelse af getmapping metode for at vise alle lejekontrakter
-    @GetMapping("/manageKunder")
-    public String allKunder(Model model) throws SQLException{
-        model.addAttribute("kunder", kundeService.getAllKunde());
-        return "homeKunde/manageKunder";
-    }
-
-    @GetMapping("/manageSkade")
-    public String allSkader(Model model) throws SQLException{
-     model.addAttribute("Skader", skaderService.getAllSkader());
-     return "homeSkade/manageSkade";
-    }
-
-    @GetMapping("/manage")
-    public String manage(){
-
-     return "manage";
-    }
-
-    @GetMapping("/nySkade")
-    public String showSkaderForm() {
-        return "homeSkade/nySkade";
-    }
-
-    @PostMapping("/nySkade")
-    public String visSkaderForm(@RequestParam("lejekontrakt_id") int lejekontrakt_id, @RequestParam("skade_type")  String skade_type,@RequestParam("beskrivelse") String beskrivelse, @RequestParam("pris") int pris, Model model) throws SQLException {
-     //Converted the String received from the request parameter to the corresponding skade_type enum value
-     //Skader.skade_type skade_type = Skader.skade_type.valueOf(skadeTypeStr.toUpperCase()); //@RequestParam cannot directly handle the enum conversion by default
-
-        Skader skade = new Skader();
-        skade.setLejekontrakt_id(lejekontrakt_id);
-        skade.setSkade_type(skade_type);
-        skade.setBeskrivelse(beskrivelse);
-        skade.setPris(pris);
-
-        skaderService.addSkader(skade);
-
-        return "redirect:/manageSkade";
-    }
 
 
-    @GetMapping("/booking")
-    public String book(){
-     return "booking";
-    }
-
-
-    @PostMapping("/bilTilgaengelig")
-    public String checkAvailability(
-            @RequestParam("startdato") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startdato,
-            @RequestParam("slutdato") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate slutdato,
-            Model model
-    ) throws SQLException {
-        List<LejeKontrakt> availableCars = bookingService.seBiler(startdato, slutdato);
-     model.addAttribute("availableCars", availableCars);
-     return "ledigeBiler";
-
-    }
-
-    //oprettelse af postmaping metode for at sende input fra bruger omkring kunde info
-
-    @GetMapping("/nyKunde")
-    public String nyKunde(){
-     return "homeKunde/nyKunde";
-    }
-
-
-    @PostMapping("/tilføjKunde")
-    public String visKundeForm(@RequestParam("telefonnummer") String telefonnummer,
-                               @RequestParam("email") String email,
-                               @RequestParam("fornavn") String fornavn,
-                               @RequestParam("efternavn") String efternavn,
-                               @RequestParam("adresse") String adresse,
-                               @RequestParam("postnummer") int postnummer,
-                               @RequestParam("byen") String byen,
-                               @RequestParam("koerekortnummer") String koerkortnummer,
-                               @RequestParam("udstedelsdato") LocalDate udstedelsdato,
-                               Model model, RedirectAttributes redirectAttributes) throws SQLException {
-
-       Kunde kunde = new Kunde(); // der oprettes et kunde object
-       kunde.setTelefonnummer(telefonnummer);
-       kunde.setEmail(email);
-       kunde.setFornavn(fornavn);
-       kunde.setEfternavn(efternavn);
-       kunde.setAdresse(adresse);
-       kunde.setPostnummer(postnummer);
-       kunde.setByen(byen);
-       kunde.setKoerekortnummer(koerkortnummer);
-       kunde.setUdstedelsdato(udstedelsdato);
-
-        if (kundeService.phoneNumberExists(telefonnummer) == false) { // der tjekkes først om kunden eksisterer ved at bruge telefonnummeret
-            kundeService.addKunde(kunde); // hvis kunden ikke eksisterer, oprettes kunden i tabellen
-            redirectAttributes.addFlashAttribute("registreret", "Kunde er blevet registreret");
-            return "redirect:/manageKunder";
-        } else {
-            redirectAttributes.addFlashAttribute("error", "Kunde eksisterer i forvejen");
-            return "redirect:/manageKunder";
-        }
-    }
 
     @PostMapping("/tilføjKontrakt")
     public String tilføjKontrakt(@RequestParam("telefonnummer") String telefonnummer,
-                               @RequestParam("nummerplade") String nummerplade,
-                               @RequestParam("startdato") LocalDate startdato,
-                               @RequestParam("slutdato") LocalDate slutdato,
-                               @RequestParam("maxKm") int maxKm,
-                               @RequestParam("pris") int pris,
+                                 @RequestParam("nummerplade") String nummerplade,
+                                 @RequestParam("startdato") LocalDate startdato,
+                                 @RequestParam("slutdato") LocalDate slutdato,
+                                 @RequestParam("maxKm") int maxKm,
+                                 @RequestParam("pris") int pris,
                                  RedirectAttributes redirectAttributes) throws SQLException {
 
         try {
@@ -213,16 +251,10 @@ public class HomeController {
             redirectAttributes.addFlashAttribute("error",
                     "Systemet kunne ikke oprette kontrakten. Tjek om telefonnummeret og nummerpladen eksisterer"); // giver en message hvis lejekontrakt ikke bliver oprettet
 
-            // Redirect back to the form or a page of your choice
             return "redirect:/manageKontrakter";
         }
     }
 
-    @PostMapping("/sletKunde")
-    public String sletKunde(@RequestParam("telefonnummer") String telefonnummer) throws SQLException {
-        kundeService.sletKunde(telefonnummer);
-        return "redirect:/manageKunder";
-    }
 
     @PostMapping("/sletKontrakt")
     public String sletKontrakt(@RequestParam("lejekontrakt_id") int id) throws SQLException {
@@ -237,80 +269,52 @@ public class HomeController {
     }
 
 
-
-
-
-    @GetMapping("/backToManage")
-    public String backToManage() {return "manage";}
-
     @GetMapping("/backToKontrakt")
     public String backToKontrakt(Model model) {
-     return "redirect:/manageKontrakter";
- }
-
-    @GetMapping("/backToCustomer")
-    public String backToCustomer(){
-
-     return "redirect:/manageKunder";
-    }
-
-    @PostMapping("/loginInfo")
-    public String loginInfo(@RequestParam("brugernavn") String brugernavn, @RequestParam("kode") String kode, Model model) throws SQLException {
-        List<Bruger> brugerList = brugerService.getAllUsers();
-
-        for (Bruger bruger : brugerList) {
-
-            if(bruger.getBrugernavn().equals(brugernavn) && bruger.getKode().equals(kode)) {
-
-                if (bruger.getAfdeling_id() == 1){
-                    return "manage";
-                } else if(bruger.getAfdeling_id() == 2){
-                    return "homeForretningsUdvikler/forretningsUdvikler";
-                } else if (bruger.getAfdeling_id() == 3){
-                    model.addAttribute("skader", skaderService.getAllSkader());
-                    return "homeSkade/manageSkade";
-                } else {
-                    return "index";
-                }
-            }
-        }
-        return "index";
+        return "redirect:/manageKontrakter";
     }
 
 
-    @GetMapping("/logUd")
-    public String logUd(){
-     return "index";
-    }
-
-    @PostMapping("/kundensSkader")
-    public String kundensKontrakter(@RequestParam("lejekontrakt_id") int lejekontrakt_id, Model model, RedirectAttributes redirectAttributes) throws SQLException {
-        model.addAttribute("Skader", skaderService.getSkaderById(lejekontrakt_id)); // finder alle skaderapporter ud fra en kundes lejekontrakt id
-        return "homeSkade/kundensSkader"; // returnerer en ny page hvor den kundes skaderapporter bliver displayed
-    }
 
     @PostMapping("/kundensKontrakter")
     public String kundensKontrakter(@RequestParam("telefonnummer") String telefonnummer, Model model, RedirectAttributes redirectAttributes) throws SQLException {
 
-     List<LejeKontrakt> kontrakter = lejeKontraktService.findKontraktByTelefon(telefonnummer);
+        List<LejeKontrakt> kontrakter = lejeKontraktService.findKontraktByTelefon(telefonnummer);
 
-     if (kontrakter == null || kontrakter.isEmpty()){
+        if (kontrakter == null || kontrakter.isEmpty()){
 
-         redirectAttributes.addFlashAttribute("ingenKontrakt", "der ikke tilknyttet nogle kontrakter til denne kunde, eller er kunden ikke oprettet");
-         redirectAttributes.addFlashAttribute("nyKunde", true);
-         return "redirect:/manageKontrakter";
-     } else {
-         model.addAttribute("kontrakter", kontrakter);
-         return "homeKontrakt/kundensKontrakter";
-     }
+            redirectAttributes.addFlashAttribute("ingenKontrakt", "der ikke tilknyttet nogle kontrakter til denne kunde, eller er kunden ikke oprettet");
+            redirectAttributes.addFlashAttribute("nyKunde", true);
+            return "redirect:/manageKontrakter";
+        } else {
+            model.addAttribute("kontrakter", kontrakter);
+            return "homeKontrakt/kundensKontrakter";
+        }
 
     }
+
 
     @GetMapping("/alleKontrakter")
     public String alleKontrakter(){
 
         return "redirect:/manageKontrakter";
     }
+
+
+    /* ---------------------------- Booking ---------------------------------*/
+
+
+    @GetMapping("/booking")
+    public String book(){
+        return "booking";
+    }
+
+
+
+
+
+    /* ---------------------------- Forretningsudviklere ---------------------------------*/
+
 
 
     @GetMapping("/antalLejedeBiler")
@@ -357,8 +361,63 @@ public class HomeController {
 
     @GetMapping("/homeForretningsUdvikler")
     public String homeForretningsUdvikler(){
-     return "homeForretningsUdvikler/forretningsUdvikler";
+        return "homeForretningsUdvikler/forretningsUdvikler";
     }
+
+
+
+    /* ---------------------------- Skader ---------------------------------*/
+
+
+    @PostMapping("/kundensSkader")
+    public String kundensKontrakter(@RequestParam("lejekontrakt_id") int lejekontrakt_id, Model model, RedirectAttributes redirectAttributes) throws SQLException {
+        model.addAttribute("Skader", skaderService.getSkaderById(lejekontrakt_id)); // finder alle skaderapporter ud fra en kundes lejekontrakt id
+        return "homeSkade/kundensSkader"; // returnerer en ny page hvor den kundes skaderapporter bliver displayed
+    }
+
+
+
+    @GetMapping("/backToSkader")
+    public String backToSkader(){
+        return "redirect:/manageSkade";
+    }
+
+
+
+
+    @GetMapping("/manageSkade")
+    public String allSkader(Model model) throws SQLException{
+        model.addAttribute("Skader", skaderService.getAllSkader());
+        return "homeSkade/manageSkade";
+    }
+
+
+    @GetMapping("/nySkade")
+    public String showSkaderForm() {
+        return "homeSkade/nySkade";
+    }
+
+    @PostMapping("/nySkade")
+    public String visSkaderForm(@RequestParam("lejekontrakt_id") int lejekontrakt_id, @RequestParam("skade_type")  String skade_type,@RequestParam("beskrivelse") String beskrivelse, @RequestParam("pris") int pris, Model model) throws SQLException {
+        //Converted the String received from the request parameter to the corresponding skade_type enum value
+        //Skader.skade_type skade_type = Skader.skade_type.valueOf(skadeTypeStr.toUpperCase()); //@RequestParam cannot directly handle the enum conversion by default
+
+        Skader skade = new Skader();
+        skade.setLejekontrakt_id(lejekontrakt_id);
+        skade.setSkade_type(skade_type);
+        skade.setBeskrivelse(beskrivelse);
+        skade.setPris(pris);
+
+        skaderService.addSkader(skade);
+
+        return "redirect:/manageSkade";
+    }
+
+
+
+
+
+
 
 
 
