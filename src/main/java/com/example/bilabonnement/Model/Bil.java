@@ -70,4 +70,17 @@ public class Bil {
     public void setBraendstoftype(Braendstoftype braendstoftype) {
         this.braendstoftype = braendstoftype;
     }
+
+    @Override
+    public String toString() {
+        return "Bil{" +
+                "nummerplade='" + nummerplade + '\'' +
+                ", maerke='" + maerke + '\'' +
+                ", model='" + model + '\'' +
+                ", braendstoftype=" + braendstoftype +
+                ", odometer=" + odometer +
+                ", foersteregistrering=" + foersteregistrering +
+                ", co2udledning=" + co2udledning +
+                '}';
+    }
 }
