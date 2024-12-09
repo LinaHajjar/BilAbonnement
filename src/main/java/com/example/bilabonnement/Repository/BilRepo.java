@@ -40,7 +40,8 @@ public class BilRepo {
     }
 
     public double getSamletIndtægt(LocalDate fraDato, LocalDate tilDato) throws SQLException {
-        return 1497.32; //mysql querry skal skrives
+        String sql ="SELECT SUM(pris) FROM lejekontrakt WHERE (startdato > ? AND slutdato < ?)";
+        return template.queryForObject(sql, Double.class, fraDato, tilDato);
     }
 
     public String getTopLejedeModeller(LocalDate fraDato, LocalDate tilDato) throws SQLException {
