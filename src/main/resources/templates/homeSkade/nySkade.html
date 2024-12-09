@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
 
@@ -7,6 +7,22 @@
     <title>Ny skade rapport</title>
 </head>
 <body>
+
+<!-- Side navigation bar -->
+<div class="side-nav">
+    <!-- Logo -->
+    <div class="nav-logo">
+        <img src="/Billeder/BILABONNEMENT.png" alt="Logo">
+    </div>
+
+    <!-- Navigation buttons -->
+    <a th:href="@{/backToSkader}" class="nav-button">Tilbage til skader</a>
+
+    <!-- Logout button -->
+    <a th:href="@{/logUd}" class="nav-button logout-button">Log ud</a>
+</div>
+
+
 <h1 class="ny-skade-h1">Indtast informationer for skade</h1>
 
 <form th:action="@{/nySkade}" method="post">

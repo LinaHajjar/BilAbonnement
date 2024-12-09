@@ -34,7 +34,7 @@ html, body{
 
 /* Navigation button styling */
 .nav-button {
-    width: 100%;
+    width: 90%;
     padding: 15px 20px;
     text-align: center;
     font-size: 16px;
@@ -48,8 +48,29 @@ html, body{
 
 .nav-button:hover {
     background-color: #003f7f; /* Even darker blue on hover */
-    transform: scale(1.05); /* Slight zoom on hover */
+    transform: scale(1.1); /* Slight zoom on hover */
 }
+
+
+
+.nav-button1 {
+    width: 90%;
+    padding: 15px 20px;
+    text-align: center;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    text-decoration: none;
+    background-color: green; /* Darker blue for buttons */
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.nav-button1:hover {
+    background-color: darkgreen; /* Even darker blue on hover */
+    transform: scale(1.1); /* Slight zoom on hover */
+}
+
 
 /* Logout button slightly elevated */
 .logout-button {
@@ -57,7 +78,7 @@ html, body{
     margin-bottom: 40px; /* Elevate 40px from the absolute bottom */
     background-color: #dc3545; /* Red background for logout */
     padding: 15px 20px;
-    width: 100%;
+    width: 90%;
     text-align: center;
     font-size: 16px;
     color: white;
@@ -68,7 +89,7 @@ html, body{
 
 .logout-button:hover {
     background-color: #a71d2a; /* Darker red on hover */
-    transform: scale(1.05); /* Slight zoom on hover */
+    transform: scale(1.1); /* Slight zoom on hover */
 }
 
 /*---------------------------------------------A PAGE HERE------------------------------------------------------------*/
@@ -76,7 +97,7 @@ html, body{
     width: 100%;
     border-collapse: collapse; /* Ensures borders merge */
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin: 30px 0 30px auto;
     background-color: #f9f9f9; /* Light background for the table */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
 }
@@ -470,7 +491,7 @@ form label {
     width: 95%;
     max-width: 1200px;
     border-collapse: collapse;
-    margin: 30px auto;
+    margin: 30px 0 30px auto;
     background-color: #fff;
     border: 1px solid #ddd;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -629,13 +650,14 @@ form label {
     border-collapse: collapse;
     background-color: #fff;
     border: 1px solid #ddd;
+    margin: 10px auto;
 }
 
 .kunde-table th, .kunde-table td {
     padding: 10px; /* Reduceret padding for at spare plads */
     text-align: left;
     border: 1px solid #ddd;
-    font-size: 14px; /* Reduceret fontstørrelse for bedre tilpasning */
+    font-size: 14px;/* Reduceret fontstørrelse for bedre tilpasning */
 }
 
 .kunde-table th {

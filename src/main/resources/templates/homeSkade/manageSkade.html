@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="UTF-8">
 
@@ -12,10 +12,14 @@
 
 <div class="side-nav">
   <!-- Logo -->
+
+
   <div class="nav-logo">
     <img src="/Billeder/BILABONNEMENT.png" alt="Logo">
   </div>
 
+
+  <a th:href="@{/nySkade}" class="nav-button">Opret ny skade</a>
 
 
   <!-- Logout button -->
