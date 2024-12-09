@@ -3,8 +3,11 @@ package com.example.bilabonnement.Service;
 import com.example.bilabonnement.Model.Bil;
 import com.example.bilabonnement.Model.Kunde;
 import com.example.bilabonnement.Model.LejeKontrakt;
+import com.example.bilabonnement.Model.TopBil;
 import com.example.bilabonnement.Repository.BilRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
@@ -36,7 +39,9 @@ public class BilService {
         return bilRepo.getSamletIndtægt(fraDato, tilDato);
     }
 
-    public String getTopLejedeModeller(LocalDate fraDato, LocalDate tilDato) throws SQLException {
+    public List<TopBil> getTopLejedeModeller(LocalDate fraDato, LocalDate tilDato) throws SQLException {
         return bilRepo.getTopLejedeModeller(fraDato, tilDato);
+
     }
+
 }

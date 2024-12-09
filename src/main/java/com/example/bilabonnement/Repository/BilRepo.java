@@ -1,6 +1,7 @@
 package com.example.bilabonnement.Repository;
 
 import com.example.bilabonnement.Model.Bil;
+import com.example.bilabonnement.Model.TopBil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -44,7 +45,7 @@ public class BilRepo {
         return template.queryForObject(sql, Double.class, fraDato, tilDato);
     }
 
-    public String getTopLejedeModeller(LocalDate fraDato, LocalDate tilDato) throws SQLException {
+    public List<TopBil> getTopLejedeModeller(LocalDate fraDato, LocalDate tilDato) throws SQLException {
         String sql ="SELECT b.maerke, b.model, COUNT(l.nummerplade) AS antal\n" +
                 "        FROM bil b\n" +
                 "        JOIN lejekontrakt l ON b.nummerplade = l.nummerplade\n" +
@@ -53,6 +54,11 @@ public class BilRepo {
                 "        ORDER BY antal DESC\n" +
                 "        LIMIT 1";
 
-        return template.queryForObject(sql, String.class, fraDato, tilDato);
+        RowMapper<TopBil> rowMapper = new BeanPropertyRowMapper<TopBil>(TopBil.class);
+
+        return template.query(sql, rowMapper);
+
     }
+
+
 }
