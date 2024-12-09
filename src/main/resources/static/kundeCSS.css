@@ -40,7 +40,7 @@ body {
 
 /* Navigation button styling */
 .nav-button {
-    width: 100%;
+    width: 90%;
     padding: 15px 20px;
     text-align: center;
     font-size: 16px;
@@ -54,11 +54,11 @@ body {
 
 .nav-button:hover {
     background-color: #003f7f; /* Even darker blue on hover */
-    transform: scale(1.05); /* Slight zoom on hover */
+    transform: scale(1.1); /* Slight zoom on hover */
 }
 /* TILFØJ NY KUNDE KNAP*/
 .nav-button1 {
-    width: 100%;
+    width: 90%;
     padding: 15px 20px;
     text-align: center;
     font-size: 16px;
@@ -72,7 +72,7 @@ body {
 /* TILFØJ NY KUNDE KNAP HOVER*/
 .nav-button1:hover {
     background-color: #447926; /* Even darker blue on hover */
-    transform: scale(1.05); /* Slight zoom on hover */
+    transform: scale(1.1); /* Slight zoom on hover */
 }
 
 
@@ -82,7 +82,7 @@ body {
     margin-bottom: 40px; /* Elevate 40px from the absolute bottom */
     background-color: #dc3545; /* Red background for logout */
     padding: 15px 20px;
-    width: 100%;
+    width: 90%;
     text-align: center;
     font-size: 16px;
     color: white;
@@ -93,7 +93,7 @@ body {
 
 .logout-button:hover {
     background-color: #a71d2a; /* Darker red on hover */
-    transform: scale(1.05); /* Slight zoom on hover */
+    transform: scale(1.1); /* Slight zoom on hover */
 }
 
 /* Form heading */

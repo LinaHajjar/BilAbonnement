@@ -251,7 +251,7 @@ h3{
 
 /* Navigation button styling */
 .nav-button {
-    width: 100%;
+    width: 90%;
     padding: 15px 20px;
     text-align: center;
     font-size: 16px;
@@ -265,7 +265,7 @@ h3{
 
 .nav-button:hover {
     background-color: #003f7f; /* Even darker blue on hover */
-    transform: scale(1.05); /* Slight zoom on hover */
+    transform: scale(1.1); /* Slight zoom on hover */
 }
 
 /* Logout button slightly elevated */
@@ -274,7 +274,7 @@ h3{
     margin-bottom: 40px; /* Elevate 40px from the absolute bottom */
     background-color: #dc3545; /* Red background for logout */
     padding: 15px 20px;
-    width: 100%;
+    width: 90%;
     text-align: center;
     font-size: 16px;
     color: white;
@@ -285,7 +285,7 @@ h3{
 
 .logout-button:hover {
     background-color: #a71d2a; /* Darker red on hover */
-    transform: scale(1.05); /* Slight zoom on hover */
+    transform: scale(1.1); /* Slight zoom on hover */
 }
 
 /* Main content styling */

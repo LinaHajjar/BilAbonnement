@@ -17,7 +17,7 @@
 
     <div th:if="${nyKunde}">
         <p>Vil du oprette en ny kunde?</p>
-        <a th:href="@{/nyKunde}">Tryk her</a>
+        <a th:href="@{/nyKunde}" class="ny-kunde-link">Tryk her</a>
     </div>
 </div>
 
@@ -82,7 +82,7 @@
 
     <!-- Navigation buttons -->
 
-    <a th:href="@{/nyKontrakt}" class="nav-button">Tilføj ny lejekontrakt</a>
+    <a th:href="@{/nyKontrakt}" class="nav-button1">Tilføj ny lejekontrakt</a>
     <a th:href="@{/backToManage}" class="nav-button">Tilbage til menu</a>
     <!-- Logout button -->
     <a th:href="@{/logUd}" class="nav-button logout-button">Log ud</a>

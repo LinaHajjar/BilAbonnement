@@ -102,6 +102,27 @@ a.back-to-alle-leje-konktrakter-knap{
     color: #555;
 }
 
+
+.ny-kunde-link{
+    width: 90%;
+    padding: 15px 20px;
+    text-align: center;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    text-decoration: none;
+    background-color: #66b124; /* Darker blue for buttons */
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.ny-kunde-link:hover{
+    background-color: #447926; /* Even darker blue on hover */
+    transform: scale(1.1);
+}
+
+
+
 /* Delete button */
 .slet-kontrakt-knap {
     padding: 8px 15px;
