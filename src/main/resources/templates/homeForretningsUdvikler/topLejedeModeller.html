@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="MyCSS.css">
@@ -16,8 +16,7 @@
     </div>
 
     <!-- Navigation buttons -->
-    <a href="javascript:history.back()" class="nav-button">Tilbage</a>
-    <a th:href="@{/forretningsUdvikler}" class="nav-button">Tilbage til menu</a>
+    <a th:href="@{/homeForretningsUdvikler}" class="nav-button">Tilbage til menu</a>
 
     <!-- Logout button -->
     <a th:href="@{/index}" class="nav-button logout-button">Log ud</a>
