@@ -1,12 +1,8 @@
 package com.example.bilabonnement.Controller;
 
-import com.example.bilabonnement.Model.Bruger;
-import com.example.bilabonnement.Model.Kunde;
-import com.example.bilabonnement.Model.LejeKontrakt;
-import com.example.bilabonnement.Model.Skader;
+import com.example.bilabonnement.Model.*;
 import com.example.bilabonnement.Service.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.Banner;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
@@ -18,7 +14,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -346,17 +341,16 @@ public class HomeController {
         model.addAttribute("tilDato", tilDato);
         return "homeForretningsUdvikler/samletIndtægt";
     }
-    @GetMapping("/topLejedeModeller")
-    public String topLejedeModeller(Model model) {
-        return "homeForretningsUdvikler/topLejedeModeller";
-    }
+
+
 
     @PostMapping("/topLejedeModeller")
-    public String topLejedeModeller(@RequestParam("fraDato")LocalDate fraDato,@RequestParam("tilDato")LocalDate tilDato,  Model model)throws SQLException {
-        String modelBil= bilService.getTopLejedeModeller(fraDato,tilDato); //method getTopLejedeModeller skal laves i repo og service
-        model.addAttribute("modelBil", modelBil);
-        model.addAttribute("fraDato", fraDato);
-        model.addAttribute("tilDato", tilDato);
+    public String topLejedeModeller(@RequestParam("fraDato") LocalDate fraDato,
+                                    @RequestParam("tilDato")LocalDate tilDato,  Model model)throws SQLException {
+
+        List<TopBil> topBil = bilService.getTopLejedeModeller(fraDato, tilDato);
+        model.addAttribute("topBil", topBil);
+
         return "homeForretningsUdvikler/topLejedeModeller";
     }
 

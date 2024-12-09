@@ -24,12 +24,12 @@
 
 <div class="manage-options">
 
-    <form action="/topLejedeModeller" method="post">
-        <label for="fraDato">Fra Dato: </label>
-        <input type="date" id="fraDato" name="fraDato">
+    <form th:action="@{/topLejedeModeller}" method="post">
+        <label>Fra Dato: </label>
+        <input type="date" name="fraDato" placeholder="Indtast start datoen">
         <br>
-        <label for="tilDato">Til Dato: </label>
-        <input type="date" id="tilDato" name="tilDato">
+        <label>Til Dato: </label>
+        <input type="date" name="tilDato" placeholder="Indtast slut datoen">
         <br>
         <button type="submit">Vis den top model bil</button>
         <br>
