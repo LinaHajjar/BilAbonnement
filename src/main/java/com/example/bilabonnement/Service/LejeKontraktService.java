@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -41,5 +42,13 @@ public class LejeKontraktService {
     public List<LejeKontrakt> findKontraktByTelefon(String telenonnumer) throws SQLException {
         return lejeKontraktRepo.findKontraktByTelefon(telenonnumer);
     }
+
+
+    public int getAntalBiler (LocalDate startdato, LocalDate slutdato) throws SQLException {
+        return lejeKontraktRepo.getAntalBiler(startdato, slutdato);
+    }
+
+
+
 }
 
