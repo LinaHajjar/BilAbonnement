@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" type="text/css" href="skadeCSS.css">
+
+  <link rel="stylesheet" type="text/css" href="/MyCSS.css">
   <title>Skade rapporter</title>
 </head>
 <body>
@@ -15,21 +16,12 @@
     <img src="/Billeder/BILABONNEMENT.png" alt="Logo">
   </div>
 
-  <!-- Navigation buttons -->
-  <!-- <a th:href="@{/backToManage}" class="nav-button">Tilbage til menu</a> -->
 
 
   <!-- Logout button -->
   <a th:href="@{/logUd}" class="nav-button logout-button">Log ud</a>
 </div>
 
-
-/*DENNE BACK BUTTON SKAL REDIRECTES. TIL FORKERTE LOGIN*/
-<div class="back-button-container">
-  <a th:href="@{/backToManage}" class="back-button">← Back to Home</a>
-</div>
-
-<a th:href="@{/nySkade}" class="ny-skade-rapport-knap">Tilføj ny skade-rapport</a>
 
 <!-- Success message -->
 <div th:if="${successMessage}" class="success-message">

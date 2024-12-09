@@ -2,9 +2,24 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="/MyCSS.css">
   <title>Kundens Skader</title>
 </head>
 <body>
+
+<!-- Side navigation bar -->
+<div class="side-nav">
+  <!-- Logo -->
+  <div class="nav-logo">
+    <img src="/Billeder/BILABONNEMENT.png" alt="Logo">
+  </div>
+
+  <!-- Navigation buttons -->
+  <a th:href="@{/manage}" class="nav-button">Tilbage til menu</a>
+
+  <!-- Logout button -->
+  <a th:href="@{/logUd}" class="nav-button logout-button">Log ud</a>
+</div>
 
 <table>
   <thead>
