@@ -323,11 +323,13 @@ public class HomeController {
     }
 
     @PostMapping("/antalLejedeBiler")
-    public String antalLejedeBiler(@RequestParam("fraDato")LocalDate fraDato,@RequestParam("tilDato")LocalDate tilDato,  Model model) throws SQLException{
-        int lejedeBiler = bilService.getAntalLejedeBiler(fraDato,tilDato); //method getTotalLejedeBiler skal laves i repo og service
+    public String antalLejedeBiler( @RequestParam("startdato") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startdato,
+                                    @RequestParam("slutdato") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate slutdato,  Model model) throws SQLException{
+
+        int lejedeBiler = lejeKontraktService.getAntalBiler(startdato,slutdato); //method getTotalLejedeBiler skal laves i repo og service
         model.addAttribute("lejedeBiler", lejedeBiler);
-        model.addAttribute("fraDato", fraDato);
-        model.addAttribute("tilDato", tilDato);
+        model.addAttribute("startdato", startdato);
+        model.addAttribute("slutdato",slutdato);
         return "homeForretningsUdvikler/antalLejedeBiler";
     }
 
