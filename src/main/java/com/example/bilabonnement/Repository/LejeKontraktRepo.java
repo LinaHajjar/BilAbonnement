@@ -95,7 +95,7 @@ public int getAntalBiler(LocalDate startdato, LocalDate slutdato) throws SQLExce
 //        return template.queryForList(sql, String.class);  // This will return a List<String>
 //    }
 
-    public List<String> getBilMaerker() {
+    /*public List<String> getBilMaerker() {
         String sql = "SELECT DISTINCT maerke FROM bil WHERE maerke IS NOT NULL AND maerke != ''";
 
         System.out.println("Executing SQL query: " + sql);
@@ -103,12 +103,6 @@ public int getAntalBiler(LocalDate startdato, LocalDate slutdato) throws SQLExce
 
         System.out.println("Maerker fetched: " + maerker);  // Debugging step
         return maerker;
-    }
-
-
-
-
-
-
+    }*/
 
 }

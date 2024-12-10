@@ -48,9 +48,9 @@ public class LejeKontraktService {
         return lejeKontraktRepo.getAntalBiler(startdato, slutdato);
     }
 
-    public List<String> getBilMaerker(){
+    /*public List<String> getBilMaerker(){
         return lejeKontraktRepo.getBilMaerker();
-    }
+    }*/
 
 
 
