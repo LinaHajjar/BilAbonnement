@@ -86,6 +86,29 @@ public int getAntalBiler(LocalDate startdato, LocalDate slutdato) throws SQLExce
 
 
 
+//
+//    public List<String> getBilMaerker() {
+////        String sql = "SELECT DISTINCT maerke FROM bil WHERE maerke = ? IS NULL ? ";
+//        String sql = "SELECT DISTINCT maerke FROM bil WHERE maerke IS NOT NULL AND maerke != ''";
+//
+//
+//        return template.queryForList(sql, String.class);  // This will return a List<String>
+//    }
+
+    public List<String> getBilMaerker() {
+        String sql = "SELECT DISTINCT maerke FROM bil WHERE maerke IS NOT NULL AND maerke != ''";
+
+        System.out.println("Executing SQL query: " + sql);
+        List<String> maerker = template.queryForList(sql, String.class);
+
+        System.out.println("Maerker fetched: " + maerker);  // Debugging step
+        return maerker;
+    }
+
+
+
+
+
 
 
 }

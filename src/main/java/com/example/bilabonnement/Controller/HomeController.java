@@ -167,7 +167,7 @@ public class HomeController {
     ) throws SQLException {
         List<LejeKontrakt> availableCars = bookingService.seBiler(startdato, slutdato);
         model.addAttribute("availableCars", availableCars);
-        return "ledigeBiler";
+        return "homeBil/ledigeBiler";
 
     }
 
@@ -308,12 +308,17 @@ public class HomeController {
 
     @PostMapping("/antalLejedeBiler")
     public String antalLejedeBiler( @RequestParam("startdato") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startdato,
-                                    @RequestParam("slutdato") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate slutdato,  Model model) throws SQLException{
+                                    @RequestParam("slutdato") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate slutdato, @RequestParam(value = "maerker",required = false) String selectedMaerke,  Model model) throws SQLException{
 
         int lejedeBiler = lejeKontraktService.getAntalBiler(startdato,slutdato); //method getTotalLejedeBiler skal laves i repo og service
+        List<String> maerker = lejeKontraktService.getBilMaerker();
+
+
         model.addAttribute("lejedeBiler", lejedeBiler);
         model.addAttribute("startdato", startdato);
         model.addAttribute("slutdato",slutdato);
+        model.addAttribute("maerker", maerker);
+        model.addAttribute("maerke", selectedMaerke);
         return "homeForretningsUdvikler/antalLejedeBiler";
     }
 
