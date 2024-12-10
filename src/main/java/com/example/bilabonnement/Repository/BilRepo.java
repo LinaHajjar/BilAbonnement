@@ -36,10 +36,6 @@ public class BilRepo {
         return template.queryForList(sql, String.class); // tager alle nummerplader og sætter det i en liste
     }
 
-    public int getAntalLejedeBiler (LocalDate fraDato, LocalDate tilDato) throws SQLException {
-        return 3; //mysql querry skal skrives: Sebastian
-    }
-
     public double getSamletIndtægt(LocalDate fraDato, LocalDate tilDato) throws SQLException {
         String sql ="SELECT SUM(pris) FROM lejekontrakt WHERE (startdato > ? AND slutdato < ?)";
         return template.queryForObject(sql, Double.class, fraDato, tilDato);
