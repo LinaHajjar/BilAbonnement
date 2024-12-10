@@ -31,16 +31,26 @@
 
     <form th:action="@{/topLejedeModeller}" method="post">
         <label>Fra Dato: </label>
-        <input type="date" name="fraDato" placeholder="Indtast start datoen">
+        <input type="date" name="fraDato" placeholder="Indtast start datoen" required>
         <br>
         <label>Til Dato: </label>
-        <input type="date" name="tilDato" placeholder="Indtast slut datoen">
+        <input type="date" name="tilDato" placeholder="Indtast slut datoen" required>
         <br>
-        <button type="submit">Vis den top model bil</button>
+        <div class="submit-top-bil">
+            <button type="submit" class="vis-top-bil-knap">Vis den top model bil</button>
+        </div>
         <br>
 
-        <div>
-            <strong th:text="${topLejedeModel}"></strong>
+        <div class="vis-nummer-1-bil">
+            <div class="top-bil-info">
+                <p th:text="'Bil model: ' + ${model}"></p>
+            </div>
+            <div class="top-bil-info">
+                <p th:text="'Bil mærke: ' + ${maerke}"></p>
+            </div>
+            <div class="top-bil-info">
+                <p th:text="'Antal gange bilen er udlånt: ' + ${antalLånt}"></p>
+            </div>
         </div>
     </form>
 </div>

@@ -355,9 +355,13 @@ public class HomeController {
         try {
             TopBil topLejedeModel = bilService.getTopLejedeModeller(fraDato, tilDato);
             //System.out.println(topBil);
-            model.addAttribute("topLejedeModel", topLejedeModel);
-            model.addAttribute("fraDato", fraDato);
-            model.addAttribute("tilDato", tilDato);
+            String bilModel = topLejedeModel.getModel();
+            String maerke = topLejedeModel.getMaerke();
+            int antalLånt = topLejedeModel.getAntal();
+            model.addAttribute("model", bilModel);
+            model.addAttribute("maerke", maerke);
+            model.addAttribute("antalLånt", antalLånt);
+
             return "homeForretningsUdvikler/topLejedeModeller";
         } catch (EmptyResultDataAccessException e){
             model.addAttribute("ingenTopBil", "Der er ikke udlånt nogle biler i denne periode");
