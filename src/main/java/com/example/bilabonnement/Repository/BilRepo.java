@@ -38,7 +38,10 @@ public class BilRepo {
 
     public double getSamletIndtægt(LocalDate fraDato, LocalDate tilDato) throws SQLException {
         String sql ="SELECT SUM(pris) FROM lejekontrakt WHERE (startdato > ? AND slutdato < ?)";
-        return template.queryForObject(sql, Double.class, fraDato, tilDato);
+
+        Double result = template.queryForObject(sql, Double.class, fraDato, tilDato);
+
+        return (result != null) ? result : 0.0;
     }
 
     public TopBil getTopLejedeModeller(LocalDate fraDato, LocalDate tilDato) throws SQLException {
