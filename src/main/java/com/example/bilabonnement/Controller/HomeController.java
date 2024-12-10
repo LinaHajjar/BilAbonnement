@@ -329,11 +329,18 @@ public class HomeController {
 
     @PostMapping("/samletIndtægt")
     public String samletIndtægt(@RequestParam("fraDato")LocalDate fraDato,@RequestParam("tilDato")LocalDate tilDato,  Model model)throws SQLException{
-        double samletIndtægt = bilService.getSamletIndtægt(fraDato,tilDato); //method getSamletIndtægter skal laves i repo og service
-        model.addAttribute("samletIndtægt", samletIndtægt);
-        model.addAttribute("fraDato", fraDato);
-        model.addAttribute("tilDato", tilDato);
-        return "homeForretningsUdvikler/samletIndtægt";
+
+       try {
+
+           double samletIndtægt = bilService.getSamletIndtægt(fraDato, tilDato); //method getSamletIndtægter skal laves i repo og service
+           model.addAttribute("samletIndtægt", samletIndtægt);
+           model.addAttribute("fraDato", fraDato);
+           model.addAttribute("tilDato", tilDato);
+           return "homeForretningsUdvikler/samletIndtægt";
+       } catch (EmptyResultDataAccessException e){
+           model.addAttribute("ingenIndtægt", "Der er ikke nogen indtægt indenfor denne dato.");
+           return "homeForretningsUdvikler/samletIndtægt";
+       }
     }
 
     @GetMapping("/topLejedeModeller")

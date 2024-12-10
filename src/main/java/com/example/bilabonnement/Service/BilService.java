@@ -31,10 +31,6 @@ public class BilService {
     }
 
 
-    public int getAntalLejedeBiler (LocalDate fraDato, LocalDate tilDato) throws SQLException {
-        return bilRepo.getAntalLejedeBiler(fraDato, tilDato);
-    }
-
     public double getSamletIndtægt(LocalDate fraDato, LocalDate tilDato) throws SQLException {
         return bilRepo.getSamletIndtægt(fraDato, tilDato);
     }

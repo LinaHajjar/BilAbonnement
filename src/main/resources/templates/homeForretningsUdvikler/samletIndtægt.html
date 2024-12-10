@@ -22,15 +22,18 @@
     <a th:href="@{/logUd}" class="nav-button logout-button">Log ud</a>
 </div>
 
+<div th:if="${ingenIndtægt}" class="error-message">
+    <p th:text="${ingenIndtægt}"></p>
+</div>
 
 <div class="manage-options">
 
     <form action="/samletIndtægt" method="post">
         <label for="fraDato">Fra Dato: </label>
-        <input type="date" id="fraDato" name="fraDato">
+        <input type="date" id="fraDato" name="fraDato" required>
         <br>
         <label for="tilDato">Til Dato: </label>
-        <input type="date" id="tilDato" name="tilDato">
+        <input type="date" id="tilDato" name="tilDato" required>
         <br>
         <button type="submit">Vis Antallet</button>
         <br>
