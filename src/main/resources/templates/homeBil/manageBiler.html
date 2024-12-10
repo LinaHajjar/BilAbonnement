@@ -7,7 +7,6 @@
     <link rel="stylesheet" type="text/css" href="/MyCSS.css">
 </head>
 <body>
-
 <!-- Side navigation bar -->
 <div class="side-nav">
     <!-- Logo -->
@@ -22,22 +21,10 @@
     <a th:href="@{/logUd}" class="nav-button logout-button">Log ud</a>
 </div>
 
-<!-- Booking Form (placed at the top, above the table) -->
-<h2>Se Ledige Biler</h2>
-
-<form action="/bilTilgaengelig" method="post" class="booking-form">
-    <label for="startdato">Start dato:</label>
-    <input type="date" id="startdato" name="startdato" required><br><br>
-
-    <label for="slutdato">Slut Dato:</label>
-    <input type="date" id="slutdato" name="slutdato" required><br><br>
-
-    <button type="submit">Check tilgængelighed</button>
-</form>
-
 <!-- overskrift h1 -->
 <h1 class="bil-h1">Alle biler</h1>
 
+<div class="table-container">
 <table class="bil-table">
     <thead>
     <tr>
@@ -59,4 +46,10 @@
         <td th:text="${bil.odometer}"></td>
         <td th:text="${bil.foersteregistrering}"></td>
         <td th:text="${bil.co2udledning}"></td>
-    </
+
+    </tr>
+    </tbody>
+</table>
+    </div>
+</body>
+</html>
