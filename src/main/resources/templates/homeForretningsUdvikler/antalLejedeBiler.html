@@ -23,12 +23,15 @@
 
 <div class="manage-options">
 
+
+    <!-- Required er i slutningen af input for at undgå whitelabel errors -->
+
     <form action="/antalLejedeBiler" method="post">
         <label for="startdato">Fra Dato: </label>
-        <input type="date" id="startdato" name="startdato">
+        <input type="date" id="startdato" name="startdato" required>
         <br>
         <label for="slutdato">Til Dato: </label>
-        <input type="date" id="slutdato" name="slutdato">
+        <input type="date" id="slutdato" name="slutdato" required>
         <br>
         <button type="submit">Vis Antallet</button>
         <br>

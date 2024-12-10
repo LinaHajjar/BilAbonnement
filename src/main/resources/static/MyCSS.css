@@ -393,6 +393,7 @@ div {
     height: 40px;
     width: 80%;
     font-weight: bold;
+    color: black;
 
 }
 
@@ -726,7 +727,8 @@ form label {
     border-collapse: collapse;
     background-color: #fff;
     border: 1px solid #ddd;
-    table-layout: auto; /* Gør det muligt for tabellen at justere til bredden */
+    table-layout: auto;
+    /* Gør det muligt for tabellen at justere til bredden */
 }
 
 .kunde-table th, .kunde-table td {
