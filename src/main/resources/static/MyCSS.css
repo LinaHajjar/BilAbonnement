@@ -331,6 +331,31 @@ h3{
 /*-------------------------------------Top modeller-------------------------------------------*/
 
 
+
+.submit-top-bil{
+    text-align: center; /* Centers the button horizontally */
+    margin-top: 20px;
+}
+
+
+
+
+.vis-top-bil-knap{
+    border-radius: 5px;
+    background-color: white;
+    border: 2px solid greenyellow;
+    transition: all 0.3s ease;
+    height: 40px;
+    width: 80%;
+    font-weight: bold;
+
+}
+
+.vis-top-bil-knap:hover{
+    background-color: greenyellow;
+}
+
+
 .top-lejede-biler-overskrift {
     text-align: center;
 }
