@@ -606,9 +606,10 @@ form label {
     margin-left: 270px; /* Giver plads til navigationsbaren */
     padding: 20px;
     box-sizing: border-box; /* Sikrer korrekt padding og margin */
-    overflow-x: hidden; /* Forhindrer vandret scrollbar */
-    overflow-y: auto; /* Tillader lodret rulning */
+    overflow-x: auto; /* Forhindrer vandret scrollbar */
+    overflow-y: visible; /* Tillader lodret rulning */
     max-width: calc(100% - 270px); /* Sikrer, at indholdet ikke overstiger viewportens bredde */
+    position: relative;
 }
 
 /* Form heading */
@@ -723,19 +724,21 @@ form label {
 
 /* Table styling */
 .kunde-table {
-    width: 100%; /* Tabellen fylder hele containerens bredde */
+    width: 100%;
     border-collapse: collapse;
     background-color: #fff;
     border: 1px solid #ddd;
-    table-layout: auto;
-    /* Gør det muligt for tabellen at justere til bredden */
+    table-layout: auto; /* Ensure columns adjust dynamically */
+    margin-top: 20px;
+    margin-right: 20px;
 }
 
 .kunde-table th, .kunde-table td {
-    padding: 10px; /* Reduceret padding for at spare plads */
+    padding: 10px; /* Add padding to the cells */
     text-align: left;
     border: 1px solid #ddd;
-    font-size: 14px;/* Reduceret fontstørrelse for bedre tilpasning */
+    font-size: 14px;
+    vertical-align: middle; /* Ensure content is vertically aligned */
 }
 
 .kunde-table th {
@@ -745,34 +748,31 @@ form label {
     text-transform: uppercase;
 }
 
-.kunde-table tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-.kunde-table tr:hover {
-    background-color: #f1f1f1;
-}
-
 .kunde-table td {
     color: #555;
-    white-space: nowrap; /* Forhindrer linjeskift i cellerne */
+    white-space: nowrap; /* Prevent wrapping */
 }
 
-/* Delete button */
+.kunde-table td.slet-kunde {
+    text-align: center; /* Center align the delete button in the column */
+}
+
 .slet-kunde-knap {
+    display: inline-block; /* Ensure proper button sizing */
     padding: 8px 15px;
     font-size: 14px;
     color: #fff;
-    background-color: #dc3545;
+    background-color: #dc3545; /* Red button */
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    text-align: center; /* Center align the text inside the button */
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .slet-kunde-knap:hover {
-    background-color: #a71d2a;
-    transform: scale(1.05);
+    background-color: #a71d2a; /* Darker red on hover */
+    transform: scale(1.05); /* Slight zoom effect */
 }
 
 /*-------------------------------------**HOME Kontrakt CSS**---------------------------------------------------------*/
