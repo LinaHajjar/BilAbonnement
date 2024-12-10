@@ -352,7 +352,7 @@ public class HomeController {
                                     @RequestParam("tilDato")LocalDate tilDato,  Model model)throws SQLException {
 
         TopBil topLejedeModel = bilService.getTopLejedeModeller(fraDato, tilDato);
-        //System.out.println(topBil);
+        //System.out.println(topBil); //den til teste, skal fjernes bagefter
         model.addAttribute("topLejedeModel", topLejedeModel);
         model.addAttribute("fraDato", fraDato);
         model.addAttribute("tilDato", tilDato);
