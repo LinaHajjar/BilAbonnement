@@ -4,6 +4,7 @@ import com.example.bilabonnement.Model.*;
 import com.example.bilabonnement.Service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -351,12 +352,18 @@ public class HomeController {
     public String topLejedeModeller(@RequestParam("fraDato") LocalDate fraDato,
                                     @RequestParam("tilDato")LocalDate tilDato,  Model model)throws SQLException {
 
-        TopBil topLejedeModel = bilService.getTopLejedeModeller(fraDato, tilDato);
-        //System.out.println(topBil);
-        model.addAttribute("topLejedeModel", topLejedeModel);
-        model.addAttribute("fraDato", fraDato);
-        model.addAttribute("tilDato", tilDato);
-        return "homeForretningsUdvikler/topLejedeModeller";
+        try {
+            TopBil topLejedeModel = bilService.getTopLejedeModeller(fraDato, tilDato);
+            //System.out.println(topBil);
+            model.addAttribute("topLejedeModel", topLejedeModel);
+            model.addAttribute("fraDato", fraDato);
+            model.addAttribute("tilDato", tilDato);
+            return "homeForretningsUdvikler/topLejedeModeller";
+        } catch (EmptyResultDataAccessException e){
+            model.addAttribute("ingenTopBil", "Der er ikke udlånt nogle biler i denne periode");
+            return "homeForretningsUdvikler/topLejedeModeller";
+
+        }
     }
 
 

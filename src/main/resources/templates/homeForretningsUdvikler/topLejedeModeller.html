@@ -22,6 +22,11 @@
     <a th:href="@{/logUd}" class="nav-button logout-button">Log ud</a>
 </div>
 
+<div th:if="${ingenTopBil}" class="error-message">
+    <p th:text="${ingenTopBil}"></p>
+</div>
+
+
 <div class="manage-options">
 
     <form th:action="@{/topLejedeModeller}" method="post">
