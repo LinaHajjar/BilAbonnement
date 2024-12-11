@@ -738,7 +738,8 @@ form label {
     background-color: #fff;
     border: 1px solid #ddd;
     table-layout: auto;
-    /* Gør det muligt for tabellen at justere til bredden */
+    margin-top: 20px;
+   
 }
 
 .kunde-table th, .kunde-table td {
