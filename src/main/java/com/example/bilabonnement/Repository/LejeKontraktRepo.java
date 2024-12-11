@@ -65,6 +65,7 @@ public class LejeKontraktRepo {
         template.update(sql, lejeKontrakt.getTelefonnummer(), lejeKontrakt.getNummerplade(), lejeKontrakt.getStartdato(), lejeKontrakt.getSlutdato(), lejeKontrakt.getMaxKm(), lejeKontrakt.getPris()); // denne kode adder til databasen ved hjælp af getters
     }
 
+
         //  query der tager en kundes telefonnummer og finde alle kundens lejekontrakter: søge efter kunden.
     public List<LejeKontrakt> findKontraktByTelefon(String telefonnummer) throws SQLException {
         String sql = "SELECT * FROM lejekontrakt WHERE telefonnummer = ?";

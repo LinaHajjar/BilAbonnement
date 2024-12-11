@@ -33,11 +33,13 @@
         <label for="slutdato">Til Dato: </label>
         <input type="date" id="slutdato" name="slutdato" required>
         <br>
+        <!--
         <label for="maerke">Mærke:</label>
-        <select id="maerke" name="maerke">
+         <select id="maerke" name="maerke">
             <option value="">Vælg Mærke</option>
             <option th:each="m : ${maerker}" th:value="${m}" th:text="${m}"></option>
         </select>
+        -->
         <br>
         <button type="submit">Vis Antallet</button>
         <br>

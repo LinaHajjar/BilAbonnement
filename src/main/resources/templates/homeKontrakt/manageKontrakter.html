@@ -38,6 +38,10 @@
     <p th:text="${errorMessage}"></p>
 </div>
 
+<div th:if="${error}" class="error-message">
+    <p th:text="${error}"></p>
+</div>
+
 <div th:if="${ikkeFundet}" class="error-message">
     <p th:text="${ikkeFundet}"></p>
 </div>

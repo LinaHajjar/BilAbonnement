@@ -75,7 +75,7 @@ public class LejekontraktController {
                                  @RequestParam("startdato") LocalDate startdato,
                                  @RequestParam("slutdato") LocalDate slutdato,
                                  @RequestParam("maxKm") int maxKm,
-                                 @RequestParam("pris") int pris,
+                                 @RequestParam("pris") Double pris,
                                  RedirectAttributes redirectAttributes) throws SQLException {
 
         try {
@@ -94,7 +94,6 @@ public class LejekontraktController {
             // Handle the exception and add an error message
             redirectAttributes.addFlashAttribute("error",
                     "Systemet kunne ikke oprette kontrakten. Tjek om telefonnummeret og nummerpladen eksisterer"); // giver en message hvis lejekontrakt ikke bliver oprettet
-
             return "redirect:/manageKontrakter";
         }
     }
