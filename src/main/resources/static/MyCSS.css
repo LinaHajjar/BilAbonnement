@@ -7,6 +7,7 @@ html, body{
     box-sizing: border-box;
     line-height: 1.5;
     background: linear-gradient(135deg, #99b2cb, #edbbfb); /* Gradient background */
+
 }
 
 /* Side navigation styling */
@@ -377,8 +378,56 @@ div {
     text-align: center;
 }
 
+
+.indtjening-table {
+    width: 80%; /* Adjust the table width to fit content */
+    border-collapse: collapse;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    margin-top: 20px;
+    margin-left: auto; /* Pushes the table to the right */
+    margin-right: 20px; /* Adds spacing from the right side */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-size: 14px; /* Reduce font size for smaller columns */
+}
+
+
+.indtjening-table th, .indtjening-table td {
+    padding: 10px; /* Reduceret padding for at spare plads */
+    text-align: left;
+    border: 1px solid #ddd;
+    font-size: 14px; /* Reduceret fontstørrelse for bedre tilpasning */
+}
+
+.indtjening-table th {
+    background-color: #007bff;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.indtjening-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.indtjening-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.indtjening-table td {
+    color: #555;
+    white-space: nowrap; /* Forhindrer linjeskift i cellerne */
+}
+
+.månedlige-indtægt{
+    margin-bottom: 50px;
+}
+
+
 /*-------------------------------------Forretnings udvikler-------------------------------------------*/
 /*-------------------------------------Top modeller-------------------------------------------*/
+
+
 
 
 
@@ -853,7 +902,7 @@ a.back-to-alle-leje-konktrakter-knap{
     max-width: 1200px;
     border-collapse: collapse;
     margin-left: auto;
-    margin-right: auto;
+    margin-right: 0;
     margin-top: 20px;
     background-color: #fff;
     border: 1px solid #ddd;

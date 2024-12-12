@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -29,8 +30,14 @@ public class LogInController {
     @GetMapping("/backToManage")
     public String backToManage() {return "manage";}
 
+    @GetMapping("/")
+    public String index(){
+        return "index";
+    }
+
+
     @PostMapping("/loginInfo")
-    public String loginInfo(@RequestParam("brugernavn") String brugernavn, @RequestParam("kode") String kode, Model model) throws SQLException {
+    public String loginInfo(@RequestParam("brugernavn") String brugernavn, @RequestParam("kode") String kode, Model model, RedirectAttributes redirectAttributes) throws SQLException {
         List<Bruger> brugerList = brugerService.getAllUsers();
 
         for (Bruger bruger : brugerList) {
@@ -49,7 +56,8 @@ public class LogInController {
                 }
             }
         }
-        return "index";
+        redirectAttributes.addFlashAttribute("wrongLogIn", "Dit brugernavn eller adgangskode er forkret.");
+        return "redirect:/";
     }
 
 

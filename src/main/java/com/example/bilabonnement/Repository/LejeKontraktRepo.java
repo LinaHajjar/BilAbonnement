@@ -1,6 +1,7 @@
 package com.example.bilabonnement.Repository;
 
 import com.example.bilabonnement.Model.LejeKontrakt;
+import com.example.bilabonnement.Model.MonthlyIncome;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -19,7 +20,7 @@ public class LejeKontraktRepo {
 
     public List<LejeKontrakt> getAllLejeKontrakt() throws SQLException {
         String sql = "select * from lejekontrakt";
-        RowMapper<LejeKontrakt> rowMapper=new BeanPropertyRowMapper<>(LejeKontrakt.class);
+        RowMapper<LejeKontrakt> rowMapper = new BeanPropertyRowMapper<>(LejeKontrakt.class);
         return template.query(sql, rowMapper);
     }
 
@@ -58,15 +59,14 @@ public class LejeKontraktRepo {
     }
 
 
-
-    public void addLejekontrakt(LejeKontrakt lejeKontrakt){
+    public void addLejekontrakt(LejeKontrakt lejeKontrakt) {
         String sql = "INSERT INTO lejekontrakt(telefonnummer, nummerplade, startDato, slutDato, maxKm, pris)\n" +
                 "VALUES(?, ?, ?, ?, ?, ?)";
         template.update(sql, lejeKontrakt.getTelefonnummer(), lejeKontrakt.getNummerplade(), lejeKontrakt.getStartdato(), lejeKontrakt.getSlutdato(), lejeKontrakt.getMaxKm(), lejeKontrakt.getPris()); // denne kode adder til databasen ved hjælp af getters
     }
 
 
-        //  query der tager en kundes telefonnummer og finde alle kundens lejekontrakter: søge efter kunden.
+    //  query der tager en kundes telefonnummer og finde alle kundens lejekontrakter: søge efter kunden.
     public List<LejeKontrakt> findKontraktByTelefon(String telefonnummer) throws SQLException {
         String sql = "SELECT * FROM lejekontrakt WHERE telefonnummer = ?";
         RowMapper<LejeKontrakt> rowMapper = new BeanPropertyRowMapper<LejeKontrakt>(LejeKontrakt.class);
@@ -74,17 +74,33 @@ public class LejeKontraktRepo {
     }
 
 
-public int getAntalBiler(LocalDate startdato, LocalDate slutdato) throws SQLException {
-    String sql = "SELECT COUNT(*) FROM lejekontrakt WHERE startdato >= ? AND slutdato <= ?";
+    public int getAntalBiler(LocalDate startdato, LocalDate slutdato) throws SQLException {
+        String sql = "SELECT COUNT(*) FROM lejekontrakt WHERE startdato >= ? AND slutdato <= ?";
 
-    // Convert LocalDate to java.sql.Date
-    java.sql.Date sqlStartdato = java.sql.Date.valueOf(startdato);
-    java.sql.Date sqlSlutdato = java.sql.Date.valueOf(slutdato);
+        // Convert LocalDate to java.sql.Date
+        java.sql.Date sqlStartdato = java.sql.Date.valueOf(startdato);
+        java.sql.Date sqlSlutdato = java.sql.Date.valueOf(slutdato);
 
-    // Execute the query and return the count
-    return template.queryForObject(sql, Integer.class, sqlStartdato, sqlSlutdato);
-}
+        // Execute the query and return the count
+        return template.queryForObject(sql, Integer.class, sqlStartdato, sqlSlutdato);
+    }
 
+
+    public List<MonthlyIncome> monthlyIncomeList(int year){
+        String sql = "SELECT \n" +
+                "    MONTH(slutdato) AS måned, \n" +
+                "    SUM(pris) AS indtjening\n" +
+                "FROM lejekontrakt\n" +
+                "WHERE YEAR(slutdato) = ?\n" +
+                "GROUP BY MONTH(slutdato)\n" +
+                "ORDER BY MONTH(slutdato);\n";
+
+
+        RowMapper<MonthlyIncome> rowMapper = new BeanPropertyRowMapper<MonthlyIncome>(MonthlyIncome.class);
+
+        return template.query(sql, rowMapper, year);
+
+    }
 
 
 //

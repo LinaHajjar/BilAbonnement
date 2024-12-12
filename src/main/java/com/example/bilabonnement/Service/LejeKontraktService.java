@@ -1,6 +1,7 @@
 package com.example.bilabonnement.Service;
 
 import com.example.bilabonnement.Model.LejeKontrakt;
+import com.example.bilabonnement.Model.MonthlyIncome;
 import com.example.bilabonnement.Repository.LejeKontraktRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -52,6 +53,11 @@ public class LejeKontraktService {
         return lejeKontraktRepo.getBilMaerker();
     }*/
 
+
+    public List<MonthlyIncome> monthlyIncomeList(int year){
+        return lejeKontraktRepo.monthlyIncomeList(year);
+
+    }
 
 
 }

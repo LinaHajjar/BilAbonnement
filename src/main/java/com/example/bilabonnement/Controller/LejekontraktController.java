@@ -94,6 +94,7 @@ public class LejekontraktController {
             // Handle the exception and add an error message
             redirectAttributes.addFlashAttribute("error",
                     "Systemet kunne ikke oprette kontrakten. Tjek om telefonnummeret og nummerpladen eksisterer"); // giver en message hvis lejekontrakt ikke bliver oprettet
+            redirectAttributes.addFlashAttribute("opretNyKunde", true);
             return "redirect:/manageKontrakter";
         }
     }
