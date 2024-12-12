@@ -59,7 +59,6 @@ public class ForretningsudviklereController {
             lejedeBiler = lejeKontraktService.getAntalBilerForMaerke(startdato, slutdato, selectedMaerke);
         }
 
-
         model.addAttribute("lejedeBiler", lejedeBiler);
         model.addAttribute("startdato", startdato);
         model.addAttribute("slutdato", slutdato);
