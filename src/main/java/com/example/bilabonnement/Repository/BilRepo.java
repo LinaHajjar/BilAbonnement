@@ -78,5 +78,14 @@ public class BilRepo {
 
 
 
+    public boolean sletBil(String nummerplade){
+
+        String sql = "DELETE FROM bil WHERE nummerplade = ?";
+
+        return template.update(sql,nummerplade)>0;
+    }
+
+
+
 
 }
