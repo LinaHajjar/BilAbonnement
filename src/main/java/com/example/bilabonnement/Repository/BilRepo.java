@@ -58,4 +58,25 @@ public class BilRepo {
 
     }
 
+    public void opretteBil(String nummerplade, String maerke, String model,
+                           Bil.Braendstoftype braendstoftype, int odometer,
+                           java.time.LocalDate foersteregistrering, int co2udledning) {
+
+        String sql = "INSERT INTO bil (nummerplade, maerke, model, braendstoftype, odometer, foersteregistrering, co2udledning) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+        template.update(sql,
+                nummerplade,
+                maerke,
+                model,
+                braendstoftype.name(),
+                odometer,
+                java.sql.Date.valueOf(foersteregistrering),
+                co2udledning
+        );
+    }
+
+
+
+
 }
