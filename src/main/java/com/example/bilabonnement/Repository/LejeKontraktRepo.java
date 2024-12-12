@@ -72,7 +72,7 @@ public class LejeKontraktRepo {
         return template.query(sql, rowMapper, telefonnummer);
     }
 
-
+//metode til mvp
 public int getAntalBiler(LocalDate startdato, LocalDate slutdato) throws SQLException {
     String sql = "SELECT COUNT(*) FROM lejekontrakt WHERE startdato >= ? AND slutdato <= ?";
 
@@ -85,30 +85,27 @@ public int getAntalBiler(LocalDate startdato, LocalDate slutdato) throws SQLExce
 }
 
 
-
-//
-//    public List<String> getBilMaerker() {
-////        String sql = "SELECT DISTINCT maerke FROM bil WHERE maerke = ? IS NULL ? ";
-//        String sql = "SELECT DISTINCT maerke FROM bil WHERE maerke IS NOT NULL AND maerke != ''";
-//
-//
-//        return template.queryForList(sql, String.class);  // This will return a List<String>
-//    }
-
     public List<String> getBilMaerker() {
         String sql = "SELECT DISTINCT maerke FROM bil WHERE maerke IS NOT NULL AND maerke != ''";
-
-        System.out.println("Executing SQL query: " + sql);
-        List<String> maerker = template.queryForList(sql, String.class);
-
-        System.out.println("Maerker fetched: " + maerker);  // Debugging step
-        return maerker;
+        return template.queryForList(sql, String.class);  // This will return a List<String>
     }
 
+//
+//    metode til at kunde søge ude fra mæerke over mvp
+    public int getAntalBiler(LocalDate startdato, LocalDate slutdato, String selectedMaerke) {
 
 
+        java.sql.Date sqlStartdato = java.sql.Date.valueOf(startdato);
+        java.sql.Date sqlSlutdato = java.sql.Date.valueOf(slutdato);
+
+        String sql = "SELECT COUNT(*) FROM lejekontrakt l " +
+                "JOIN bil b ON l.nummerplade = b.nummerplade " +
+                "WHERE l.startdato >= ? " +
+                "AND l.slutdato <= ? " +
+                "AND b.maerke = ?";
 
 
-
+        return template.queryForObject(sql, new Object[]{sqlStartdato, sqlSlutdato, selectedMaerke}, Integer.class);
+    }
 
 }

@@ -299,26 +299,43 @@ public class HomeController {
 
     /* ---------------------------- Forretningsudviklere ---------------------------------*/
 
-
-
+//over mvp
     @GetMapping("/antalLejedeBiler")
-    public String antalLejedeBiler(Model model) {
+    public String visAntalLejedeBilerForm(Model model) throws SQLException {
+        List<String> maerker = lejeKontraktService.getBilMaerker();
+        model.addAttribute("maerker", maerker);
+        model.addAttribute("lejedeBiler", 0); // Sætter til 0 så view ikke breaker
+        model.addAttribute("startdato", LocalDate.now()); //sætter start og slut dato til nu
+        model.addAttribute("slutdato", LocalDate.now());
         return "homeForretningsUdvikler/antalLejedeBiler";
     }
 
+//over mvp
     @PostMapping("/antalLejedeBiler")
-    public String antalLejedeBiler( @RequestParam("startdato") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startdato,
-                                    @RequestParam("slutdato") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate slutdato, @RequestParam(value = "maerker",required = false) String selectedMaerke,  Model model) throws SQLException{
+    public String antalLejedeBiler(
+            @RequestParam("startdato") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startdato,
+            @RequestParam("slutdato") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate slutdato,
+            @RequestParam(value = "maerke", required = false) String selectedMaerke,
+            Model model
+    ) throws SQLException {
 
-        int lejedeBiler = lejeKontraktService.getAntalBiler(startdato,slutdato); //method getTotalLejedeBiler skal laves i repo og service
+
+
         List<String> maerker = lejeKontraktService.getBilMaerker();
 
+        int lejedeBiler;
+        if (selectedMaerke == null || selectedMaerke.isEmpty()) {
+            lejedeBiler = lejeKontraktService.getAntalBiler(startdato, slutdato);
+        } else {
+            lejedeBiler = lejeKontraktService.getAntalBilerForMaerke(startdato, slutdato, selectedMaerke);
+        }
 
+        // Add all the required attributes to the model
         model.addAttribute("lejedeBiler", lejedeBiler);
         model.addAttribute("startdato", startdato);
-        model.addAttribute("slutdato",slutdato);
-        model.addAttribute("maerker", maerker);
-        model.addAttribute("maerke", selectedMaerke);
+        model.addAttribute("slutdato", slutdato);
+        model.addAttribute("maerker", maerker); // Liste brands
+        model.addAttribute("selectedMaerke", selectedMaerke);
         return "homeForretningsUdvikler/antalLejedeBiler";
     }
 
