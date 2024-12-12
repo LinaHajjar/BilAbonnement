@@ -8,6 +8,27 @@
 </head>
 <body>
 
+<div class="department-nav">
+    <span class="department-label">Afdeling: </span>
+    <span class="department-name">Biludlejning</span>
+</div>
+
+<div class="side-nav">
+    <!-- Logo -->
+    <div class="nav-logo">
+        <img src="/Billeder/BILABONNEMENT.png" alt="Logo">
+    </div>
+
+    <!-- Navigation buttons -->
+
+    <a th:href="@{/alleKontrakter}" class="nav-button">Tilbage til lejekontrakter</a>
+    <!-- Logout button -->
+    <a th:href="@{/logUd}" class="nav-button logout-button">Log ud</a>
+</div>
+
+<div class="main-content">
+    <h1 class="kunde-h1">Kunde udtræk på telefonnummer</h1>
+
 <table class="lejekontrakt-table">
     <thead>
     <tr>
@@ -32,19 +53,8 @@
     </tr>
     </tbody>
 </table>
-
-<div class="side-nav">
-    <!-- Logo -->
-    <div class="nav-logo">
-        <img src="/Billeder/BILABONNEMENT.png" alt="Logo">
-    </div>
-
-    <!-- Navigation buttons -->
-
-    <a th:href="@{/alleKontrakter}" class="nav-button">← Tilbage til alle kontrakter</a>
-    <!-- Logout button -->
-    <a th:href="@{/logUd}" class="nav-button logout-button">Log ud</a>
 </div>
+
 
 
 </body>

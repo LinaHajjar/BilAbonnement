@@ -7,6 +7,12 @@
     <link rel="stylesheet" type="text/css" href="/MyCSS.css">
 </head>
 <body>
+<!-- nav-top -->
+<div class="department-nav">
+    <span class="department-label">Afdeling: </span>
+    <span class="department-name">Biludlejning</span>
+</div>
+
 <!-- Side navigation bar -->
 <div class="side-nav">
     <!-- Logo -->
@@ -21,6 +27,7 @@
     <a th:href="@{/logUd}" class="nav-button logout-button">Log ud</a>
 </div>
 
+<div class="main-content">
 <!-- overskrift h1 -->
 <h1 class="bil-h1">Alle biler</h1>
 
@@ -51,5 +58,6 @@
     </tbody>
 </table>
     </div>
+</div>
 </body>
 </html>
