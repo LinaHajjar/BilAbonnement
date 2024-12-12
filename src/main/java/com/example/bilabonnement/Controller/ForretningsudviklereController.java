@@ -36,7 +36,6 @@ public class ForretningsudviklereController {
         int lejedeBiler = lejeKontraktService.getAntalBiler(startdato,slutdato); //method getTotalLejedeBiler skal laves i repo og service
         //List<String> maerker = lejeKontraktService.getBilMaerker();
 
-
         model.addAttribute("lejedeBiler", lejedeBiler);
         model.addAttribute("startdato", startdato);
         model.addAttribute("slutdato",slutdato);
