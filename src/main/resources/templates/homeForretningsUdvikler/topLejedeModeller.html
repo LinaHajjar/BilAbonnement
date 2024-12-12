@@ -41,7 +41,7 @@
         </div>
         <br>
 
-        <div class="vis-nummer-1-bil">
+        <div th:if="${model != null}" class="vis-nummer-1-bil">
             <div class="top-bil-info">
                 <p th:text="'Bil model: ' + ${model}"></p>
             </div>

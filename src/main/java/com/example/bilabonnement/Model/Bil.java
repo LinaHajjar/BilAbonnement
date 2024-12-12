@@ -71,6 +71,7 @@ public class Bil {
         this.braendstoftype = braendstoftype;
     }
 
+    //toString metode
     @Override
     public String toString() {
         return "Bil{" +

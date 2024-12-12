@@ -28,7 +28,7 @@
 
 <div class="manage-options">
 
-    <form action="/samletIndtægt" method="post">
+    <form th:action="@{/samletIndtægt}" method="post">
         <label for="fraDato">Fra Dato: </label>
         <input type="date" id="fraDato" name="fraDato" required>
         <br>
@@ -38,9 +38,9 @@
         <button type="submit">Vis Antallet</button>
         <br>
 
-        <div>
-            <strong th:text="${samletIndtægt}"></strong>
-        </div>
+        <p th:if="${samletIndtægt != null}"
+           th:text="'Samlet indtægt for denne periode er ' + ${samletIndtægt}"></p>
+
     </form>
 </div>
 
