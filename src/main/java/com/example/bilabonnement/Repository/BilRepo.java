@@ -1,6 +1,7 @@
 package com.example.bilabonnement.Repository;
 
 import com.example.bilabonnement.Model.Bil;
+import com.example.bilabonnement.Model.Kunde;
 import com.example.bilabonnement.Model.TopBil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -76,7 +77,8 @@ public class BilRepo {
         );
     }
 
-
-
-
+    public void redigerBil(Bil bil){
+        String sql = "UPDATE bil SET maerke=?, model=?, odometer=?, foersteregistrering=?, co2udledning=? WHERE nummerplade= ?";
+        template.update(sql, bil.getMaerke(), bil.getModel(), bil.getOdometer(), bil.getFoersteregistrering(), bil.getCo2udledning(), String.valueOf(bil.getNummerplade()));
+    }
 }

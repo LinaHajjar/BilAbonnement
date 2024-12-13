@@ -1,5 +1,6 @@
 package com.example.bilabonnement.Repository;
 
+import com.example.bilabonnement.Model.Kunde;
 import com.example.bilabonnement.Model.LejeKontrakt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -72,6 +73,12 @@ public class LejeKontraktRepo {
         return template.query(sql, rowMapper, telefonnummer);
     }
 
+    public List<LejeKontrakt> getLejeKontraktById(int lejekontrakt_id) throws SQLException {
+        String sql = "SELECT * FROM lejekontrakt WHERE lejekontrakt_id = ?";
+        RowMapper<LejeKontrakt> rowMapper = new BeanPropertyRowMapper<LejeKontrakt>(LejeKontrakt.class);
+        return template.query(sql, rowMapper, lejekontrakt_id);
+    }
+
 //metode til mvp
 public int getAntalBiler(LocalDate startdato, LocalDate slutdato) throws SQLException {
     String sql = "SELECT COUNT(*) FROM lejekontrakt WHERE startdato >= ? AND slutdato <= ?";
@@ -108,4 +115,8 @@ public int getAntalBiler(LocalDate startdato, LocalDate slutdato) throws SQLExce
         return template.queryForObject(sql, new Object[]{sqlStartdato, sqlSlutdato, selectedMaerke}, Integer.class);
     }
 
+    public void redigerLejeKontrakt(LejeKontrakt lejeKontrakt){
+        String sql = "UPDATE lejeKontrakt SET telefonnummer=?, nummerplade=?, startdato=?, slutdato=?, maxKm=?, pris=? WHERE lejekontrakt_id= ?";
+        template.update(sql, lejeKontrakt.getTelefonnummer(), lejeKontrakt.getNummerplade(), lejeKontrakt.getStartdato(), lejeKontrakt.getSlutdato(), lejeKontrakt.getMaxKm(), lejeKontrakt.getPris(), lejeKontrakt.getLejekontrakt_id());
+    }
 }

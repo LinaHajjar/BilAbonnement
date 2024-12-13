@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>rediger en bil</title>
+    <link rel="stylesheet" type="text/css" href="/MyCSS.css">
+</head>
+<body>
+
+<!-- Side navigation bar -->
+<div class="side-nav">
+    <!-- Logo -->
+    <div class="nav-logo">
+        <img src="/Billeder/BILABONNEMENT.png" alt="Logo">
+    </div>
+
+    <!-- Navigation buttons -->
+    <a th:href="@{/manage}" class="nav-button">Tilbage til menu</a>
+
+    <!-- Logout button -->
+    <a th:href="@{/logUd}" class="nav-button logout-button">Log ud</a>
+</div>
+
+<h1>Rediger kundens informationer</h1>
+
+<form action="/redigerBil" method="post">
+  <span th:text="${bil.nummerplade}"></span> <!--so it shows the user that the nummerplade, cannot be changed-->
+  <!--<input type="text" name="nummerplade" th:value="${bil.nummerplade}">-->
+
+    <td>
+        <label for="maerke">Mærke:</label>
+        <input type="text" id="maerke" name="maerke" th:value="${bil.maerke}">
+    </td>
+
+    <td>
+        <label for="model">Model:</label>
+        <input type="text" id="model" name="model" th:value="${bil.model}">
+    </td>
+
+
+    <span th:text="${bil.braendstoftype}"></span> <!--cannot be changed-->
+  <!--<input type="text" name="braendstoftype" th:value="${bil.braendstoftype}">-->
+
+
+    <td>
+        <label for="odometer">Odometer:</label>
+        <input type="text" id="odometer" name="odometer" th:value="${bil.odometer}">
+    </td>
+
+
+    <td>
+        <label for="foersteregistrering">First Registrarings dato: </label>
+        <input type="text" id="foersteregistrering" name="foersteregistrering" th:value="${bil.foersteregistrering}">
+    </td>
+
+
+    <td>
+        <label for="co2udledning">CO2-udledning: </label>
+        <input type="text" id="co2udledning" name="co2udledning" th:value="${bil.co2udledning}">
+    </td>
+
+  <input type="submit" value="Gem ændringer">
+</form>
+
+</body>
+</html>

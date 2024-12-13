@@ -38,9 +38,9 @@
         <tbody>
         <tr th:each="kunde: ${kunder}">
             <td th:text="${kunde.telefonnummer}"></td>
-            <td th:text="${kunde.email}"></td>
             <td th:text="${kunde.fornavn}"></td>
             <td th:text="${kunde.efternavn}"></td>
+            <td th:text="${kunde.email}"></td>
             <td th:text="${kunde.adresse}"></td>
             <td th:text="${kunde.postnummer}"></td>
             <td th:text="${kunde.byen}"></td>
@@ -52,7 +52,7 @@
                     <button type="submit" class="slet-kunde-knap">Slet kunde</button>
                 </form>
 
-
+<!--add a button to edit and update a customer-->
                 <a th:href="@{'/redigerKunde/' + ${kunde.telefonnummer}}">
                     <button class="btn-redigerKunde" id="btn-redigerKunde">Rediger Kunde</button> <!-- CSS to rediger-knap-->
                 </a>

@@ -7,18 +7,67 @@
 </head>
 <body>
 
+<!-- Side navigation bar -->
+<div class="side-nav">
+    <!-- Logo -->
+    <div class="nav-logo">
+        <img src="/Billeder/BILABONNEMENT.png" alt="Logo">
+    </div>
+
+    <!-- Navigation buttons -->
+    <a th:href="@{/manage}" class="nav-button">Tilbage til menu</a>
+
+    <!-- Logout button -->
+    <a th:href="@{/logUd}" class="nav-button logout-button">Log ud</a>
+</div>
+
 <h1>Rediger kundens informationer</h1>
 
 <form action="/redigerKunde" method="post">
     <input type="text" name="telefonnummer" th:value="${kunde.telefonnummer}">
-    <input type="text" name="email" th:value="${kunde.email}">
-    <input type="text" name="fornavn" th:value="${kunde.fornavn}">
-    <input type="text" name="efternavn" th:value="${kunde.efternavn}">
-    <input type="text" name="adresse" th:value="${kunde.adresse}">
-    <input type="text" name="postnummer" th:value="${kunde.postnummer}">
-    <input type="text" name="byen" th:value="${kunde.byen}">
-    <input type="text" name="koerekortnummer" th:value="${kunde.koerekortnummer}">
-    <input type="date" name="udstedelsdato" th:value="${kunde.udstedelsdato}">
+
+
+    <td>
+        <label for="fornavn">Fornavn:</label>
+        <input type="text" id="fornavn" name="fornavn" th:value="${kunde.fornavn}">
+    </td>
+
+    <td>
+        <label for="efternavn">Efternavn:</label>
+        <input type="text" id="efternavn" name="efternavn" th:value="${kunde.efternavn}">
+    </td>
+
+    <td>
+        <label for="email">E-mail:</label>
+        <input type="text" id="email" name="email" th:value="${kunde.email}">
+    </td>
+
+    <td>
+        <label for="adresse">Adresse:</label>
+        <input type="text" id="adresse" name="adresse" th:value="${kunde.adresse}">
+    </td>
+
+    <td>
+        <label for="postnummer">Postnummer:</label>
+        <input type="text" id="postnummer" name="postnummer" th:value="${kunde.postnummer}">
+    </td>
+
+    <td>
+        <label for="byen">By: </label>
+        <input type="text" id="byen" name="byen" th:value="${kunde.byen}">
+    </td>
+
+    <td>
+        <label for="koerekortnummer">Kørekortnummer: </label>
+        <input type="text" id="koerekortnummer" name="koerekortnummer" th:value="${kunde.koerekortnummer}">
+    </td>
+
+
+    <td>
+        <label for="udstedelsdato">Dato af udstedelse: </label>
+        <input type="text" id="udstedelsdato" name="udstedelsdato" th:value="${kunde.udstedelsdato}">
+    </td>
+
     <input type="submit" value="Gem ændringer">
 </form>
 

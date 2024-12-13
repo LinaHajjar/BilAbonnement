@@ -74,7 +74,6 @@ public class KundeController {
 
     @GetMapping("/redigerKunde/{telefonnummer}")
     public String redigerKunde(@PathVariable ("telefonnummer") String telefonnummer, Model model) throws SQLException {
-        //Kunde kunde=kundeService.getKundeByTelefon(telefonnummer);
         model.addAttribute("kunde", kundeService.getKundeByTelefon(telefonnummer));
         return "homeKunde/redigerKunde";
     }

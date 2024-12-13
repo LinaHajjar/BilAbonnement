@@ -1,5 +1,6 @@
 package com.example.bilabonnement.Service;
 
+import com.example.bilabonnement.Model.Kunde;
 import com.example.bilabonnement.Model.LejeKontrakt;
 import com.example.bilabonnement.Repository.LejeKontraktRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,10 @@ public class LejeKontraktService {
         lejeKontraktRepo.sletLejeKontract(lejekontrakt_id);
     }
 
+    public LejeKontrakt getLejeKontraktById(int lejekontrakt_id) throws SQLException {
+        return lejeKontraktRepo.getKontraktById(lejekontrakt_id);
+    }
+
 
     public void addLejekontrakt(LejeKontrakt lejeKontrakt){
         lejeKontraktRepo.addLejekontrakt(lejeKontrakt);
@@ -57,5 +62,10 @@ public class LejeKontraktService {
     public int getAntalBilerForMaerke(LocalDate startdato, LocalDate slutdato, String selectedMaerke) throws SQLException {
         return lejeKontraktRepo.getAntalBiler(startdato, slutdato, selectedMaerke);
     }
+
+    public void redigerLejeKontrakt(LejeKontrakt lejeKontrakt){
+        lejeKontraktRepo.redigerLejeKontrakt(lejeKontrakt);
+    }
+
 }
 

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>rediger en lejekontrakt</title>
+    <link rel="stylesheet" type="text/css" href="/MyCSS.css">
+
+</head>
+<body>
+
+<!-- Side navigation bar -->
+<div class="side-nav">
+  <!-- Logo -->
+  <div class="nav-logo">
+    <img src="/Billeder/BILABONNEMENT.png" alt="Logo">
+  </div>
+
+  <!-- Navigation buttons -->
+  <a th:href="@{/manage}" class="nav-button">Tilbage til menu</a>
+
+  <!-- Logout button -->
+  <a th:href="@{/logUd}" class="nav-button logout-button">Log ud</a>
+</div>
+
+<h1>Rediger kundens informationer</h1>
+
+<form action="/redigerLejeKontrakt" method="post">
+  <span th:text="${lejekontrakt.lejekontrakt_id}"></span> <!--so it shows the user that the lejekontrakt_id, cannot be changed-->
+  <!--<input type="text" name="lejekontrakt_id" th:value="${lejekontrakt.lejekontrakt_id}">-->
+  <td>
+    <label for="telefonnummer">Telefonnummer: </label>
+    <input type="text" id="telefonnummer" name="email" th:value="${lejekontrakt.telefonnummer}">
+  </td>
+
+  <td>
+    <label for="nummerplade">Nummerplade: </label>
+    <input type="text" id="nummerplade" name="nummerplade" th:value="${lejekontrakt.nummerplade}">
+  </td>
+
+  <td>
+    <label for="startdato">Start dato: </label>
+    <input type="text" id="startdato" name="startdato" th:value="${lejekontrakt.startdato}">
+  </td>
+
+  <td>
+    <label for="slutdato">Slut dato: </label>
+    <input type="text" id="slutdato" name="slutdato" th:value="${lejekontrakt.slutdato}">
+  </td>
+
+  <td>
+    <label for="maxKm">max Km: </label>
+    <input type="text" id="maxKm" name="maxKm" th:value="${lejekontrakt.maxKm}">
+  </td>
+
+  <td>
+    <label for="pris">pris: </label>
+    <input type="text" id="pris" name="pris" th:value="${lejekontrakt.pris}">
+  </td>
+  <input type="submit" value="Gem ændringer">
+</form>
+
+</body>
+</html>
