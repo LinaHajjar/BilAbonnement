@@ -31,14 +31,7 @@
 <div class="main-content">
 <h1 class="lejekontrakt-h1">Alle lejekontrakter</h1>
 
-<div th:if="${ingenKontrakt}" class="error-message">
-    <p th:text="${ingenKontrakt}"></p>
 
-    <div th:if="${nyKunde}">
-        <p>Vil du oprette en ny kunde?</p>
-        <a th:href="@{/nyKunde}" class="ny-kunde-link">Tryk her</a>
-    </div>
-</div>
 
     <div class="form-template">
         <form th:action="@{/kundensKontrakter}" method="post">
@@ -47,6 +40,16 @@
                    placeholder="Kundens telefonnummer" required
                    minlength="8" maxlength="8">
             <button type="submit" class="søg-efter-kundens-kontrakter">Søg efter kundens kontrakter</button>
+
+            <div th:if="${ingenKontrakt}" class="error-message">
+                <p th:text="${ingenKontrakt}"></p>
+
+                <div th:if="${nyKunde}">
+                    <p>Vil du oprette en ny kunde?</p>
+                    <a th:href="@{/nyKunde}" class="ny-kunde-link">Tryk her</a>
+                </div>
+            </div>
+
         </form>
     </div>
 

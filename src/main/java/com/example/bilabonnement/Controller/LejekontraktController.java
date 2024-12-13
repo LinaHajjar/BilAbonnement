@@ -126,7 +126,7 @@ public class LejekontraktController {
 
         if (kontrakter == null || kontrakter.isEmpty()){
 
-            redirectAttributes.addFlashAttribute("ingenKontrakt", "der ikke tilknyttet nogle kontrakter til denne kunde, eller er kunden ikke oprettet");
+            redirectAttributes.addFlashAttribute("ingenKontrakt", "Der ikke tilknyttet nogle kontrakter til denne kunde, eller er kunden ikke oprettet");
             redirectAttributes.addFlashAttribute("nyKunde", true);
             return "redirect:/manageKontrakter";
         } else {

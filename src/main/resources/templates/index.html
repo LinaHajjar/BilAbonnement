@@ -16,7 +16,9 @@
     <!-- Login form -->
     <h1 class="login-h1">Login</h1>
     <form th:action="@{/loginInfo}" method="post" class="login-box">
+        <label>Brugernavn</label>
         <input type="text" name="brugernavn" placeholder="Brugernavn" required>
+        <label>Kodeord</label>
         <input type="password" name="kode" placeholder="Kodeord" required>
         <button type="submit" class="login-submit-button">Login</button>
     </form>
