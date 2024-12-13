@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rediger Kunde</title>
+    <link rel="stylesheet" type="text/css" href="/MyCSS.css">
+</head>
+<body>
+
+<h1>Rediger kundens informationer</h1>
+
+<form action="/redigerKunde" method="post">
+    <input type="text" name="telefonnummer" th:value="${kunde.telefonnummer}">
+    <input type="text" name="email" th:value="${kunde.email}">
+    <input type="text" name="fornavn" th:value="${kunde.fornavn}">
+    <input type="text" name="efternavn" th:value="${kunde.efternavn}">
+    <input type="text" name="adresse" th:value="${kunde.adresse}">
+    <input type="text" name="postnummer" th:value="${kunde.postnummer}">
+    <input type="text" name="byen" th:value="${kunde.byen}">
+    <input type="text" name="koerekortnummer" th:value="${kunde.koerekortnummer}">
+    <input type="date" name="udstedelsdato" th:value="${kunde.udstedelsdato}">
+    <input type="submit" value="Gem ændringer">
+</form>
+
+</body>
+</html>
+
