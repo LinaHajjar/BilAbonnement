@@ -19,6 +19,8 @@
 
     <!-- Logout button -->
     <a th:href="@{/logUd}" class="nav-button logout-button">Log ud</a>
+<!--    tilføj bil-->
+    <a th:href="@{/nyBil}" class="nav-button">Tilføj Bil</a>
 </div>
 
 <!-- overskrift h1 -->
@@ -46,6 +48,12 @@
         <td th:text="${bil.odometer}"></td>
         <td th:text="${bil.foersteregistrering}"></td>
         <td th:text="${bil.co2udledning}"></td>
+        <td class="slet-bil">
+            <form th:action="@{/sletBil}" method="post">
+                <input type="hidden" name="nummerplade" th:value="${bil.nummerplade}">
+                <button type="submit" class="slet-bil-knap">Slet bil</button>
+            </form>
+        </td>
 
     </tr>
     </tbody>

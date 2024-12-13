@@ -39,4 +39,14 @@ public class BilService {
         return bilRepo.getTopLejedeModeller(fraDato, tilDato);
     }
 
+    public void opretteBil(String nummerplade, String  maerke, String model, Bil.Braendstoftype
+            braendstoftype, int odometer, LocalDate foersteregistrering, int co2udledning) throws SQLException {
+         bilRepo.opretteBil(nummerplade, maerke, model, braendstoftype, odometer, foersteregistrering, co2udledning);
+    }
+
+    public boolean sletBil(String nummerplade){
+        return bilRepo.sletBil(nummerplade);
+    }
+
+
 }

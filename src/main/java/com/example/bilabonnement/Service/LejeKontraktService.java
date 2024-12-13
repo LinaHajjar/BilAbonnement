@@ -49,10 +49,10 @@ public class LejeKontraktService {
         return lejeKontraktRepo.getAntalBiler(startdato, slutdato);
     }
 
-    /*public List<String> getBilMaerker(){
-        return lejeKontraktRepo.getBilMaerker();
-    }*/
 
+    public List<String> getBilMaerker(){
+        return lejeKontraktRepo.getBilMaerker();
+    }
 
     public List<MonthlyIncome> monthlyIncomeList(int year){
         return lejeKontraktRepo.monthlyIncomeList(year);
@@ -60,5 +60,9 @@ public class LejeKontraktService {
     }
 
 
+    // se antal lejet biler ude for maerke over mvp
+    public int getAntalBilerForMaerke(LocalDate startdato, LocalDate slutdato, String selectedMaerke) throws SQLException {
+        return lejeKontraktRepo.getAntalBiler(startdato, slutdato, selectedMaerke);
+    }
 }
 

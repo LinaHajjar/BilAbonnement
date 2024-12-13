@@ -20,7 +20,7 @@ public class LejeKontraktRepo {
 
     public List<LejeKontrakt> getAllLejeKontrakt() throws SQLException {
         String sql = "select * from lejekontrakt";
-        RowMapper<LejeKontrakt> rowMapper = new BeanPropertyRowMapper<>(LejeKontrakt.class);
+        RowMapper<LejeKontrakt> rowMapper=new BeanPropertyRowMapper<>(LejeKontrakt.class);
         return template.query(sql, rowMapper);
     }
 
@@ -59,14 +59,15 @@ public class LejeKontraktRepo {
     }
 
 
-    public void addLejekontrakt(LejeKontrakt lejeKontrakt) {
+
+    public void addLejekontrakt(LejeKontrakt lejeKontrakt){
         String sql = "INSERT INTO lejekontrakt(telefonnummer, nummerplade, startDato, slutDato, maxKm, pris)\n" +
                 "VALUES(?, ?, ?, ?, ?, ?)";
         template.update(sql, lejeKontrakt.getTelefonnummer(), lejeKontrakt.getNummerplade(), lejeKontrakt.getStartdato(), lejeKontrakt.getSlutdato(), lejeKontrakt.getMaxKm(), lejeKontrakt.getPris()); // denne kode adder til databasen ved hjælp af getters
     }
 
 
-    //  query der tager en kundes telefonnummer og finde alle kundens lejekontrakter: søge efter kunden.
+        //  query der tager en kundes telefonnummer og finde alle kundens lejekontrakter: søge efter kunden.
     public List<LejeKontrakt> findKontraktByTelefon(String telefonnummer) throws SQLException {
         String sql = "SELECT * FROM lejekontrakt WHERE telefonnummer = ?";
         RowMapper<LejeKontrakt> rowMapper = new BeanPropertyRowMapper<LejeKontrakt>(LejeKontrakt.class);
@@ -74,16 +75,16 @@ public class LejeKontraktRepo {
     }
 
 
-    public int getAntalBiler(LocalDate startdato, LocalDate slutdato) throws SQLException {
-        String sql = "SELECT COUNT(*) FROM lejekontrakt WHERE startdato >= ? AND slutdato <= ?";
+public int getAntalBiler(LocalDate startdato, LocalDate slutdato) throws SQLException {
+    String sql = "SELECT COUNT(*) FROM lejekontrakt WHERE startdato >= ? AND slutdato <= ?";
 
-        // Convert LocalDate to java.sql.Date
-        java.sql.Date sqlStartdato = java.sql.Date.valueOf(startdato);
-        java.sql.Date sqlSlutdato = java.sql.Date.valueOf(slutdato);
+    // Convert LocalDate to java.sql.Date
+    java.sql.Date sqlStartdato = java.sql.Date.valueOf(startdato);
+    java.sql.Date sqlSlutdato = java.sql.Date.valueOf(slutdato);
 
-        // Execute the query and return the count
-        return template.queryForObject(sql, Integer.class, sqlStartdato, sqlSlutdato);
-    }
+    // Execute the query and return the count
+    return template.queryForObject(sql, Integer.class, sqlStartdato, sqlSlutdato);
+}
 
 
     public List<MonthlyIncome> monthlyIncomeList(int year){
@@ -114,6 +115,16 @@ public class LejeKontraktRepo {
 
     /*public List<String> getBilMaerker() {
         String sql = "SELECT DISTINCT maerke FROM bil WHERE maerke IS NOT NULL AND maerke != ''";
+        return template.queryForList(sql, String.class);  // This will return a List<String>
+    }
+
+//
+//    metode til at kunde søge ude fra mæerke over mvp
+    public int getAntalBiler(LocalDate startdato, LocalDate slutdato, String selectedMaerke) {
+
+
+        java.sql.Date sqlStartdato = java.sql.Date.valueOf(startdato);
+        java.sql.Date sqlSlutdato = java.sql.Date.valueOf(slutdato);
 
         System.out.println("Executing SQL query: " + sql);
         List<String> maerker = template.queryForList(sql, String.class);
