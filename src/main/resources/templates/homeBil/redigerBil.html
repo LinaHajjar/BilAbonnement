@@ -25,40 +25,36 @@
 
 <form action="/redigerBil" method="post">
 
-    <input type="text" name="nummerplade" th:value="${bil.nummerplade}"> <!--so it shows the user that the nummerplade, cannot be changed-->
-    <!--eller: -->
-    <!--<input type="hidden" name="nummerplade" th:value="${bil.nummerplade}"> -->
+    <input type="hidden" name="nummerplade" th:value="${bil.nummerplade}"> <!--so it shows the user that the nummerplade, cannot be changed-->
 
     <td>
         <label for="maerke">Mærke:</label>
-        <input type="text" id="maerke" name="maerke" th:value="${bil.maerke}">
+        <input type="text" id="maerke" name="maerke" placeholder="Mærke" required th:value="${bil.maerke}">
     </td>
 
     <td>
         <label for="model">Model:</label>
-        <input type="text" id="model" name="model" th:value="${bil.model}">
+        <input type="text" id="model" name="model" placeholder="Model" required th:value="${bil.model}">
     </td>
 
 
+    <label>Brændstoftype:</label>
     <span th:text="${bil.braendstoftype}"></span> <!--cannot be changed-->
-  <!--<input type="text" name="braendstoftype" th:value="${bil.braendstoftype}">-->
 
 
     <td>
         <label for="odometer">Odometer:</label>
-        <input type="text" id="odometer" name="odometer" th:value="${bil.odometer}">
+        <input type="text" id="odometer" name="odometer" placeholder="Odometer" required th:value="${bil.odometer}">
     </td>
 
 
-    <td>
-        <label for="foersteregistrering">First Registrarings dato: </label>
-        <input type="text" id="foersteregistrering" name="foersteregistrering" th:value="${bil.foersteregistrering}">
-    </td>
+    <label>Første registrerings dato: </label>
+    <span th:text="${bil.foersteregistrering}"></span> <!--cannot be changed-->
 
 
     <td>
         <label for="co2udledning">CO2-udledning: </label>
-        <input type="text" id="co2udledning" name="co2udledning" th:value="${bil.co2udledning}">
+        <input type="text" id="co2udledning" name="co2udledning" placeholder="CO2-udledning" required th:value="${bil.co2udledning}">
     </td>
 
   <input type="submit" value="Gem ændringer">

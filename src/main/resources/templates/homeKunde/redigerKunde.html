@@ -24,51 +24,49 @@
 <h1>Rediger kundens informationer</h1>
 
 <form action="/redigerKunde" method="post">
-    <input type="text" name="telefonnummer" th:value="${kunde.telefonnummer}"> <!--so it shows the user that the nummerplade, cannot be changed-->
-    <!--eller: -->
-    <!--<input type="hidden" name="telefonnummer" th:value="${kunde.telefonnummer}"> -->
+    <input type="hidden" name="telefonnummer" th:value="${kunde.telefonnummer}"> <!--the label is hidden and cannot be changed-->
 
 
     <td>
         <label for="fornavn">Fornavn:</label>
-        <input type="text" id="fornavn" name="fornavn" th:value="${kunde.fornavn}">
+        <input type="text" id="fornavn" name="fornavn" placeholder="Fornavn" required th:value="${kunde.fornavn}">
     </td>
 
     <td>
         <label for="efternavn">Efternavn:</label>
-        <input type="text" id="efternavn" name="efternavn" th:value="${kunde.efternavn}">
+        <input type="text" id="efternavn" name="efternavn" placeholder="Efternavn" required th:value="${kunde.efternavn}">
     </td>
 
     <td>
         <label for="email">E-mail:</label>
-        <input type="text" id="email" name="email" th:value="${kunde.email}">
+        <input type="text" id="email" name="email" placeholder="E-mail" required th:value="${kunde.email}">
     </td>
 
     <td>
         <label for="adresse">Adresse:</label>
-        <input type="text" id="adresse" name="adresse" th:value="${kunde.adresse}">
+        <input type="text" id="adresse" name="adresse" placeholder="Adresse" required th:value="${kunde.adresse}">
     </td>
 
     <td>
         <label for="postnummer">Postnummer:</label>
-        <input type="text" id="postnummer" name="postnummer" th:value="${kunde.postnummer}">
+        <input type="text" id="postnummer" name="postnummer" placeholder="Postnummer" required th:value="${kunde.postnummer}">
     </td>
+
 
     <td>
         <label for="byen">By: </label>
-        <input type="text" id="byen" name="byen" th:value="${kunde.byen}">
-    </td>
-
-    <td>
-        <label for="koerekortnummer">Kørekortnummer: </label>
-        <input type="text" id="koerekortnummer" name="koerekortnummer" th:value="${kunde.koerekortnummer}">
+        <input type="text" id="byen" name="byen" placeholder="By" required th:value="${kunde.byen}">
     </td>
 
 
-    <td>
-        <label for="udstedelsdato">Dato af udstedelse: </label>
-        <input type="text" id="udstedelsdato" name="udstedelsdato" th:value="${kunde.udstedelsdato}">
-    </td>
+    <label>Kørekort-nummer:</label>
+    <span th:text="${kunde.koerekortnummer}"></span> <!--cannot be changed-->
+
+
+    <input type="hidden" name="udstedelsdato" th:value="${kunde.udstedelsdato}">
+    <label>Udstedelsdato:</label>
+    <span th:text="${kunde.udstedelsdato}"></span> <!--cannot be changed-->
+
 
     <input type="submit" value="Gem ændringer">
 </form>

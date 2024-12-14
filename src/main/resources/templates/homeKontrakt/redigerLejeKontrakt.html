@@ -26,38 +26,33 @@
 
 <form action="/redigerLejeKontrakt" method="post">
 
-  <input type="text" name="lejekontrakt_id" th:value="${lejekontrakt.lejekontrakt_id}">
-<!--eller: -->
-  <!--<input type="hidden" name="lejekontrakt_id" th:value="${lejekontrakt.lejekontrakt_id}">-->
+  <input type="hidden" name="lejekontrakt_id" th:value="${lejekontrakt.lejekontrakt_id}">
 
-  <td>
-    <label for="telefonnummer">Telefonnummer: </label>
-    <input type="text" id="telefonnummer" name="telefonnummer" th:value="${lejekontrakt.telefonnummer}">
-  </td>
+  <label>Telefonnummer:</label>
+  <span th:text="${lejekontrakt.telefonnummer}"></span> <!--cannot be changed-->
 
-  <td>
-    <label for="nummerplade">Nummerplade: </label>
-    <input type="text" id="nummerplade" name="nummerplade" th:value="${lejekontrakt.nummerplade}">
-  </td>
+  <label>Nummerplade:</label>
+  <span th:text="${lejekontrakt.nummerplade}"></span> <!--cannot be changed-->
+
 
   <td>
     <label for="startdato">Start dato: </label>
-    <input type="text" id="startdato" name="startdato" th:value="${lejekontrakt.startdato}">
+    <input type="text" id="startdato" name="startdato" placeholder="startdato" required th:value="${lejekontrakt.startdato}">
   </td>
 
   <td>
     <label for="slutdato">Slut dato: </label>
-    <input type="text" id="slutdato" name="slutdato" th:value="${lejekontrakt.slutdato}">
+    <input type="text" id="slutdato" name="slutdato" placeholder="slutdato" th:value="${lejekontrakt.slutdato}">
   </td>
 
   <td>
     <label for="maxKm">max Km: </label>
-    <input type="text" id="maxKm" name="maxKm" th:value="${lejekontrakt.maxKm}">
+    <input type="text" id="maxKm" name="maxKm" placeholder="maxKm" th:value="${lejekontrakt.maxKm}">
   </td>
 
   <td>
     <label for="pris">pris: </label>
-    <input type="text" id="pris" name="pris" th:value="${lejekontrakt.pris}">
+    <input type="text" id="pris" name="pris" placeholder="pris" th:value="${lejekontrakt.pris}">
   </td>
   <input type="submit" value="Gem ændringer">
 </form>

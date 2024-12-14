@@ -78,7 +78,7 @@ public class BilRepo {
     }
 
     public void redigerBil(Bil bil){
-        String sql = "UPDATE bil SET maerke=?, model=?, odometer=?, foersteregistrering=?, co2udledning=? WHERE nummerplade= ?";
-        template.update(sql, bil.getMaerke(), bil.getModel(), bil.getOdometer(), bil.getFoersteregistrering(), bil.getCo2udledning(), String.valueOf(bil.getNummerplade()));
+        String sql = "UPDATE bil SET maerke=?, model=?, odometer=?, co2udledning=? WHERE nummerplade= ?";
+        template.update(sql, bil.getMaerke(), bil.getModel(), bil.getOdometer(), bil.getCo2udledning(), String.valueOf(bil.getNummerplade()));
     }
 }

@@ -116,7 +116,7 @@ public int getAntalBiler(LocalDate startdato, LocalDate slutdato) throws SQLExce
     }
 
     public void redigerLejeKontrakt(LejeKontrakt lejeKontrakt){
-        String sql = "UPDATE lejeKontrakt SET telefonnummer=?, nummerplade=?, startdato=?, slutdato=?, maxKm=?, pris=? WHERE lejekontrakt_id= ?";
-        template.update(sql, lejeKontrakt.getTelefonnummer(), lejeKontrakt.getNummerplade(), lejeKontrakt.getStartdato(), lejeKontrakt.getSlutdato(), lejeKontrakt.getMaxKm(), lejeKontrakt.getPris(), lejeKontrakt.getLejekontrakt_id());
+        String sql = "UPDATE lejeKontrakt SET startdato=?, slutdato=?, maxKm=?, pris=? WHERE lejekontrakt_id= ?";
+        template.update(sql, lejeKontrakt.getStartdato(), lejeKontrakt.getSlutdato(), lejeKontrakt.getMaxKm(), lejeKontrakt.getPris(), lejeKontrakt.getLejekontrakt_id());
     }
 }
