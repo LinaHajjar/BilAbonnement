@@ -24,8 +24,10 @@
 <h1>Rediger kundens informationer</h1>
 
 <form action="/redigerBil" method="post">
-  <span th:text="${bil.nummerplade}"></span> <!--so it shows the user that the nummerplade, cannot be changed-->
-  <!--<input type="text" name="nummerplade" th:value="${bil.nummerplade}">-->
+
+    <input type="text" name="nummerplade" th:value="${bil.nummerplade}"> <!--so it shows the user that the nummerplade, cannot be changed-->
+    <!--eller: -->
+    <!--<input type="hidden" name="nummerplade" th:value="${bil.nummerplade}"> -->
 
     <td>
         <label for="maerke">Mærke:</label>

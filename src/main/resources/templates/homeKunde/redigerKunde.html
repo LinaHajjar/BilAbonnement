@@ -24,7 +24,9 @@
 <h1>Rediger kundens informationer</h1>
 
 <form action="/redigerKunde" method="post">
-    <input type="text" name="telefonnummer" th:value="${kunde.telefonnummer}">
+    <input type="text" name="telefonnummer" th:value="${kunde.telefonnummer}"> <!--so it shows the user that the nummerplade, cannot be changed-->
+    <!--eller: -->
+    <!--<input type="hidden" name="telefonnummer" th:value="${kunde.telefonnummer}"> -->
 
 
     <td>

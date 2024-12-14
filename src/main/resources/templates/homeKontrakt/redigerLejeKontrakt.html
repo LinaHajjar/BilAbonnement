@@ -25,11 +25,14 @@
 <h1>Rediger kundens informationer</h1>
 
 <form action="/redigerLejeKontrakt" method="post">
-  <span th:text="${lejekontrakt.lejekontrakt_id}"></span> <!--so it shows the user that the lejekontrakt_id, cannot be changed-->
-  <!--<input type="text" name="lejekontrakt_id" th:value="${lejekontrakt.lejekontrakt_id}">-->
+
+  <input type="text" name="lejekontrakt_id" th:value="${lejekontrakt.lejekontrakt_id}">
+<!--eller: -->
+  <!--<input type="hidden" name="lejekontrakt_id" th:value="${lejekontrakt.lejekontrakt_id}">-->
+
   <td>
     <label for="telefonnummer">Telefonnummer: </label>
-    <input type="text" id="telefonnummer" name="email" th:value="${lejekontrakt.telefonnummer}">
+    <input type="text" id="telefonnummer" name="telefonnummer" th:value="${lejekontrakt.telefonnummer}">
   </td>
 
   <td>
