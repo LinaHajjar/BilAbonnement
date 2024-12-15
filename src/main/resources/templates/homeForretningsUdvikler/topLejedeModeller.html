@@ -6,7 +6,11 @@
     <title>Top Lejede Bil Modeller</title>
 </head>
 <body>
-<h1 class="top-lejede-biler-overskrift">Dette er top lejedeModeller siden</h1>
+<!-- department nav-->
+<div class="department-nav">
+    <span class="department-label">Afdeling: </span>
+    <span class="department-name">Forretnings udvikling</span>
+</div>
 
 <!-- Side navigation bar -->
 <div class="side-nav">
@@ -22,14 +26,15 @@
     <a th:href="@{/logUd}" class="nav-button logout-button">Log ud</a>
 </div>
 
-<div th:if="${ingenTopBil}" class="error-message">
-    <p th:text="${ingenTopBil}"></p>
-</div>
 
-
+<div class="main-content">
+<h1 class="top-lejede-biler-overskrift">Find mest populære biler</h1>
 <div class="manage-options">
-
+<div class="form-template">
     <form th:action="@{/topLejedeModeller}" method="post">
+        <div th:if="${ingenTopBil}" class="error-message">
+            <p th:text="${ingenTopBil}"></p>
+        </div>
         <label>Fra Dato: </label>
         <input type="date" name="fraDato" placeholder="Indtast start datoen" required>
         <br>
@@ -37,7 +42,7 @@
         <input type="date" name="tilDato" placeholder="Indtast slut datoen" required>
         <br>
         <div class="submit-top-bil">
-            <button type="submit" class="vis-top-bil-knap">Vis den top model bil</button>
+            <button type="submit" class="nav-button1">Vis den top model bil</button>
         </div>
         <br>
 
@@ -54,6 +59,7 @@
         </div>
     </form>
 </div>
-
+</div>
+</div>
 </body>
 </html>

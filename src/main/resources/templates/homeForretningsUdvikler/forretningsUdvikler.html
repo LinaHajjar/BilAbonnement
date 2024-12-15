@@ -6,6 +6,11 @@
     <title>forretnings Udvikler</title>
 </head>
 <body>
+<!-- Afdelings nav -->
+<div class="department-nav">
+    <span class="department-label">Afdeling: </span>
+    <span class="department-name">Forretnings udvikling</span>
+</div>
 
 <!-- Side navigation bar -->
 <div class="side-nav">
@@ -22,25 +27,25 @@
     <a th:href="@{/logUd}" class="nav-button logout-button">Log ud</a>
 
 </div>
-
-<h1 class="manage-h1">Hvilke statistikker vil du gerne se</h1>
+<div class="main-content">
+<h1 class="manage-h1">Vælg en afdeling</h1>
 
 <div class="manage-options">
     <a th:href="@{/antalLejedeBiler}" class="antal-lejede-biler-knap">
-        <img src="/Billeder/lejedeBiler.jpg" alt="lejede-biler">
-        <span>antal lejede biler</span>
+        <img src="/Billeder/AntalLejetBiler01.webp" alt="lejede-biler">
+        <span>Antal lejede biler</span>
     </a>
 
     <a th:href="@{/samletIndtægt}" class="samlet-Indtægt-knap">
-        <img src="/Billeder/indtægt.jpeg" alt="indtægt">
-        <span>samlet indtægt</span>
+        <img src="/Billeder/samletIndtægt02.webp" alt="indtægt">
+        <span>Samlet indtægt</span>
     </a>
 
     <a th:href="@{/topLejedeModeller}" class="top-lejede-biler-knap">
-        <img src="/Billeder/topLejedeBiler.jpeg" alt="topLejedeBiler">
-        <span>top Modeller</span>
+        <img src="/Billeder/TopModeller03.webp" alt="topLejedeBiler">
+        <span>Top Modeller</span>
     </a>
 </div>
-
+</div>
 </body>
 </html>

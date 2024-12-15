@@ -6,6 +6,14 @@
     <title>Antal lejede biler</title>
 </head>
 <body>
+
+<div class="department-nav">
+    <span class="department-label">Afdeling: </span>
+    <span class="department-name">Forretnings udvikling</span>
+</div>
+
+
+<div class="main-content">
     <h1 class="overskrift-lejedeBiler">Antal lejede biler i en periode</h1>
     <!-- Side navigation bar -->
     <div class="side-nav">
@@ -25,14 +33,14 @@
 
 
     <!-- Required er i slutningen af input for at undgå whitelabel errors -->
-
+<div class="form-template">
     <form action="/antalLejedeBiler" method="post">
         <label for="startdato">Fra Dato: </label>
         <input type="date" id="startdato" name="startdato" required>
-        <br>
         <label for="slutdato">Til Dato: </label>
         <input type="date" id="slutdato" name="slutdato" required>
-        <br>
+        <label>Vælg mærke ved ønsket om specifik bilmærke:</label>
+        <label>(Lad stå uberørt, for alle modeller i perioden)</label>
         <select id="maerke" name="maerke">
             <option value="" th:selected="${selectedMaerke == ''}">Vælg Mærke</option>
             <option th:each="m : ${maerker}"
@@ -41,21 +49,16 @@
                     th:selected="${m == selectedMaerke}">
             </option>
         </select>
-
-
         <button type="submit">Vis Antallet</button>
         <br>
-
         <div>
+            <p>Antal lejet biler ud fra den valgte periode:</p>
             <strong th:text="${lejedeBiler}"></strong>
-            <p> lejede biler i denne periode.</p>
         </div>
 
     </form>
 </div>
-
-
-
-
+</div>
+</div>
 </body>
 </html>
