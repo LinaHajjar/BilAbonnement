@@ -607,7 +607,7 @@ h1 {
 /* Headings */
 .Skaderapport-h1, .ny-lejekontrakt-h1 {
     font-size: 36px;
-    color: rgba(0, 0, 0, 0.62);
+    color: rgb(162, 208, 208);
     text-align: center;
     margin-top: 20px;
     margin-bottom: 20px;
