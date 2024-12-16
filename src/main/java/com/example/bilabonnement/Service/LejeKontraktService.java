@@ -64,12 +64,6 @@ public class LejeKontraktService {
 
     }
 
-
-    // se antal lejet biler ude for maerke over mvp
-    public int getAntalBilerForMaerke(LocalDate startdato, LocalDate slutdato, String selectedMaerke) throws SQLException {
-        return lejeKontraktRepo.getAntalBiler(startdato, slutdato, selectedMaerke);
-    }
-
     public void redigerLejeKontrakt(LejeKontrakt lejeKontrakt){
         lejeKontraktRepo.redigerLejeKontrakt(lejeKontrakt);
     }

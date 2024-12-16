@@ -31,8 +31,6 @@ public class LejekontraktController {
     }
 
     //oprettelse af postmaping metode for at sende input fra bruger omkring lejekontrakt info
-
-
     @GetMapping("/nyKontrakt")
     public String nyKontrakt(Model model) throws SQLException {
         List<String> nummerpladeList = bilService.alleNummerplader();

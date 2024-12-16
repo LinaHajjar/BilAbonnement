@@ -22,12 +22,10 @@ public class KundeService {
         return kundeRepo.getAllKunde();
     }
 
-    //skal lave den her metode færdig
     public Kunde getKundeByTelefon(String telefonnummer) throws SQLException {
         return kundeRepo.getKundeByTelefon(telefonnummer);
     }
 
-    //skal lave den her metode færdig
     public boolean opdaterKundeInfo(Kunde kunde) throws SQLException {
         return kundeRepo.opdaterKundeInfo(kunde);
     }
