@@ -72,5 +72,8 @@ public class LejeKontraktService {
         return lejeKontraktRepo.getAntalBilerforMærke(startdato, slutdato, selectedMaerke);
     }
 
+
+
+
 }
 

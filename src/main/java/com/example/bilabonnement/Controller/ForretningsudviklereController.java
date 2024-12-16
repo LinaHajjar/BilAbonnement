@@ -99,20 +99,6 @@ public class ForretningsudviklereController {
     }
 
 
-    @PostMapping("/monthlyIncome")
-    public String monthlyIncome(@RequestParam("year") int year, Model model) {
-        List<MonthlyIncome> incomeList = lejeKontraktService.monthlyIncomeList(year);
-
-        // Debug: Log the fetched data
-        /*for (MonthlyIncome income : incomeList) {
-            System.out.println("Month: " + income.getMåned() + ", Income: " + income.getIndtjening());
-        }*/
-
-        model.addAttribute("indtjening", incomeList);
-        model.addAttribute("year", year);
-
-        return "homeForretningsUdvikler/samletIndtægt";
-    }
 
     @GetMapping("/antalLejedeBiler")
     public String visAntalLejedeBilerForm(Model model) throws SQLException {
@@ -154,5 +140,19 @@ public class ForretningsudviklereController {
         model.addAttribute("selectedMaerke", selectedMaerke); //udvalgte mærke
         return "homeForretningsUdvikler/antalLejedeBiler";
     }
+
+    @PostMapping("/monthlyIncome")
+    public String monthlyIncome(@RequestParam("year") int year, Model model) {
+        List<MonthlyIncome> incomeList = lejeKontraktService.monthlyIncomeList(year);
+        // Debug: Log the fetched data
+        for (MonthlyIncome income : incomeList) {
+            System.out.println("Month: " + income.getMåned() + ", Income: " + income.getIndtjening());
+        }
+        model.addAttribute("indtjening", incomeList);
+        model.addAttribute("year", year);
+        return "homeForretningsUdvikler/samletIndtægt";
+    }
+
+
 
 }

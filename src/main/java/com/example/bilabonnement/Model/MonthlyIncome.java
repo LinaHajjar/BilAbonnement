@@ -1,18 +1,11 @@
 package com.example.bilabonnement.Model;
-
 import java.text.DateFormatSymbols;
-
 public class MonthlyIncome {
-
     int måned;
     double indtjening;
 
-
-
-    public MonthlyIncome(){
-
+    public MonthlyIncome() {
     }
-
 
     public int getMåned() {
         return måned;
@@ -34,3 +27,4 @@ public class MonthlyIncome {
         return new DateFormatSymbols().getMonths()[måned - 1];
     }
 }
+
