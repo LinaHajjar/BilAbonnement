@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tilføj Ny Bil Returnering</title>
+  <link rel="stylesheet" type="text/css" href="/MyCSS.css">
+</head>
+<body>
+
+<!-- Side navigation bar -->
+<div class="side-nav">
+  <!-- Logo -->
+  <div class="nav-logo">
+    <img src="/Billeder/BILABONNEMENT.png" alt="Logo">
+  </div>
+
+  <!-- Navigation buttons -->
+  <a th:href="@{/manage}" class="nav-button">Tilbage til menu</a>
+
+</div>
+
+
+
+<div class="tilfoejBilUdlevering">
+  <h1>Tilføj Ny Bil Returnering</h1>
+
+
+  <form action="/opretteReturnering" method="post">
+
+    <label for="nummerplade">Nummerplade:</label>
+    <input type="text" id="nummerplade" name="nummerplade" required>
+
+    <label for="lejekontrakt_id">Lejekontrakt ID:</label>
+    <input type="number" id="lejekontrakt_id" name="lejekontrakt_id" required>
+
+
+    <label for="handlingsdato">Handlingsdato:</label>
+    <input type="date" id="handlingsdato" name="handlingsdato" required>
+
+
+    <label for="handlingslokation">Lokation:</label>
+    <input type="text" id="handlingslokation" name="handlingslokation" required>
+
+
+    <label for="status">Status:</label>
+    <select id="status" name="status" required>
+      <option value="UNDER_LEVERING">Under Levering</option>
+      <option value="LEVERET">Leveret</option>
+      <option value="AFVENTER_INSPEKTION">Afventer Inspektion</option>
+      <option value="INSPICERET">Inspiceret</option>
+      <option value="KLAR_TIL_SALG">Klar til Salg</option>
+    </select>
+
+    <button type="submit">Opret Bilhaandtering</button>
+  </form>
+</div>
+
+</body>
+</html>
