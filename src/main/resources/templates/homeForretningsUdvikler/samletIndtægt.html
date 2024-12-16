@@ -39,11 +39,45 @@
         <br>
 
         <p th:if="${samletIndtægt != null}"
-           th:text="'Samlet indtægt for denne periode er ' + ${samletIndtægt}"></p>
+           th:text="'Samlet indtægt fra ' + ${fraDato} + ' til ' + ${tilDato} + ': ' + ${samletIndtægt}"></p>
 
     </form>
+
 </div>
 
+
+
+
+<div class="månedlige-indtægt">
+    <form th:action="@{/monthlyIncome}" method="post">
+        <label>Indtast det år du vil se månedlig indtjening for</label>
+        <input type="number" name="year" required min="1000" max="9999">
+        <button type="submit">Tryk her for at se alt indtjening</button>
+    </form>
+
+
+    <div class="alt-indtjening">
+        <h1 th:if="${year}" th:text="'Alt indtjening for år ' + ${year} "></h1>
+
+        <table class="indtjening-table" th:if="${indtjening}">
+            <thead>
+            <tr>
+                <th>Måned</th>
+                <th>Indtjening</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="income : ${indtjening}">
+                <td th:text="${income.monthName}"></td>
+                <td th:text="${income.indtjening}"></td>
+            </tr>
+            </tbody>
+        </table>
+
+
+    </div>
+
+</div>
 
 </body>
 </html>

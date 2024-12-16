@@ -38,6 +38,11 @@
     <p th:text="${errorMessage}"></p>
 </div>
 
+<div th:if="${opretNyKunde}">
+    <p>Vil du oprette en ny kunde?</p>
+    <a th:href="@{/nyKunde}" class="ny-kunde-link">Tryk her</a>
+</div>
+
 <div th:if="${error}" class="error-message">
     <p th:text="${error}"></p>
 </div>

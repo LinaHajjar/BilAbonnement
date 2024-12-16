@@ -2,6 +2,7 @@ package com.example.bilabonnement.Service;
 
 import com.example.bilabonnement.Model.Kunde;
 import com.example.bilabonnement.Model.LejeKontrakt;
+import com.example.bilabonnement.Model.MonthlyIncome;
 import com.example.bilabonnement.Repository.LejeKontraktRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -57,6 +58,12 @@ public class LejeKontraktService {
     public List<String> getBilMaerker(){
         return lejeKontraktRepo.getBilMaerker();
     }
+
+    public List<MonthlyIncome> monthlyIncomeList(int year){
+        return lejeKontraktRepo.monthlyIncomeList(year);
+
+    }
+
 
     // se antal lejet biler ude for maerke over mvp
     public int getAntalBilerForMaerke(LocalDate startdato, LocalDate slutdato, String selectedMaerke) throws SQLException {

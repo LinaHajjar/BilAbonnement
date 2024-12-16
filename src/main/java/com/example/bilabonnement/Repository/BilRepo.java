@@ -81,4 +81,16 @@ public class BilRepo {
         String sql = "UPDATE bil SET maerke=?, model=?, odometer=?, co2udledning=? WHERE nummerplade= ?";
         template.update(sql, bil.getMaerke(), bil.getModel(), bil.getOdometer(), bil.getCo2udledning(), String.valueOf(bil.getNummerplade()));
     }
+
+
+    public boolean sletBil(String nummerplade){
+
+        String sql = "DELETE FROM bil WHERE nummerplade = ?";
+
+        return template.update(sql,nummerplade)>0;
+    }
+
+
+
+
 }

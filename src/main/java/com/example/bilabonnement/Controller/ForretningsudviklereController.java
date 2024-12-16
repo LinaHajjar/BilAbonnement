@@ -1,5 +1,6 @@
 package com.example.bilabonnement.Controller;
 
+import com.example.bilabonnement.Model.MonthlyIncome;
 import com.example.bilabonnement.Model.TopBil;
 import com.example.bilabonnement.Service.BilService;
 import com.example.bilabonnement.Service.LejeKontraktService;
@@ -68,9 +69,10 @@ public class ForretningsudviklereController {
     }
 
     @GetMapping("/samletIndtægt")
-    public String samletIndtægt(Model model) {
+    public String samletIndtægt() {
         return "homeForretningsUdvikler/samletIndtægt";
     }
+
 
     @PostMapping("/samletIndtægt")
     public String samletIndtægt(@RequestParam("fraDato")LocalDate fraDato,@RequestParam("tilDato")LocalDate tilDato,  Model model)throws SQLException{
@@ -80,6 +82,8 @@ public class ForretningsudviklereController {
         if (samletIndtægt == null || samletIndtægt == 0.0){
             model.addAttribute("ingenIndtægt", "Der er ikke nogen indtægt indenfor denne dato.");
         } else {
+            model.addAttribute("fraDato", fraDato);
+            model.addAttribute("tilDato", tilDato);
             model.addAttribute("samletIndtægt", samletIndtægt);
         }
 
@@ -105,6 +109,8 @@ public class ForretningsudviklereController {
             String bilModel = topLejedeModel.getModel();
             String maerke = topLejedeModel.getMaerke();
             int antalLånt = topLejedeModel.getAntal();
+            model.addAttribute("fraDato", fraDato);
+            model.addAttribute("tilDato", tilDato);
             model.addAttribute("model", bilModel);
             model.addAttribute("maerke", maerke);
             model.addAttribute("antalLånt", antalLånt);
@@ -123,4 +129,22 @@ public class ForretningsudviklereController {
         return "homeForretningsUdvikler/forretningsUdvikler";
     }
 
+
+
+
+
+    @PostMapping("/monthlyIncome")
+    public String monthlyIncome(@RequestParam("year") int year, Model model) {
+        List<MonthlyIncome> incomeList = lejeKontraktService.monthlyIncomeList(year);
+
+        // Debug: Log the fetched data
+        for (MonthlyIncome income : incomeList) {
+            System.out.println("Month: " + income.getMåned() + ", Income: " + income.getIndtjening());
+        }
+
+        model.addAttribute("indtjening", incomeList);
+        model.addAttribute("year", year);
+
+        return "homeForretningsUdvikler/samletIndtægt";
+    }
 }

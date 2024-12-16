@@ -44,6 +44,10 @@ public class BilService {
          bilRepo.opretteBil(nummerplade, maerke, model, braendstoftype, odometer, foersteregistrering, co2udledning);
     }
 
+    public boolean sletBil(String nummerplade){
+        return bilRepo.sletBil(nummerplade);
+    }
+
 
     public Bil getBilByNummerplade(String nummerplade) throws SQLException {
         return bilRepo.getBilByNummerplade(nummerplade);

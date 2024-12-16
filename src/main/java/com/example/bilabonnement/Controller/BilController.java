@@ -70,6 +70,12 @@ public class BilController {
         return "redirect:/manageBiler";
     }
 
+    @PostMapping("/sletBil")
+    public String sletBil(@RequestParam("nummerplade") String nummerplade) throws SQLException{
+        bilService.sletBil(nummerplade);
+        return "redirect:/manageBiler";
+    }
+
 
     @GetMapping("/redigerBil/{nummerplade}")
     public String redigerBil(@PathVariable("nummerplade") String nummerplade, Model model) throws SQLException {
