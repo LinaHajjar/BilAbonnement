@@ -26,16 +26,6 @@ public class ForretningsudviklereController {
     @Autowired
     BilService bilService;
 
-/*
-    @GetMapping("/antalLejedeBiler")
-    public String visAntalLejedeBilerForm(Model model) throws SQLException {
-        List<String> maerker = lejeKontraktService.getBilMaerker();
-        model.addAttribute("maerker", maerker);
-        model.addAttribute("lejedeBiler", 0); // Sætter til 0 så view ikke breaker
-        model.addAttribute("startdato", LocalDate.now()); // sætter en default start dato
-        model.addAttribute("slutdato", LocalDate.now()); //og slut dato
-        return "homeForretningsUdvikler/antalLejedeBiler";
-    }*/
 
 
     @GetMapping("/samletIndtægt")

@@ -22,14 +22,18 @@ public class BilHaandteringController {
     BilHaandteringService bilHaandteringService;
 
 
-    @GetMapping("/manageBilHaandtering")
+    @GetMapping("/manageHaandteringer")
     public String allHaandteringer(Model model) throws SQLException {
 
         List<BilHaandtering> haandteringer = bilHaandteringService.bilHaandteringsList();
         model.addAttribute("bilhaandteringer", haandteringer);
-//        model.addAttribute("bilhaandteringer", bilHaandteringService.bilHaandteringsList());
         return "homeBilHaandtering/manageHaandteringer";
     }
+
+
+
+
+
 
 
     @GetMapping("/opretteUdlevering")
