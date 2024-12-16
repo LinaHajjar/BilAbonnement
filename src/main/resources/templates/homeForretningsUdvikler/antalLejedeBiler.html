@@ -39,10 +39,8 @@
         <input type="date" id="startdato" name="startdato" required>
         <label for="slutdato">Til Dato: </label>
         <input type="date" id="slutdato" name="slutdato" required>
-        <label>Vælg mærke ved ønsket om specifik bilmærke:</label>
-        <label>(Lad stå uberørt, for alle modeller i perioden)</label>
         <select id="maerke" name="maerke">
-            <option value="" th:selected="${selectedMaerke == ''}">Vælg Mærke</option>
+            <option value="" th:selected="${selectedMaerke == ''}">Vælg Mærke (Lad stå uberørt, for alle modeller i perioden)</option>
             <option th:each="m : ${maerker}"
                     th:value="${m}"
                     th:text="${m}"

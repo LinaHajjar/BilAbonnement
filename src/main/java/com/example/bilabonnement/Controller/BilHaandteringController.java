@@ -95,16 +95,6 @@ public class BilHaandteringController {
         return "redirect:/manageBilHaandtering";
     }
 
-//    @PostMapping("/opdaterStatus")
-//    public String opdaterStatus(@RequestParam("status") String status,@RequestParam("haandteringid") int haandteringId, Model model) throws SQLException {
-//        BilHaandtering.status convertedStatus = BilHaandtering.status.valueOf(status.toUpperCase());
-//
-//        bilHaandteringService.opdaterStatus(haandteringId, convertedStatus);
-//
-//        return "redirect:/manageBilHaandtering";
-//    }
-
-
     //opdaterstatus
     @PostMapping("/opdaterStatus")
     public String opdaterStatus(@RequestParam("status") String status, @RequestParam("haandteringid") int haandteringId, Model model) throws SQLException {

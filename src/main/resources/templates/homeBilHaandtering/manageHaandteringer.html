@@ -17,12 +17,8 @@
   <!-- Navigation buttons -->
   <a th:href="@{/manage}" class="nav-button">Tilbage til menu</a>
 
-<!--  &lt;!&ndash; Logout button &ndash;&gt;-->
-<!--  <a th:href="@{/logUd}" class="nav-button logout-button">Log ud</a>-->
 
-
-
-  <!-- New actions for Udlevering and Returnering -->
+  <!-- Actions til Udlevering and Returnering -->
   <a th:href="@{/opretteUdlevering}" class="nav-button">Opret Udlevering</a>
   <a th:href="@{/opretteReturnering}" class="nav-button">Opret Returnering</a>
 </div>
@@ -52,16 +48,9 @@
       <td th:text="${haandtering.nummerplade}"></td>
       <td th:text="${haandtering.handlingsdato}"></td>
       <td th:text="${haandtering.handlingsLokation}"></td>
-<!--      <td th:text="${haandtering.handlingsLokation != null ? haandtering.handlingsLokation : 'N/A'}"></td>-->
       <td th:text="${haandtering.type != null ? haandtering.type.name() : ''}"></td>
       <td th:text="${haandtering.status != null ? haandtering.status.name() : ''}"></td>
 
-
-      <!--      <td class="slet-bil">-->
-<!--        <form th:action="@{/sletBilhaandtering}" method="post">-->
-<!--          <input type="hidden" name="haandtering_id" th:value="${haandtering.haandtering_id}">-->
-<!--          <button type="submit" class="slet-bil-knap">Slet Bilhaandtering</button>-->
-<!--        </form>-->
       <td>
       <form th:action="@{/opdaterStatus}" method="post">
         <input type="hidden" name="haandtering_id" th:value="${haandtering.haandtering_id}">
