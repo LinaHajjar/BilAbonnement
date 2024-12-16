@@ -61,7 +61,7 @@
         <th>Slut dato</th>
         <th>Max km</th>
         <th>Pris</th>
-        <th>Aktion</th>
+        <th>Action</th>
     </tr>
     </thead>
     <tbody>
@@ -78,6 +78,12 @@
                 <input type="hidden" name="lejekontrakt_id" th:value="${lejekontrakt.lejekontrakt_id}">
                 <button type="submit" class="slet-kontrakt-knap">Slet lejekontrakt</button>
             </form>
+
+            <!--add a button to edit and update a contract-->
+            <a th:href="@{'/redigerLejeKontrakt/' + ${lejekontrakt.lejekontrakt_id}}">
+                <button class="btn-redigerLejeKontrakt" id="btn-redigerLejeKontrakt">Rediger lejekontrakt</button> <!-- CSS to rediger-knap-->
+            </a>
+
         </td>
     </tr>
     </tbody>

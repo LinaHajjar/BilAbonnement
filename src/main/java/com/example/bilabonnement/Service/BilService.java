@@ -21,9 +21,9 @@ public class BilService {
     BilRepo bilRepo; //objekt til rådighed
 
     public List<Bil> getAllBil() throws SQLException {
-        List<Bil> biler = bilRepo.getAllBil();
-        System.out.println(biler.get(0));
-        return biler;
+        //List<Bil> biler = bilRepo.getAllBil();
+        //System.out.println(biler.get(0));
+        return (bilRepo.getAllBil());
     }
 
     public List<String> alleNummerplader(){
@@ -46,6 +46,15 @@ public class BilService {
 
     public boolean sletBil(String nummerplade){
         return bilRepo.sletBil(nummerplade);
+    }
+
+
+    public Bil getBilByNummerplade(String nummerplade) throws SQLException {
+        return bilRepo.getBilByNummerplade(nummerplade);
+    }
+
+    public void redigerBil(Bil bil){
+        bilRepo.redigerBil(bil);
     }
 
 

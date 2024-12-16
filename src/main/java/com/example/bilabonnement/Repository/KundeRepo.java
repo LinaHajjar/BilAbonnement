@@ -52,7 +52,10 @@ public class KundeRepo {
         return template.update(sql, telefonnummer)>0;
     }
 
-
+    public void redigerKunde(Kunde kunde){
+        String sql = "UPDATE kunde SET email=?, fornavn=?, efternavn=?, adresse=?, postnummer=?, byen=? WHERE telefonnummer= ?";
+        template.update(sql, kunde.getEmail(),kunde.getFornavn(), kunde.getEfternavn(), kunde.getAdresse(), kunde.getPostnummer(), kunde.getByen(), String.valueOf(kunde.getTelefonnummer()));
+    }
 
 
 }

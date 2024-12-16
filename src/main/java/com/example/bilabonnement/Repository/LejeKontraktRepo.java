@@ -1,5 +1,6 @@
 package com.example.bilabonnement.Repository;
 
+import com.example.bilabonnement.Model.Kunde;
 import com.example.bilabonnement.Model.LejeKontrakt;
 import com.example.bilabonnement.Model.MonthlyIncome;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,6 +75,26 @@ public class LejeKontraktRepo {
         return template.query(sql, rowMapper, telefonnummer);
     }
 
+
+    public List<LejeKontrakt> getLejeKontraktById(int lejekontrakt_id) throws SQLException {
+        String sql = "SELECT * FROM lejekontrakt WHERE lejekontrakt_id = ?";
+        RowMapper<LejeKontrakt> rowMapper = new BeanPropertyRowMapper<LejeKontrakt>(LejeKontrakt.class);
+        return template.query(sql, rowMapper, lejekontrakt_id);
+    }
+
+//metode til mvp
+/*public int getAntalBiler(LocalDate startdato, LocalDate slutdato) throws SQLException {
+    String sql = "SELECT COUNT(*) FROM lejekontrakt WHERE startdato >= ? AND slutdato <= ?";
+
+    // Convert LocalDate to java.sql.Date
+    java.sql.Date sqlStartdato = java.sql.Date.valueOf(startdato);
+    java.sql.Date sqlSlutdato = java.sql.Date.valueOf(slutdato);
+
+    // Execute the query and return the count
+    return template.queryForObject(sql, Integer.class, sqlStartdato, sqlSlutdato);
+}*/
+
+
     public List<MonthlyIncome> monthlyIncomeList(int year){
         String sql = "SELECT \n" +
                 "    MONTH(slutdato) AS måned, \n" +
@@ -90,6 +111,7 @@ public class LejeKontraktRepo {
 
     }
 
+    //public List<String> getBilMaerker() {
 
     public int getAntalBiler(LocalDate startdato, LocalDate slutdato) throws SQLException {
         String sql = "SELECT COUNT(*) FROM lejekontrakt WHERE startdato >= ? AND slutdato <= ?";
@@ -110,9 +132,13 @@ public class LejeKontraktRepo {
         return template.queryForList(sql, String.class);
     }
 
+    public void redigerLejeKontrakt(LejeKontrakt lejeKontrakt){
+        String sql = "UPDATE lejeKontrakt SET startdato=?, slutdato=?, maxKm=?, pris=? WHERE lejekontrakt_id= ?";
+        template.update(sql, lejeKontrakt.getStartdato(), lejeKontrakt.getSlutdato(), lejeKontrakt.getMaxKm(), lejeKontrakt.getPris(), lejeKontrakt.getLejekontrakt_id());
+    }
 
 
-    public int getAntalBilerforMærker(LocalDate startdato, LocalDate slutdato, String selectedMaerke) {
+    public int getAntalBilerforMærke(LocalDate startdato, LocalDate slutdato, String selectedMaerke) {
 
 
         java.sql.Date sqlStartdato = java.sql.Date.valueOf(startdato);

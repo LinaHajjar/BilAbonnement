@@ -37,6 +37,7 @@
         <th>Odometer</th>
         <th>Første registrering</th>
         <th>CO2-udledning</th>
+        <th>Action</th>
     </tr>
     </thead>
     <tbody>
@@ -55,6 +56,12 @@
             </form>
         </td>
 
+        <td class="rediger_kunde">
+            <!--add a button to edit and update a car-->
+            <a th:href="@{'/redigerBil/' + ${bil.nummerplade}}">
+                <button class="btn-redigerBil" id="btn-redigerBil">Rediger Bil</button> <!-- CSS to rediger-knap-->
+            </a>
+        </td>
     </tr>
     </tbody>
 </table>

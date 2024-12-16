@@ -2,16 +2,13 @@ package com.example.bilabonnement.Controller;
 
 import com.example.bilabonnement.Model.Bil;
 import com.example.bilabonnement.Model.LejeKontrakt;
-import com.example.bilabonnement.Model.Skader;
 import com.example.bilabonnement.Service.BilService;
 import com.example.bilabonnement.Service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -27,7 +24,7 @@ public class BilController {
     private BookingService bookingService;
 
     @GetMapping("/manageBiler")
-    public String allBiller(Model model) throws SQLException {
+    public String allBiler(Model model) throws SQLException {
         model.addAttribute("biler", bilService.getAllBil());
         return "homeBil/manageBiler";
     }
@@ -80,11 +77,16 @@ public class BilController {
     }
 
 
+    @GetMapping("/redigerBil/{nummerplade}")
+    public String redigerBil(@PathVariable("nummerplade") String nummerplade, Model model) throws SQLException {
+        model.addAttribute("bil", bilService.getBilByNummerplade(nummerplade));
+        return "homeBil/redigerBil";
+    }
 
-
-
-
-
-
+    @PostMapping("/redigerBil")
+    public String redigerBil(@ModelAttribute Bil bil) {
+        bilService.redigerBil(bil);
+        return "redirect:/manageBiler";
+    }
 
 }

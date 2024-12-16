@@ -26,7 +26,7 @@ public class ForretningsudviklereController {
     @Autowired
     BilService bilService;
 
-
+/*
     @GetMapping("/antalLejedeBiler")
     public String visAntalLejedeBilerForm(Model model) throws SQLException {
         List<String> maerker = lejeKontraktService.getBilMaerker();
@@ -35,38 +35,8 @@ public class ForretningsudviklereController {
         model.addAttribute("startdato", LocalDate.now()); // sætter en default start dato
         model.addAttribute("slutdato", LocalDate.now()); //og slut dato
         return "homeForretningsUdvikler/antalLejedeBiler";
-    }
+    }*/
 
-
-
-    @PostMapping("/antalLejedeBiler")
-    public String antalLejedeBiler(
-            @RequestParam("startdato") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startdato,
-            @RequestParam("slutdato") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate slutdato,
-            @RequestParam(value = "maerke", required = false) String selectedMaerke,
-            Model model
-    ) throws SQLException {
-
-
-
-        // liste maerker
-        List<String> maerker = lejeKontraktService.getBilMaerker();
-
-
-        int lejedeBiler;
-        if (selectedMaerke == null || selectedMaerke.isEmpty()) {
-            lejedeBiler = lejeKontraktService.getAntalBiler(startdato, slutdato);
-        } else {
-            lejedeBiler = lejeKontraktService.getAntalBilerForMaerke(startdato, slutdato, selectedMaerke);
-        }
-
-        model.addAttribute("lejedeBiler", lejedeBiler);
-        model.addAttribute("startdato", startdato);
-        model.addAttribute("slutdato", slutdato);
-        model.addAttribute("maerker", maerker); //liste mærker
-        model.addAttribute("selectedMaerke", selectedMaerke); //udvalgte mærke
-        return "homeForretningsUdvikler/antalLejedeBiler";
-    }
 
     @GetMapping("/samletIndtægt")
     public String samletIndtægt() {
@@ -119,7 +89,6 @@ public class ForretningsudviklereController {
         } catch (EmptyResultDataAccessException e){
             model.addAttribute("ingenTopBil", "Der er ikke udlånt nogle biler i denne periode");
             return "homeForretningsUdvikler/topLejedeModeller";
-
         }
     }
 
@@ -130,21 +99,60 @@ public class ForretningsudviklereController {
     }
 
 
-
-
-
     @PostMapping("/monthlyIncome")
     public String monthlyIncome(@RequestParam("year") int year, Model model) {
         List<MonthlyIncome> incomeList = lejeKontraktService.monthlyIncomeList(year);
 
         // Debug: Log the fetched data
-        for (MonthlyIncome income : incomeList) {
+        /*for (MonthlyIncome income : incomeList) {
             System.out.println("Month: " + income.getMåned() + ", Income: " + income.getIndtjening());
-        }
+        }*/
 
         model.addAttribute("indtjening", incomeList);
         model.addAttribute("year", year);
 
         return "homeForretningsUdvikler/samletIndtægt";
     }
+
+    @GetMapping("/antalLejedeBiler")
+    public String visAntalLejedeBilerForm(Model model) throws SQLException {
+        List<String> maerker = lejeKontraktService.getBilMaerker();
+        model.addAttribute("maerker", maerker);
+        model.addAttribute("lejedeBiler", 0); // Sætter til 0 så view ikke breaker
+        model.addAttribute("startdato", LocalDate.now()); // sætter en default start dato
+        model.addAttribute("slutdato", LocalDate.now()); //og slut dato
+        return "homeForretningsUdvikler/antalLejedeBiler";
+    }
+
+
+
+    @PostMapping("/antalLejedeBiler")
+    public String antalLejedeBiler(
+            @RequestParam("startdato") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startdato,
+            @RequestParam("slutdato") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate slutdato,
+            @RequestParam(value = "maerke", required = false) String selectedMaerke,
+            Model model
+    ) throws SQLException {
+
+
+
+        // liste maerker
+        List<String> maerker = lejeKontraktService.getBilMaerker();
+
+
+        int lejedeBiler;
+        if (selectedMaerke == null || selectedMaerke.isEmpty()) {
+            lejedeBiler = lejeKontraktService.getAntalBiler(startdato, slutdato);
+        } else {
+            lejedeBiler = lejeKontraktService.getAntalBilerMaerke(startdato, slutdato, selectedMaerke);
+        }
+
+        model.addAttribute("lejedeBiler", lejedeBiler);
+        model.addAttribute("startdato", startdato);
+        model.addAttribute("slutdato", slutdato);
+        model.addAttribute("maerker", maerker); //liste mærker
+        model.addAttribute("selectedMaerke", selectedMaerke); //udvalgte mærke
+        return "homeForretningsUdvikler/antalLejedeBiler";
+    }
+
 }

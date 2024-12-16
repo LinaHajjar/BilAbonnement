@@ -6,7 +6,7 @@ public class Bil {
     String nummerplade;
     String maerke;
     String model;
-   public enum Braendstoftype {ELEKTIK, BENZIN, DIESEL, HYBRID};
+    public enum Braendstoftype {ELEKTIK, BENZIN, DIESEL, HYBRID};
     Braendstoftype braendstoftype;
     int odometer;
     LocalDate foersteregistrering;
