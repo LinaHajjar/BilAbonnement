@@ -2,6 +2,7 @@ package com.example.bilabonnement.Repository;
 
 import com.example.bilabonnement.Model.Bil;
 import com.example.bilabonnement.Model.Kunde;
+import com.example.bilabonnement.Model.LejeKontrakt;
 import com.example.bilabonnement.Model.TopBil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -89,6 +90,21 @@ public class BilRepo {
 
         return template.update(sql,nummerplade)>0;
     }
+
+
+    public List<LejeKontrakt> seBiler(LocalDate startdato, LocalDate slutdato) {
+        String sql = "SELECT nummerplade, startdato, slutdato  FROM lejekontrakt lk WHERE startdato >= ? AND slutdato <=? ORDER BY nummerplade, startdato";
+        RowMapper<LejeKontrakt> rowMapper = new BeanPropertyRowMapper<>(LejeKontrakt.class);
+
+        java.sql.Date sqlStartdato = java.sql.Date.valueOf(startdato);
+        java.sql.Date sqlSlutdato = java.sql.Date.valueOf(slutdato);
+
+        return template.query(sql, rowMapper, sqlStartdato, sqlSlutdato);
+    }
+
+
+
+
 
 
 

@@ -31,11 +31,6 @@ public class BilHaandteringController {
     }
 
 
-
-
-
-
-
     @GetMapping("/opretteUdlevering")
 
     public String nyUdlevereHaandtering(Model model) throws SQLException {

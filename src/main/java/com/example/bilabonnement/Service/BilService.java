@@ -58,4 +58,9 @@ public class BilService {
     }
 
 
+    public List<LejeKontrakt> seBiler(LocalDate startdato, LocalDate slutdato) {
+        return bilRepo.seBiler(startdato, slutdato);
+    }
+
+
 }
