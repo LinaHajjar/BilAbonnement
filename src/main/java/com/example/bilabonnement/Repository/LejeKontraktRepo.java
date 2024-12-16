@@ -83,7 +83,7 @@ public class LejeKontraktRepo {
     }
 
 //metode til mvp
-public int getAntalBiler(LocalDate startdato, LocalDate slutdato) throws SQLException {
+/*public int getAntalBiler(LocalDate startdato, LocalDate slutdato) throws SQLException {
     String sql = "SELECT COUNT(*) FROM lejekontrakt WHERE startdato >= ? AND slutdato <= ?";
 
     // Convert LocalDate to java.sql.Date
@@ -92,7 +92,7 @@ public int getAntalBiler(LocalDate startdato, LocalDate slutdato) throws SQLExce
 
     // Execute the query and return the count
     return template.queryForObject(sql, Integer.class, sqlStartdato, sqlSlutdato);
-}
+}*/
 
 
     public List<MonthlyIncome> monthlyIncomeList(int year){
@@ -111,7 +111,7 @@ public int getAntalBiler(LocalDate startdato, LocalDate slutdato) throws SQLExce
 
     }
 
-    public List<String> getBilMaerker() {
+    //public List<String> getBilMaerker() {
 
     public int getAntalBiler(LocalDate startdato, LocalDate slutdato) throws SQLException {
         String sql = "SELECT COUNT(*) FROM lejekontrakt WHERE startdato >= ? AND slutdato <= ?";
@@ -138,7 +138,7 @@ public int getAntalBiler(LocalDate startdato, LocalDate slutdato) throws SQLExce
     }
 
 
-    public int getAntalBilerforMærker(LocalDate startdato, LocalDate slutdato, String selectedMaerke) {
+    public int getAntalBilerforMærke(LocalDate startdato, LocalDate slutdato, String selectedMaerke) {
 
 
         java.sql.Date sqlStartdato = java.sql.Date.valueOf(startdato);

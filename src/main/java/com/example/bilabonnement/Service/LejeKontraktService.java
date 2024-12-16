@@ -40,6 +40,10 @@ public class LejeKontraktService {
         return lejeKontraktRepo.getKontraktById(lejekontrakt_id);
     }
 
+    public List<String> getBilMaerker() {
+        return lejeKontraktRepo.getBilMaerker();
+    }
+
 
     public void addLejekontrakt(LejeKontrakt lejeKontrakt){
         lejeKontraktRepo.addLejekontrakt(lejeKontrakt);
@@ -55,23 +59,17 @@ public class LejeKontraktService {
     }
 
 
-
-
-    public List<String> getBilMaerker(){
-        return lejeKontraktRepo.getBilMaerker();
-    }
-
     public List<MonthlyIncome> monthlyIncomeList(int year){
         return lejeKontraktRepo.monthlyIncomeList(year);
 
     }
 
-    public void redigerLejeKontrakt(LejeKontrakt lejeKontrakt){
+    public void redigerLejeKontrakt(LejeKontrakt lejeKontrakt) {
         lejeKontraktRepo.redigerLejeKontrakt(lejeKontrakt);
-
+    }
     // se antal lejet biler ude for maerke over mvp
-    public int getAntalBilerForMaerke(LocalDate startdato, LocalDate slutdato, String selectedMaerke) throws SQLException {
-        return lejeKontraktRepo.getAntalBilerforMærker(startdato, slutdato, selectedMaerke);
+    public int getAntalBilerMaerke(LocalDate startdato, LocalDate slutdato, String selectedMaerke) throws SQLException {
+        return lejeKontraktRepo.getAntalBilerforMærke(startdato, slutdato, selectedMaerke);
     }
 
 }
