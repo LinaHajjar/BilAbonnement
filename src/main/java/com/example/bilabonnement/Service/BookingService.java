@@ -20,7 +20,7 @@ public class BookingService {
     BookingRepo bookingrepo;
 
 
-
+//skal måske slettes?
     public List<Bil> getTilgaengeliBiler(Date startdato, Date slutdato) {
         return bookingrepo.getTilgaengeligBiler(startdato, slutdato);
     }

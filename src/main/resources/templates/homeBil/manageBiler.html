@@ -25,6 +25,8 @@
 
     <!-- Logout button -->
     <a th:href="@{/logUd}" class="nav-button logout-button">Log ud</a>
+<!--    tilføj bil-->
+    <a th:href="@{/nyBil}" class="nav-button">Tilføj Bil</a>
 </div>
 
 <div class="main-content">
@@ -42,6 +44,7 @@
         <th>Odometer</th>
         <th>Første registrering</th>
         <th>CO2-udledning</th>
+        <th>Action</th>
     </tr>
     </thead>
     <tbody>
@@ -53,7 +56,19 @@
         <td th:text="${bil.odometer}"></td>
         <td th:text="${bil.foersteregistrering}"></td>
         <td th:text="${bil.co2udledning}"></td>
+        <td class="slet-bil">
+            <form th:action="@{/sletBil}" method="post">
+                <input type="hidden" name="nummerplade" th:value="${bil.nummerplade}">
+                <button type="submit" class="slet-bil-knap">Slet bil</button>
+            </form>
+        </td>
 
+        <td class="rediger_kunde">
+            <!--add a button to edit and update a car-->
+            <a th:href="@{'/redigerBil/' + ${bil.nummerplade}}">
+                <button class="btn-redigerBil" id="btn-redigerBil">Rediger Bil</button> <!-- CSS to rediger-knap-->
+            </a>
+        </td>
     </tr>
     </tbody>
 </table>

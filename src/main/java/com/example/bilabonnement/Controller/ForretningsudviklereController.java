@@ -1,5 +1,6 @@
 package com.example.bilabonnement.Controller;
 
+import com.example.bilabonnement.Model.MonthlyIncome;
 import com.example.bilabonnement.Model.TopBil;
 import com.example.bilabonnement.Service.BilService;
 import com.example.bilabonnement.Service.LejeKontraktService;
@@ -25,6 +26,93 @@ public class ForretningsudviklereController {
     @Autowired
     BilService bilService;
 
+/*
+    @GetMapping("/antalLejedeBiler")
+    public String visAntalLejedeBilerForm(Model model) throws SQLException {
+        List<String> maerker = lejeKontraktService.getBilMaerker();
+        model.addAttribute("maerker", maerker);
+        model.addAttribute("lejedeBiler", 0); // Sætter til 0 så view ikke breaker
+        model.addAttribute("startdato", LocalDate.now()); // sætter en default start dato
+        model.addAttribute("slutdato", LocalDate.now()); //og slut dato
+        return "homeForretningsUdvikler/antalLejedeBiler";
+    }*/
+
+
+    @GetMapping("/samletIndtægt")
+    public String samletIndtægt() {
+        return "homeForretningsUdvikler/samletIndtægt";
+    }
+
+
+    @PostMapping("/samletIndtægt")
+    public String samletIndtægt(@RequestParam("fraDato")LocalDate fraDato,@RequestParam("tilDato")LocalDate tilDato,  Model model)throws SQLException{
+
+        Double samletIndtægt = bilService.getSamletIndtægt(fraDato, tilDato); //method getSamletIndtægter skal laves i repo og service
+
+        if (samletIndtægt == null || samletIndtægt == 0.0){
+            model.addAttribute("ingenIndtægt", "Der er ikke nogen indtægt indenfor denne dato.");
+        } else {
+            model.addAttribute("fraDato", fraDato);
+            model.addAttribute("tilDato", tilDato);
+            model.addAttribute("samletIndtægt", samletIndtægt);
+        }
+
+
+        model.addAttribute("fraDato", fraDato);
+        model.addAttribute("tilDato", tilDato);
+
+        return "homeForretningsUdvikler/samletIndtægt";
+    }
+
+    @GetMapping("/topLejedeModeller")
+    public String topLejedeModeller(){
+        return "homeForretningsUdvikler/topLejedeModeller";
+    }
+
+    @PostMapping("/topLejedeModeller")
+    public String topLejedeModeller(@RequestParam("fraDato") LocalDate fraDato,
+                                    @RequestParam("tilDato")LocalDate tilDato,  Model model)throws SQLException {
+
+        try {
+            TopBil topLejedeModel = bilService.getTopLejedeModeller(fraDato, tilDato);
+            //System.out.println(topBil);
+            String bilModel = topLejedeModel.getModel();
+            String maerke = topLejedeModel.getMaerke();
+            int antalLånt = topLejedeModel.getAntal();
+            model.addAttribute("fraDato", fraDato);
+            model.addAttribute("tilDato", tilDato);
+            model.addAttribute("model", bilModel);
+            model.addAttribute("maerke", maerke);
+            model.addAttribute("antalLånt", antalLånt);
+
+            return "homeForretningsUdvikler/topLejedeModeller";
+        } catch (EmptyResultDataAccessException e){
+            model.addAttribute("ingenTopBil", "Der er ikke udlånt nogle biler i denne periode");
+            return "homeForretningsUdvikler/topLejedeModeller";
+        }
+    }
+
+
+    @GetMapping("/homeForretningsUdvikler")
+    public String homeForretningsUdvikler(){
+        return "homeForretningsUdvikler/forretningsUdvikler";
+    }
+
+
+    @PostMapping("/monthlyIncome")
+    public String monthlyIncome(@RequestParam("year") int year, Model model) {
+        List<MonthlyIncome> incomeList = lejeKontraktService.monthlyIncomeList(year);
+
+        // Debug: Log the fetched data
+        /*for (MonthlyIncome income : incomeList) {
+            System.out.println("Month: " + income.getMåned() + ", Income: " + income.getIndtjening());
+        }*/
+
+        model.addAttribute("indtjening", incomeList);
+        model.addAttribute("year", year);
+
+        return "homeForretningsUdvikler/samletIndtægt";
+    }
 
     @GetMapping("/antalLejedeBiler")
     public String visAntalLejedeBilerForm(Model model) throws SQLException {
@@ -56,9 +144,8 @@ public class ForretningsudviklereController {
         if (selectedMaerke == null || selectedMaerke.isEmpty()) {
             lejedeBiler = lejeKontraktService.getAntalBiler(startdato, slutdato);
         } else {
-            lejedeBiler = lejeKontraktService.getAntalBilerForMaerke(startdato, slutdato, selectedMaerke);
+            lejedeBiler = lejeKontraktService.getAntalBilerMaerke(startdato, slutdato, selectedMaerke);
         }
-
 
         model.addAttribute("lejedeBiler", lejedeBiler);
         model.addAttribute("startdato", startdato);
@@ -66,62 +153,6 @@ public class ForretningsudviklereController {
         model.addAttribute("maerker", maerker); //liste mærker
         model.addAttribute("selectedMaerke", selectedMaerke); //udvalgte mærke
         return "homeForretningsUdvikler/antalLejedeBiler";
-    }
-
-    @GetMapping("/samletIndtægt")
-    public String samletIndtægt(Model model) {
-        return "homeForretningsUdvikler/samletIndtægt";
-    }
-
-    @PostMapping("/samletIndtægt")
-    public String samletIndtægt(@RequestParam("fraDato")LocalDate fraDato,@RequestParam("tilDato")LocalDate tilDato,  Model model)throws SQLException{
-
-        Double samletIndtægt = bilService.getSamletIndtægt(fraDato, tilDato); //method getSamletIndtægter skal laves i repo og service
-
-        if (samletIndtægt == null || samletIndtægt == 0.0){
-            model.addAttribute("ingenIndtægt", "Der er ikke nogen indtægt indenfor denne dato.");
-        } else {
-            model.addAttribute("samletIndtægt", samletIndtægt);
-        }
-
-
-        model.addAttribute("fraDato", fraDato);
-        model.addAttribute("tilDato", tilDato);
-
-        return "homeForretningsUdvikler/samletIndtægt";
-    }
-
-    @GetMapping("/topLejedeModeller")
-    public String topLejedeModeller(){
-        return "homeForretningsUdvikler/topLejedeModeller";
-    }
-
-    @PostMapping("/topLejedeModeller")
-    public String topLejedeModeller(@RequestParam("fraDato") LocalDate fraDato,
-                                    @RequestParam("tilDato")LocalDate tilDato,  Model model)throws SQLException {
-
-        try {
-            TopBil topLejedeModel = bilService.getTopLejedeModeller(fraDato, tilDato);
-            //System.out.println(topBil);
-            String bilModel = topLejedeModel.getModel();
-            String maerke = topLejedeModel.getMaerke();
-            int antalLånt = topLejedeModel.getAntal();
-            model.addAttribute("model", bilModel);
-            model.addAttribute("maerke", maerke);
-            model.addAttribute("antalLånt", antalLånt);
-
-            return "homeForretningsUdvikler/topLejedeModeller";
-        } catch (EmptyResultDataAccessException e){
-            model.addAttribute("ingenTopBil", "Der er ikke udlånt nogle biler i denne periode");
-            return "homeForretningsUdvikler/topLejedeModeller";
-
-        }
-    }
-
-
-    @GetMapping("/homeForretningsUdvikler")
-    public String homeForretningsUdvikler(){
-        return "homeForretningsUdvikler/forretningsUdvikler";
     }
 
 }

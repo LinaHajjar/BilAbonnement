@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="da" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bilhaandtering</title>
+  <link rel="stylesheet" type="text/css" href="/MyCSS.css">
+</head>
+<body>
+<!-- Side navigation bar -->
+<div class="side-nav">
+  <!-- Logo -->
+  <div class="nav-logo">
+    <img src="/Billeder/BILABONNEMENT.png" alt="Logo">
+  </div>
+
+  <!-- Navigation buttons -->
+  <a th:href="@{/manage}" class="nav-button">Tilbage til menu</a>
+
+<!--  &lt;!&ndash; Logout button &ndash;&gt;-->
+<!--  <a th:href="@{/logUd}" class="nav-button logout-button">Log ud</a>-->
+
+<!--  &lt;!&ndash; Bilhaandtering links &ndash;&gt;-->
+<!--  <a th:href="@{/nyBilhaandtering}" class="nav-button">Tilføj Bilhaandtering</a>-->
+
+  <!-- New actions for Udlevering and Returnering -->
+  <a th:href="@{/opretteUdlevering}" class="nav-button">Opret Udlevering</a>
+  <a th:href="@{/opretteReturnering}" class="nav-button">Opret Returnering</a>
+</div>
+
+<!-- Overskrift h1 -->
+<h1 class="bil-h1">Alle Bilhaandteringer</h1>
+
+<div class="table-container">
+  <table class="bil-table">
+    <thead>
+    <tr>
+      <th>haandtering id</th>
+      <th>Lejekontrakt ID</th>
+      <th>Nummerplade</th>
+      <th>Handlingsdato</th>
+      <th>Lokation</th>
+      <th>Type</th>
+      <th>Status</th>
+      <th>Handling</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr th:each="haandtering: ${bilhaandteringer}">
+      <td th:text="${haandtering.haandtering_id}"></td>
+      <td th:text="${haandtering.lejekontrakt_id}"></td>
+      <td th:text="${haandtering.nummerplade}"></td>
+      <td th:text="${haandtering.handlingsdato}"></td>
+      <td th:text="${haandtering.handlingsLokation}"></td>
+<!--      <td th:text="${haandtering.handlingsLokation != null ? haandtering.handlingsLokation : 'N/A'}"></td>-->
+      <td th:text="${haandtering.type != null ? haandtering.type.name() : ''}"></td>
+      <td th:text="${haandtering.status != null ? haandtering.status.name() : ''}"></td>
+
+
+      <!--      <td class="slet-bil">-->
+<!--        <form th:action="@{/sletBilhaandtering}" method="post">-->
+<!--          <input type="hidden" name="haandtering_id" th:value="${haandtering.haandtering_id}">-->
+<!--          <button type="submit" class="slet-bil-knap">Slet Bilhaandtering</button>-->
+<!--        </form>-->
+      <td>
+      <form th:action="@{/opdaterStatus}" method="post">
+        <input type="hidden" name="haandtering_id" th:value="${haandtering.haandtering_id}">
+        <select name="status">
+          <option th:selected="${haandtering.status == 'Under_Levering'}" value="Under Levering">Under Levering</option>
+          <option th:selected="${haandtering.status == 'Leveret'}" value="Leveret">Leveret</option>
+          <option th:selected="${haandtering.status == 'Afventer_Inspektion'}" value="Afventer Inspektion">Afventer Inspektion</option>
+          <option th:selected="${haandtering.status == 'Inspiceret'}" value="Inspiceret">Inspiceret</option>
+          <option th:selected="${haandtering.status == 'Klar_til_Salg'}" value="Klar til Salg">Klar til Salg</option>
+        </select>
+        <button type="submit" class="opdater-status-knap">Opdater Status</button>
+      </form>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>

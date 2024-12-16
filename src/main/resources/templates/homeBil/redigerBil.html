@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>rediger en bil</title>
+    <link rel="stylesheet" type="text/css" href="/MyCSS.css">
+</head>
+<body>
+
+<!-- Side navigation bar -->
+<div class="side-nav">
+    <!-- Logo -->
+    <div class="nav-logo">
+        <img src="/Billeder/BILABONNEMENT.png" alt="Logo">
+    </div>
+
+    <!-- Navigation buttons -->
+    <a th:href="@{/manage}" class="nav-button">Tilbage til menu</a>
+
+    <!-- Logout button -->
+    <a th:href="@{/logUd}" class="nav-button logout-button">Log ud</a>
+</div>
+
+<h1>Rediger kundens informationer</h1>
+
+<form action="/redigerBil" method="post">
+
+    <input type="hidden" name="nummerplade" th:value="${bil.nummerplade}"> <!--so it shows the user that the nummerplade, cannot be changed-->
+
+    <td>
+        <label for="maerke">Mærke:</label>
+        <input type="text" id="maerke" name="maerke" placeholder="Mærke" required th:value="${bil.maerke}">
+    </td>
+
+    <td>
+        <label for="model">Model:</label>
+        <input type="text" id="model" name="model" placeholder="Model" required th:value="${bil.model}">
+    </td>
+
+
+    <label>Brændstoftype:</label>
+    <span th:text="${bil.braendstoftype}"></span> <!--cannot be changed-->
+
+
+    <td>
+        <label for="odometer">Odometer:</label>
+        <input type="text" id="odometer" name="odometer" placeholder="Odometer" required th:value="${bil.odometer}">
+    </td>
+
+
+    <label>Første registrerings dato: </label>
+    <span th:text="${bil.foersteregistrering}"></span> <!--cannot be changed-->
+
+
+    <td>
+        <label for="co2udledning">CO2-udledning: </label>
+        <input type="text" id="co2udledning" name="co2udledning" placeholder="CO2-udledning" required th:value="${bil.co2udledning}">
+    </td>
+
+  <input type="submit" value="Gem ændringer">
+</form>
+
+</body>
+</html>

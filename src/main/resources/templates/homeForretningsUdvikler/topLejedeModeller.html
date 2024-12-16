@@ -47,15 +47,9 @@
         <br>
 
         <div th:if="${model != null}" class="vis-nummer-1-bil">
-            <div class="top-bil-info">
-                <p th:text="'Bil model: ' + ${model}"></p>
-            </div>
-            <div class="top-bil-info">
-                <p th:text="'Bil mærke: ' + ${maerke}"></p>
-            </div>
-            <div class="top-bil-info">
-                <p th:text="'Antal gange bilen er udlånt: ' + ${antalLånt}"></p>
-            </div>
+            <h2 th:text="'I perioden ' + ${fraDato} + ' til ' + ${tilDato}"></h2>
+            <p th:text="'Er bilen ' + ${maerke} + ' ' + ${model} + ' den mest udlejet'"></p>
+            <p th:text="'Bilen er udlejet ' + ${antalLånt} + ' gange inden for denne periode'"></p>
         </div>
     </form>
 </div>

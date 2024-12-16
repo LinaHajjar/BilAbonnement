@@ -7,12 +7,7 @@
     <link rel="stylesheet" href="MyCSS.css">
 </head>
 <body>
-<div class="department-nav">
-    <span class="department-label">Afdeling: </span>
-    <span class="department-name">Biludlejning</span>
-</div>
-
-
+<h1 class="manage-h1">Vælg</h1>
 
 <div class="side-nav">
     <!-- Logo -->
@@ -20,6 +15,9 @@
         <img src="/Billeder/BILABONNEMENT.png" alt="Logo">
     </div>
 
+    <p>Du er logget ind som: <strong th:text="${session.rolle}"></strong></p>
+
+    <!-- Navigation buttons -->
 
     <a th:href="@{/logUd}" class="nav-button logout-button">Log ud</a>
 </div>

@@ -38,24 +38,31 @@
             <th>Kørekortnr</th>
             <th>Udstedelsesdato</th>
             <th>Slet kunde</th>
+            <th>Aktion</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="kunde: ${kunder}">
             <td th:text="${kunde.telefonnummer}"></td>
-            <td th:text="${kunde.email}"></td>
             <td th:text="${kunde.fornavn}"></td>
             <td th:text="${kunde.efternavn}"></td>
+            <td th:text="${kunde.email}"></td>
             <td th:text="${kunde.adresse}"></td>
             <td th:text="${kunde.postnummer}"></td>
             <td th:text="${kunde.byen}"></td>
             <td th:text="${kunde.koerekortnummer}"></td>
             <td th:text="${kunde.udstedelsdato}"></td>
-            <td class="slet-kunde">
+            <td class="slet-kunde">  <!-- if we can change the name to class="actions" instead of "slet-kunde" because I added the update button-->
                 <form th:action="@{/sletKunde}" method="post">
                     <input type="hidden" name="telefonnummer" th:value="${kunde.telefonnummer}">
                     <button type="submit" class="slet-kunde-knap">Slet kunde</button>
                 </form>
+
+<!--add a button to edit and update a customer-->
+                <a th:href="@{'/redigerKunde/' + ${kunde.telefonnummer}}">
+                    <button class="btn-redigerKunde" id="btn-redigerKunde">Rediger Kunde</button> <!-- CSS to rediger-knap-->
+                </a>
+
             </td>
         </tr>
         </tbody>
