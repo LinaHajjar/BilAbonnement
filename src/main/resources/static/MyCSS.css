@@ -2,12 +2,14 @@
 html, body{
     font-size: 18px;
     padding: 0;
+    margin: 0;
     color: black;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif;
     box-sizing: border-box;
     line-height: 1.5;
-    background: linear-gradient(135deg, #99b2cb, #edbbfb); /* Gradient background */
-
+    background: linear-gradient(135deg, #244f59, #2e6873); /* Gradient background */
+    height:  100vh;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 /* Side navigation styling */
@@ -17,12 +19,13 @@ html, body{
     left: 0;
     height: 100%;
     width: 250px; /* Width of the navigation bar */
-    background-color: #1590bf; /* Blue background */
+    background-color: #2e6873; /* Blue background */
+    border-right: 5px solid #1d4048;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px 10px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    box-shadow: 4px 0 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
     gap: 20px; /* Space between elements */
     margin-top: 0;
     -moz-border-radius-bottomright: 15px;
@@ -37,31 +40,32 @@ html, body{
 
 /* Navigation button styling */
 .nav-button {
-    width: 90%;
+    width: 92%;
     padding: 15px 20px;
     text-align: center;
     font-size: 16px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif;
     color: white;
     text-decoration: none;
-    background-color: #0056b3; /* Darker blue for buttons */
+    background-color: #014959; /* Darker blue for buttons */
     border-radius: 5px;
     transition: all 0.3s ease;
+    margin-bottom: 50px;
 }
 
 .nav-button:hover {
-    background-color: #003f7f; /* Even darker blue on hover */
+    background-color: #013d4b; /* Even darker blue on hover */
     transform: scale(1.1); /* Slight zoom on hover */
 }
 
 
 
 .nav-button1 {
-    width: 90%;
+    width: 92%;
     padding: 15px 20px;
     text-align: center;
     font-size: 16px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif;
     color: white;
     text-decoration: none;
     background-color: green; /* Darker blue for buttons */
@@ -81,10 +85,10 @@ html, body{
     margin-bottom: 40px; /* Elevate 40px from the absolute bottom */
     background-color: #dc3545; /* Red background for logout */
     padding: 15px 20px;
-    width: 90%;
+    width: 92%;
     text-align: center;
     font-size: 16px;
-    color: white;
+    color: ghostwhite;
     border-radius: 5px;
     transition: all 0.3s ease;
     text-decoration: none;
@@ -94,6 +98,100 @@ html, body{
     background-color: #a71d2a; /* Darker red on hover */
     transform: scale(1.1); /* Slight zoom on hover */
 }
+
+.department-nav {
+    margin-left: 250px;
+    background-color: #014a5a;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: calc(100% - 270px); /* Sikrer, at indholdet ikke overstiger viewportens bredde */
+    overflow: hidden; /* Prevent overflow, if any */
+}
+
+.department-label {
+    margin-right: 0.5rem;
+    color: #a5d6d6;
+}
+
+.department-name {
+    color: #ffffff;
+}
+
+/* Form wrapper */
+.form-template {
+    margin: 20px auto;
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Form styling */
+.form-template form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 0;
+    padding: 10px;
+}
+
+/* Labels */
+.form-template form label {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Input and select fields */
+.form-template form input[type="number"],
+.form-template form input[type="date"],
+.form-template form input[type="text"],
+.form-template form input[type="email"],
+.form-template form select {
+    width: 100%; /* Ensure all fields take the full width of the form */
+    padding: 10px; /* Add padding for comfortable typing and selection */
+    font-size: 16px; /* Consistent font size */
+    border: 1px solid #ccc; /* Border styling */
+    border-radius: 5px; /* Rounded corners for all fields */
+    background: white; /* Match background color */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box; /* Ensure padding doesn’t break width */
+}
+
+/* Focus styles for inputs and selects */
+.form-template form input[type="number"]:focus,
+.form-template form input[type="date"]:focus,
+.form-template form input[type="text"]:focus,
+.form-template form select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+
+/* Submit button */
+.form-template form button {
+    padding: 10px 15px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #014858;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.form-template form button:hover {
+    background-color: #1d4048;
+    transform: scale(1.05);
+}
+
+
+
 
 /*---------------------------------------------ManageBiler------------------------------------------------------------*/
 /* Bil table styling */
@@ -180,41 +278,52 @@ h3{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: left;
     gap: 10px; /* Space between h1 and the form */
 }
 
 .login-h1 {
-    color: black;
+    color: #a3d2d2;
     font-weight: bold;
-    font-family: 'Montserrat', sans-serif;
-    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    text-align: left;
     margin: 0;
 }
 
+/* Login form container */
 .login-box {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    border: 2px solid #1591c1;
+    align-items: stretch; /* Ensure labels and inputs take full width */
+    text-align: left; /* Align text inside labels to the left */
+    border: 2px solid #1d4048;
     border-radius: 10px;
-    width: 250px;
-    height: 150px;
+    width: 300px; /* Set consistent width for the form */
     padding: 20px;
     gap: 15px; /* Adds even spacing between input fields and button */
     background-color: white;
 }
 
+/* Labels */
+.login-box label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: #285862;
+    text-align: left; /* Ensure text inside the label aligns left */
+}
+
+/* Input fields */
 .login-box input[type="text"],
 .login-box input[type="password"] {
-    width: 100%;
+    width: 100%; /* Input fields take full width */
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-    margin-bottom: 10px; /* Adds a small gap between username and password */
     color: black;
 }
 
+/* Submit button */
 .login-submit-button {
     font-family: 'Montserrat', sans-serif;
     padding: 10px;
@@ -225,20 +334,21 @@ h3{
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s;
-    width: 100px; /* Sets button width */
+    width: 100%; /* Button matches the width of the input fields */
     text-align: center;
-    margin-top: auto; /* Positions the button at the bottom */
 }
 
 .login-submit-button:hover {
     background-color: #1591c1;
+    color: white;
 }
 /*-------------------------------------Manage siden som er et redirect fra loginInfo-------------------------------------------*/
 
 /* Heading */
 .manage-h1 {
+
     font-size: 36px;
-    color: #222;
+    color: #a4d4d4;
     margin-bottom: 20px;
     text-align: center;
 }
@@ -249,7 +359,7 @@ h3{
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
-    margin: 20px 0;
+
 }
 
 /* Individual option buttons */
@@ -263,12 +373,12 @@ h3{
     flex-direction: column;
     align-items: center;
     text-decoration: none;
-    color: #333;
+    color: white;
     font-size: 18px;
     font-weight: bold;
     padding: 20px;
-    background-color: lightblue;
-    border: 1px solid #007bff;
+    background-color: #62b9c5;
+    border: 1px solid #1d4048;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     width: 300px;
@@ -294,7 +404,7 @@ h3{
 .manage-biler-knap img,
 .manage-kontrakter-knap img {
     width: 100%;
-    height: 100%;
+    height: 80%;
     margin-bottom: 10px;
     object-fit: cover;
     border-radius: 10px;
@@ -309,7 +419,7 @@ h3{
 .manage-kontrakter-knap span {
     font-size: 24px;
     text-align: center;
-    color: #2d2a2a;
+    color: ghostwhite;
 }
 
 /*-------------------------------------Forretnings udvikler-------------------------------------------*/
@@ -378,56 +488,8 @@ div {
     text-align: center;
 }
 
-
-.indtjening-table {
-    width: 80%; /* Adjust the table width to fit content */
-    border-collapse: collapse;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    margin-top: 20px;
-    margin-left: auto; /* Pushes the table to the right */
-    margin-right: 20px; /* Adds spacing from the right side */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    font-size: 14px; /* Reduce font size for smaller columns */
-}
-
-
-.indtjening-table th, .indtjening-table td {
-    padding: 10px; /* Reduceret padding for at spare plads */
-    text-align: left;
-    border: 1px solid #ddd;
-    font-size: 14px; /* Reduceret fontstørrelse for bedre tilpasning */
-}
-
-.indtjening-table th {
-    background-color: #007bff;
-    color: #fff;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-.indtjening-table tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-.indtjening-table tr:hover {
-    background-color: #f1f1f1;
-}
-
-.indtjening-table td {
-    color: #555;
-    white-space: nowrap; /* Forhindrer linjeskift i cellerne */
-}
-
-.månedlige-indtægt{
-    margin-bottom: 50px;
-}
-
-
 /*-------------------------------------Forretnings udvikler-------------------------------------------*/
 /*-------------------------------------Top modeller-------------------------------------------*/
-
-
 
 
 
@@ -466,7 +528,7 @@ div {
 /* Headings */
 h1 {
     font-size: 36px;
-    color: #222;
+    color: #a4d4d4;
     text-align: center;
     margin-top: 20px;
     margin-bottom: 10px;
@@ -478,29 +540,49 @@ h1 {
 .bil-table {
     width: 90%;
     max-width: 1200px;
-    border-collapse: collapse;
+    border-collapse: separate; /* Allows rounded corners */
+    border-spacing: 0; /* No gaps between cells */
     margin: 30px auto;
     background-color: #fff;
     border: 1px solid #ddd;
+    border-radius: 10px; /* Rounded corners for the table */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
 /* Table headers */
 .bil-table th {
-    background-color: #007bff; /* Primary color for headers */
-    color: #fff;
+    background-color: #014959; /* Primary color for headers */
+    color: #a3d2d2;
     font-weight: bold;
     text-transform: uppercase; /* Capitalize header text */
-    padding: 12px; /* Add padding for spacing */
+    padding: 12px;
     border: 1px solid #ddd;
+}
+
+/* Rounded corners for the first and last header cells */
+.bil-table th:first-child {
+    border-top-left-radius: 10px; /* Top-left rounded corner */
+}
+
+.bil-table th:last-child {
+    border-top-right-radius: 10px; /* Top-right rounded corner */
 }
 
 /* Table cells */
 .bil-table td {
-    padding: 12px; /* Add padding for spacing */
+    padding: 12px;
     border: 1px solid #ddd; /* Add cell borders */
     color: #555; /* Text color */
     white-space: nowrap; /* Prevent text from wrapping within cells */
+}
+
+/* Rounded corners for the first and last cells of the last row */
+.bil-table tr:last-child td:first-child {
+    border-bottom-left-radius: 10px; /* Bottom-left rounded corner */
+}
+
+.bil-table tr:last-child td:last-child {
+    border-bottom-right-radius: 10px; /* Bottom-right rounded corner */
 }
 
 /* Alternate row styling */
@@ -525,7 +607,7 @@ h1 {
 /* Headings */
 .Skaderapport-h1, .ny-lejekontrakt-h1 {
     font-size: 36px;
-    color: #222;
+    color: rgb(162, 208, 208);
     text-align: center;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -640,7 +722,7 @@ form label {
 }
 
 .Skade-rapport-table th {
-    background-color: #007bff;
+    background-color: #244f59;
     color: #fff;
     font-weight: bold;
     text-transform: uppercase;
@@ -676,7 +758,7 @@ form label {
 /* Form heading */
 .ny-kunde-h1 {
     font-size: 36px;
-    color: #222;
+    color: #a4d4d4;
     text-align: center;
     margin-top: 20px;
 }
@@ -780,31 +862,57 @@ form label {
     overflow-x: auto; /* Enable horizontal scrolling if needed */
     margin: 20px auto; /* Center the container */
     box-sizing: border-box; /* Include padding/border in width calculation */
+    border-radius: 10px; /* Add rounded corners to the container */
+    overflow: hidden; /* Ensure rounded corners also clip table content */
 }
 
 /* Table styling */
 .kunde-table {
-    width: 100%; /* Tabellen fylder hele containerens bredde */
-    border-collapse: collapse;
+    width: 100%; /* Fill the container width */
+    border-collapse: separate; /* Use separate to allow border-radius */
+    border-spacing: 0; /* Remove gaps between cells */
     background-color: #fff;
-    border: 1px solid #ddd;
-    table-layout: auto;
+    border: 1px solid #014959;
+    border-radius: 10px; /* Apply rounded corners */
     margin-top: 20px;
-
 }
 
+/* Rounded corners for the top row (header) */
+.kunde-table th:first-child {
+    border-top-left-radius: 10px; /* Top-left rounded corner */
+}
+
+.kunde-table th:last-child {
+    border-top-right-radius: 10px; /* Top-right rounded corner */
+}
+
+/* Rounded corners for the last row */
+.kunde-table tr:last-child td:first-child {
+    border-bottom-left-radius: 10px; /* Bottom-left rounded corner */
+}
+
+.kunde-table tr:last-child td:last-child {
+    border-bottom-right-radius: 10px; /* Bottom-right rounded corner */
+}
+
+/* General table cell styling */
 .kunde-table th, .kunde-table td {
-    padding: 10px; /* Reduceret padding for at spare plads */
+    padding: 5px 5px; /* Reduced horizontal padding (5px top/bottom, 5px left/right) */
     text-align: left;
-    border: 1px solid #ddd;
-    font-size: 14px;/* Reduceret fontstørrelse for bedre tilpasning */
+    border: 1px solid #ddd; /* Cell borders */
+    font-size: 14px; /* Font size for better fitting text */
+    line-height: 1.2; /* Adjust line height for reduced spacing */
+    white-space: nowrap; /* Prevent text from wrapping onto multiple lines */
 }
 
+
+/* Header cell styling */
 .kunde-table th {
-    background-color: #007bff;
-    color: #fff;
+    background-color: #014959;
+    color: #a3d2d2;
     font-weight: bold;
     text-transform: uppercase;
+    padding: 5px 10px; /* Match padding for consistency */
 }
 
 .kunde-table tr:nth-child(even) {
@@ -828,7 +936,6 @@ form label {
     background-color: #dc3545;
     border: none;
     border-radius: 5px;
-    cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
@@ -846,7 +953,7 @@ form label {
 /* Headings */
 .lejekontrakt-h1, .ny-lejekontrakt-h1 {
     font-size: 36px;
-    color: #222;
+    color: #a4d4d4;
     text-align: center;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -898,40 +1005,70 @@ a.back-to-alle-leje-konktrakter-knap{
 
 /* Table styling */
 .lejekontrakt-table {
-    width: 90%;
-    max-width: 1200px;
-    border-collapse: collapse;
+    width: 80%; /* Adjusted width to avoid excessive stretching */
+    max-width: 1000px; /* Limit the maximum width for large screens */
+    border-collapse: separate; /* Allows rounded corners */
+    border-spacing: 0; /* Remove gaps between cells */
     margin-left: auto;
-    margin-right: 0;
+    margin-right: auto;
     margin-top: 20px;
     background-color: #fff;
     border: 1px solid #ddd;
+    border-radius: 10px; /* Rounded corners for the table */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Ensure content fits nicely */
 }
 
+/* Rounded corners for the first and last header cells */
+.lejekontrakt-table th:first-child {
+    border-top-left-radius: 10px; /* Top-left rounded corner */
+}
+
+.lejekontrakt-table th:last-child {
+    border-top-right-radius: 10px; /* Top-right rounded corner */
+}
+
+/* Rounded corners for the first and last cells in the last row */
+.lejekontrakt-table tr:last-child td:first-child {
+    border-bottom-left-radius: 10px; /* Bottom-left rounded corner */
+}
+
+.lejekontrakt-table tr:last-child td:last-child {
+    border-bottom-right-radius: 10px; /* Bottom-right rounded corner */
+}
+
+/* General table cell styling */
 .lejekontrakt-table th, .lejekontrakt-table td {
-    padding: 12px 15px;
+    padding: 10px 12px; /* Adjusted padding for balanced height */
     text-align: left;
     border: 1px solid #ddd;
+    font-size: 14px; /* Standardized font size */
 }
 
+/* Header styling */
 .lejekontrakt-table th {
-    background-color: #007bff;
-    color: #fff;
+    background-color: #014959;
+    color: #a4d4d4;
     font-weight: bold;
     text-transform: uppercase;
+    height: 50px; /* Fixed height for header row */
 }
 
+/* Alternate row styling */
 .lejekontrakt-table tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
+/* Row hover effect */
 .lejekontrakt-table tr:hover {
     background-color: #f1f1f1;
 }
 
+/* Table data cell styling */
 .lejekontrakt-table td {
     color: #555;
+    height: 45px; /* Consistent row height for data rows */
+    vertical-align: middle; /* Align content vertically for better appearance */
 }
 
 /* Delete button */
@@ -955,8 +1092,8 @@ a.back-to-alle-leje-konktrakter-knap{
 form {
     max-width: 600px;
     margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
+    padding: 0px;
+    background-color: #f7f7f7;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     display: flex;
@@ -990,7 +1127,7 @@ form label {
 .tilføj-lejekontrakt-knap {
     padding: 12px 20px;
     font-size: 18px;
-    color: #fff;
+    color: rgba(0, 0, 0, 0.62);
     background-color: #007bff;
     border: none;
     border-radius: 5px;
@@ -1003,5 +1140,14 @@ form label {
     transform: scale(1.05);
 }
 
+.soeg-kd-lejekontrakter {
+
+}
+
+#telefonnummer {
+    width: 96%;
+    background: #f7f7f7;
+    border-radius: 5px;
+}
 
 /*LEDIGE BILER*/

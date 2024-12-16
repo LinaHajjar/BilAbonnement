@@ -7,6 +7,11 @@
     <title>Ny skade rapport</title>
 </head>
 <body>
+<div class="department-nav">
+    <span class="department-label">Afdeling: </span>
+    <span class="department-name">Skadehåndtering</span>
+</div>
+
 
 <!-- Side navigation bar -->
 <div class="side-nav">
@@ -22,13 +27,16 @@
     <a th:href="@{/logUd}" class="nav-button logout-button">Log ud</a>
 </div>
 
+<div class="main-content">
+
+
 
 <h1 class="ny-skade-h1">Indtast informationer for skade</h1>
-
+    <!--her benytter vi os af form template som er en global css til forms for styling -->
+<div class="form-template">
 <form th:action="@{/nySkade}" method="post">
-
+    <label>Indtast lejekontraktens id:</label>
     <input type="number" name="lejekontrakt_id" placeholder="Lejekontrakt ID" required>
-
     <label for="skade_type">Vælg skadetype:</label>
     <select name="skade_type" id="skade_type" required>
         <option value="">-- Vælg en option --</option>
@@ -37,15 +45,17 @@
         <option value="FEJL">FEJL</option>
     </select>
 
-
+    <label>Indtast skade beskrivelse:</label>
     <input type="text" name="beskrivelse" placeholder="Beskrivelse" required>
-    <label>Indtast skade beskrivelse</label>
 
 
+    <label>Indtast reparations prisen:</label>
     <input type="number" name="pris" placeholder="Pris" required>
 
     <button type="submit" class="tilføj-skadRapport-knap">Tilføj ny skade</button>
 </form>
+</div>
+</div>
 </body>
 </html>
 
