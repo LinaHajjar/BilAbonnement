@@ -15,11 +15,13 @@
         <img src="/Billeder/BILABONNEMENT.png" alt="Logo">
     </div>
 
+    <p>Du er logget ind som: <strong th:text="${session.rolle}"></strong></p>
+
     <!-- Navigation buttons -->
 
-    <!-- <a href="/menu" class="nav-button">Tilbage til menu</a>
+<!--    <a th:href="/menu" class="nav-button">Tilbage til menu</a>-->
 
-    <!-- Logout button -->
+<!--    < Logout button &ndash;&gt;-->
     <a th:href="@{/logUd}" class="nav-button logout-button">Log ud</a>
 </div>
 

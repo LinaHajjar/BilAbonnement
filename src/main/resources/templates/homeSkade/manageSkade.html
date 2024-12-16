@@ -18,8 +18,12 @@
     <img src="/Billeder/BILABONNEMENT.png" alt="Logo">
   </div>
 
+  <p>Du er logget ind som: <strong th:text="${session.rolle}"></strong></p>
+
 
   <a th:href="@{/nySkade}" class="nav-button">Opret ny skade</a>
+
+
 
 
   <!-- Logout button -->
