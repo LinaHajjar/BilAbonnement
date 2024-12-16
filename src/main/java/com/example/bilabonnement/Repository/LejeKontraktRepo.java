@@ -112,12 +112,46 @@ public int getAntalBiler(LocalDate startdato, LocalDate slutdato) throws SQLExce
     }
 
     public List<String> getBilMaerker() {
+
+    public int getAntalBiler(LocalDate startdato, LocalDate slutdato) throws SQLException {
+        String sql = "SELECT COUNT(*) FROM lejekontrakt WHERE startdato >= ? AND slutdato <= ?";
+
+        // Convert LocalDate to java.sql.Date
+        java.sql.Date sqlStartdato = java.sql.Date.valueOf(startdato);
+        java.sql.Date sqlSlutdato = java.sql.Date.valueOf(slutdato);
+
+        // Execute the query and return the count
+        return template.queryForObject(sql, Integer.class, sqlStartdato, sqlSlutdato);
+    }
+
+
+
+
+    public List<String> getBilMaerker() {
         String sql = "SELECT DISTINCT maerke FROM bil WHERE maerke IS NOT NULL AND maerke != ''";
-        return template.queryForList(sql, String.class);  // This will return a List<String>
+        return template.queryForList(sql, String.class);
     }
 
     public void redigerLejeKontrakt(LejeKontrakt lejeKontrakt){
         String sql = "UPDATE lejeKontrakt SET startdato=?, slutdato=?, maxKm=?, pris=? WHERE lejekontrakt_id= ?";
         template.update(sql, lejeKontrakt.getStartdato(), lejeKontrakt.getSlutdato(), lejeKontrakt.getMaxKm(), lejeKontrakt.getPris(), lejeKontrakt.getLejekontrakt_id());
     }
+
+
+    public int getAntalBilerforMærker(LocalDate startdato, LocalDate slutdato, String selectedMaerke) {
+
+
+        java.sql.Date sqlStartdato = java.sql.Date.valueOf(startdato);
+        java.sql.Date sqlSlutdato = java.sql.Date.valueOf(slutdato);
+
+        String sql = "SELECT COUNT(*) FROM lejekontrakt l " +
+                "JOIN bil b ON l.nummerplade = b.nummerplade " +
+                "WHERE l.startdato >= ? " +
+                "AND l.slutdato <= ? " +
+                "AND b.maerke = ?";
+
+
+        return template.queryForObject(sql, new Object[]{sqlStartdato, sqlSlutdato, selectedMaerke}, Integer.class);
+    }
+
 }
