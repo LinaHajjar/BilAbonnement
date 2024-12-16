@@ -8,23 +8,10 @@
 </head>
 <body>
 
-<h1 class="ny-kunde-h1">Indtast informationer</h1>
-
-
-<form th:action="@{/tilføjKunde}" method="post">
-    <input type="number" name="telefonnummer" placeholder="Telefonnummer" required min="10000000" max="99999999">
-    <input type="email" name="email" placeholder="Email" required>
-    <input type="text" name="fornavn" placeholder="Fornavn" required>
-    <input type="text" name="efternavn" placeholder="Efternavn" required>
-    <input type="text" name="adresse" placeholder="Adresse" required>
-    <input type="number" name="postnummer" placeholder="Postnummer" required>
-    <input type="text" name="byen" placeholder="By" required>
-    <label>Indtast dit kørekortnummer</label>
-    <input type="text" name="koerekortnummer" placeholder="Kørekortnummer" required>
-    <label>Indtast dit udstedelsdato</label>
-    <input type="date" name="udstedelsdato" placeholder="Udstedelsesdato" required>
-    <button type="submit" class="tilføj-kunde-knap">Tilføj Kunde</button>
-</form>
+<div class="department-nav">
+    <span class="department-label">Afdeling: </span>
+    <span class="department-name">Biludlejning</span>
+</div>
 
 <!-- Side navigation bar -->
 <div class="side-nav">
@@ -41,6 +28,35 @@
     <!-- Logout button -->
     <a th:href="@{/logUd}" class="nav-button logout-button">Log ud</a>
 </div>
+
+<div class="main-content">
+<h1 class="ny-kunde-h1">Indtast kunde informationer</h1>
+
+<div class="form-template">
+<form th:action="@{/tilføjKunde}" method="post">
+    <label>Indtast telefonnummer</label>
+    <input type="number" name="telefonnummer" placeholder="Telefonnummer" required min="10000000" max="99999999">
+    <label>Indtast Email</label>
+    <input type="email" name="email" placeholder="Email" required>
+    <label>Indtast fornavn</label>
+    <input type="text" name="fornavn" placeholder="Fornavn" required>
+    <label>Indtast efternavn</label>
+    <input type="text" name="efternavn" placeholder="Efternavn" required>
+    <label>Indtast din adresse</label>
+    <input type="text" name="adresse" placeholder="Adresse" required>
+    <label>Indtast dit postnummer</label>
+    <input type="number" name="postnummer" placeholder="Postnummer" required>
+    <label>Indtast by</label>
+    <input type="text" name="byen" placeholder="By" required>
+    <label>Indtast dit kørekortnummer</label>
+    <input type="text" name="koerekortnummer" placeholder="Kørekortnummer" required>
+    <label>Indtast dit udstedelsdato</label>
+    <input type="date" name="udstedelsdato" placeholder="Udstedelsesdato" required>
+    <button type="submit" class="tilføj-kunde-knap">Tilføj Kunde</button>
+</form>
+</div>
+</div>
+
 
 </body>
 </html>

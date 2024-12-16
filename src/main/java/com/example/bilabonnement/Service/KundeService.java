@@ -1,6 +1,7 @@
 package com.example.bilabonnement.Service;
 
 import com.example.bilabonnement.Model.Kunde;
+import com.example.bilabonnement.Repository.BilRepo;
 import com.example.bilabonnement.Repository.KundeRepo;
 import com.example.bilabonnement.Repository.LejeKontraktRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,18 +14,18 @@ import java.util.List;
 public class KundeService {
     @Autowired
     KundeRepo kundeRepo;
+    @Autowired
+    private BilRepo bilRepo;
 
 
     public List<Kunde> getAllKunde() throws SQLException {
         return kundeRepo.getAllKunde();
     }
 
-    //skal lave den her metode færdig
     public Kunde getKundeByTelefon(String telefonnummer) throws SQLException {
         return kundeRepo.getKundeByTelefon(telefonnummer);
     }
 
-    //skal lave den her metode færdig
     public boolean opdaterKundeInfo(Kunde kunde) throws SQLException {
         return kundeRepo.opdaterKundeInfo(kunde);
     }
@@ -39,6 +40,10 @@ public class KundeService {
 
     public void sletKunde(String telefonnummer) throws SQLException {
         kundeRepo.sletKunde(telefonnummer);
+    }
+
+    public void redigerKunde(Kunde kunde){
+        kundeRepo.redigerKunde(kunde);
     }
 
 

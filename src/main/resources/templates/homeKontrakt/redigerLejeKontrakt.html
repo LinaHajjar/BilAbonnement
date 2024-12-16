@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>rediger en lejekontrakt</title>
+    <link rel="stylesheet" type="text/css" href="/MyCSS.css">
+
+</head>
+<body>
+
+<!-- Side navigation bar -->
+<div class="side-nav">
+  <!-- Logo -->
+  <div class="nav-logo">
+    <img src="/Billeder/BILABONNEMENT.png" alt="Logo">
+  </div>
+
+  <!-- Navigation buttons -->
+  <a th:href="@{/manage}" class="nav-button">Tilbage til menu</a>
+
+  <!-- Logout button -->
+  <a th:href="@{/logUd}" class="nav-button logout-button">Log ud</a>
+</div>
+
+<h1>Rediger kundens informationer</h1>
+
+<form action="/redigerLejeKontrakt" method="post">
+
+  <input type="hidden" name="lejekontrakt_id" th:value="${lejekontrakt.lejekontrakt_id}">
+
+  <label>Telefonnummer:</label>
+  <span th:text="${lejekontrakt.telefonnummer}"></span> <!--cannot be changed-->
+
+  <label>Nummerplade:</label>
+  <span th:text="${lejekontrakt.nummerplade}"></span> <!--cannot be changed-->
+
+
+  <td>
+    <label for="startdato">Start dato: </label>
+    <input type="date" id="startdato" name="startdato" placeholder="startdato" required th:value="${lejekontrakt.startdato}">
+  </td>
+
+  <td>
+    <label for="slutdato">Slut dato: </label>
+    <input type="date" id="slutdato" name="slutdato" placeholder="slutdato" th:value="${lejekontrakt.slutdato}">
+  </td>
+
+  <td>
+    <label for="maxKm">max Km: </label>
+    <input type="text" id="maxKm" name="maxKm" placeholder="maxKm" th:value="${lejekontrakt.maxKm}">
+  </td>
+
+  <td>
+    <label for="pris">pris: </label>
+    <input type="text" id="pris" name="pris" placeholder="pris" th:value="${lejekontrakt.pris}">
+  </td>
+  <input type="submit" value="Gem ændringer">
+</form>
+
+</body>
+</html>

@@ -1,6 +1,7 @@
 package com.example.bilabonnement.Repository;
 
 import com.example.bilabonnement.Model.Bil;
+import com.example.bilabonnement.Model.Kunde;
 import com.example.bilabonnement.Model.TopBil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -57,5 +58,39 @@ public class BilRepo {
         return topBil;
 
     }
+
+    public void opretteBil(String nummerplade, String maerke, String model,
+                           Bil.Braendstoftype braendstoftype, int odometer,
+                           java.time.LocalDate foersteregistrering, int co2udledning) {
+
+        String sql = "INSERT INTO bil (nummerplade, maerke, model, braendstoftype, odometer, foersteregistrering, co2udledning) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+        template.update(sql,
+                nummerplade,
+                maerke,
+                model,
+                braendstoftype.name(),
+                odometer,
+                java.sql.Date.valueOf(foersteregistrering),
+                co2udledning
+        );
+    }
+
+    public void redigerBil(Bil bil){
+        String sql = "UPDATE bil SET maerke=?, model=?, odometer=?, co2udledning=? WHERE nummerplade= ?";
+        template.update(sql, bil.getMaerke(), bil.getModel(), bil.getOdometer(), bil.getCo2udledning(), String.valueOf(bil.getNummerplade()));
+    }
+
+
+    public boolean sletBil(String nummerplade){
+
+        String sql = "DELETE FROM bil WHERE nummerplade = ?";
+
+        return template.update(sql,nummerplade)>0;
+    }
+
+
+
 
 }

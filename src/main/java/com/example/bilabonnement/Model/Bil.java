@@ -6,13 +6,20 @@ public class Bil {
     String nummerplade;
     String maerke;
     String model;
-    enum Braendstoftype {ELEKTIK, BENZIN, DIESEL, HYBRID};
+    public enum Braendstoftype {ELEKTIK, BENZIN, DIESEL, HYBRID};
     Braendstoftype braendstoftype;
     int odometer;
     LocalDate foersteregistrering;
     int co2udledning;
 
-    public Bil(){} //tømme konstruktør
+
+
+    public Bil(String nummerplade, String maerke, String model, Braendstoftype braendstoftype, int odometer, LocalDate foersteregistrering, int co2udledning){} //tømme konstruktør
+
+
+    public Bil(){
+
+    }
 
 
     public String getNummerplade() {

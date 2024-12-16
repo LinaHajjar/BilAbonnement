@@ -15,29 +15,36 @@
         <img src="/Billeder/BILABONNEMENT.png" alt="Logo">
     </div>
 
+    <p>Du er logget ind som: <strong th:text="${session.rolle}"></strong></p>
+
     <!-- Navigation buttons -->
 
-    <!-- <a href="/menu" class="nav-button">Tilbage til menu</a>
-
-    <!-- Logout button -->
     <a th:href="@{/logUd}" class="nav-button logout-button">Log ud</a>
 </div>
 
+<div class="main-content">
+    <h1 class="manage-h1">Vælg</h1>
+
 <div class="manage-options">
     <a th:href="@{/manageKunder}" class="manage-kunde-knap">
-        <img src="/Billeder/Kundebillede.webp" alt="Kunder">
-        <span>Håndter Kunder</span>
+        <img src="/Billeder/håndterkunder.webp" alt="Kunder">
+        <span>Tilføj eller find en kunde</span>
     </a>
 
     <a th:href="@{/manageBiler}" class="manage-biler-knap">
         <img src="/Billeder/håndterBiler.webp" alt="Biler">
-        <span>Håndter Biler</span>
+        <span>Se alle Biler</span>
     </a>
 
     <a th:href="@{/manageKontrakter}" class="manage-kontrakter-knap">
-        <img src="/Billeder/håndterKontakter.webp" alt="Kontrakter">
-        <span>Håndter Kontrakter</span>
+        <img src="/Billeder/manageKontrakter.webp" alt="Kontrakter">
+        <span>Tilføj eller find lejekontrakter</span>
     </a>
+    <a th:href="@{/manageHaandteringer}" class ="manage-biler-knap">
+       <img src="/Billeder/manageKontrakter.webp" alt="Kontrakter">
+       <span> Manage Bil-Haandeteringer</span>
+    </a>
+</div>
 </div>
 </body>
 </html>

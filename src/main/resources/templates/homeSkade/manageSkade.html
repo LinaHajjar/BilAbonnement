@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
 <head>
   <meta charset="UTF-8">
 
@@ -7,7 +7,10 @@
   <title>Skade rapporter</title>
 </head>
 <body>
-<h1 class="Skaderapport-h1">Alle skaderapporter</h1>
+<div class="department-nav">
+  <span class="department-label">Afdeling: </span>
+  <span class="department-name">Skadehåndtering</span>
+</div>
 
 
 <div class="side-nav">
@@ -18,8 +21,12 @@
     <img src="/Billeder/BILABONNEMENT.png" alt="Logo">
   </div>
 
+  <p>Du er logget ind som: <strong th:text="${session.rolle}"></strong></p>
+
 
   <a th:href="@{/nySkade}" class="nav-button">Opret ny skade</a>
+
+
 
 
   <!-- Logout button -->
@@ -36,8 +43,21 @@
 <div th:if="${errorMessage}" class="error-message">
   <p th:text="${errorMessage}"></p>
 </div>
+<div class="main-content">
 
-<table class="Skade-rapport-table">
+
+<h1 class="Skaderapport-h1">Alle skaderapporter</h1>
+
+  <div class="form-template">
+  <form th:action="@{/kundensSkader}" method="post">
+    <label>Find skaderapport</label>
+    <label>(Indsæt lejekontrakt id. f.eks. 1, 5, 11 mm.) </label>
+    <input type="number" name="lejekontrakt_id" placeholder="Kundens lejekontrakt_id">
+    <button type="submit" class="søg-efter-kundens-lejekontrakt id">Find skaderapport</button>
+  </form>
+  </div>
+<!-- har lånt bil-tables properties for reducering af css. Dette er bare overall styling.  -->
+<table class="bil-table">
   <thead>
   <tr>
     <th>Lejekontrakt_id</th>
@@ -56,15 +76,6 @@
   </tbody>
 </table>
 
-
-<form th:action="@{/kundensSkader}" method="post">
-  <label>Søg efter en kundes skadrapport</label>
-  <input type="number" name="lejekontrakt_id" placeholder="Kundens lejekontrakt_id">
-  <button type="submit" class="søg-efter-kundens-lejekontrakt id">Søg efter kundens lejekontrakt id</button>
-</form>
-
-
-
-
+</div>
 </body>
 </html>
