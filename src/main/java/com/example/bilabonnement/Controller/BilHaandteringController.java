@@ -123,6 +123,4 @@ public class BilHaandteringController {
         return "redirect:/manageBilHaandtering";
     }
 
-
-
 }

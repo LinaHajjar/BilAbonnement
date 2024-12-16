@@ -95,21 +95,6 @@ public class LejeKontraktRepo {
 }*/
 
 
-    public List<MonthlyIncome> monthlyIncomeList(int year){
-        String sql = "SELECT \n" +
-                "    MONTH(slutdato) AS måned, \n" +
-                "    SUM(pris) AS indtjening\n" +
-                "FROM lejekontrakt\n" +
-                "WHERE YEAR(slutdato) = ?\n" +
-                "GROUP BY MONTH(slutdato)\n" +
-                "ORDER BY MONTH(slutdato);\n";
-
-
-        RowMapper<MonthlyIncome> rowMapper = new BeanPropertyRowMapper<MonthlyIncome>(MonthlyIncome.class);
-
-        return template.query(sql, rowMapper, year);
-
-    }
 
     //public List<String> getBilMaerker() {
 
@@ -152,6 +137,21 @@ public class LejeKontraktRepo {
 
 
         return template.queryForObject(sql, new Object[]{sqlStartdato, sqlSlutdato, selectedMaerke}, Integer.class);
+    }
+
+
+
+
+    public List<MonthlyIncome> monthlyIncomeList(int year){
+        String sql = "SELECT \n" +
+                "    MONTH(slutdato) AS måned, \n" +
+                "    SUM(pris) AS indtjening\n" +
+                "FROM lejekontrakt\n" +
+                "WHERE YEAR(slutdato) = ?\n" +
+                "GROUP BY MONTH(slutdato)\n" +
+                "ORDER BY MONTH(slutdato);\n";
+        RowMapper<MonthlyIncome> rowMapper = new BeanPropertyRowMapper<MonthlyIncome>(MonthlyIncome.class);
+        return template.query(sql, rowMapper, year);
     }
 
 }

@@ -424,6 +424,65 @@ h3{
 
 /*-------------------------------------Forretnings udvikler-------------------------------------------*/
 
+.indtjening-table {
+    width: 100%; /* Fill the container width */
+    border-collapse: separate; /* Use separate to allow border-radius */
+    border-spacing: 0; /* Remove gaps between cells */
+    background-color: #fff;
+    border: 1px solid #014959;
+    border-radius: 10px; /* Apply rounded corners */
+    margin-top: 20px;
+}
+
+/* Rounded corners for the top row (header) */
+.indtjening-table th:first-child {
+    border-top-left-radius: 10px; /* Top-left rounded corner */
+}
+
+.indtjening-table th:last-child {
+    border-top-right-radius: 10px; /* Top-right rounded corner */
+}
+
+/* Rounded corners for the last row */
+.indtjening-table tr:last-child td:first-child {
+    border-bottom-left-radius: 10px; /* Bottom-left rounded corner */
+}
+
+.indtjening-table tr:last-child td:last-child {
+    border-bottom-right-radius: 10px; /* Bottom-right rounded corner */
+}
+
+/* General table cell styling */
+.indtjening-table th, .indtjening-table td {
+    padding: 5px 5px; /* Reduced horizontal padding (5px top/bottom, 5px left/right) */
+    text-align: left;
+    border: 1px solid #ddd; /* Cell borders */
+    font-size: 14px; /* Font size for better fitting text */
+    line-height: 1.2; /* Adjust line height for reduced spacing */
+    white-space: nowrap; /* Prevent text from wrapping onto multiple lines */
+}
+
+/* Header cell styling */
+.indtjening-table th {
+    background-color: #014959;
+    color: #a3d2d2;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 5px 10px; /* Match padding for consistency */
+}
+
+.indtjening-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.indtjening-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.indtjening-table td {
+    color: #555;
+    white-space: nowrap; /* Prevents line breaks in cells */
+}
 
 
 /*-------------------------------------Forretnings udvikler-------------------------------------------*/
