@@ -8,6 +8,11 @@
 </head>
 <body>
 
+<div class="department-nav">
+  <span class="department-label">Afdeling: </span>
+  <span class="department-name">Skadehåndtering </span>
+</div>
+
 <!-- Side navigation bar -->
 <div class="side-nav">
   <!-- Logo -->
@@ -18,7 +23,13 @@
   <!-- Navigation buttons -->
   <a th:href="@{/manage}" class="nav-button">Tilbage til menu</a>
 
-  <!-- Logout button -->
+  <!-- login credentials-->
+  <div class="login-credetials">
+    <p class="department-brugerlogin"> Bruger login:</p>
+    <p class="department-loginUser"> <strong th:text="${session.rolle}"></strong></p>
+  </div>
+
+  <!-- logout button -->
   <a th:href="@{/logUd}" class="nav-button logout-button">Log ud</a>
 </div>
 

@@ -33,7 +33,7 @@
 </div>
 
 <div class="main-content">
-<h1 class="samlet-Indtægt-overskrift">Samlede indtægter</h1>
+<h1>Samlede indtægter</h1>
 
 
 
@@ -64,10 +64,11 @@
     <div class="månedlige-indtægt">
         <div class="form-template">
         <form th:action="@{/monthlyIncome}" method="post">
-            <label>for Indtast det år du vil se månedlig indtjening for</label>
+            <label>Indtast det år du vil se månedlig indtjening for</label>
             <input type="number" name="year" placeholder="F.eks 2023" required min="1000" max="9999">
             <button type="submit">Tryk her for at se alt indtjening</button>
         </form>
+
 
         <div class="alt-indtjening">
             <h1 th:if="${year}" th:text="'Samlet indtjening for år ' + ${year} "></h1>

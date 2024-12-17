@@ -53,13 +53,6 @@ html, body{
     margin-bottom: 50px;
 }
 
-.nav-button:hover {
-    background-color: #013d4b; /* Even darker blue on hover */
-    transform: scale(1.1); /* Slight zoom on hover */
-}
-
-
-
 .nav-button1 {
     width: 92%;
     padding: 15px 20px;
@@ -73,9 +66,13 @@ html, body{
     transition: all 0.3s ease;
 }
 
+.nav-button:hover {
+    background-color: #013d4b;
+    transform: scale(1.1); /*zoom zoom*/
+}
 .nav-button1:hover {
-    background-color: darkgreen; /* Even darker blue on hover */
-    transform: scale(1.1); /* Slight zoom on hover */
+    background-color: darkgreen;
+    transform: scale(1.1); /*zoom zoom*/
 }
 
 /* Login credentials */
@@ -133,25 +130,33 @@ html, body{
     text-align: center;
 }
 
+/* Main content styling */
+.main-content {
+    margin-left: 270px; /* Giver plads til navigationsbaren */
+    padding: 20px;
+    box-sizing: border-box; /* Sikrer korrekt padding og margin */
+    overflow-x: hidden; /* Forhindrer vandret scrollbar */
+    overflow-y: auto; /* Tillader lodret rulning */
+    max-width: calc(100% - 270px); /* Sikrer, at indholdet ikke overstiger viewportens bredde */
+}
 
-/* Form wrapper */
+/* Vores form template til alle forms, positionering */
 .form-template {
     margin: 20px auto;
     max-width: 600px;
     border-radius: 10px;
-  /*  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);*/
 }
 
-/* Form styling */
+/* Form-template til styling */
 .form-template form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 15px; /*Afstand imellem formene*/
     margin: 0;
     padding: 10px;
 }
 
-/* Labels */
+/* Label specifik størrelse og farve */
 .form-template form label {
     font-size: 14px;
     color: #555;
@@ -163,17 +168,17 @@ html, body{
 .form-template form input[type="text"],
 .form-template form input[type="email"],
 .form-template form select {
-    width: 100%; /* Ensure all fields take the full width of the form */
-    padding: 10px; /* Add padding for comfortable typing and selection */
-    font-size: 16px; /* Consistent font size */
+    width: 100%; /* Løste et problem med en overwrite et sted */
+    padding: 10px;
+    font-size: 14px; /* Tidligere brugte vi størrelse 14 */
     border: 1px solid #ccc; /* Border styling */
-    border-radius: 5px; /* Rounded corners for all fields */
-    background: white; /* Match background color */
+    border-radius: 5px; /* afrundede hjørner for de specifikke inputs of fields */
+    background: white;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    box-sizing: border-box; /* Ensure padding doesn’t break width */
+    box-sizing: border-box; /* Sikre at padding ikke bryder "width"  */
 }
 
-/* Focus styles for inputs and selects */
+/* Farve ved tryk i input fields */
 .form-template form input[type="number"]:focus,
 .form-template form input[type="date"]:focus,
 .form-template form input[type="text"]:focus,
@@ -183,7 +188,7 @@ html, body{
     outline: none;
 }
 
-/* Submit button */
+/* Submit button kan også betragtes som knapperne inde i vores forms*/
 .form-template form button {
     padding: 10px 15px;
     font-size: 14px;
@@ -200,36 +205,15 @@ html, body{
     transform: scale(1.05);
 }
 
-
-
-
-/*---------------------------------------------ManageBiler------------------------------------------------------------*/
-/* Bil table styling */
-.bil-table {
-    width: 100%; /* Ensure the table fills its container */
-    border-collapse: collapse; /* Remove gaps between cells */
-    margin: 20px 0; /* Add spacing above and below the table */
-    background-color: #fff;
-    border: 1px solid #ddd;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    font-size: 16px; /* Standard font size for readability */
-    text-align: left; /* Left-align text in cells */
-}
-
-
-table{
-    text-align: left;
-    border-collapse:collapse;
-    margin-top: 40%;
-    width: auto;
-    margin-left: auto;
-    margin-right: auto;
-}
-
 h1 {
-    font-size: 32px;
-    color: #333;
+    font-size: 36px;
+    color: #a4d4d4;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
 }
+
 h2 {
     font-size: 28px;
     color: #555;
@@ -240,6 +224,27 @@ h3{
     color: #a3d2d3;
 }
 
+/* Manage options er containeren m. overblik over vores billeder på landingssiden & forretningsudvikling */
+.manage-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Form styling */
+form {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 0px;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+/*---------------------------------------------ManageBiler------------------------------------------------------------*/
 .delete-customer-button{
     margin: 10px;
     border: 1px solid black;
@@ -254,11 +259,7 @@ h3{
     transform: scale(1.1); /* Slightly increase size on hover */
     background-color: darkred;
 }
-
-
-
 /* -------------------------------------------------- login page css ----------------------------------------------------------------------------*/
-
 /* Logo container */
 .logo-container {
     display: flex;
@@ -269,9 +270,9 @@ h3{
 
 /* Logo styling */
 .logo {
-    width: 450px; /* Adjust width as needed */
-    height: auto; /* Maintain aspect ratio */
-    object-fit: contain; /* Ensure the logo fits within its container */
+    width: 450px;
+    height: auto;
+    object-fit: contain;
 }
 
 .login-page {
@@ -289,28 +290,20 @@ h3{
     justify-content: center;
     align-items: center;
     text-align: left;
-    gap: 10px; /* Space between h1 and the form */
-}
-
-.login-h1 {
-    color: #a3d2d2;
-    font-weight: bold;
-    font-family: 'Poppins', sans-serif;
-    text-align: left;
-    margin: 0;
+    gap: 10px; /* afstand mellem h1 og logoet */
 }
 
 /* Login form container */
 .login-box {
     display: flex;
     flex-direction: column;
-    align-items: stretch; /* Ensure labels and inputs take full width */
-    text-align: left; /* Align text inside labels to the left */
+    align-items: stretch; /* sikre at labels & inputs tager den fulde bredde */
+    text-align: left;
     border: 2px solid #1d4048;
     border-radius: 10px;
-    width: 300px; /* Set consistent width for the form */
+    width: 300px; /* Konsekvent den samme størrelse for formen */
     padding: 20px;
-    gap: 15px; /* Adds even spacing between input fields and button */
+    gap: 15px;
     background-color: white;
 }
 
@@ -319,16 +312,16 @@ h3{
     font-family: 'Poppins', sans-serif;
     font-size: 14px;
     color: #285862;
-    text-align: left; /* Ensure text inside the label aligns left */
+    text-align: left;
 }
 
-/* Input fields */
+/* Input fields i login boksen */
 .login-box input[type="text"],
 .login-box input[type="password"] {
-    width: 100%; /* Input fields take full width */
+    width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 5px;
     box-sizing: border-box;
     color: black;
 }
@@ -344,41 +337,21 @@ h3{
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s;
-    width: 100%; /* Button matches the width of the input fields */
+    width: 100%;
     text-align: center;
 }
 
 .login-submit-button:hover {
-    background-color: #1591c1;
+    background-color: #285762;
     color: white;
 }
 /*-------------------------------------Manage siden som er et redirect fra loginInfo-------------------------------------------*/
-
-/* Heading */
-.manage-h1 {
-
-    font-size: 36px;
-    color: #a4d4d4;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-/* Manage options container */
-.manage-options {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-
-}
-
 /* Individual option buttons */
+.manage-biler-knap,
 .antal-lejede-biler-knap,
 .samlet-Indtægt-knap,
-.top-lejede-biler-knap,
-.manage-kunde-knap,
-.manage-biler-knap,
-.manage-kontrakter-knap {
+.top-lejede-biler-knap
+{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -399,9 +372,8 @@ h3{
 .antal-lejede-biler-knap:hover,
 .samlet-Indtægt-knap:hover,
 .top-lejede-biler-knap:hover,
-.manage-kunde-knap:hover,
-.manage-biler-knap:hover,
-.manage-kontrakter-knap:hover {
+.manage-biler-knap:hover
+ {
     transform: scale(1.05);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
@@ -410,9 +382,8 @@ h3{
 .antal-lejede-biler-knap img,
 .samlet-Indtægt-knap img,
 .top-lejede-biler-knap img,
-.manage-kunde-knap img,
-.manage-biler-knap img,
-.manage-kontrakter-knap img {
+.manage-biler-knap img
+ {
     width: 100%;
     height: 80%;
     margin-bottom: 10px;
@@ -424,16 +395,14 @@ h3{
 .antal-lejede-biler-knap span,
 .samlet-Indtægt-knap span,
 .top-lejede-biler-knap span,
-.manage-kunde-knap span,
-.manage-biler-knap span,
-.manage-kontrakter-knap span {
+.manage-biler-knap span
+ {
     font-size: 24px;
     text-align: center;
     color: ghostwhite;
 }
-
 /*-------------------------------------Forretnings udvikler-------------------------------------------*/
-
+/*--------------------------------- Samlede indtægter/indtjening-----------------------*/
 .indtjening-table {
     width: 100%; /* Fill the container width */
     border-collapse: separate; /* Use separate to allow border-radius */
@@ -493,31 +462,8 @@ h3{
     color: #555;
     white-space: nowrap; /* Prevents line breaks in cells */
 }
-
-
 /*-------------------------------------Forretnings udvikler-------------------------------------------*/
 /*-------------------------------------Antal lejede Biler-------------------------------------------*/
-.overskrift-lejedeBiler {
-    text-align: center;
-}
-/* General form styles */
-form {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-    max-width: 300px;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-label {
-    font-weight: bold;
-}
-
 input[type="date"] {
     padding: 10px;
     font-size: 16px;
@@ -527,84 +473,19 @@ input[type="date"] {
     box-sizing: border-box; /* Include padding and border in width */
 }
 
-button {
-    padding: 8px 15px;
-    font-size: 14px;
-    background-color: #014858;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: 100%; /* Make button full width*/
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
 div {
     margin-top: 10px;
     font-size: 18px;
     color: green;
     width: 100%; /* Ensure output text takes full width */
 }
-
-/*-------------------------------------Forretnings udvikler-------------------------------------------*/
-/*-------------------------------------Samlet indtægt-------------------------------------------*/
-
-.samlet-Indtægt-overskrift {
-    text-align: center;
-}
-
 /*-------------------------------------Forretnings udvikler-------------------------------------------*/
 /*-------------------------------------Top modeller-------------------------------------------*/
-
-
-
 .submit-top-bil{
     text-align: center; /* Centers the button horizontally */
     margin-top: 20px;
 }
-
-
-
-
-.vis-top-bil-knap{
-    border-radius: 5px;
-    background-color: white;
-    border: 2px solid greenyellow;
-    transition: all 0.3s ease;
-    height: 40px;
-    width: 80%;
-    font-weight: bold;
-    color: black;
-
-}
-
-.vis-top-bil-knap:hover{
-    background-color: greenyellow;
-}
-
-
-.top-lejede-biler-overskrift {
-    text-align: center;
-}
-
-
 /*-------------------------------------Manage biler CSS---------------------------------------------------------*/
-
-/* Headings */
-h1 {
-    font-size: 36px;
-    color: #a4d4d4;
-    text-align: center;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    font-weight: bold;
-}
-
-
 /* Table Styling */
 .bil-table {
     width: 90%;
@@ -671,34 +552,6 @@ h1 {
 /*-------------------------------------Kundens Skader---------------------------------------------------------*/
 /*-------------------------------------Manage Skade---------------------------------------------------------*/
 /*-------------------------------------Ny Skade---------------------------------------------------------*/
-
-
-/* Headings */
-.Skaderapport-h1, .ny-lejekontrakt-h1 {
-    font-size: 36px;
-    color: rgb(162, 208, 208);
-    text-align: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-/*Error msg til succes og failure o_O*/
-.success-message {
-    color: green;
-    text-align: center;
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 20px;
-}
-
-.error-message {
-    color: red;
-    text-align: center;
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 20px;
-}
-
 /* Add button */
 .ny-skade-rapport-knap {
     display: inline-block;
@@ -716,19 +569,6 @@ h1 {
 .ny-skade-rapport-knap:hover {
     background-color: #0056b3;
     transform: scale(1.05);
-}
-
-/* Form styling */
-form {
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
 }
 
 form input[type="text"],
@@ -754,96 +594,9 @@ form label {
     color: #555;
 }
 
-.tilføj-skadRapport-knap {
-    padding: 12px 20px;
-    font-size: 18px;
-    color: #fff;
-    background-color: #007bff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.tilføj-skadRapport-knap:hover {
-    background-color: #0056b3;
-    transform: scale(1.05);
-}
-
-/* Table styling */
-.Skade-rapport-table {
-
-    width: 95%;
-    max-width: 1200px;
-    border-collapse: collapse;
-    margin-right:  auto;
-    margin-left: auto;
-    margin-top: 20px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.Skade-rapport-table th, .Skade-rapport-table td {
-    padding: 12px 15px;
-    text-align: left;
-    border: 1px solid #ddd;
-}
-
-.Skade-rapport-table th {
-    background-color: #244f59;
-    color: #fff;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-.Skade-rapport-table tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-.Skade-rapport-table tr:hover {
-    background-color: #f1f1f1;
-}
-
-.Skade-rapport-table td {
-    color: #555;
-}
-
 /*-------------------------------------**HOME KUNDE CSS**---------------------------------------------------------*/
 /*-------------------------------------manageKunder---------------------------------------------------------*/
 /*-------------------------------------nyKunde---------------------------------------------------------*/
-
-
-/* Main content styling */
-.main-content {
-    margin-left: 270px; /* Giver plads til navigationsbaren */
-    padding: 20px;
-    box-sizing: border-box; /* Sikrer korrekt padding og margin */
-    overflow-x: hidden; /* Forhindrer vandret scrollbar */
-    overflow-y: auto; /* Tillader lodret rulning */
-    max-width: calc(100% - 270px); /* Sikrer, at indholdet ikke overstiger viewportens bredde */
-}
-
-/* Form heading */
-.ny-kunde-h1 {
-    font-size: 36px;
-    color: #a4d4d4;
-    text-align: center;
-    margin-top: 20px;
-}
-
-/* Form container */
-form {
-    max-width: 500px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
 
 /* Form inputs */
 form input[type="text"],
@@ -884,43 +637,6 @@ form label {
 }
 
 .tilføj-kunde-knap:hover {
-    background-color: #0056b3;
-    transform: scale(1.05);
-}
-
-/* Success message */
-.success-message {
-    text-align: center;
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: green;
-}
-
-/* Error message */
-.error-message {
-    text-align: center;
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: red;
-}
-
-/* Link for adding a new customer */
-.tilføj-kunde {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 18px;
-    color: #fff;
-    background-color: #007bff;
-    text-decoration: none;
-    border-radius: 5px;
-    text-align: center;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.tilføj-kunde:hover {
     background-color: #0056b3;
     transform: scale(1.05);
 }
@@ -1013,21 +729,26 @@ form label {
     transform: scale(1.05);
 }
 
+/* redigere button & en semi global knap */
+.btn-redigerKunde1 {
+    padding: 8px 15px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #244f59;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-redigerKunde1:hover {
+    background-color: #1d4048;
+    transform: scale(1.05);
+}
+
 /*-------------------------------------**HOME Kontrakt CSS**---------------------------------------------------------*/
 /*-------------------------------------Kundens Kontrakter---------------------------------------------------------*/
 /*-------------------------------------Ny Kontrakt---------------------------------------------------------*/
 /*-------------------------------------Manage Kontrakter---------------------------------------------------------*/
-
-
-/* Headings */
-.lejekontrakt-h1, .ny-lejekontrakt-h1 {
-    font-size: 36px;
-    color: #a4d4d4;
-    text-align: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
 /* General button styling */
 a.ny-lejekontrakt-knap,
 a.soeg-lejekontrakt-telefon-knap,
@@ -1157,18 +878,7 @@ a.back-to-alle-leje-konktrakter-knap{
     transform: scale(1.05);
 }
 
-/* Form styling */
-form {
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 0px;
-    background-color: #f7f7f7;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
+
 
 form input[type="text"],
 form input[type="number"],
@@ -1196,8 +906,8 @@ form label {
 .tilføj-lejekontrakt-knap {
     padding: 12px 20px;
     font-size: 18px;
-    color: rgba(0, 0, 0, 0.62);
-    background-color: #007bff;
+    color: white;
+    background-color: #244f59;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -1205,12 +915,8 @@ form label {
 }
 
 .tilføj-lejekontrakt-knap:hover {
-    background-color: #0056b3;
+    background-color: #1d4048;
     transform: scale(1.05);
-}
-
-.soeg-kd-lejekontrakter {
-
 }
 
 #telefonnummer {
@@ -1218,5 +924,3 @@ form label {
     background: #f7f7f7;
     border-radius: 5px;
 }
-
-/*LEDIGE BILER*/
