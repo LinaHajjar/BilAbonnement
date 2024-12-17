@@ -19,8 +19,8 @@
 
 
   <!-- Actions til Udlevering and Returnering -->
-  <a th:href="@{/opretteUdlevering}" class="nav-button">Opret Udlevering</a>
-  <a th:href="@{/opretteReturnering}" class="nav-button">Opret Returnering</a>
+
+  <a th:href="@{/logUd}" class="nav-button logout-button">Log ud</a>
 </div>
 
 <!-- Overskrift h1 -->
@@ -37,7 +37,6 @@
       <th>Lokation</th>
       <th>Type</th>
       <th>Status</th>
-      <th>Handling</th>
     </tr>
     </thead>
     <tbody>
@@ -51,19 +50,6 @@
       <td th:text="${haandtering.type != null ? haandtering.type.name() : ''}"></td>
       <td th:text="${haandtering.status != null ? haandtering.status.name() : ''}"></td>
 
-      <td>
-      <form th:action="@{/opdaterStatus}" method="post">
-        <input type="hidden" name="haandtering_id" th:value="${haandtering.haandtering_id}">
-        <select name="status">
-          <option th:selected="${haandtering.status == 'Under_Levering'}" value="Under Levering">Under Levering</option>
-          <option th:selected="${haandtering.status == 'Leveret'}" value="Leveret">Leveret</option>
-          <option th:selected="${haandtering.status == 'Afventer_Inspektion'}" value="Afventer Inspektion">Afventer Inspektion</option>
-          <option th:selected="${haandtering.status == 'Inspiceret'}" value="Inspiceret">Inspiceret</option>
-          <option th:selected="${haandtering.status == 'Klar_til_Salg'}" value="Klar til Salg">Klar til Salg</option>
-        </select>
-        <button type="submit" class="opdater-status-knap">Opdater Status</button>
-      </form>
-      </td>
     </tr>
     </tbody>
   </table>
