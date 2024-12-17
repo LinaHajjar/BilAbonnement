@@ -12,6 +12,32 @@
     <span class="department-name">Biludlejning</span>
 </div>
 
+<!-- Side navigation bar -->
+<div class="side-nav">
+    <!-- Logo -->
+    <div class="nav-logo">
+        <img src="/Billeder/BILABONNEMENT.png" alt="Logo">
+    </div>
+
+    <!-- Navigation buttons -->
+
+    <a th:href="@{/manage}" class="nav-button">Tilbage til menu</a>
+    <a th:href="@{/nyKunde}" class="nav-button1">Tilføj ny kunde</a>
+
+
+
+
+    <!-- login credentials-->
+    <div class="login-credetials">
+        <p class="department-brugerlogin"> Bruger login:</p>
+        <p class="department-loginUser"> <strong th:text="${session.rolle}"></strong></p>
+    </div>
+
+
+    <!-- Logout button -->
+    <a th:href="@{/logUd}" class="nav-button logout-button">Log ud</a>
+</div>
+
 <div class="main-content">
     <h1 class="kunde-h1">Alle kunder</h1>
 
@@ -37,8 +63,7 @@
             <th>By</th>
             <th>Kørekortnr</th>
             <th>Udstedelsesdato</th>
-            <th>Slet kunde</th>
-            <th>Aktion</th>
+            <th>Slet el. redigere</th>
         </tr>
         </thead>
         <tbody>
@@ -70,20 +95,7 @@
 
 
 
-<!-- Side navigation bar -->
-<div class="side-nav">
-    <!-- Logo -->
-    <div class="nav-logo">
-        <img src="/Billeder/BILABONNEMENT.png" alt="Logo">
-    </div>
 
-    <!-- Navigation buttons -->
-
-    <a th:href="@{/manage}" class="nav-button">Tilbage til menu</a>
-    <a th:href="@{/nyKunde}" class="nav-button1">Tilføj ny kunde</a>
-    <!-- Logout button -->
-    <a th:href="@{/logUd}" class="nav-button logout-button">Log ud</a>
-</div>
 </div>
 
 </body>

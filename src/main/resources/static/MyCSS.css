@@ -78,11 +78,18 @@ html, body{
     transform: scale(1.1); /* Slight zoom on hover */
 }
 
+/* Login credentials */
+.login-credetials {
+    margin-top: auto; /* Push login section towards the bottom */
+    margin-bottom: 20px; /* Adjust space from the bottom */
+    text-align: left;
+    font-size: 16px;
+    color: ghostwhite;
+}
 
-/* Logout button slightly elevated */
+/* Logout button */
 .logout-button {
-    margin-top: auto; /* Push to bottom of the sidebar */
-    margin-bottom: 40px; /* Elevate 40px from the absolute bottom */
+    margin-bottom: 30px; /* Keep it lower than login credentials */
     background-color: #dc3545; /* Red background for logout */
     padding: 15px 20px;
     width: 92%;
@@ -96,7 +103,7 @@ html, body{
 
 .logout-button:hover {
     background-color: #a71d2a; /* Darker red on hover */
-    transform: scale(1.1); /* Slight zoom on hover */
+    transform: scale(1.1);
 }
 
 .department-nav {
@@ -116,13 +123,16 @@ html, body{
 }
 
 .department-label {
+    text-align: center;
     margin-right: 0.5rem;
     color: #a5d6d6;
 }
 
 .department-name {
     color: #ffffff;
+    text-align: center;
 }
+
 
 /* Form wrapper */
 .form-template {
@@ -227,7 +237,7 @@ h2 {
 
 h3{
     font-size: 22px;
-    color: #333333;
+    color: #a3d2d3;
 }
 
 .delete-customer-button{

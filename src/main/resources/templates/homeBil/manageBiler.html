@@ -22,11 +22,18 @@
 
     <!-- Navigation buttons -->
     <a th:href="@{/manage}" class="nav-button">Tilbage til menu</a>
+    <!--    tilføj bil-->
+    <a th:href="@{/nyBil}" class="nav-button1">Tilføj Bil</a>
+
+    <!-- login credentials-->
+    <div class="login-credetials">
+        <p class="department-brugerlogin"> Bruger login:</p>
+        <p class="department-loginUser"> <strong th:text="${session.rolle}"></strong></p>
+    </div>
 
     <!-- Logout button -->
     <a th:href="@{/logUd}" class="nav-button logout-button">Log ud</a>
-<!--    tilføj bil-->
-    <a th:href="@{/nyBil}" class="nav-button">Tilføj Bil</a>
+
 </div>
 
 <div class="main-content">
@@ -44,7 +51,8 @@
         <th>Odometer</th>
         <th>Første registrering</th>
         <th>CO2-udledning</th>
-        <th>Action</th>
+        <th>Slet bil</th>
+        <th>Redigere bil</th>
     </tr>
     </thead>
     <tbody>
@@ -59,7 +67,7 @@
         <td class="slet-bil">
             <form th:action="@{/sletBil}" method="post">
                 <input type="hidden" name="nummerplade" th:value="${bil.nummerplade}">
-                <button type="submit" class="slet-bil-knap">Slet bil</button>
+                <button type="submit" class="slet-kunde-knap">Slet bil</button>
             </form>
         </td>
 
