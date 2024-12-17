@@ -7,6 +7,10 @@
   <link rel="stylesheet" type="text/css" href="/MyCSS.css">
 </head>
 <body>
+<div class="department-nav">
+  <span class="department-label">Afdeling: </span>
+  <span class="department-name">Skadehåndtering </span>
+</div>
 <!-- Side navigation bar -->
 <div class="side-nav">
   <!-- Logo -->
@@ -17,23 +21,29 @@
   <!-- Navigation buttons -->
   <a th:href="@{/manage}" class="nav-button">Tilbage til menu</a>
 
+  <!-- login credentials-->
+  <div class="login-credetials">
+    <p class="department-brugerlogin"> Bruger login:</p>
+    <p class="department-loginUser"> <strong th:text="${session.rolle}"></strong></p>
+  </div>
 
-  <!-- Actions til Udlevering and Returnering -->
-
+  <!-- logout button -->
   <a th:href="@{/logUd}" class="nav-button logout-button">Log ud</a>
 </div>
 
 <!-- Overskrift h1 -->
-<h1 class="bil-h1">Alle Bilhaandteringer</h1>
 
+
+<div class="main-content">
+  <h1> Alle Bilhåndteringer</h1>
 <div class="table-container">
   <table class="bil-table">
     <thead>
     <tr>
-      <th>haandtering id</th>
-      <th>Lejekontrakt ID</th>
+      <th>håndterings id</th>
+      <th>Lejekontrakt nr</th>
       <th>Nummerplade</th>
-      <th>Handlingsdato</th>
+      <th>Håndterings dato</th>
       <th>Lokation</th>
       <th>Type</th>
       <th>Status</th>
@@ -54,6 +64,6 @@
     </tbody>
   </table>
 </div>
-
+</div>
 </body>
 </html>

@@ -23,7 +23,13 @@
     <!-- Navigation buttons -->
     <a th:href="@{/backToSkader}" class="nav-button">Tilbage til skader</a>
 
-    <!-- Logout button -->
+    <!-- login credentials-->
+    <div class="login-credetials">
+        <p class="department-brugerlogin"> Bruger login:</p>
+        <p class="department-loginUser"> <strong th:text="${session.rolle}"></strong></p>
+    </div>
+
+    <!-- logout button -->
     <a th:href="@{/logUd}" class="nav-button logout-button">Log ud</a>
 </div>
 
@@ -31,7 +37,7 @@
 
 
 
-<h1 class="ny-skade-h1">Indtast informationer for skade</h1>
+<h1 class="ny-skade-h1">Skade informationer</h1>
     <!--her benytter vi os af form template som er en global css til forms for styling -->
 <div class="form-template">
 <form th:action="@{/nySkade}" method="post">

@@ -22,7 +22,13 @@
     <!-- Navigation buttons -->
     <a th:href="@{/homeForretningsUdvikler}" class="nav-button">Tilbage til menu</a>
 
-    <!-- Logout button -->
+    <!-- login credentials-->
+    <div class="login-credetials">
+        <p class="department-brugerlogin"> Bruger login:</p>
+        <p class="department-loginUser"> <strong th:text="${session.rolle}"></strong></p>
+    </div>
+
+    <!-- logout button -->
     <a th:href="@{/logUd}" class="nav-button logout-button">Log ud</a>
 </div>
 

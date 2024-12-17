@@ -6,12 +6,30 @@
   <title>Kundens Skader</title>
 </head>
 <body>
-
+<!-- top nav -->
 <div class="department-nav">
   <span class="department-label">Afdeling: </span>
   <span class="department-name">Skadehåndtering</span>
 </div>
 
+<!-- Side navigation bar -->
+<div class="side-nav">
+  <!-- Logo -->
+  <div class="nav-logo">
+    <img th:src="@{/Billeder/BILABONNEMENT.png}" alt="Bilabonnement logo">
+  </div>
+  <!-- Navigation buttons -->
+  <a th:href="@{/backToSkader}" class="nav-button">Tilbage til skader</a>
+
+  <!-- login credentials-->
+  <div class="login-credetials">
+    <p class="department-brugerlogin"> Bruger login:</p>
+    <p class="department-loginUser"> <strong th:text="${session.rolle}"></strong></p>
+  </div>
+
+  <!-- logout button -->
+  <a th:href="@{/logUd}" class="nav-button logout-button">Log ud</a>
+</div>
 
 <div class="main-content">
 
@@ -41,15 +59,7 @@
     </table>
   </div>
 
-<!-- Side navigation bar -->
-<div class="side-nav">
-  <!-- Logo -->
-  <div class="nav-logo">
-    <img th:src="@{/Billeder/BILABONNEMENT.png}" alt="Bilabonnement logo">
-  </div>
-  <a th:href="@{/backToSkader}" class="nav-button">Tilbage til skader</a>
-  <a th:href="@{/logUd}" class="nav-button logout-button">Log ud</a>
-</div>
+
 </div>
 
 </body>

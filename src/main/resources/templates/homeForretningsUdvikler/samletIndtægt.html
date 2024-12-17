@@ -6,7 +6,7 @@
     <title>Samlede Indtægter</title>
 </head>
 <body>
-
+<!-- top nav -->
 <div class="department-nav">
     <span class="department-label">Afdeling: </span>
     <span class="department-name">Forretnings udvikling</span>
@@ -22,7 +22,13 @@
     <!-- Navigation buttons -->
     <a th:href="@{/homeForretningsUdvikler}" class="nav-button">Tilbage til menu</a>
 
-    <!-- Logout button -->
+    <!-- login credentials-->
+    <div class="login-credetials">
+        <p class="department-brugerlogin"> Bruger login:</p>
+        <p class="department-loginUser"> <strong th:text="${session.rolle}"></strong></p>
+    </div>
+
+    <!-- logout button -->
     <a th:href="@{/logUd}" class="nav-button logout-button">Log ud</a>
 </div>
 
@@ -41,28 +47,30 @@
         </div>
         <label for="fraDato">Fra dato: </label>
         <input type="date" id="fraDato" name="fraDato" required>
-        <br>
+
         <label for="tilDato">Til dato: </label>
         <input type="date" id="tilDato" name="tilDato" required>
-        <br>
+
         <button type="submit">Vis antallet</button>
-        <br>
+
 
         <p th:if="${samletIndtægt != null}"
-           th:text="'Samlet indtægt for denne periode er ' + ${samletIndtægt}"></p>
+           th:text="'Samlet indtægt for denne periode er ' + ${samletIndtægt} + 'kr'"></p>
 
     </form>
 
 </div>
 
     <div class="månedlige-indtægt">
+        <div class="form-template">
         <form th:action="@{/monthlyIncome}" method="post">
-            <label>Indtast det år du vil se månedlig indtjening for</label>
-            <input type="number" name="year" required min="1000" max="9999">
+            <label>for Indtast det år du vil se månedlig indtjening for</label>
+            <input type="number" name="year" placeholder="F.eks 2023" required min="1000" max="9999">
             <button type="submit">Tryk her for at se alt indtjening</button>
         </form>
+
         <div class="alt-indtjening">
-            <h1 th:if="${year}" th:text="'Alt indtjening for år ' + ${year} "></h1>
+            <h1 th:if="${year}" th:text="'Samlet indtjening for år ' + ${year} "></h1>
             <table class="indtjening-table" th:if="${indtjening}">
                 <thead>
                 <tr>
@@ -79,7 +87,7 @@
             </table>
         </div>
     </div>
-
+    </div>
 
 </div>
 </div>

@@ -7,6 +7,11 @@
   <link rel="stylesheet" type="text/css" href="/MyCSS.css">
 </head>
 <body>
+<!-- top nav -->
+<div class="department-nav">
+  <span class="department-label">Afdeling: </span>
+  <span class="department-name">Skadehåndtering </span>
+</div>
 
 <!-- Side navigation bar -->
 <div class="side-nav">
@@ -16,15 +21,21 @@
   </div>
 
   <!-- Navigation buttons -->
-  <a th:href="@{/manage}" class="nav-button">Tilbage til menu</a>
+  <a th:href="@{/manageBiler}" class="nav-button">Tilbage til alle biler</a>
 
-  <!-- Logout button -->
+  <!-- login credentials-->
+  <div class="login-credetials">
+    <p class="department-brugerlogin"> Bruger login:</p>
+    <p class="department-loginUser"> <strong th:text="${session.rolle}"></strong></p>
+  </div>
+
+  <!-- logout button -->
   <a th:href="@{/logUd}" class="nav-button logout-button">Log ud</a>
 </div>
 
-<div class="tilfoejBil">
+<div class="main-content">
   <h1>Tilføj Bil</h1>
-
+<div class="form-template">
   <!-- Form to add a new car -->
   <form action="/addBil" method="post">
 
@@ -33,15 +44,15 @@
 
     <!-- Nummerplade -->
     <label for="nummerplade" class="form-label">Nummerplade:</label>
-    <input type="text" id="nummerplade" name="nummerplade"  placeholder="F.eks. AB12345" required><br><br>
+    <input type="text" id="nummerplade" name="nummerplade"  placeholder="F.eks. AB12345" required>
 
     <!-- Mærke -->
     <label for="maerke" class="form-label">Mærke:</label>
-    <input type="text" id="maerke" name="maerke" placeholder="F.eks. Toyota, BMW" required><br><br>
+    <input type="text" id="maerke" name="maerke" placeholder="F.eks. Toyota, BMW" required>
 
     <!-- Model -->
     <label for="model" class="form-label">Model:</label>
-    <input type="text" id="model" name="model" placeholder="F.eks. Corolla, X5" required><br><br>
+    <input type="text" id="model" name="model" placeholder="F.eks. Corolla, X5" required>
 
     <!-- Brændstoftype -->
     <label for="braendstoftype" class="form-label">Brændstoftype:</label>
@@ -51,24 +62,24 @@
       <option value="BENZIN">Benzin</option>
       <option value="DIESEL">Diesel</option>
       <option value="HYBRID">Hybrid</option>
-    </select><br><br>
+    </select>
 
     <!-- Odometer -->
     <label for="odometer" class="form-label">Odometer (km):</label>
-    <input type="number" id="odometer" name="odometer" min="0" placeholder="F.eks. 10000" required><br><br>
+    <input type="number" id="odometer" name="odometer" min="0" placeholder="F.eks. 10000" required>
 
     <!-- Førsteregistrering -->
     <label for="foersteregistrering" class="form-label">Førsteregistrering:</label>
-    <input type="date" id="foersteregistrering" name="foersteregistrering" value="${T(java.time.LocalDate).now()}" required><br><br>
+    <input type="date" id="foersteregistrering" name="foersteregistrering" value="${T(java.time.LocalDate).now()}" required>
 
     <!-- CO2 udledning -->
     <label for="co2udledning" class="form-label">CO2 Udledning (g/km):</label>
-    <input type="number" id="co2udledning" name="co2udledning" min="0" placeholder="F.eks. 120" required><br><br>
+    <input type="number" id="co2udledning" name="co2udledning" min="0" placeholder="F.eks. 120" required>
 
     <!-- Submit button -->
     <button type="submit">Tilføj Bil</button>
   </form>
 </div>
-
+</div>
 </body>
 </html>

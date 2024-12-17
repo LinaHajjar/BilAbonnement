@@ -6,12 +6,12 @@
     <title>Ny lejekontrakt</title>
 </head>
 <body>
-
+<!-- top nav -->
 <div class="department-nav">
     <span class="department-label">Afdeling: </span>
-    <span class="department-name">Biludlejning</span>
+    <span class="department-name">Skadehåndtering </span>
 </div>
-
+<!-- SIDE NAV -->
 <div class="side-nav">
     <!-- Logo -->
     <div class="nav-logo">
@@ -21,13 +21,20 @@
     <!-- Navigation buttons -->
 
     <a th:href="@{/backToKontrakt}" class="nav-button">Tilbage til lejekontrakter</a>
-    <!-- Logout button -->
+
+    <!-- login credentials-->
+    <div class="login-credetials">
+        <p class="department-brugerlogin"> Bruger login:</p>
+        <p class="department-loginUser"> <strong th:text="${session.rolle}"></strong></p>
+    </div>
+
+    <!-- logout button -->
     <a th:href="@{/logUd}" class="nav-button logout-button">Log ud</a>
 </div>
 
 <div class="main-content">
 
-<h1 class="ny-lejekontrakt-h1">Indtast informationer for lejekontrakt</h1>
+<h1 class="ny-lejekontrakt-h1">Opret ny lejekontrakt</h1>
     <!--Class name for forms -->
     <div class="form-template">
 <form th:action="@{/tilføjKontrakt}" method="post">

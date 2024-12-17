@@ -63,7 +63,8 @@
             <th>By</th>
             <th>Kørekortnr</th>
             <th>Udstedelsesdato</th>
-            <th>Slet el. redigere</th>
+            <th>Slet</th>
+            <th>Redigere</th>
         </tr>
         </thead>
         <tbody>
@@ -82,7 +83,8 @@
                     <input type="hidden" name="telefonnummer" th:value="${kunde.telefonnummer}">
                     <button type="submit" class="slet-kunde-knap">Slet kunde</button>
                 </form>
-
+            </td>
+            <td class="btn-redigerKunde">
 <!--add a button to edit and update a customer-->
                 <a th:href="@{'/redigerKunde/' + ${kunde.telefonnummer}}">
                     <button class="btn-redigerKunde" id="btn-redigerKunde">Rediger Kunde</button> <!-- CSS to rediger-knap-->

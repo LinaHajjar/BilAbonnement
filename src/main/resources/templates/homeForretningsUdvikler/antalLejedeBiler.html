@@ -25,7 +25,13 @@
         <!-- Navigation buttons -->
         <a th:href="@{/homeForretningsUdvikler}" class="nav-button">Tilbage til menu</a>
 
-        <!-- Logout button -->
+        <!-- login credentials-->
+        <div class="login-credetials">
+            <p class="department-brugerlogin"> Bruger login:</p>
+            <p class="department-loginUser"> <strong th:text="${session.rolle}"></strong></p>
+        </div>
+
+        <!-- logout button -->
         <a th:href="@{/logUd}" class="nav-button logout-button">Log ud</a>
     </div>
 
@@ -39,8 +45,9 @@
         <input type="date" id="startdato" name="startdato" required>
         <label for="slutdato">Til Dato: </label>
         <input type="date" id="slutdato" name="slutdato" required>
+        <label>Vælg model</label>
         <select id="maerke" name="maerke">
-            <option value="" th:selected="${selectedMaerke == ''}">Vælg Mærke (Lad stå uberørt, for alle modeller i perioden)</option>
+            <option value="" th:selected="${selectedMaerke == ''}">Vælg Mærke/alle biler</option>
             <option th:each="m : ${maerker}"
                     th:value="${m}"
                     th:text="${m}"

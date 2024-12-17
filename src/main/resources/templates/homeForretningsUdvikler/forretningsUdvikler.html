@@ -19,13 +19,13 @@
         <img src="/Billeder/BILABONNEMENT.png" alt="Logo">
     </div>
 
-    <!-- Navigation buttons1 -->
-    <!-- <a th:href="@{/backToManage}" class="nav-button">Tilbage til menu</a> -->
+    <div class="login-credetials">
+        <p class="department-brugerlogin"> Bruger login:</p>
+        <p class="department-loginUser"> <strong th:text="${session.rolle}"></strong></p>
+    </div>
 
-
-    <!-- Logout button -->
+    <!-- logout button -->
     <a th:href="@{/logUd}" class="nav-button logout-button">Log ud</a>
-
 </div>
 <div class="main-content">
 <h1 class="manage-h1">Vælg en afdeling</h1>

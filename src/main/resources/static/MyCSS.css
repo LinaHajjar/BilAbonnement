@@ -139,7 +139,7 @@ html, body{
     margin: 20px auto;
     max-width: 600px;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  /*  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);*/
 }
 
 /* Form styling */
@@ -528,15 +528,15 @@ input[type="date"] {
 }
 
 button {
-    padding: 10px;
-    font-size: 16px;
-    background-color: #007bff;
+    padding: 8px 15px;
+    font-size: 14px;
+    background-color: #014858;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    width: 100%; /* Make button full width */
+    width: 100%; /* Make button full width*/
 }
 
 button:hover {

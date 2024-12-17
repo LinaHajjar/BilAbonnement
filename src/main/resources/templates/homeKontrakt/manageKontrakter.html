@@ -6,12 +6,12 @@
     <title>Lejekontrakter</title>
 </head>
 <body>
-
+<!-- top nav -->
 <div class="department-nav">
     <span class="department-label">Afdeling: </span>
-    <span class="department-name">Biludlejning</span>
+    <span class="department-name">Skadehåndtering </span>
 </div>
-
+<!-- SIDE NAV -->
 <div class="side-nav">
     <!-- Logo -->
     <div class="nav-logo">
@@ -23,7 +23,13 @@
     <a th:href="@{/backToManage}" class="nav-button">Tilbage til menu</a>
     <a th:href="@{/nyKontrakt}" class="nav-button1">Tilføj ny lejekontrakt</a>
 
-    <!-- Logout button -->
+    <!-- login credentials-->
+    <div class="login-credetials">
+        <p class="department-brugerlogin"> Bruger login:</p>
+        <p class="department-loginUser"> <strong th:text="${session.rolle}"></strong></p>
+    </div>
+
+    <!-- logout button -->
     <a th:href="@{/logUd}" class="nav-button logout-button">Log ud</a>
 </div>
 
@@ -86,7 +92,8 @@
         <th>Slut dato</th>
         <th>Max km</th>
         <th>Pris</th>
-        <th>Action</th>
+        <th>Slet</th>
+        <th>Redigere</th>
     </tr>
     </thead>
     <tbody>
@@ -101,14 +108,14 @@
         <td class="slet-kontrakt">
             <form th:action="@{/sletKontrakt}" method="post">
                 <input type="hidden" name="lejekontrakt_id" th:value="${lejekontrakt.lejekontrakt_id}">
-                <button type="submit" class="slet-kontrakt-knap">Slet lejekontrakt</button>
+                <button type="submit" class="slet-kontrakt-knap">Slet</button>
             </form>
-
+        <td class="redigere-kontrakt">
             <!--add a button to edit and update a contract-->
             <a th:href="@{'/redigerLejeKontrakt/' + ${lejekontrakt.lejekontrakt_id}}">
-                <button class="btn-redigerLejeKontrakt" id="btn-redigerLejeKontrakt">Rediger lejekontrakt</button> <!-- CSS to rediger-knap-->
+                <button class="btn-redigerLejeKontrakt" id="btn-redigerLejeKontrakt">Rediger</button> <!-- CSS to rediger-knap-->
             </a>
-
+    </td>
         </td>
     </tr>
     </tbody>
